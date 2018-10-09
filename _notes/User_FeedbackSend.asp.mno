@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsUserID" value="name:UserID;datatype:varchar,name:FullName;datatype:varchar,name:UserPassword;datatype:varchar,name:UserEmail;datatype:varchar,name:UserAddress;datatype:varchar,name:UserPhone;datatype:varchar,name:UserRole;datatype:bit" />
+	<infoitem key="UD_rsFeedbackID" value="name:FeedbackID;datatype:int,name:FeedbackSubject;datatype:varchar,name:FeedbackContent;datatype:varchar,name:FeedbackDate;datatype:smalldatetime,name:FeedbackMemberID;datatype:varchar,name:FeedbackReply;datatype:varchar,name:FeedbackReplyDate;datatype:smalldatetime,name:FeedbackAdminReplyID;datatype:varchar" />
+	<infoitem key="UD_rsBrands" value="name:BrandName;datatype:varchar,name:ProCount;datatype:int" />
+</info>

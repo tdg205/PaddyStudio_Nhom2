@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsBrands" value="name:BrandName;datatype:200,name:ProCount;datatype:3" />
+	<infoitem key="UD_LiveData_params" value="1" />
+	<infoitem key="UD_LiveData_param0" value="BrandName=1" />
+	<infoitem key="UD_rsUserID" value="name:UserID;datatype:200,name:FullName;datatype:202,name:UserPassword;datatype:200,name:UserEmail;datatype:200,name:UserAddress;datatype:202,name:UserPhone;datatype:200" />
+	<infoitem key="UD_rsFeedbackID" value="name:FeedbackID;datatype:3,name:FeedbackSubject;datatype:202,name:FeedbackContent;datatype:202,name:FeedbackDate;datatype:135,name:FeedbackMemberID;datatype:200,name:FeedbackReply;datatype:202,name:FeedbackReplyDate;datatype:135,name:FeedbackAdminReplyID;datatype:200" />
+</info>

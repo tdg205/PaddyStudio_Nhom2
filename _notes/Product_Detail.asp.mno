@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsBrands" value="name:BrandName;datatype:200,name:ProCount;datatype:3" />
+	<infoitem key="UD_rsComments" value="name:CommentID;datatype:int,name:CommentContent;datatype:varchar,name:CommentDate;datatype:smalldatetime,name:CommentUserID;datatype:varchar,name:CommentReply;datatype:varchar,name:CommentReplyDate;datatype:smalldatetime,name:CommentUserReplyID;datatype:varchar,name:ProductID;datatype:int,name:CommentUserFullName;datatype:varchar,name:CommentUserReplyFullName;datatype:varchar" />
+	<infoitem key="UD_rs" value="name:CommentID;datatype:int,name:CommentContent;datatype:varchar,name:CommentDate;datatype:smalldatetime,name:CommentUserID;datatype:varchar,name:CommentReply;datatype:varchar,name:CommentReplyDate;datatype:smalldatetime,name:CommentUserReplyID;datatype:varchar,name:ProductID;datatype:int" />
+	<infoitem key="UD_rsUserID" value="name:UserID;datatype:200,name:FullName;datatype:202,name:UserPassword;datatype:200,name:UserEmail;datatype:200,name:UserAddress;datatype:202,name:UserPhone;datatype:200" />
+	<infoitem key="UD_rsProduct_Detail" value="name:ProductID;datatype:3,name:ProductName;datatype:200,name:ProductImage;datatype:200,name:ProductDescription;datatype:202,name:Price;datatype:3,name:WarrantyTime;datatype:3,name:ManufacturerYear;datatype:2,name:BrandName;datatype:200" />
+	<infoitem key="UD_rsFeedbackID" value="name:FeedbackID;datatype:3,name:FeedbackSubject;datatype:202,name:FeedbackContent;datatype:202,name:FeedbackDate;datatype:135,name:FeedbackMemberID;datatype:200,name:FeedbackReply;datatype:202,name:FeedbackReplyDate;datatype:135,name:FeedbackAdminReplyID;datatype:200" />
+</info>

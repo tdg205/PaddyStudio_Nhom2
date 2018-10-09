@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsBrands" value="name:BrandName;datatype:varchar,name:ProCount;datatype:int" />
+	<infoitem key="UD_rsAdmin_ProductDetail" value="name:ProductID;datatype:int,name:ProductName;datatype:varchar,name:ProductImage;datatype:varchar,name:ProductDescription;datatype:varchar,name:Price;datatype:int,name:WarrantyTime;datatype:int,name:ManufacturerYear;datatype:smallint,name:BrandName;datatype:varchar" />
+	<infoitem key="UD_rsXoa" value="name:ProductID;datatype:int,name:ProductName;datatype:varchar,name:ProductImage;datatype:varchar,name:ProductDescription;datatype:varchar,name:Price;datatype:int,name:WarrantyTime;datatype:int,name:ManufacturerYear;datatype:smallint,name:BrandName;datatype:varchar" />
+	<infoitem key="UD_rsUserID" value="name:UserID;datatype:varchar,name:FullName;datatype:varchar,name:UserPassword;datatype:varchar,name:UserEmail;datatype:varchar,name:UserAddress;datatype:varchar,name:UserPhone;datatype:varchar,name:UserRole;datatype:bit" />
+</info>
