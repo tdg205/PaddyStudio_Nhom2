@@ -41,20 +41,6 @@ If (Request.QueryString("ProductID") <> "") Then
   rsComments__MMColParam = Request.QueryString("ProductID")
 End If
 %>
-'<%
-'Dim rsComments
-'Dim rsComments_cmd
-'Dim rsComments_numRows
-'
-'Set rsComments_cmd = Server.CreateObject ("ADODB.Command")
-'rsComments_cmd.ActiveConnection = MM_cn_STRING
-'rsComments_cmd.CommandText = "SELECT * FROM dbo.tbComment WHERE ProductID = ? ORDER BY CommentDate DESC"
-'rsComments_cmd.Prepared = true
-'rsComments_cmd.Parameters.Append rsComments_cmd.CreateParameter("param1", 5, 1, -1, rsComments__MMColParam) ' adDouble
-'
-'Set rsComments = rsComments_cmd.Execute
-'rsComments_numRows = 0
-'%>
 <%
 Dim Repeat1__numRows
 Dim Repeat1__index
@@ -136,24 +122,24 @@ End Function
 %>
 <!doctype html>
 <html>
-<%
-Dim rsFeedbackID
-Dim rsFeedbackID_cmd
-Dim rsFeedbackID_numRows
-
-Set rsFeedbackID_cmd = Server.CreateObject ("ADODB.Command")
-rsFeedbackID_cmd.ActiveConnection = MM_cn_STRING
-rsFeedbackID_cmd.CommandText = "SELECT * FROM dbo.tbFeedback" 
-rsFeedbackID_cmd.Prepared = true
+'<%
+'Dim rsFeedbackID
+'Dim rsFeedbackID_cmd
+'Dim rsFeedbackID_numRows
+'
+'Set rsFeedbackID_cmd = Server.CreateObject ("ADODB.Command")
+'rsFeedbackID_cmd.ActiveConnection = MM_cn_STRING
+'rsFeedbackID_cmd.CommandText = "SELECT * FROM dbo.tbFeedback" 
+'rsFeedbackID_cmd.Prepared = true
+'
+'Set rsFeedbackID = rsFeedbackID_cmd.Execute
+'rsFeedbackID_numRows = 0
+'%>
+<!--ID_cmd.Prepared = true
 
 Set rsFeedbackID = rsFeedbackID_cmd.Execute
 rsFeedbackID_numRows = 0
-%>
-ID_cmd.Prepared = true
-
-Set rsFeedbackID = rsFeedbackID_cmd.Execute
-rsFeedbackID_numRows = 0
-%>
+%>-->
 <%
 Dim rsUserID
 Dim rsUserID_cmd
@@ -350,17 +336,17 @@ End If
             <div class="col-sm-12">
               <ul class="nav nav-tabs">
                 <!--<li class="active"><a href="#reviews" data-toggle="tab">Bình Luận</a></li>-->
-                <li><a href="#details" data-toggle="tab">Chi Tiết</a></li>
+                <li class="active"><a href="#details" data-toggle="tab">Chi Tiết</a></li>
               </ul>
             </div>
             <div class="tab-content">
-              <div class="tab-pane fade" id="details" >
+              <div class="tab-pane fade active in" id="details" >
                 <div class="col-sm-12">
                   <p><%=(rsProduct_Detail.Fields.Item("ProductDescription").Value)%></p>
                 </div>
               </div>
               <!--<div class="tab-pane fade active in" id="reviews" >'
-                              <div class="col-sm-12">
+                                <div class="col-sm-12">
                                 <hr>
                                 <ul>
                                   <li><a href="#"></a></li>
@@ -484,12 +470,4 @@ Set rsBrands = Nothing
 <%
 rsProduct_Detail.Close()
 Set rsProduct_Detail = Nothing
-%>
-<%
-rsFeedbackID.Close()
-Set rsFeedbackID = Nothing
-%>
-<%
-rsComments.Close()
-Set rsComments = Nothing
 %>
