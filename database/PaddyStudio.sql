@@ -11,7 +11,8 @@ create table tbUser
 	UserPassword varchar(20) not null,
 	UserEmail varchar(50) unique not null,
 	UserAddress nvarchar(300),
-	UserPhone varchar(20)	
+	UserPhone varchar(20),
+	UserRole bit default 0 not null
 );
 go
 
@@ -85,12 +86,12 @@ create table tbEventAndNews
 go
 
 insert tbUser values
-('U01',N'Trương Đình Giang','123456','giang.itk10@gmail.com','Ho Chi Minh City','0962502799'),
-('U02',N'Đào Thiện Hoàng Huy','123456','huyhoang0@gmail.com','Ho Chi Minh City','0942327885'),
-('U03',N'An Tinh','123456','an123@gmail.com','Ho Chi Minh City','0948277065'),
-('U04','Kevin Tran','abcd123','kev@gmail.com','New York','0913345678'),
-('U05','Sam Winchester','abcd123','sammy@yahoo.com','Texas','0945345623'),
-('U06','Calvin Harris','abcd123','calv@gmail.com','Washington','0989345126')
+('U01',N'Trương Đình Giang','123456','giang.itk10@gmail.com','Ho Chi Minh City','0962502799','0'),
+('U02',N'Đào Thiện Hoàng Huy','123456','huyhoang0@gmail.com','Ho Chi Minh City','0942327885','0'),
+('U03',N'An Tinh','123456','an123@gmail.com','Ho Chi Minh City','0948277065','0'),
+('U04','Kevin Tran','abcd123','kev@gmail.com','New York','0913345678','0'),
+('U05','Sam Winchester','abcd123','sammy@yahoo.com','Texas','0945345623','0'),
+('U06','Calvin Harris','abcd123','calv@gmail.com','Washington','0989345126','0')
 go
 
 insert tbAdmin values
