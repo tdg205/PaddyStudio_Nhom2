@@ -429,7 +429,7 @@ td, th
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-4" style="color: #B4B1AB;font-family: abel; font-size:27px; text-transform: uppercase;">
-							<span style="color:#FE980F;">Paddy</span> Studio
+							<span style="color:#FE980F;">Paddy </span> Studio
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
@@ -598,7 +598,7 @@ td, th
 				<div class="row">
 					<div class="col-sm-5">
 						<div class="companyinfo">
-							<h2><span>Paddy</span> Studio</h2>
+							<h2><span>Paddy </span> Studio</h2>
 							<p>Đến với Paddy Studio là sự lựa chọn đúng đắn!</p>
 						</div>
 					</div>
@@ -667,7 +667,7 @@ td, th
 			<div class="container">
 				<div class="row">
 					<p class="pull-left">Copyright 2016-2018 Paddy Studio. All rights reserved.</p>
-					<p class="pull-right">Designed by <span>Group 2 - Paddy Studio</span></p>
+					<p class="pull-right">Designed by <span> Group 2 - Paddy Studio</span></p>
 				</div>
 			</div>
 		</div>
