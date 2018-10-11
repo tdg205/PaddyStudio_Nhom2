@@ -414,7 +414,7 @@ function check()
                                         	<a href="Admin_Home.asp">Trang Chủ Admin</a>
                                             <a href="Admin_ManageBrand.asp">Quản Lý Thương Hiệu</a>
                                             <a href="Admin_ManageProduct.asp">Quản Lý Sản Phẩm</a>
-                                            <a href="#">Quản Lý Bình Luận</a>
+                                          <!--  <a href="#">Quản Lý Bình Luận</a>-->
                                             <a href="Admin_ManageFeedback.asp">Quản Lý Phản Hồi</a>
                                             <a href="Admin_ManageEventAndNews.asp">Quản Lý Tin Tức &amp; Sự Kiện</a>
                                             <a href="Admin_ManageUser.asp">Quản Lý Thành Viên</a>
