@@ -19,7 +19,7 @@ go
 create table tbBrand
 (
 	BrandName varchar(20) primary key nonclustered,
-	BrandDescription nvarchar(200),
+	BrandDescription nvarchar(1000),
 	BrandLogo varchar(200) not null
 );
 go
@@ -29,7 +29,7 @@ create table tbProduct
 	ProductID int identity(1,1) primary key nonclustered,
 	ProductName varchar(50) unique not null,
 	ProductImage varchar(200) not null,
-	ProductDescription nvarchar(500) not null,
+	ProductDescription nvarchar(1000) not null,
 	Price int check(Price>=0) default 0,
 	WarrantyTime int check(WarrantyTime>=0 and WarrantyTime <=60) not null,
 	ManufacturerYear smallint check(ManufacturerYear<=year(getdate()) and ManufacturerYear >1980) default year(getdate()) not null,
@@ -83,301 +83,341 @@ insert tbBrand values
 ('Asus',N'ASUSTeK Computer Incorporated (ASUS) là một tập đoàn đa quốc gia đặt trụ sở tại Đài Loan chuyên sản xuất các mặt hàng điện tử','asus.jpg'),
 ('HP',N'Hewlett-Packard (viết tắt HP) là tập đoàn công nghệ thông tin lớn nhất thế giới. HP thành lập năm 1939 tại Palo Alto, California, Hoa Kỳ.','hp.jpg'),
 ('Apple',N'Apple là tập đoàn công nghệ máy tính của Mỹ có trụ sở chính đặt tại San Francisco,California. Apple được thành lập ngày 1/4/1976.','apple.jpg'),
-('Acer',N'Acer là tập đoàn đa quốc gia về thiết bị điện tử và phần cứng máy tính của Đài Loan.Các sản phẩm của Acer bao gồm các loại máy tính để bàn,laptop PC, server,...','acer.jpg')
+('Lenovo',N'Lenovo là tập đoàn đa quốc gia về công nghệ máy tính có trụ sở chính ở Bắc Kinh, Trung Quốc và Morrisville, Bắc Carolina, Mỹ. Tập đoàn thiết kế, phát triển, sản xuất và bán các sản phẩm như máy tính cá nhân, máy tính bảng, smartphone, các trạm máy tính, server, thiết bị lưu trữ điện tử, phần mềm quản trị IT và ti vi thông minh.','lenovo.jpg')
 go
 
 insert tbProduct values
-('Dell XPS13 9350-6YJ60','01-Dell.jpg',N'- Intel Core i7-6500U (2X2.5GHz) Max Turbo Frequency 3.10GHz - 4MB<br/>
-- DDRAM 8GB LPDDR3/1867MHz Onboard (không upgrade)<br/>
-- SSD 256G (M.2 2280)<br/>
-- Intel HD Graphics 520<br/>
-- Realtek high Definition Audio<br/>
-- 13.3" UltraSharp QHD Touch (3200x1800) - Webcam<br/>
-- Ko Lan - Wifi - Bluetooth<br/>
-- Reader - 1x USB Type C port, 2xUSB 3.0, LED_KB<br/>
-- Weight 1.29kg - Battery 4Cell<br/>
-- OS Windows 10 Home SL 64 bit+ Office Personal 365<br/>','43990000','12','2013','Dell'
+('Dell XPS 13 9365','Dell01.jpg',
+N'- Bộ xử lý: Intel Core i7 7Y75 (2x1.30 GHz), Max Turbo Frequency: 3.60 GHz-4MB<br/>
+- RAM: 16GB DDR4/1866MHz onboard<br/>
+- Đĩa cứng: SSD (M.2 2280) 512GB (M.2 2280)<br/>
+- Đồ họa: Intel HD Graphics 615<br/>
+- Âm thanh: 	High Definition (HD) Audio 2.0<br/>
+- Màn hình: 13.3" InfinityEdge touch display (3200x1800), không cảm ứng<br/>
+- Giao tiếp mạng: Không LAN, wifi: Intel (802.11 ac), Bluetooth 4.2<br/>
+- Tính năng mở rộng & cổng giao tiếp: 1xThunderbolt 3 (4 lanes of PCI Express Gen 3) with PowerShare & DC-In ; 1 x DisplayPort over USB-C with PowerShare, DC-In & DisplayPort ; 1 x Headphone/ Microphone combo ; 1 x USB-C to HDMI (2.0) A<br/>
+- Trọng lượng 1.24 kg, pin 4 Cell Int (46WHr)<br/>
+- Hệ điều hành: Windows 10 Home Single Language 64Bit + Office Personal 365<br/>','54990000','24','2017','Dell'
 ),
 
-('Dell XPS15 9550-FYK3F1','02-Dell.jpg','- Intel Core i5 6300HQ 2.3GHz - 6M<br/>
-- DDRAM 2x4GB DDR4/2133 (2 slot)<br/>
-- HDD 1TB 5400rpm + 32GB SSD<br/>
-- NVIDIA GF GTX960M 2GB GDDR5 128bit // Intel HD Graphics 530<br/>
-- 15.6" FHD InfinityEdge (1920x1080) - HDMI, Thunderbolt-3 (USB Type-C) - Webcam<br/>
-- No DVD<br/>
-- No Lan - Wifi AC - Bluetooth<br/>
-- Reader - 2xUSB 3.0, LED_KB<br/>
-- Weight 1.78Kg - Battery 3 Cell<br/>
-- OS Windows 10 Home SL 64bit + Office Personal 365<br/>','39990000','12','2014','Dell'
+('Dell XPS15/i7-8750H','Dell02.jpg',
+N'- Bộ xử lý: Intel Core i7 8750HQ 2.20GHz-9MB cache<br/>
+- RAM: 16GB DDR4 2666MHz, 2 khe RAM<br/>
+- Đĩa cứng: SSD PCLE 512GB<br/>
+- Đồ họa: NVIDIA GEFORCE GTX 1050 4GB GDDR5<br/>
+- Âm thanh: 	High Definition (HD) Audio - Power Cord<br/>
+- Màn hình: 15.6 inchs -InfinityEdge display( 1920x1080), không cảm ứng<br/>
+- Giao tiếp mạng: LAN 10/100/1000, Wifi 802.11ac Dual Band, Bluetooth v4.1<br/>
+- Tính năng mở rộng & cổng giao tiếp: USB 3.0, Headset, Finger Print Reader<br/>
+- Trọng lượng 1.80 kg, Pin 4 Cell Int (46WHr)<br/>
+- Hệ điều hành: Windows 10 Home Plus + Microsoft Office 365 Personal DFO<br/>','53990000','24','2017','Dell'
 ),
 
-('Dell 7447-MJWKV2','03-Dell.jpg','- Intel Core i7 4720HQ 2.6GHz - 6M<br/>
-- DDRAM 2x4GB/DDR3L-1600 (2 slot)<br/>
-- HDD 1TB SSHD with 8GB Flash Drive<br/>
-- NVIDIA GF GTX 850M 4GB DDR3 128bit  //  Intel HD Graphics 4600<br/>
-- 14" IPS FHD Led (1920x1080) - HDMI - Webcam <br/>
-- DVDRW <br/>
-- Lan 1G - Wifi AC - Bluetooth 4.0<br/>
-- Reader - 2xUSB 3.0, USB 2.0, LED KB<br/>
-- Weight 2.23Kg - Battery 6 Cell<br/>
-- OS Windows 8.1 SL 64 bit<br/>','23300000','12','2012','Dell'
+('Dell XPS13 9370','Dell03.jpg',N'- Bộ xử lý: Intel Core i7-8550U 1.80 GHz, 8MB Cache<br/>
+- RAM: 8GB LPDDR3/1866 MHz, 1 khe RAM<br/>
+- Đĩa cứng:	SSD PCIe (M2 2280) 256GB<br/>
+- Đồ họa: Intel UHD Graphics 620<br/>
+- Âm thanh: Realtek Audio (MaxxAudio Pro), Waves MaxxAudio Pro<br/>
+- Màn hình: 	13.3 inchs - FullHD InfinityEdge display(1920x1080), không cảm ứng<br/>
+- Giao tiếp mạng: Không LAN, Wifi 802.11ac Dual Band, Bluetooth v4.1<br/>
+- Tính năng mở rộng & cổng giao tiếp: 2 x Thunderbolt™ 3 (with PowerShare & DC-In & DisplayPort); 1 x USB-C 3.1 (with PowerShare, DC-In & DisplayPort); 1 x Headphone/ Microphone<br/>
+- Trọng lượng 1.21kg, Pin 4 Cell Ext (52Wh) liền<br/>
+- Hệ điều hành: Windows 10 Home Single Language 64Bit + Office Personal 365<br/>','45990000','12','2018','Dell'
 ),
 
-('Dell Inspiron 7359-C3I5019W','04-Dell.jpg','- Intel Core i5 6200U 2.3GHz - 3M<br/>
-- DDRAM 1x4GB/1600 (1 slot)<br/>
-- HDD 500GB 5400rpm<br/>
-- Intel HD Graphics 520<br/>
-- 13.3" IPS HD Led Touch Xoay 360 độ (1366x768) - HDMI - Webcam<br/>
-- No DVD<br/>
-- No Lan - Wifi AC - Bluetooth<br/>
-- Reader - 3xUSB 3.0<br/>
-- Weight 1.66Kg - Battery 3Cell<br/>
-- OS Windows 10 Home 64bit with Office 365<br/>','20490000','12','2014','Dell'
+('Dell XPS 13 (9360)/Core i5-7200U','Dell04.jpg',
+N'- Bộ xử lý: Intel Core i5-7200U 2.50 GHz, 3MB Cache<br/>
+- RAM: DDRAM 8GB LPDDR3/	2133 MHz, onboard RAM<br/>
+- Đĩa cứng:	SSD 256GB<br/>
+- Đồ họa: Intel HD Graphics 620<br/>
+- Âm thanh: High Definition (HD) Audio 2.0<br/>
+- Màn hình: 	13.3 inch-FHD (1920 x 1080), Anti-Glare, không cảm ứng<br/>
+- Giao tiếp mạng: Không LAN, wifi 802.11ac<br/>
+- Tính năng mở rộng & cổng giao tiếp: USB 3.0, USB Type-C, Multi TouchPad<br/>
+- Trọng lượng vỏ nhôm 1.23kg - Pin 	4 cell 60WHr liền<br/>
+- Hệ điều hành: Windows 10 Home SL + Microsoft Office 365<br/>','35990000','12','2018','Dell'
 ),
 
-('Dell Inspiron 5459-WX9KG1','05-Dell.jpg','- Intel Core i5 6200U 2.3GHz - 3M<br/>
-- DDRAM 1x4GB/1600 (2 Slot)<br/>
-- HDD 500GB 5400rpm<br/>
-- AMD Radeon R5 M335 2GB DDR3 32bit // Intel HD Graphics 520<br/>
-- 14" HD Led (1366x768) - HDMI - Webcam<br/>
-- DVD-RW<br/>
-- Lan 10/100 - Wifi AC - Bluetooth<br/>
-- Reader - USB 3.0, 2xUSB 2.0, LED_KB<br/>
-- Weight 2.0Kg - Battery 4 Cell<br/>
-- OS Windows 10 Home SL 64bit + Office Personal 365<br/>','19549000','12','2014','Dell'
+('Dell Vostro V5468A','Dell05.jpg',
+N'- Bộ xử lý: Intel Core i5-7200U 2.50 GHz, 3MB Cache<br/>
+- RAM: 4GB DDR4/	2133MHz, 2 khe RAM<br/>
+- Đĩa cứng:	HDD 1TB, có khe ổ cắm SSD<br/>
+- Đồ họa: Nvidia GeForce 940M-2GB<br/>
+- Màn hình: 	14 inch-	HD LED(1366 x 768), không cảm ứng<br/>
+- Âm thanh: High Definition (HD) Audio 2.0<br/>
+- Giao tiếp mạng: LAN 10/100Mbps, wifi IEEE 802.11b/g/n<br/>
+- Tính năng mở rộng & cổng giao tiếp: 2 x USB 3.0, HDMI, LAN (RJ45), USB 2.0, VGA (D-Sub), Multi TouchPad<br/>
+- Trọng lượng kim loai 1.7 kg, Pin 3 cell liền<br/>
+- Hệ điều hành: Windows 10 + Microsoft Office 365<br/>','17990000','12','2017','Dell'
 ),
 
-('Asus G751JY-T7235D','11-Asus.jpg','- Intel Core i7 4720HQ 2.6GHz - 6M<br/>
-- DDRAM 2x8GB/1600 (2 slot)<br/>
-- HDD 1TB SATA 3 7200rpm with 128GB SATA 3 SSD<br/>
-- NVIDIA GF GTX 980M 4GB DDR5<br/>
-- Blu-Ray RW<br/>
-- Card Reader 2.1 - 4x USB 3.0<br/>
-- 17.3" Led back-lit (1920x1080) - HDMI & S/P Display port - Webcam<br/>
-- LAN 10/100/1000 - Wireless - Bluetooth 4.0<br/>
-- Weight 2.8Kg - 8 cell (88Wh)<br/>
-- OS Option<br/>','42990000','24','2015','Asus'
+('Macbook Air 13 128GB MQD32SA/A','Macbook01.jpg',
+N'- Bộ xử lý: Intel Core i5 1.8Ghz-	Dual Core, 3MB (L3 Cache)<br/>
+- RAM: 8GB LPDDR3 1600Mhz<br/>
+- Đĩa cứng: SSD 128GB<br/>
+- Đồ họa: Intel HD Graphics 6000<br/>
+- Màn hình: 	13.3inchs 1440x900 pixels-LED-backlit, không cảm ứng<br/>
+- Âm thanh: 	Stereo speakers<br/>
+- Tính năng mở rộng & cổng giao tiếp: 2xUSB 3.0, 2xThunderbolt 2, 1xSDXC Card, 1xMagSafe 2, 1xHeadphone<br/>
+- Giao tiếp mạng: LAN 802.11ac Wi-Fi wireless networking, Wi-Fi IEEE 802.11a/b/g/n compatible<br/>
+- Hệ điều hành: 	Mac Os<br/>
+- Pin lithium polymer, trọng lượng 1.35 Kg<br/>','23999000','12','2017','Apple'
 ),
 
-('Asus G501JW-CN217','12-Asus.jpg','- Intel Core i7 4720HQ 2.6GHz - 6M<br/>
-- DDRAM 8GB onboard + 1x8GB/1600 (1 Slot)<br/>
-- HDD 1TB 5400rpm + 128GB SSD<br/>
-- NVIDIA GF GTX 960M 4GB DDR5 // Intel HD Graphics 4600<br/>
-- 15.6" FHD WV Led (1920x1080) - HDMI, mini Display port - Webcam<br/>
-- No DVD<br/>
-- Lan 10/100 (USB->Lan) - Wifi AC - Bluetooth<br/>
-- Reader - 3x USB 3.0, LED_KB<br/>
-- Weight 2.06kg - Battery 4Cell<br/>
-- OS Option<br/>','29990000','24','2014','Asus'
+('Macbook Air 13 256GB MQD42SA/A','Macbook02.jpg',
+N'- Bộ xử lý: Intel Core i5 1.8Ghz-	Dual Core, 3MB (L3 Cache)<br/>
+- RAM: 8GB LPDDR3 1600Mhz<br/>
+- Đĩa cứng: SSD 256GB<br/>
+- Đồ họa: Intel HD Graphics 6000<br/>
+- Màn hình: 	13.3inchs 1440x900 pixels-LED-backlit, không cảm ứng<br/>
+- Âm thanh: 	Stereo speakers<br/>
+- Tính năng mở rộng & cổng giao tiếp: 2xUSB 3.0, 2xThunderbolt 2, 1xSDXC Card, 1xMagSafe 2, 1xHeadphone<br/>
+- Giao tiếp mạng: LAN 802.11ac Wi-Fi wireless networking, Wi-Fi IEEE 802.11a/b/g/n compatible<br/>
+- Hệ điều hành: 	Mac Os<br/>
+- Pin lithium polymer, trọng lượng 1.35 Kg<br/>','28999000','12','2017','Apple'
 ),
 
-('Asus Zenbook UX501JW-CN128T','13-Asus.jpg','- Intel Core i7 4720HQ 2.6GHz - 6M<br/>
-- DDRAM 4GB onboard + 4GB/1600 (1 slot)<br/>
-- HDD 128GB SSD + 1TB 5400rpm<br/>
-- NVIDIA GF GTX 960M 2GB GDDR5 128bit // Intel HD Graphics 4600<br/>
-- 15.6" IPS FHD Led (1920x1080) - HDMI, mini Display port - Webcam  <br/>
-- No Lan - Wifi AC - Bluetooth<br/>
-- Reader - 3xUSB 3.0, LED_KB<br/>
-- Weight 2.2Kg - Battery 4Cell<br/>
-- OS Windows 10 Home SL 64Bit<br/>','26990000','24','2012','Asus'
+('Macbook 12 256GB','Macbook03.jpg',
+N'- Bộ xử lý: Intel Core M3 1.2Ghz-Dual Core, 4MB (L3 Cache)<br/>
+- RAM: 8GB LPDDR3 1866 MHz<br/>
+- Đĩa cứng: SSD 256GB<br/>
+- Đồ họa: Intel HD Graphics 615<br/>
+- Màn hình: 	12 inch 2304x1440 Pixels-LED-backlit, không cảm ứng<br/>
+- Âm thanh: 	Stereo speakers<br/>
+- Tính năng mở rộng & cổng giao tiếp: 1xUSB Type-C, 1x3.5mm headphone jack<br/>
+- Giao tiếp mạng: LAN 802.11ac Wi-Fi wireless networking, Wi-Fi IEEE 802.11a/b/g/n compatible<br/>
+- Hệ điều hành: 	Mac Os<br/>
+- Pin lithium polymer, trọng lượng 0.92 Kg<br/>','33999000','12','2017','Apple'
 ),
 
-('Asus UX305CA-FC013T','14-Asus.jpg','- Intel Core i5 6200U 2.3GHz - 3M<br/>
-- DDRAM 8GB/1600 onboard (Ko upgrade)<br/>
-- SSD 256GB M.2<br/>
-- Intel HD Graphics 520<br/>
-- 13.3" FHD WV Led (1920x1080) - micro HDMI -  Webcam<br/>
-- No DVD<br/>
-- Lan 10/100 (USB->Lan) - Wifi - Bluetooth<br/>
-- Reader - 3xUSB 3.0, USB 2.0<br/>
-- Weight 1.3Kg - Battery 3Cell<br/>
-- OS Windows 10 Home SL 64bit<br/>','42990000','24','2013','Asus'
+('Macbook Pro 13 inch','Macbook04.jpg',
+N'- Bộ xử lý: Intel 	Core i5 	2.3 GHz-Dual Core<br/>
+- RAM: 8GB LPDDR3 2133MHz<br/>
+- Đĩa cứng: SSD 128GB<br/>
+- Đồ họa: Intel Iris Plus Graphics 640<br/>
+- Màn hình: 	13.3 inch 2560 x 1600 pixels-LED backlit, không cảm ứng<br/>
+- Âm thanh: 	Stereo speakers<br/>
+- Tính năng mở rộng & cổng giao tiếp: 2xThunderbolt 3(USB-C), 1xHeadphone<br/>
+- Giao tiếp mạng: LAN 802.11ac Wifi wireless networking, Wi-Fi IEEE 802.11a/b/g/n compatible<br/>
+- Hệ điều hành: 	Mac Os<br/>
+- Pin lithium polymer, trọng lượng 1.37kg<br/>','33999000','12','2017','Apple'
 ),
 
-('Asus UX303UA-R4039T','15-Asus.jpg','- Intel Core i5 6200U 2.3GHz - 3M<br/>
-- DDRAM 4GB/1600 onboard (1 slot)<br/>
-- SSD 128GB<br/>
-- Intel HD Graphics 520<br/>
-- 13.3" IPS FHD Led (1920x1080) - HDMI, mini Display port - Webcam<br/>
-- No DVD<br/>
-- No LAN -  Wifi AC - Bluetooth<br/>
-- Reader - 3.0, 1xmini SSD, LED_KB<br/>
-- Weight 1.45 Kg - Battery 3 Cell<br/>
-- OS Windows 10 Home SL 64 bit<br/>','19500000','24','2014','Asus'
+('Macbook Pro 13 Touch Bar','Macbook05.jpg',
+N'- Bộ xử lý: Intel 	Core i5 2.3GHz-Quad Core, 8MB<br/>
+- RAM: 8GB LPDDR3 2133MHz, 1 khe RAM<br/>
+- Đĩa cứng: SSD 512GB<br/>
+- Đồ họa: Intel Iris Plus Graphics 655<br/>
+- Màn hình: 13.3inch Retina (2560 x 1600 pixels), Công nghệ True Tone, Công nghệ IPS, LED Backlit, không cảm ứng<br/>
+- Âm thanh: Stereo speakers with high dynamic range<br/>
+- Tính năng mở rộng & cổng giao tiếp: 4 cổng USB-C tích hợp Thunderbolt 3 và 1 cổng tai nghe 3.5<br/>
+- Giao tiếp mạng: không có LAN, Wi-Fi 802.11ac Wi-Fi wireless networking; IEEE 802.11a/b/g/n compatible, Bluetooth 5.0 wireless<br/>
+- Hệ điều hành: Mac Os High Sierra<br/>
+- Pin lithium polymer 58Wh, trọng lượng 1.37kg<br/>','49999000','12','2018','Apple'
 ),
 
-('HP 14-ac180TU','21-hp.jpg','- Intel Core i7 6500U  2.5GHz - 4M<br/>
-- DDRAM 8GB/1600<br/>
-- HDD 1TB 5400rpm<br/>
-- NVIDIA GF 940M 2GB // Intel HD Graphics 520<br/>
-- 15.6" Led Touch - HDMI - Webcam<br/>
-- No DVD<br/>
-- Lan - Wifi AC - Bluetooth<br/>
-- Reader - USB 3.0, 2xUSB 2.0<br/>
-- Weight 2Kg - Battery 4Cell<br/>
-- OS Windows 10 64bit<br/>','24990000','12','2014','HP'
+('Asus TUF FX504GE-E4059T','Asus01.jpg',
+N'- Bộ xử lý: Intel 	Core i7 	8750H 2.20GHz-Quad Core, 9 MB Smart Cache<br/>
+- RAM: 8GB DDR4 2666MHz, 2 khe RAM<br/>
+- Đĩa cứng: 	HDD 1TB 5400RPM SATA HDD (FireCuda), có khe cắm ổ SSD<br/>
+- Đồ họa: NVIDIA GeForce GTX 1050Ti-	4GB GDDR5 VRAM<br/>
+- Màn hình: 	15.6 inch 1920x1080 pixels, 	Anti-Glare IPS, không cảm ứng<br/>
+- Âm thanh: 	Công nghệ Bang & Olufsen ICEpower® 2.0<br/>
+- Tính năng mở rộng & cổng giao tiếp: 1 x SSD (M2 2280); 2 x USB 3.0 ; 1 x USB 2.0; 1 x HDMI ; 1 x RJ45 ; 1 x Microphone-in/Headphone-out Combo<br/>
+- Giao tiếp mạng: LAN 10/100/1000 Mbps, Wi-Fi 802.11 AC (2x2), Bluetooth V4.0<br/>
+- Hệ điều hành:	Windows 10 Home SL<br/>
+- Pin 4 cell-48 Whrs liền, trọng lượng 2.3 kg nhựa<br/>','25990000','24','2017','Asus'
 ),
 
-('HP Envy 15 ae130TX','22-hp.jpg','- Intel Core i7 6500U 2.5GHz - 4M<br/>
- - DDRAM 2x4GB/1600 (2 slot)<br/>
-- HDD 1TB 5400rpm<br/>
-- AMD Radeon R7 M340 2GB // Intel HD Graphics 520<br/>
-- 15.6" HD WLed (1366x768) - HDMI, VGA - Webcam<br/>
-- DVD-RW<br/>
-- Lan 1G - Wifi - Bluetooth<br/>
-- Reader - 2xUSB 3.0, 2xUSB 2.0, M.2 2280, Finger Print<br/>
-- Weight 2.23Kg - Battery 4Cell<br/>
-- OS Option<br/>','19990000','12','2015','HP'
+('ASUS ZenBook 13 UX331UN','Asus02.jpg',
+N'- Bộ xử lý: Intel 	Core i5 8250U 1.60 GHz, 6 MB Cache<br/>
+- RAM: 8GB LPDDR3 1866MHz, 1 khe RAM<br/>
+- Đĩa cứng: 	SSD 256GB, có khe cắm ổ SSD<br/>
+- Đồ họa: NVIDIA GEFORCE MX150 2GB<br/>
+- Màn hình:	13.3inchs 1920x1080 pixels, FullHD Anti-Glare, không cảm ứng<br/>
+- Âm thanh: 	"Built-in speaker Built-in array microphone Audio by ICEpower® harmon/ kardon"<br/>
+- Tính năng mở rộng & cổng giao tiếp: 2 x USB 3.0; 1 x USB 3.1 Type C (Gen 1)<br/>
+- Giao tiếp mạng: LAN 10/100/1000 Mbps, Wi-Fi 802.11 AC, Bluetooth 4.2<br/>
+- Hệ điều hành:	Windows 10 64bit<br/>
+- Pin 50WHrs 4S1P-4 cell Li-ion, trọng lượng 1.12Kg vỏ kim loại<br/>','23690000','24','2017','Asus'
 ),
 
-('HP Probook 450 G3-T1A16PA','23-hp.jpg','- Intel Core i5 6200U 2.3GHz - 3M<br/>
-- DDRAM 1x8GB/1600 (2 slot)<br/>
-- HDD 1TB 5400rpm<br/>
-- AMD Radeon R7 M340 2GB // Intel HD Graphics 520<br/>
-- 15.6" HD WLed (1366x768) - HDMI, VGA - Webcam<br/>
-- DVD-RW<br/>
-- Lan 1G - Wifi - Bluetooth<br/>
-- Reader - 2xUSB 3.0, 2xUSB 2.0, Finger Print<br/>
-- Weight 2.07Kg - Battery 4Cell<br/>
-- OS Option<br/>','16690000','12','2013','HP'
+('Asus UX430UA-GV261T','Asus03.jpg',
+N'- Bộ xử lý: Intel 	Core i5 8250U 1.60 GHz, 6MB SmartCache<br/>
+- RAM: 8GB DDR4 	2133MHz, 1 khe RAM<br/>
+- Đĩa cứng: 	SSD 256GB<br/>
+- Đồ họa: Intel UHD Graphics 620<br/>
+- Màn hình: 14" FHD 1920x1080 pixels, Anti-Glare, không cảm ứng<br/>
+- Âm thanh: 	SonicMaster, Loa 3W Stereo<br/>
+- Tính năng mở rộng & cổng giao tiếp: 1 x USB 2.0; 1 x USB 3.0; 1 x USB3.1 Type C (gen 1)<br/>
+- Giao tiếp mạng: không LAN, Wi-Fi 802.11 AC, Bluetooth <br/>
+- Hệ điều hành:	Windows 10 64bit<br/>
+- Pin 50WHrs, 3S1P, 3-cell Li-ion liền, trọng lượng 1.3 Kg nhôm nguyên khối<br/>','21990000','24','2017','Asus'
 ),
 
-('HP Probook 450-T9S21PA','24-hp.jpg','- Intel Core i5 6200U 2.3GHz - 3M<br/>
-- DDRAM 1x4GB/1600 (2 slot)<br/>
-- HDD 500GB 5400rpm<br/>
-- AMD Radeon R5 M330 2GB // Intel HD Graphics 520<br/>
-- 15.6" HD WLed (1366x768) - HDMI - Webcam  <br/>
-- DVD-RW<br/>
-- Lan 10/100 - Wifi - Bluetooth<br/>
-- Reader - 2xUSB 3.0, USB 2.0<br/>
-- Weight 2.23Kg - Battery 4Cell<br/>
-- OS Windows 10 Home SL 64bit<br/>','14690000','12','2012','HP'
+('Asus Vivobook S14 S410UA','Asus04.jpg',
+N'- Bộ xử lý: Intel 	Core i7 	8550U 1.80 GHz, 8M Cache<br/>
+- RAM: 4GB DDR4, 1 khe RAM<br/>
+- Đĩa cứng: SSD 256GB, không có khe cắm ổ SSD<br/>
+- Đồ họa: Intel UHD Graphics 620<br/>
+- Màn hình: 14" FHD 1920x1080 pixels, Anti-Glare, không cảm ứng<br/>
+- Âm thanh: Tích hợp Loa 2 W Stereo và microphone, Hỗ trợ Windows 10 Cortana, Công nghệ ASUS SonicMaster<br/>
+- Tính năng mở rộng & cổng giao tiếp: 2 x USB 2.0; 1 x USB 3.0; 1 x USB3.1 Type C (Gen 1); 1 x Headphone-out & Audio-in Combo Jack; 1 x HDMI<br/>
+- Giao tiếp mạng: không LAN, Wi-Fi 802.11 AC, Bluetooth 4.2 (Dual band) 2*2<br/>
+- Hệ điều hành:	Windows 10 64bit<br/>
+- Pin 3 cell Li-ion liền, trọng lượng 1.43 Kg nhôm nguyên khối<br/>','19490000','24','2018','Asus'
 ),
 
-('HP 15-ac605TX','25-hp.jpg','- Intel Core i5 6200U 2.3GHz - 3MB<br/>
-- DDRAM 1x4GB/1600 (2 slots)<br/>
-- HDD 500GB 5400rpm<br/>
-- Intel HD Graphics 520-WIN10x64:2110MB<br/>
-- 14.0" HD WLed (1366 x 768) - HDMI, VGA - Webcam<br/>
-- DVD-RW<br/>
-- Lan 10/100 - Wifi - Bluetooth<br/>
-- Reader - USB 3.0, 2xUSB 2.0<br/>
-- Weight 1.94kg - Battery 4Cell<br/>
-- OS Winndows 10 Home SL 64 bit <br/>','12690000','12','2012','HP'
+('Asus UX430UA-GV344/Core i5-7200U','Asus05.jpg',
+N'- Bộ xử lý: Intel® Core™ i5 7200U 2.5GHz, 3M Cache <br/>
+- RAM: 8GB DDR4 	2133MHz<br/>
+- Đĩa cứng: SSD 256GB, có khe cắm ổ SSD<br/>
+- Đồ họa: Intel UHD Graphics 620<br/>
+- Màn hình: 14 inch 1920x1080 pixels, LED-Anti-glare, không cảm ứng<br/>
+- Âm thanh: 	Sonic Master 2.0<br/>
+- Tính năng mở rộng & cổng giao tiếp: 1x USB 2.0 1x USB 3.0 1x USB3.1 Type C (gen 1)<br/>
+- Giao tiếp mạng: không LAN, Wi-Fi 802.11 AC<br/>
+- Hệ điều hành: Free DOS<br/>
+- Pin 3 cell Li-ion liền, trọng lượng 1.30 Kg nhôm nguyên khối<br/>','18990000','24','2018','Asus'
 ),
 
-('MacBook Pro MF841','31-mac.jpg','- Intel Core i5  2.9GHz - 3M<br/>
-- Ram 8GB<br/>
-- SSD 512GB<br/>
-- Intel Iris Pro Graphics<br/>
-- 13.3" Retina -  Webcam <br/>
-- Wifi, Bluetooth<br/>
-- USB 3.0<br/>
-- Mac OS X<br/>','40200000','12','2014','Apple'
+('HP Pavilion Power 15-cx0182TX/i7-8750H','HP01.jpg',
+N'- Bộ xử lý: Intel® Core™ i7 8750H 2.20GHz, 9 MB Cache <br/>
+- Bo mạch: Chipset Intel HM370, Bus 2666MHz, hỗ trợ tối đa 16GB<br/>
+- RAM: 8GB DDR4 2666 MHz, 2 khe RAM<br/>
+- Đĩa cứng: SSD+HDD 128GB+1TB, không có khe cắm ổ SSD<br/>
+- Đồ họa: 	NVIDIA® GeForce® GTX 1050Ti 	4GB<br/>
+- Màn hình: 15.6inchs 1920x1080 pixels, 	IPS anti-glare micro-edge WLED-backlit, không cảm ứng<br/>
+- Âm thanh: 	B&O PLAY, dual speakers, HP Audio Boost<br/>
+- Tính năng mở rộng & cổng giao tiếp:1 HDMI 2.0; 1 headphone/microphone combo; 1 RJ-45; 1 USB 3.1 Type-C™ Gen 1 (Data Transfer up to 5 Gb/s); 3 USB 3.1 Gen 1 (Data transfer only)<br/>
+- Giao tiếp mạng: LAN Integrated 10/100/1000 GbE LAN, Wi-Fi 	Intel® Wireless-AC 9560 802.11a/b/g/n/ac(2x2) Wi-Fi® and Bluetooth® 5 Combo<br/>
+- Hệ điều hành: 	Windows 10 Home Single Language 64<br/>
+- Pin 3-cell 52.5 Wh Li-ion prismatic and polymer liền, trọng lượng 2.17Kg nhựa<br/>','29990000','12','2018','HP'
 ),
 
-('Macbook Pro MF840ZP','32-mac.jpg','- Intel Core i5 5257U 2.7GHz - 3M<br/>
-- SDRAM 8GB/1600<br/>
-- HDD 256GB PCIe<br/>
-- Intel Iris Pro Graphic 6100<br/>
-- No DVD<br/>
-- 13.3" Retina - HDMI - Thunderbolt<br/>
-- USB 3.0 - Magsafe 2 - Card Reader<br/>
-- LAN Dongle - Wireless AC - Bluetooth 4.0<br/>
-- Weight 1.58kg - Battery 71.8Whr<br/>
-- OS OS X<br/>','33600000','12','2014','Apple'
+('HP Envy 13-ah0027TU/Core i7-8550U','HP02.jpg',
+N'- Bộ xử lý: Intel® Core™ i7 8550U 1.8GHz, 8MB Cache<br/>
+- Bo mạch: Chipset 8th Generation Intel® Core™ i7 processor, Bus 2400MHz, hỗ trợ tối đa 16GB<br/>
+- RAM: 8GB LPDDR3 2400MHz, 2 khe RAM<br/>
+- Đĩa cứng: 	SSD 256GB, không có khe cắm ổ SSD<br/>
+- Đồ họa: Intel® UHD Graphics 620<br/>
+- Màn hình: 	13.3 inchs 1920x1080 pixels, FHD IPS BrightView micro-edge WLED-backlit, không cảm ứng<br/>
+- Âm thanh: 	Bang & Olufsen, quad speakers, HP Audio Boost<br/>
+- Tính năng mở rộng & cổng giao tiếp: 1 USB 3.1 Type-C™ Gen 1 (Data Transfer up to 5Gb/s, Power Delivery, DisplayPort™ 1.2, HP Sleep and Charge); 2 USB 3.1 Gen 1 (1 HP Sleep and Charge); 1 headphone/microphone combo<br/>
+- Giao tiếp mạng: LAN Integrated 10/100/1000 GbE LAN, Wi-Fi 802.11 ac<br/>
+- Hệ điều hành: Windows 10 Home<br/>
+- Pin HP Long Life 4-cell, 53.2Wh Li-ion polymer liền, trọng lượng 	1.22Kg nhôm nguyên khối<br/>','26990000','12','2018','HP'
 ),
 
-('MacBook 12 MK4M2X','33-mac.jpg','- Intel Core M-5Y31 1.1GHz - 4M<br/>
-- Ram 8GB<br/>
-- SSD 256GB<br/>
-- Intel HD Graphics 5300<br/>
-- 12" - Webcam <br/>
-- Wifi - Bluetooth<br/>
-- USB C<br/>
-- Mac OS X<br/>','30200000','12','2013','Apple'
+('HP Envy 13-ah0026TU','HP03.jpg',
+N'- Bộ xử lý: Intel® Core™ i5 8250U 1.60GHz, 6MB Cache<br/>
+- Bo mạch: Chipset intel, Bus 2133MHz, hỗ trợ tối đa 8GB<br/>
+- RAM: 8GB LPDDR3 2133MHz, 1 khe RAM<br/>
+- Đĩa cứng: 	SSD 256GB, không có khe cắm ổ SSD<br/>
+- Đồ họa: Intel® UHD Graphics 620<br/>
+- Màn hình: 	13.3 inchs 1920x1080 pixels, FHD IPS BrightView micro-edge WLED-backlit, không cảm ứng<br/>
+- Âm thanh: 	Bang & Olufsen, quad speakers, HP Audio Boost<br/>
+- Tính năng mở rộng & cổng giao tiếp: 1 USB 3.1 Type-C™ Gen 1 (Data Transfer up to 5 Gb/s, Power Delivery, DisplayPort™ 1.2, HP Sleep and Charge); 2 USB 3.1 Gen 1 (1 HP Sleep and Charge); 1 headphone/microphone combo<br/>
+- Giao tiếp mạng: không có LAN, Wi-Fi Intel® Wireless-AC 7265 802.11ac (2x2) Wi-Fi® and Bluetooth® 4.2 Combo<br/>
+- Hệ điều hành: Windows 10 Home<br/>
+- Pin HP Long Life 4-cell 53.2Wh Li-ion polymer liền, trọng lượng 1.21Kg nhôm nguyên khối<br/>','21990000','12','2018','HP'
 ),
 
-('Macbook Pro MF839ZP','34-mac.jpg','- Intel Core i5 5257U 2.7GHz - 3M<br/>
-- SDRAM 8GB/1600<br/>
-- HDD 128GB Flash<br/>
-- Intel Iris Pro Graphic 6100<br/>
-- No DVD<br/>
-- 13.3" Retina - HDMI - Thunderbolt<br/>
-- USB 3.0 - Magsafe 2 - Card Reader<br/>
-- LAN Dongle - Wireless AC - Bluetooth 4.0<br/>
-- Weight 1.58kg - Battery 71.8Whr<br/>
-- OS OS X<br/>','28750000','12','2013','Apple'
+('HP Pavilion 15-cs0104TX/i7-8550U','HP04.jpg',
+N'- Bộ xử lý: Intel® Core™ i7 8550U 	1.80GHz, 8MB cache<br/>
+- Bo mạch: Chipset intel, Bus 4 GT/s OPI, hỗ trợ tối đa 16GB<br/>
+- RAM: 4GB DDR4 2400 MHz, 2 khe RAM<br/>
+- Đĩa cứng: HDD+SSD Optane™	1TB+16GB, có khe cắm ổ SSD<br/>
+- Đồ họa: NVIDIA GeForce MX130 2GB<br/>
+- Màn hình: 15.6 inchs 1920x1080 pixels, FHD SVA Anti-glare WLED-backlit, không cảm ứng<br/>
+- Âm thanh: B&O PLAY, dual speakers, HP Audio Boost<br/>
+- Tính năng mở rộng & cổng giao tiếp: 1 x SSD (M2 2280); 2 x USB 3.1 Gen 1 (Data transfer only); 1 x USB 3.1 Type-C™ Gen 1 (Data Transfer Only); 1 x HDMI; 1 x RJ45; 1 x headphone/microphone combo<br/>
+- Giao tiếp mạng: LAN 	10/100/1000 Mbps, Wi-Fi 	Intel® 802.11a/b/g/n/ac (1x1) Wi-Fi®, Bluetooth® 4.2 Combo<br/>
+- Hệ điều hành: Windows 10 Home Single Language 64-Bit<br/>
+- Pin 3 cell, 41 Wh Li-ion rời, trọng lượng 1.86 Kg vỏ hợp kim<br/>','19990000','12','2018','HP'
 ),
 
-('MacBook Air MJVM2ZA','35-mac.jpg','- Intel Core i5 5250U 1.6GHz - 3M<br/>
-- DDRAM 4GB/1600 onboard<br/>
-- 128GB Flash<br/>
-- Intel HD Graphics 6000 <br/>
-- 11.6" (1366x768) - Webcam <br/>
-- Wifi AC - Bluetooth <br/>
-- Weight 1.08Kg <br/>
-- Mac OS X Lion<br/>','20750000','12','2015','Apple'
+('HP Pavilion x360 14-ba066TU','HP05.jpg',
+N'- Bộ xử lý: Intel® Core™ i5 7200U 2.50 GHz, 3MB cache<br/>
+- RAM: 4GB DDR4 2133 MHz, 1 khe RAM<br/>
+- Đĩa cứng: 	HDD 500GB<br/>
+- Đồ họa: Intel HD Graphics 620<br/>
+- Màn hình: 14 inch 1920x1080 pixels, FHD IPS WLED-backlit multitouch-enabled edge-to-edge glass, có cảm ứng<br/>
+- Âm thanh: B&O PLAY; HP Audio Boost; Dual speakers<br/>
+- Tính năng mở rộng & cổng giao tiếp: 1 x HDMI; 1 x headphone/microphone combo; 1 x USB 3.1 Type-C™ Gen 1 (Data up to 5 Gb/s); 2 x USB 3.1 Gen 1 (Data transfer only)<br/>
+- Giao tiếp mạng: Không có LAN, Wi-Fi IEEE 802.11a/b/g/n/ac, Bluetooth 4.2<br/>
+- Hệ điều hành: Windows 10 Home Single Language 64-Bit<br/>
+- Pin 3 cell li ion, trọng lượng 1.63kg nhựa<br/>','16990000','12','2018','HP'
 ),
 
-('Acer S7-393-55208G12ews','41-acer.jpg','- Intel Core i5 5200U 2.2GHz - 3M<br/>
-- DDRAM 1x8GB/1600 onboard (Ko upgrade)<br/>
-- SSD 128GB (RAID 0)<br/>
-- Intel HD Graphics 5500<br/>
-- 13.3" IPS FHD Led Touch (1920x1080) - HDMI, mini Display port - Webcam<br/>
-- No DVD<br/>
-- Lan 10/100 (USB->Lan) - Wifi AC - Bluetooth<br/>
-- Reader - 2xUSB 3.0, LED KB<br/>
-- Weight 1.3Kg - Battery 4Cell<br/>
-- OS Windows 10 Home SL 64bit<br/>','29000000','24','2015','Acer'
+('Lenovo Legion Y520-15IKBN/I5-7300HQ','Lenovo01.jpg',
+N'- Bộ xử lý: Intel® Core™ i5 7300HQ 2.5Ghz, 6MB Cache<br/>
+- Bo mạch: Chipset Intel® Chipset Express<br/>
+- RAM: 8GB DDR4 	2400MHz, 2 khe RAM<br/>
+- Đĩa cứng: HDD+SSD 1000Gb 5400rpm + 128GB PCIe, không có khe cắm ổ SSD<br/>
+- Đồ họa: NVIDIA GeForce GTX 1050 4GB GDDR5 + Intel HD Graphics 620 	4GB<br/>
+- Màn hình: 	15.6 inch 1920x1080 pixels, FHD IPS, không cảm ứng<br/>
+- Âm thanh: Dolby Atmos 2.0<br/>
+- Tính năng mở rộng & cổng giao tiếp:2 x USB 3.0 1 x USB 2.0 1 x HDMI™ 1 x USB Type C(USB 3.1) 1 x RJ45 LAN 1<br/>
+- Giao tiếp mạng: LAN 10/100/1000M Gigabit Ethernet, Wi-Fi 802.11AC<br/>
+- Hệ điều hành: 	Free Dos<br/>
+- Pin 3 Cell Pin Li-Polymer liền, trọng lượng 2.4 kg nhựa đen tráng nhôm<br/>','20490000','12','2018','Lenovo'
 ),
 
-('Acer Nitro VN7-592G-77DU','42-acer.jpg','- Intel Core i7 6700HQ 2.6GHz - 6M<br/>
-- DDRAM 1x8GB DDR4/2133 (2 slot)<br/>
-- SSHD 1TB 5400rpm with 8GB SSD Flash<br/>
-- NVIDIA GF GTX 960M 4GB GDDR5 128bit // Intel HD Graphics 530<br/>
-- 15.6" IPS FHD Led (1920x1080) - HDMI - Webcam<br/>
-- No DVD<br/>
-- Lan 1G - Wifi AC - Bluetooth<br/>
-- Reader - 2xUSB 3.0, USB 2.0, 1xType C port, LED_KB<br/>
-- Weight 2.3Kg - Battery 3Cell<br/>
-- OS Linpus Linux<br/>','26500000','24','2014','Acer'
+('Lenovo ThinkPad Edge E580','Lenovo02.jpg',
+N'- Bộ xử lý: Intel® Core™ i5 8250U 1.60 GHz, 6MB SmartCache<br/>
+- Bo mạch:	Intel®, bus 2400MHz, hỗ trợ tối đa 16GB<br/>
+- RAM: 4GB DDR4 2133MHz, 1 khe RAM<br/>
+- Đĩa cứng: HDD 1000Gb, không có khe cắm ổ SSD<br/>
+- Đồ họa: Intel® HD Graphics 620<br/>
+- Màn hình: 	15.6 inch 1366 x 768 pixels, Anti-Glare LED Backlit, không cảm ứng<br/>
+- Âm thanh: Stereo speakers with Dolby® Advanced Audio™<br/>
+- Tính năng mở rộng & cổng giao tiếp: 1 x USB 2.0, 2 x USB 3.1 Gen 1 (one Always On), 1 x USB 3.1 Gen 2 Type-C (Power Delivery, DisplayPort, Data transfer) 1 x Smart Card Reader, HDMI<br/>
+- Giao tiếp mạng: LAN 10/100/1000Mbps, Wi-Fi Intel® Dual Band Wireless AC<br/>
+- Hệ điều hành: Windows 10<br/>
+- Pin 3 Cells 42Whrs rời, trọng lượng 1.75 Kg nhựa<br/>','17490000','12','2018','Lenovo'
 ),
 
-('Acer Nitro VN7-571G-58CT','43-acer.jpg','- Intel Core i5-5200U 2.20GHz - 3M<br/>
-- DDRAM 1x4GB/DDR3L-1600 (2 slot)<br/>
-- HDD 1TB 5400rpm<br/>
-- NVIDIA GF 850M 4GB VDDR3 // Intel HD 5500<br/>
-- 15.6" IPS FHD Led (1920x1080) - HDMI<br/>
-- DVD-RW<br/>
-- Card Reader - 3x USB 3.0<br/>
-- Lan 10/100/1000 - Wireless N - Bluetooth 4.0<br/>
-- Weight 2.4Kg - Battery 4605mAh<br/>
-- OS Linux<br/>','17490000','24','2014','Acer'
+('Lenovo ThinkPad Edge E480','Lenovo03.jpg',
+N'- Bộ xử lý: Intel® Core™ i5 8250U 1.60GHz, 6MB SmartCache<br/>
+- Bo mạch:	Intel®, bus 2400MHz, hỗ trợ tối đa 8GB<br/>
+- RAM: 4GB DDR4 	2400MHz, 2 khe RAM<br/>
+- Đĩa cứng: HDD 1000Gb, không có khe cắm ổ SSD<br/>
+- Đồ họa: Intel® UHD Graphics 620<br/>
+- Màn hình: 14.0 inchs 1366 x 768 pixels, HD LED, không cảm ứng<br/>
+- Âm thanh: 2.0<br/>
+- Tính năng mở rộng & cổng giao tiếp: 1 x USB 2.0 1 x USB 3.0 1 x HDMI Card Reader<br/>
+- Giao tiếp mạng: LAN 10/100/1000Mbps, Wi-Fi 11a/b/g/n/ac Wi-Fi wireless<br/>
+- Hệ điều hành: 	Windows 10 Home<br/>
+- Pin 3 Cells rời, trọng lượng 2.1Kg nhựa<br/>','16490000','12','2018','Lenovo'
 ),
 
-('Acer E5-573G-784L','44-acer.jpg','- Intel Core i7 4510U 2.0GHz - 4M<br/>
-- DDRAM 1x4GB/1600 (2 slot)<br/>
-- HDD 500GB 5400rpm<br/>
-- NVIDIA GF 920M 2GB // Intel HD Graphics 4400<br/>
-- 15.6" HD Led (1366x768) - VGA, HDMI - Webcam<br/>
-- DVD-RW<br/>
-- Lan 1G - Wifi AC - Bluetooth<br/>
-- Reader - USB 3.0, USB 2.0<br/>
-- Weight 2.4Kg - Battery 4Cell<br/>
-- OS Windows 10 Home SL 64bit<br/>','14490000','24','2014','Acer'
+('Lenovo ThinkPad E570','Lenovo04.jpg',
+N'- Bộ xử lý: Intel® Core™ i5 7200U 2.50 GHz, 3 MB Cache<br/>
+- Bo mạch: Up to 16 GB (2 DIMM) DDR4<br/>
+- RAM: 4GB DDR4 2133MHz, 2 khe RAM<br/>
+- Đĩa cứng: HDD 500Gb, có khe cắm ổ SSD<br/>
+- Đồ họa: NVIDIA Geforce 940M (2GB)<br/>
+- Màn hình: 15.6 inchs 1366 x 768 pixels, Anti-Glare LED-Backlit Display, không cảm ứng<br/>
+- Âm thanh: 2.0<br/>
+- Tính năng mở rộng & cổng giao tiếp: LAN, USB 2.0, USB 3.0, HDMI<br/>
+- Giao tiếp mạng: LAN 10/100/1000Mbps, Wi-Fi 802.11ac<br/>
+- Hệ điều hành:	Windows 10 Single Language Home<br/>
+- Pin 4 Cells rời, trọng lượng 2.30kg nhựa<br/>','15990000','12','2017','Lenovo'
 ),
 
-('Acer E5-573G-557P','45-acer.jpg',N'- Intel Core i5 5200U 2.2GHz - 3M<br/>
-- DDRAM 4GB DDR3L (còn 1 slot trống)<br/>
-- HDD 500GB<br/>
-- NVDIA GF 920M 2GB // Intel HD Graphics 5500<br/>
-- 15.6" HD(1366x768) - VGA, HDMI -  Webcam<br/>
-- DVD-RW<br/>
-- Lan 1G - Wifi - Bluetooth<br/>
-- Reader - USB 3.0<br/>
-- Battery 4 Cell<br/>
-- OS Windows 10 Home SL 64bit<br/>','13490000','24','2015','Acer'
+('Lenovo ThinkPad E470','Lenovo05.jpg',
+N'- Bộ xử lý: Intel® Core™ i5 7200U 2.50 GHz, 3MB Cache<br/>
+- Bo mạch: Up to 16GB (2 DIMM) DDR4<br/>
+- RAM: 4GB DDR4 2133MHz, 2 khe RAM<br/>
+- Đĩa cứng: HDD 500Gb, có khe cắm ổ SSD<br/>
+- Đồ họa: Intel® HD Graphics 620<br/>
+- Màn hình: 14.0 inchs 1366 x 768 pixels, Anti-Glare LED-Backlit Display, không cảm ứng<br/>
+- Âm thanh: 2.0<br/>
+- Tính năng mở rộng & cổng giao tiếp: HDMI, LAN (RJ45), USB 2.0, USB 3.0<br/>
+- Giao tiếp mạng: LAN 10/100/1000Mbps, Wi-Fi 802.11ac<br/>
+- Hệ điều hành:	Windows 10 Single Language Home<br/>
+- Pin 6 Cells rời, trọng lượng 1.87kg nhôm<br/>','14990000','12','2017','Lenovo'
 )
 go
 
