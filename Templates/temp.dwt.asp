@@ -7,7 +7,7 @@ Dim rsBrands_numRows
 
 Set rsBrands_cmd = Server.CreateObject ("ADODB.Command")
 rsBrands_cmd.ActiveConnection = MM_cn_STRING
-rsBrands_cmd.CommandText = "SELECT a. BrandName, count(*) as ProCount FROM dbo.tbProduct a join dbo.tbBrand b on a.BrandName = b.BrandName group by a. BrandName" 
+rsBrands_cmd.CommandText = "SELECT a. BrandName, count(*) as ProCount FROM dbo.tbProduct a join dbo.tbBrand b on a.BrandName = b.BrandName group by a.BrandName" 
 rsBrands_cmd.Prepared = true
 
 Set rsBrands = rsBrands_cmd.Execute

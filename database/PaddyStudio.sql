@@ -37,26 +37,6 @@ create table tbProduct
 );
 go
 
-create table tbAdmin
-(
-	Username varchar(50) primary key nonclustered,
-	[Password] varchar(20) not null	
-);
-go
-
-/*create table tbComment
-(
-	CommentID int identity(1,1) primary key nonclustered,
-	CommentContent nvarchar(500) not null,
-	CommentDate datetime check(CommentDate<=getdate()) default getdate() not null,
-	CommentUserID varchar(20) foreign key references tbUser(UserID) not null,
-	CommentReply nvarchar(500),
-	CommentReplyDate datetime,
-	CommentUserReplyID varchar(20) foreign key references tbUser(UserID),
-	ProductID int foreign key references tbProduct(ProductID) not null
-);
-go*/
-
 create table tbFeedback
 (
 	FeedbackID int identity(1,1) primary key nonclustered,
@@ -66,7 +46,7 @@ create table tbFeedback
 	FeedbackMemberID varchar(20) foreign key references tbUser(UserID) not null,
 	FeedbackReply nvarchar(500),
 	FeedbackReplyDate datetime,
-	FeedbackAdminReplyID varchar(50)
+	FeedbackAdminReplyID varchar(20) foreign key references tbUser(UserID)
 );
 go
 
@@ -86,17 +66,16 @@ create table tbEventAndNews
 go
 
 insert tbUser values
-('U01',N'Trương Đình Giang','123456','giang.itk10@gmail.com','Ho Chi Minh City','0962502799','0'),
-('U02',N'Đào Thiện Hoàng Huy','123456','huyhoang0@gmail.com','Ho Chi Minh City','0942327885','0'),
-('U03',N'An Tinh','123456','an123@gmail.com','Ho Chi Minh City','0948277065','0'),
-('U04','Kevin Tran','abcd123','kev@gmail.com','New York','0913345678','0'),
-('U05','Sam Winchester','abcd123','sammy@yahoo.com','Texas','0945345623','0'),
-('U06','Calvin Harris','abcd123','calv@gmail.com','Washington','0989345126','0')
-go
-
-insert tbAdmin values
-('A01','123abc'),
-('A02','123abc')
+('A01',N'Trương Đình Giang','123456','giang.itk10@gmail.com','Ho Chi Minh City','0962502799','1'),
+('A02',N'Đào Thiện Hoàng Huy','123456','huyhoang02@gmail.com','Ho Chi Minh City','0942327885','1'),
+('A03',N'Lê Gia An','123456','an123@gmail.com','Ho Chi Minh City','0948277065','1'),
+('U01','Kevin Tran','abcd123','kev@gmail.com','New York','0913345678','0'),
+('U02','Sam Winchester','abcd123','sammy@yahoo.com','Texas','0945345623','0'),
+('U03','Calvin Harris','abcd123','calv@gmail.com','Washington','0989345126','0'),
+('U04','Join Kenedy','abcd123','joinken@gmail.com','Los Angeles	','0989348826','0'),
+('U05','Ray Kroc','abcd123','raykroc@gmail.com','Chicago','0989347726','0'),
+('U06','Mark Cuban','abcd123','markcuban@gmail.com','Sandiego','0989345996','0'),
+('U07','Walton Jon','abcd123','ưaltonj@gmail.com','Boston','0989115556','0')
 go
 
 insert tbBrand values
@@ -402,19 +381,11 @@ insert tbProduct values
 )
 go
 
-/*insert tbComment values
-(N'Cho em hỏi laptop Acer E5 557P giá hiện tại là bao nhiêu','2015-08-03','U01',N'Giá 13.490.000 nhé bạn','2015-08-04','A02','25'),
-(N'Nếu theo ngành thiết kế đồ họa, em nên chọn Asus G751JY hay Asus UX303UA ?','2015-08-05','U02',N'Chiếc Asus G7 phù hợp hơn, vì có hỗ trợ card rời','2015-08-07','A04','20'),
-(N'Giữa MacBook Pro và Air, cái nào thuận lợi cho việc di chuyển hơn ?','2015-09-02','U03',N'Khuyến khích anh chọn MacBook Air, vì độ dày của máy chỉ bằng 1/2 so với bản Pro','2015-09-03','A01','25'),
-(N'Có thể cài Windows 10 trên Macbook được không ?','2015-10-31','U03',N'Được, bạn có thể cài Windows 10 thêm hoặc chạy song song với OSX','2015-11-01','A03','25'),
-(N'Cho mình hỏi vỏ laptop có bền không, có cần mua case thêm không','2015-07-02','U02',N'Máy đã qua các bài test của Nhà sản suất. Bạn có thể yên tâm sử dụng nhé','2015-09-02','A01','25')
-go*/
-
 insert tbFeedback values
 (N'Website có ích',N'Website có ích trong việc lựa chọn các mẫu laptop, các admin tư vấn phù hợp với nhu cầu','2015-10-24','U01',N'Cám ơn bạn. Chúng tôi sẽ cố gắng hoàn thiện trang web hơn','2015-10-24','A02'),
 (N'Góp ý',N'Mong các admin trong tương lai cố gắng hồi đáp nhanh hơn những thắc mắc, nhu cầu tư vấn của mem nhé','2016-01-22','U03',N'Cám ơn bạn đã góp ý. Hiện nay đội ngũ admin còn hạn chế, nhưng chúng tôi sẽ cố gắng phản hồi nhanh hơn','2016-01-22','A01'),
 (N'Thêm Sản Phẩm',N'Website cần có nhiều sản phẩm hơn','2016-01-22','U02',N'Cám ơn bạn đã góp ý. Chúng tôi sẽ bổ sung thêm sản phẩm trong tương lai','2016-01-22','A01'),
-(N'Giao diện website',N'Mong các anh cải tiến giao diện trang web để dễ sử dụng hơn nhé','2016-02-24','U01',N'Cám ơn bạn đã góp ý','2016-02-24','A01'),
+(N'Giao diện website',N'Mong các anh cải tiến giao diện trang web để dễ sử dụng hơn nhé','2016-02-24','U01',N'Cám ơn bạn đã góp ý','2016-02-24','A03'),
 (N'Vấn đề đường truyền',N'Chả hiểu sao em vào web load rất chậm, mong admin nâng cấp đường truyền','2016-01-02','U03',N'Cá mập cắn cáp, vài tuần tới chúng tôi sẽ ổn định hơn','2016-01-31','A02')
 go
 
@@ -509,32 +480,5 @@ Khách hàng đến nhận quà phải mang theo các chứng từ sau:<br/><br/
 Mỗi khách hàng chỉ nhận được 01 (một) phần quà trong thời gian áp dụng chương trình khuyến mãi.<br/><br/>','2015-06-10',N'Từ ngày 10/06 đến 30/06/2015','02-event.jpg')
 go
 
-/*create trigger tgProduct
-on tbProduct
-instead of delete
-as
-delete from tbComment where ProductID in (select ProductID from deleted);
-delete from tbProduct where ProductID in (select ProductID from deleted);
-go*/
 
-/*create trigger tgBrand
-on tbBrand
-instead of delete
-as
-delete from tbProduct where BrandName in (select BrandName from deleted);
-delete from tbBrand where BrandName in (select BrandName from deleted);
-go
 
-create trigger tgUser
-on tbUser
-instead of delete
-as
-declare @CommentUserReplyID varchar(20)
-select @CommentUserReplyID = UserID from deleted
-update tbComment
-set CommentReply = null, CommentReplyDate = null, CommentUserReplyID = null
-where CommentUserReplyID like @CommentUserReplyID;
-delete from tbComment where CommentUserID in (select UserID from deleted);
-delete from tbFeedback where FeedbackMemberID in (select UserID from deleted);
-delete from tbUser where UserID in (select UserID from deleted);
-go*/

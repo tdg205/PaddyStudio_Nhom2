@@ -29,6 +29,7 @@ Dim MM_paramName
 MM_LoginAction = Request.ServerVariables("URL")
 If Request.QueryString <> "" Then MM_LoginAction = MM_LoginAction + "?" + Server.HTMLEncode(Request.QueryString)
 MM_valUsername = CStr(Request.Form("txtUsername"))
+MM_valUserRole = CStr(Request.Form("UserRole"))
 If MM_valUsername <> "" Then
   Dim MM_fldUserAuthorization
   Dim MM_redirectLoginSuccess
@@ -37,13 +38,13 @@ If MM_valUsername <> "" Then
   Dim MM_rsUser
   Dim MM_rsUser_cmd
   
-  MM_fldUserAuthorization = ""
+  MM_fldUserAuthorization = "UserRole"
   MM_redirectLoginSuccess = "LoginSuccess.asp"
   MM_redirectLoginFailed = "LoginFail.asp"
 
   MM_loginSQL = "SELECT UserID, UserPassword"
   If MM_fldUserAuthorization <> "" Then MM_loginSQL = MM_loginSQL & "," & MM_fldUserAuthorization
-  MM_loginSQL = MM_loginSQL & " FROM dbo.tbUser WHERE UserID = ? AND UserPassword = ?"
+  MM_loginSQL = MM_loginSQL & " FROM dbo.tbUser WHERE UserID = ? AND UserPassword = ? AND UserRole = 0"
   Set MM_rsUser_cmd = Server.CreateObject ("ADODB.Command")
   MM_rsUser_cmd.ActiveConnection = MM_cn_STRING
   MM_rsUser_cmd.CommandText = MM_loginSQL
@@ -55,12 +56,13 @@ If MM_valUsername <> "" Then
   If Not MM_rsUser.EOF Or Not MM_rsUser.BOF Then 
     ' username and password match - this is a valid user
     Session("MM_Username") = MM_valUsername
+	Session("MM_UserRole") = MM_valUserRole
     If (MM_fldUserAuthorization <> "") Then
       Session("MM_UserAuthorization") = CStr(MM_rsUser.Fields.Item(MM_fldUserAuthorization).Value)
     Else
       Session("MM_UserAuthorization") = ""
     End If
-    if CStr(Request.QueryString("accessdenied")) <> "" And false Then
+    if CStr(Request.QueryString("accessdenied")) <> "" And true Then
       MM_redirectLoginSuccess = Request.QueryString("accessdenied")
     End If
     MM_rsUser.Close
@@ -70,54 +72,6 @@ If MM_valUsername <> "" Then
   Response.Redirect(MM_redirectLoginFailed)
 End If
 %>
-'<%
-'' *** Validate request to log in to this site.
-'MM_LoginAction = Request.ServerVariables("URL")
-'If Request.QueryString <> "" Then MM_LoginAction = MM_LoginAction + "?" + Server.HTMLEncode(Request.QueryString)
-'MM_valUsername = CStr(Request.Form("txtUsername"))
-'MM_valUserRole = CStr(Request.Form("UserRole"))
-'If MM_valUsername <> "" Then
-'  Dim MM_fldUserAuthorization
-'  Dim MM_redirectLoginSuccess
-'  Dim MM_redirectLoginFailed
-'  Dim MM_loginSQL
-'  Dim MM_rsUser
-'  Dim MM_rsUser_cmd
-'  
-'  MM_fldUserAuthorization = "UserRole"
-'  MM_redirectLoginSuccess = "LoginSuccess.asp"
-'  MM_redirectLoginFailed = "LoginFail.asp"
-'
-'  MM_loginSQL = "SELECT UserID, UserPassword"
-'  If MM_fldUserAuthorization <> "" Then MM_loginSQL = MM_loginSQL & "," & MM_fldUserAuthorization
-'  MM_loginSQL = MM_loginSQL & " FROM dbo.tbUser WHERE UserID = ? AND UserPassword = ? AND UserRole = 0"
-'  Set MM_rsUser_cmd = Server.CreateObject ("ADODB.Command")
-'  MM_rsUser_cmd.ActiveConnection = MM_cn_STRING
-'  MM_rsUser_cmd.CommandText = MM_loginSQL
-'  MM_rsUser_cmd.Parameters.Append MM_rsUser_cmd.CreateParameter("param1", 200, 1, 20, MM_valUsername) ' adVarChar
-'  MM_rsUser_cmd.Parameters.Append MM_rsUser_cmd.CreateParameter("param2", 200, 1, 20, Request.Form("txtPass")) ' adVarChar
-'  MM_rsUser_cmd.Prepared = true
-'  Set MM_rsUser = MM_rsUser_cmd.Execute
-'
-'  If Not MM_rsUser.EOF Or Not MM_rsUser.BOF Then 
-'    ' username and password match - this is a valid user
-'    Session("MM_Username") = MM_valUsername
-'	Session("MM_UserRole") = MM_valUserRole
-'    If (MM_fldUserAuthorization <> "") Then
-'      Session("MM_UserAuthorization") = CStr(MM_rsUser.Fields.Item(MM_fldUserAuthorization).Value)
-'    Else
-'      Session("MM_UserAuthorization") = ""
-'    End If
-'    if CStr(Request.QueryString("accessdenied")) <> "" And true Then
-'      MM_redirectLoginSuccess = Request.QueryString("accessdenied")
-'    End If
-'    MM_rsUser.Close
-'    Response.Redirect(MM_redirectLoginSuccess)
-'  End If
-'  MM_rsUser.Close
-'  Response.Redirect(MM_redirectLoginFailed)
-'End If
-'%>
 <%
 ' *** Go To Record and Move To Record: create strings for maintaining URL and Form parameters
 
