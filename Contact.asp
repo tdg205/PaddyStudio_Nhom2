@@ -290,29 +290,29 @@ End If
   							</tr>
                             <tr>
     							<td rowspan="4" align="left" valign="top"><strong>Số Điện Thoại :&nbsp;</strong></td>
-    							<td align="left" valign="middle">096 250 2799 - Dương Đình Vũ</td>
+    							<td align="left" valign="middle">096 250 2799 - Trương Đình Giang</td>
   							</tr>
                             <tr>
-                            	<td align="left">094 232 7885 - Phạm Phan Nhật Khánh</td>
+                            	<td align="left">094 232 7885 - Đào Thiện Hoàng Huy</td>
                             </tr>
                             <tr>
-                            	<td align="left">094 827 7065 - Phạm Đăng Khoa</td>
+                            	<td align="left">094 827 7065 - Lê Gia An</td>
                             </tr>
                             <tr>
-                            	<td align="left">097 958 0646 - Nguyễn Quang Sông Toàn</td>
+                            	<td align="left"></td>
                             </tr>
                             <tr>
     							<td rowspan="4" align="left" valign="top"><strong>Email :&nbsp;</strong></td>
-    							<td align="left" valign="middle">duongdinhvu1991@gmail.com</td>
+    							<td align="left" valign="middle">giang.itk10@gmail.com</td>
   							</tr>
                             <tr>
-                            	<td align="left">phamphannhatkhanh7520@gmail.com</td>
+                            	<td align="left">huyhoang02@gmail.com</td>
                             </tr>
                             <tr>
-                            	<td align="left">khoachelsea@gmail.com</td>
+                            	<td align="left">giaan123@gmail.com</td>
                             </tr>
                             <tr>
-                            	<td align="left">toan29193@gmail.com</td>
+                            	<td align="left"></td>
                             </tr>
                             <tr>
     							<td align="left" valign="top">&nbsp;</td>
