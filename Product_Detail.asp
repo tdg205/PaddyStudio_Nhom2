@@ -321,11 +321,11 @@ End If
               <div class="product-information">
                 <!--/product-information-->
                 <h2><%=(rsProduct_Detail.Fields.Item("ProductName").Value)%></h2>
-                <p><b>Mã Sản Phẩm:</b><%=(rsProduct_Detail.Fields.Item("ProductID").Value)%></p>
-                <p><span><%=(rsProduct_Detail.Fields.Item("Price").Value)%>VNĐ</span></p>
-                <p><b>Năm Sản Xuất:</b><%=(rsProduct_Detail.Fields.Item("ManufacturerYear").Value)%></p>
-                <p><b>Thương Hiệu:</b><%=(rsProduct_Detail.Fields.Item("BrandName").Value)%></p>
-                <p><b>Bảo Hành:</b><%=(rsProduct_Detail.Fields.Item("WarrantyTime").Value)%>tháng</p>
+                <p><b>Mã Sản Phẩm: </b><%=(rsProduct_Detail.Fields.Item("ProductID").Value)%></p>
+                <p><span><%=(rsProduct_Detail.Fields.Item("Price").Value)%> VNĐ</span></p>
+                <p><b>Năm Sản Xuất: </b><%=(rsProduct_Detail.Fields.Item("ManufacturerYear").Value)%></p>
+                <p><b>Thương Hiệu: </b><%=(rsProduct_Detail.Fields.Item("BrandName").Value)%></p>
+                <p><b>Bảo Hành: </b><%=(rsProduct_Detail.Fields.Item("WarrantyTime").Value)%>tháng</p>
               </div>
               <!--/product-information-->
             </div>

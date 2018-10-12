@@ -281,7 +281,7 @@ N'- Bộ xử lý: Intel® Core™ i5 7200U 2.5GHz, 3M Cache <br/>
 - Pin 3 cell Li-ion liền, trọng lượng 1.30 Kg nhôm nguyên khối<br/>','18990000','24','2018','Asus'
 ),
 
-('HP Pavilion Power 15-cx0182TX/i7-8750H','HP01.jpg',
+('HP Pavilion Power 15-cx0182TX','HP01.jpg',
 N'- Bộ xử lý: Intel® Core™ i7 8750H 2.20GHz, 9 MB Cache <br/>
 - Bo mạch: Chipset Intel HM370, Bus 2666MHz, hỗ trợ tối đa 16GB<br/>
 - RAM: 8GB DDR4 2666 MHz, 2 khe RAM<br/>
