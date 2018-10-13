@@ -402,7 +402,7 @@ End If
 		<div class="header-middle"><!--header-middle-->
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-4" style="color: #B4B1AB;font-family: abel; font-size:27px; text-transform: uppercase;">
+					<div class="col-sm-4">
 							<span style="color:#FE980F;">Paddy </span> Studio
 					</div>
 					<div class="col-sm-8">
