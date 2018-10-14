@@ -308,10 +308,23 @@ function check()
 		<div class="header-middle"><!--header-middle-->
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-4">
+					<div class="col-sm-2">
 							<span style="color:#FE980F;">Paddy </span> Studio
 					</div>
-					<div class="col-sm-8">
+                    <div class="col-sm-6">
+						<div class="navbar-header">
+						</div>
+						<div class="mainmenu pull-left">
+							<ul class="nav navbar-nav collapse navbar-collapse">
+							  	<li><a href="Home.asp">Trang Chủ</a></li>
+								<li><a href="Introduction.asp">Giới Thiệu</a></li> 
+								<li><a href="Product.asp">Sản Phẩm</a></li>
+								<li><a href="EventAndNews.asp">Tin Tức & Sự Kiện</a></li>
+                                <li><a href="Contact.asp">Liên Hệ</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-4">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
                                 <% 	If(Session("MM_Username") <> "") Then %>

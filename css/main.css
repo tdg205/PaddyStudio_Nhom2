@@ -143,8 +143,9 @@ a#scrollUp i{
   padding-top: 0px;
 }
 
-.header-middle .container .row .col-sm-4{
+.header-middle .container .row .col-sm-2{
     padding-left: 0;
+	padding-right: 0;
     color: white;
     font-family: abel;
     font-size: 30px;
@@ -2519,4 +2520,13 @@ h2.title {
 	width: 1230px;
 }
 
+.header-middle .container .row .col-sm-6 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.header-middle .container .row .col-sm-4 {
+    padding-left: 0;
+    padding-right: 0;
+}
 /*.........End Configuration Template-Giang Truong Dinh................*/
