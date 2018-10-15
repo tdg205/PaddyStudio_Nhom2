@@ -122,24 +122,20 @@ End Function
 %>
 <!doctype html>
 <html>
-'<%
-'Dim rsFeedbackID
-'Dim rsFeedbackID_cmd
-'Dim rsFeedbackID_numRows
-'
-'Set rsFeedbackID_cmd = Server.CreateObject ("ADODB.Command")
-'rsFeedbackID_cmd.ActiveConnection = MM_cn_STRING
-'rsFeedbackID_cmd.CommandText = "SELECT * FROM dbo.tbFeedback" 
-'rsFeedbackID_cmd.Prepared = true
-'
-'Set rsFeedbackID = rsFeedbackID_cmd.Execute
-'rsFeedbackID_numRows = 0
-'%>
-<!--ID_cmd.Prepared = true
+<head>
+<%
+Dim rsFeedbackID
+Dim rsFeedbackID_cmd
+Dim rsFeedbackID_numRows
+
+Set rsFeedbackID_cmd = Server.CreateObject ("ADODB.Command")
+rsFeedbackID_cmd.ActiveConnection = MM_cn_STRING
+rsFeedbackID_cmd.CommandText = "SELECT * FROM dbo.tbFeedback" 
+rsFeedbackID_cmd.Prepared = true
 
 Set rsFeedbackID = rsFeedbackID_cmd.Execute
 rsFeedbackID_numRows = 0
-%>-->
+%>
 <%
 Dim rsUserID
 Dim rsUserID_cmd
@@ -468,6 +464,10 @@ rsBrands.Close()
 Set rsBrands = Nothing
 %>
 <%
-rsProduct_Detail.Close()
-Set rsProduct_Detail = Nothing
+rsUserID.Close()
+Set rsUserID = Nothing
+%>
+<%
+rsFeedbackID.Close()
+Set rsFeedbackID = Nothing
 %>

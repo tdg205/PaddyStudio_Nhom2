@@ -400,7 +400,7 @@ End If
 <header id="header"><!--header-->
   <div class="header-middle"><!--header-middle-->
     <div class="container">
-      <div class="row"><a class="ps-logo" href="Home.asp" style="color:white;"><span style="color:#FE980F;">Paddy</span>Studio</a>          
+      <div class="row"><a class="ps-logo" href="Home.asp" style="color:white;"><span style="color:#429DF1;">Paddy</span>Studio</a>
         <div class="mainmenu pull-left">
           <ul class="nav navbar-nav collapse navbar-collapse">
             <li><a href="Introduction.asp">Giới Thiệu</a></li>
@@ -446,18 +446,16 @@ End If
             </ul>
           </div>
         </div>*/-->
-
-          <div class="search_box pull-right">
-            <form id="form1" name="form1" method="get" action="Result_Search.asp">
-              <table border="0" cellpadding="0" cellpadding="0">
-              <tr>
-                <td><input type="text" name="txtSearch" id="txtSearch" placeholder="Tìm sản phẩm"/></td>
-                <td><button type="submit" name="btnSearch" id="btnSearch" class="btn search" value="Tìm">Tìm</button></td>
-              </tr>
-              </table>
-            </form>
-          </div>
-
+        <div class="search_box pull-right">
+          <form id="form1" name="form1" method="get" action="Result_Search.asp">
+            <table border="0" cellpadding="0" cellpadding="0">
+            <tr>
+              <td><input type="text" name="txtSearch" id="txtSearch" placeholder="Tìm sản phẩm"/></td>
+              <td><button type="submit" name="btnSearch" id="btnSearch" class="btn search" value="Tìm">Tìm</button></td>
+            </tr>
+            </table>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -478,9 +476,7 @@ End If
             <h2>Ban Quản Trị</h2>
             <div class="brands-name">
               <ul class="nav nav-pills nav-stacked">
-                <li><a href="Admin_Home.asp">Trang Chủ Admin</a><a href="Admin_ManageBrand.asp">Quản Lý Thương Hiệu</a><a href="Admin_ManageProduct.asp">Quản Lý Sản Phẩm</a>
-                  <!--  <a href="#">Quản Lý Bình Luận</a>-->
-                  <a href="Admin_ManageFeedback.asp">Quản Lý Phản Hồi</a><a href="Admin_ManageEventAndNews.asp">Quản Lý Tin Tức &amp; Sự Kiện</a><a href="Admin_ManageUser.asp">Quản Lý Thành Viên</a></li>
+                <li><a href="Admin_Home.asp">Trang Chủ Admin</a><a href="Admin_ManageBrand.asp">Quản Lý Thương Hiệu</a><a href="Admin_ManageProduct.asp">Quản Lý Sản Phẩm</a><a href="Admin_ManageFeedback.asp">Quản Lý Phản Hồi</a><a href="Admin_ManageEventAndNews.asp">Quản Lý Tin Tức &amp; Sự Kiện</a><a href="Admin_ManageUser.asp">Quản Lý Thành Viên</a></li>
               </ul>
             </div>
           </div>
@@ -510,11 +506,11 @@ End If
       </div>
       <div class="col-sm-9 padding-right">
         <!-- InstanceBeginEditable name="Content" -->
-                    <h2 class="title text-center">Danh Sách Tin Tức &amp; Sự Kiện</h2>
+                    <h2 class="title text-center">Tin Tức</h2>
                     <div class="col-sm-12">
                     	<% While ((Repeat2__numRows <> 0) AND (NOT rsEventAndNews.EOF)) %>
 						<div class="single-blog-post">
-							<h3 align="justify" style="color:#FE980F;text-transform:uppercase"><%=(rsEventAndNews.Fields.Item("EventSummary").Value)%></h3>
+							<h3 align="justify" style="color:#429DF1;text-transform:uppercase"><%=(rsEventAndNews.Fields.Item("EventSummary").Value)%></h3>
 							<div class="post-meta" align="right" style="font-weight:bold;color:#B4B1AB">
                                 <ul>
 									<li><%=(rsEventAndNews.Fields.Item("EventDate").Value)%></li>
@@ -556,7 +552,6 @@ End If
   </div>
 </section>
 <!--/section-->
-
 <footer id="footer"><!--Footer-->
   <div class="footer-top">
     <div class="container">
@@ -575,7 +570,7 @@ End If
       <div class="row">
         <div class="col-sm-2">
           <div class="single-widget">
-            <h2 style="color:#FE980F;">DỊCH VỤ</h2>
+            <h2 style="color:#429DF1;">DỊCH VỤ</h2>
             <ul class="nav nav-pills nav-stacked">
               <li><a href="#">Hỗ Trợ Trực Tuyến</a></li>
               <li><a href="#">Liên Hệ</a></li>
@@ -585,7 +580,7 @@ End If
         </div>
         <div class="col-sm-2">
           <div class="single-widget">
-            <h2 style="color:#FE980F;">CHÍNH SÁCH</h2>
+            <h2 style="color:#429DF1;">CHÍNH SÁCH</h2>
             <ul class="nav nav-pills nav-stacked">
               <li><a href="#">Điều Khoản Sử Dụng</a></li>
               <li><a href="#">Chính Sách Bảo Mật</a></li>
@@ -594,7 +589,7 @@ End If
         </div>
         <div class="col-sm-2">
           <div class="single-widget">
-            <h2 style="color:#FE980F;">VỀ CHÚNG TÔI</h2>
+            <h2 style="color:#429DF1;">VỀ CHÚNG TÔI</h2>
             <ul class="nav nav-pills nav-stacked">
               <li><a href="#">Về Paddy Studio</a></li>
               <li><a href="#">Nghề Nghiệp</a></li>
@@ -605,7 +600,7 @@ End If
         </div>
         <div class="col-sm-5 col-sm-offset-1">
           <div class="single-widget">
-            <h2 style="color:#FE980F;">LIÊN KẾT</h2>
+            <h2 style="color:#429DF1;">LIÊN KẾT</h2>
             <form action="#" class="searchform">
               <p>Đăng ký nhận thông tin sự kiện mới nhất từ chúng tôi</p>
               <div>
@@ -634,7 +629,6 @@ End If
   </div>
 </footer>
 <!--/Footer-->
-
 </body>
 <!-- InstanceEnd --></html>
 <%

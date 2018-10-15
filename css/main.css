@@ -52,7 +52,7 @@ a#scrollUp {
   bottom: 0px;
   right: 10px;
   padding: 5px 10px;
-  background: #FE980F;
+  background: #429DF1;
   color: #FFF;
   -webkit-animation: bounce 2s ease infinite;
   animation: bounce 2s ease infinite;
@@ -195,11 +195,11 @@ a#scrollUp i{
 
 .mainmenu ul li a:hover, .mainmenu ul li a.active,  .shop-menu ul li a.active{
 	background:none;
-	color:#fdb45e;
+	color: #429DF1;
 }
 
 .search {
-  background: #FE980F;
+  background: #429DF1;
   border: 0 none;
   border-radius: 0;
   color: #FFFFFF;
@@ -314,7 +314,7 @@ ul.sub-menu {
 }
 
 .companyinfo h2  span{
-  color:#FE980F;
+  color: #429DF1;
 }
 
 .companyinfo p {
@@ -469,7 +469,7 @@ ul.sub-menu {
 
 .searchform  button:hover, .searchform  button:focus{
 	background-color:#FE980F;
-	color: #696763;
+	color: #076ED1;
 }
 
 .searchform p {
@@ -591,7 +591,7 @@ ul.sub-menu {
   padding-top: 15px;
 }
 .left-sidebar h2, .brands_products h2 {
-  color: #FE980F;
+  color: #429DF1;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 700;
@@ -760,7 +760,7 @@ h2.title:before{
 }
 
 h2.title {
-  color: #FE980F;
+  color: #429DF1;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 700;
@@ -787,7 +787,7 @@ h2.title {
 }
 
 .productinfo h2{
-	color: #FE980F;
+	color: #429DF1;
 	font-family: 'Roboto', sans-serif;
 	font-size: 24px;
 	font-weight: 700;
@@ -851,7 +851,7 @@ h2.title {
 
 .product-overlay .add-to-cart:hover {
   background:#fff;
-  color: #FE980F;
+  color: #429DF1;
 }
 
 
@@ -881,7 +881,7 @@ h2.title {
 }
 
 .add-to-cart:hover {
-  background: #FE980F;
+  background: #429DF1;
   color: #FFFFFF;
 }
 
@@ -912,7 +912,7 @@ h2.title {
 
 .category-tab ul {
   background: #40403E;
-  border-bottom: 1px solid #FE980F;
+  border-bottom: 1px solid #429DF1;
   list-style: none outside none;
   margin: 0 0 30px;
   padding: 0;
@@ -939,7 +939,7 @@ h2.title {
   -moz-border-left-colors: none;
   -moz-border-right-colors: none;
   -moz-border-top-colors: none;
-  background-color: #FE980F;
+  background-color: #429DF1;
   border:0px;
   color: #FFFFFF;
   cursor: default;
@@ -1150,7 +1150,7 @@ h2.title {
 }
 
 .product-information span {
-  color: #FE980F;
+  color: #429DF1;
   font-family: 'Roboto', sans-serif;
   font-size: 30px;
   font-weight: 700;
@@ -2246,7 +2246,7 @@ h2.title {
 }
 
 .btn.btn-primary {
-  background:#FE980F;
+  background: #429DF1;
   border: 0 none;
   border-radius: 0;
   margin-top: 16px;
@@ -2434,7 +2434,7 @@ h2.title {
 }
 
 .shop-menu ul li a:hover {
-	color:#fe980f;
+	color: #429DF1;
 	background: #1d1d1d;
 }
 
@@ -2449,5 +2449,9 @@ h2.title {
 .header-bottom .container .row {
   margin: 0;
   padding: 0;
+}
+
+section{
+	margin-top: 20px;
 }
 /*.........End Configuration Template-Giang Truong Dinh................*/
