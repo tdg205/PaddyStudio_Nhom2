@@ -249,24 +249,23 @@ If (CStr(Request("MM_Logoutnow")) = "1") Then
   Response.Redirect(MM_logoutRedirectPage)
 End If
 %>
-
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-	<meta name="author" content="">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/price-range.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-	<link href="css/main.css" rel="stylesheet">
-	<link href="css/responsive.css" rel="stylesheet">
-	<script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.scrollUp.min.js"></script>
-	<script src="js/price-range.js"></script>
-	<script src="js/jquery.prettyPhoto.js"></script>
-	<script src="js/main.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/prettyPhoto.css" rel="stylesheet">
+<link href="css/price-range.css" rel="stylesheet">
+<link href="css/animate.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.scrollUp.min.js"></script>
+<script src="js/price-range.js"></script>
+<script src="js/jquery.prettyPhoto.js"></script>
+<script src="js/main.js"></script>
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>Cập Nhật Thông Tin Tài Khoản</title>
 <script>
@@ -351,137 +350,119 @@ function check()
 <!-- InstanceBeginEditable name="body" -->
 <body>
 <!-- InstanceEndEditable -->
-	<header id="header"><!--header-->
-		<div class="header-middle"><!--header-middle-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-2">
-							<span style="color:#FE980F;">Paddy </span> Studio
-					</div>
-                    <div class="col-sm-6">
-						<div class="navbar-header">
-						</div>
-						<div class="mainmenu pull-left">
-							<ul class="nav navbar-nav collapse navbar-collapse">
-							  	<li><a href="Home.asp">Trang Chủ</a></li>
-								<li><a href="Introduction.asp">Giới Thiệu</a></li> 
-								<li><a href="Product.asp">Sản Phẩm</a></li>
-								<li><a href="EventAndNews.asp">Tin Tức & Sự Kiện</a></li>
-                                <li><a href="Contact.asp">Liên Hệ</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="shop-menu pull-right">
-							<ul class="nav navbar-nav">
-                                <% 	If(Session("MM_Username") <> "") Then %>
-										<li><a> Xin chào, <%=Session("MM_Username")%></a></li>
-                                        <% 	If(Session("MM_UserRole") = "1") Then %>
-                                        	<li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>"> Tài Khoản</a></li>
-                                        <% 	Else If(Session("MM_UserRole") = "0") Then %>
-                                        	<li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>"> Tài Khoản</a></li>
-                                        	<li><a href="User_Feedback.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "FeedbackMemberID=" & Session("MM_Username") %>"> Phản Hồi</a></li>
-                                     	<%	End If %>
-                                        <%	End If %>
-                                        <li><a href="<%= MM_Logout %>"> Đăng Xuất</a></li>
-								<%	Else %>
-							  			<li><a href="Register.asp"> Đăng Ký</a></li>
-										<li><a href="Login.asp"> Đăng Nhập</a></li>
-								<%	End If %>   
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/header-middle-->
-	
-		<div class="header-bottom"><!--header-bottom-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-9">
-						<div class="navbar-header">
-						</div>
-						<div class="mainmenu pull-left">
-							<ul class="nav navbar-nav collapse navbar-collapse">
-							  	<li><a href="Home.asp">Trang Chủ</a></li>
-								<li><a href="Introduction.asp">Giới Thiệu</a></li> 
-								<li><a href="Product.asp">Sản Phẩm</a></li>
-								<li><a href="EventAndNews.asp">Tin Tức & Sự Kiện</a></li>
-                                <li><a href="Contact.asp">Liên Hệ</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-3">
-						<div class="search_box pull-right">
-                            <form id="form1" name="form1" method="get" action="Result_Search.asp">
-                            	<table border="0" cellpadding="0" cellpadding="0">
-  										<tr>
-    										<td><input type="text" name="txtSearch" id="txtSearch" placeholder="Tìm sản phẩm"/></td>
-    										<td><button type="submit" name="btnSearch" id="btnSearch" class="btn search" value="Tìm">Tìm</button></td>
-  										</tr>
-								</table>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/header-bottom-->
-	</header><!--/header-->
-    <!-- InstanceBeginEditable name="Slider" -->
+<header id="header"><!--header-->
+  <div class="header-middle"><!--header-middle-->
+    <div class="container">
+      <div class="row"><a class="ps-logo" href="Home.asp" style="color:white;"><span style="color:#FE980F;">Paddy</span>Studio</a>          
+        <div class="mainmenu pull-left">
+          <ul class="nav navbar-nav collapse navbar-collapse">
+            <li><a href="Introduction.asp">Giới Thiệu</a></li>
+            <li><a href="Product.asp">Sản Phẩm</a></li>
+            <li><a href="EventAndNews.asp">Tin Tức</a></li>
+            <li><a href="Contact.asp">Liên Hệ</a></li>
+          </ul>
+        </div>
+        <div class="shop-menu pull-right">
+          <ul class="nav navbar-nav">
+            <% 	If(Session("MM_Username") <> "") Then %>
+            <li><a>Xin chào,<%=Session("MM_Username")%></a></li>
+            <% 	If(Session("MM_UserRole") = "1") Then %>
+            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Tài Khoản</a></li>
+            <% 	Else If(Session("MM_UserRole") = "0") Then %>
+            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Tài Khoản</a></li>
+            <li><a href="User_Feedback.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "FeedbackMemberID=" & Session("MM_Username") %>">Phản Hồi</a></li>
+            <%	End If %>
+            <%	End If %>
+            <li><a href="<%= MM_Logout %>">Đăng Xuất</a></li>
+            <%	Else %>
+            <li><a href="Register.asp">Đăng Ký</a></li>
+            <li><a href="Login.asp">Đăng Nhập</a></li>
+            <%	End If %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/header-middle-->
+  <!--header-bottom-->
+  <div class="header-bottom">
+    <div class="container">
+      <div class="row">
+        <!--/*<div class="col-sm-9">
+          <div class="navbar-header"></div>
+          <div class="mainmenu pull-left">
+            <ul class="nav navbar-nav collapse navbar-collapse">
+              <li><a href="../Introduction.asp">Giới Thiệu</a></li>
+              <li><a href="../Product.asp">Sản Phẩm</a></li>
+              <li><a href="../EventAndNews.asp">Tin Tức</a></li>
+              <li><a href="../Contact.asp">Liên Hệ</a></li>
+            </ul>
+          </div>
+        </div>*/-->
+
+          <div class="search_box pull-right">
+            <form id="form1" name="form1" method="get" action="Result_Search.asp">
+              <table border="0" cellpadding="0" cellpadding="0">
+              <tr>
+                <td><input type="text" name="txtSearch" id="txtSearch" placeholder="Tìm sản phẩm"/></td>
+                <td><button type="submit" name="btnSearch" id="btnSearch" class="btn search" value="Tìm">Tìm</button></td>
+              </tr>
+              </table>
+            </form>
+          </div>
+
+      </div>
+    </div>
+  </div>
+  <!--/header-bottom-->
+</header>
+<!--/header-->
+<!-- InstanceBeginEditable name="Slider" -->
     
     
 	<!-- InstanceEndEditable -->
-	<section><!--section-->
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-3">
-					<div class="left-sidebar">
-                        <% 	If(Session("MM_UserRole") = "1") Then %>
-                            <div class="brands_products"><!--brands_products-->
-								<h2>Ban Quản Trị</h2>
-								<div class="brands-name">
-									<ul class="nav nav-pills nav-stacked">
-                                   		<li>
-                                        	<a href="Admin_Home.asp">Trang Chủ Admin</a>
-                                            <a href="Admin_ManageBrand.asp">Quản Lý Thương Hiệu</a>
-                                            <a href="Admin_ManageProduct.asp">Quản Lý Sản Phẩm</a>
-                                          <!--  <a href="#">Quản Lý Bình Luận</a>-->
-                                            <a href="Admin_ManageFeedback.asp">Quản Lý Phản Hồi</a>
-                                            <a href="Admin_ManageEventAndNews.asp">Quản Lý Tin Tức &amp; Sự Kiện</a>
-                                            <a href="Admin_ManageUser.asp">Quản Lý Thành Viên</a>
-                                 		</li>
-                                	</ul>
-								</div>
-							</div><!--/brands_products-->
-                            <br/><p></p>
-                        <%	End If %>
-						<div class="brands_products"><!--brands_products-->
-							<h2>Thương Hiệu</h2>
-							<div class="brands-name">
-								<ul class="nav nav-pills nav-stacked">
-                                    <% While ((Repeat1__numRows <> 0) AND (NOT rsBrands.EOF)) %>
-                                   	<li>
-                                        	<a HREF="Product_withBrands.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "BrandName=" & rsBrands.Fields.Item("BrandName").Value %>">
-                                            	<span class="pull-right">(<%=(rsBrands.Fields.Item("ProCount").Value)%>)</span>
-												<%=(rsBrands.Fields.Item("BrandName").Value)%>
-                                   	  </a>
-                                 	</li>
-                                 	<% 
+<section><!--section-->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="left-sidebar">
+          <% 	If(Session("MM_UserRole") = "1") Then %>
+          <div class="brands_products"><!--brands_products-->
+            <h2>Ban Quản Trị</h2>
+            <div class="brands-name">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="Admin_Home.asp">Trang Chủ Admin</a><a href="Admin_ManageBrand.asp">Quản Lý Thương Hiệu</a><a href="Admin_ManageProduct.asp">Quản Lý Sản Phẩm</a>
+                  <!--  <a href="#">Quản Lý Bình Luận</a>-->
+                  <a href="Admin_ManageFeedback.asp">Quản Lý Phản Hồi</a><a href="Admin_ManageEventAndNews.asp">Quản Lý Tin Tức &amp; Sự Kiện</a><a href="Admin_ManageUser.asp">Quản Lý Thành Viên</a></li>
+              </ul>
+            </div>
+          </div>
+          <!--/brands_products-->
+          <br/>
+          <p></p>
+          <%	End If %>
+          <div class="brands_products"><!--brands_products-->
+            <h2>Thương Hiệu</h2>
+            <div class="brands-name">
+              <ul class="nav nav-pills nav-stacked">
+                <% While ((Repeat1__numRows <> 0) AND (NOT rsBrands.EOF)) %>
+                  <li><a HREF="Product_withBrands.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "BrandName=" & rsBrands.Fields.Item("BrandName").Value %>"><span class="pull-right">(<%=(rsBrands.Fields.Item("ProCount").Value)%>)</span><%=(rsBrands.Fields.Item("BrandName").Value)%></a></li>
+                  <% 
   										Repeat1__index=Repeat1__index+1
   										Repeat1__numRows=Repeat1__numRows-1
   										rsBrands.MoveNext()
 										Wend
 									%>
-                                </ul>
-							</div>
-						</div><!--/brands_products-->
-						<!-- InstanceBeginEditable name="left" -->
+              </ul>
+            </div>
+          </div>
+          <!--/brands_products-->
+          <!-- InstanceBeginEditable name="left" -->
 						<!-- InstanceEndEditable -->
-					</div>
-				</div>
-				
-				<div class="col-sm-9 padding-right">
-					<!-- InstanceBeginEditable name="Content" -->
+        </div>
+      </div>
+      <div class="col-sm-9 padding-right">
+        <!-- InstanceBeginEditable name="Content" -->
                     <h2 class="title text-center">Cập Nhật Thông Tin Tài Khoản</h2>
                     <div class="col-sm-12">
                     <form ACTION="<%=MM_editAction%>" id="form1" name="form1" method="POST" onSubmit="return check()">
@@ -524,92 +505,89 @@ function check()
                     </form>
                     </div>
 					<!-- InstanceEndEditable -->
-				</div>
-			</div>
-		</div>
-	</section><!--/section-->
-    
-	<footer id="footer"><!--Footer-->
-		<div class="footer-top">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-5">
-						<div class="companyinfo">
-							<h2><span>Paddy </span> Studio</h2>
-							<p>Đến với Paddy Studio là sự lựa chọn đúng đắn!</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<div class="footer-widget">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-2">
-						<div class="single-widget">
-							<h2 style="color:#FE980F;">DỊCH VỤ</h2>
-							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Hỗ Trợ Trực Tuyến</a></li>
-								<li><a href="#">Liên Hệ</a></li>
-								<li><a href="#">Câu Hỏi Thường Gặp</a></li>
-							</ul>
-						</div>
-					</div>
-					
-					<div class="col-sm-2">
-						<div class="single-widget">
-							<h2 style="color:#FE980F;">CHÍNH SÁCH</h2>
-							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Điều Khoản Sử Dụng</a></li>
-								<li><a href="#">Chính Sách Bảo Mật</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-2">
-						<div class="single-widget">
-							<h2 style="color:#FE980F;">VỀ CHÚNG TÔI</h2>
-							<ul class="nav nav-pills nav-stacked">
-                            	<li><a href="#">Về Paddy Studio</a></li>								
-								<li><a href="#">Nghề Nghiệp</a></li>
-								<li><a href="#">Chương Trình Liên Kết</a></li>
-								<li><a href="#">Bản Quyền</a></li>
-							</ul>
-						</div>
-					</div>
-					
-                    <div class="col-sm-5 col-sm-offset-1">
-						<div class="single-widget">
-							<h2 style="color:#FE980F;">LIÊN KẾT</h2>
-							<form action="#" class="searchform">
-                            	<p>Đăng ký nhận thông tin sự kiện mới nhất từ chúng tôi</p>
-                                <div>
-                                	<table border="0" cellpadding="0" cellpadding="0">
-  										<tr>
-    										<td><input type="text" placeholder="Email của bạn" /></td>
-    										<td><button type="submit" class="btn search">Subscribe</button></td>
-  										</tr>
-									</table>
-                                </div>
-								<p><i>Thông tin của bạn sẽ được bảo mật tuyệt đối <br/> và bạn có thể hủy đăng ký bất cứ lúc nào.</i></p>
-							</form>
-						</div>
-					</div>
-					
-				</div>
-			</div>
-		</div>
-		
-		<div class="footer-bottom">
-			<div class="container">
-				<div class="row">
-					<p class="pull-left">Copyright 2016-2018 Paddy Studio. All rights reserved.</p>
-					<p class="pull-right">Designed by <span> Group 2 - Paddy Studio</span></p>
-				</div>
-			</div>
-		</div>
-		
-	</footer><!--/Footer-->
+      </div>
+    </div>
+  </div>
+</section>
+<!--/section-->
+
+<footer id="footer"><!--Footer-->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-5">
+          <div class="companyinfo">
+            <h2><span>Paddy</span>Studio</h2>
+            <p>Đến với Paddy Studio là sự lựa chọn đúng đắn!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-widget">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-2">
+          <div class="single-widget">
+            <h2 style="color:#FE980F;">DỊCH VỤ</h2>
+            <ul class="nav nav-pills nav-stacked">
+              <li><a href="#">Hỗ Trợ Trực Tuyến</a></li>
+              <li><a href="#">Liên Hệ</a></li>
+              <li><a href="#">Câu Hỏi Thường Gặp</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="single-widget">
+            <h2 style="color:#FE980F;">CHÍNH SÁCH</h2>
+            <ul class="nav nav-pills nav-stacked">
+              <li><a href="#">Điều Khoản Sử Dụng</a></li>
+              <li><a href="#">Chính Sách Bảo Mật</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="single-widget">
+            <h2 style="color:#FE980F;">VỀ CHÚNG TÔI</h2>
+            <ul class="nav nav-pills nav-stacked">
+              <li><a href="#">Về Paddy Studio</a></li>
+              <li><a href="#">Nghề Nghiệp</a></li>
+              <li><a href="#">Chương Trình Liên Kết</a></li>
+              <li><a href="#">Bản Quyền</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-5 col-sm-offset-1">
+          <div class="single-widget">
+            <h2 style="color:#FE980F;">LIÊN KẾT</h2>
+            <form action="#" class="searchform">
+              <p>Đăng ký nhận thông tin sự kiện mới nhất từ chúng tôi</p>
+              <div>
+                <table border="0" cellpadding="0" cellpadding="0">
+                <tr>
+                  <td><input type="text" placeholder="Email của bạn" /></td>
+                  <td><button type="submit" class="btn search">Subscribe</button></td>
+                </tr>
+                </table>
+              </div>
+              <p><i>Thông tin của bạn sẽ được bảo mật tuyệt đối<br/>
+                và bạn có thể hủy đăng ký bất cứ lúc nào.</i></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <p class="pull-left">Copyright 2016-2018 Paddy Studio. All rights reserved.</p>
+        <p class="pull-right">Designed by<span>Group 2 - Paddy Studio</span></p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!--/Footer-->
 
 </body>
 <!-- InstanceEnd --></html>

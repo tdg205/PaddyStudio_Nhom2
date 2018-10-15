@@ -66,7 +66,6 @@ a#scrollUp i{
 /*************************
 *******Header CSS******
 **************************/
-
 .header_top {
   background: none repeat scroll 0 0 #F0F0E9;
 }
@@ -81,11 +80,9 @@ a#scrollUp i{
   font-family: 'Roboto', sans-serif;
 }
 
-
 .contactinfo ul li a:hover{
 	background:inherit;
 }
-
 
 .social-icons ul li a {
   border: 0 none;
@@ -93,7 +90,6 @@ a#scrollUp i{
   color: #696763;
   padding:0px;
 }
-
 
 .social-icons ul li{
 	display:inline-block;
@@ -115,7 +111,6 @@ a#scrollUp i{
   -o-transition: all 0.9s ease 0s;
 }
 
-
 .fa-facebook:hover {
   background: #0083C9;
 }
@@ -134,22 +129,6 @@ a#scrollUp i{
 
 .fa-google-plus:hover  {
 	background:#CE3C2D;
-}
-
-.header-middle .container .row {
-  margin-left: 0;
-  margin-right: 0;
-  padding-bottom: 0px;
-  padding-top: 0px;
-}
-
-.header-middle .container .row .col-sm-2{
-    padding-left: 0;
-	padding-right: 0;
-    color: white;
-    font-family: abel;
-    font-size: 30px;
-    top: 4px;
 }
 
 .header-middle .container .row .col-sm-8 {
@@ -189,67 +168,30 @@ a#scrollUp i{
   text-decoration: none;
 }
 
-
 .shop-menu ul li {
-	display:inline-block;
-  padding-left: 15px;
-  padding-right: 15px;
+	float: left;
 }
 
 .shop-menu ul li:last-child {
   padding-right: 0;
 }
 
-
-.shop-menu ul li a {
-  background: #FFFFFF;
-  color: #696763;
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  padding:0;
-  padding-right: 0;
-  margin-top: 10px;
-}
-
-
 .shop-menu ul li a i{
 	margin-right:3px;
 }
 
-
-.shop-menu ul li a:hover {
-	color:#fe980f;
-	background:#fff;
-}
-
-
 .header-bottom {
-  padding-bottom: 30px;
-  padding-top: 30px;
+	padding: 5px 0;
+	border-bottom: 1px solid #e3e3e3;
 }
 
 .navbar-collapse.collapse{
-  padding-left: 0;
+  padding: 0;
 }
 
-.mainmenu ul li{
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-.mainmenu ul li:first-child{
+/*.mainmenu ul li:first-child{
   padding-left: 0px;
-}
-
-.mainmenu ul li a {
-	color: #696763;
-	font-family: 'Roboto', sans-serif;
-	font-size: 17px;
-	font-weight: 300;
-	padding: 0;
-	padding-bottom: 10px;
-}
+}*/
 
 .mainmenu ul li a:hover, .mainmenu ul li a.active,  .shop-menu ul li a.active{
 	background:none;
@@ -280,12 +222,10 @@ a#scrollUp i{
 }
 
 /*  Dropdown menu*/
-
 .navbar-header 
 .navbar-toggle .icon-bar {
     background-color: #fff;
 }
-
 
 .nav.navbar-nav > li:hover > ul.sub-menu{
   display: block;
@@ -315,7 +255,6 @@ ul.sub-menu {
   color: #FDB45E;
   padding-left: 0;
 }
-
 
 .navbar-nav li ul.sub-menu li{
   padding: 10px 20px 0 ;
@@ -354,11 +293,9 @@ ul.sub-menu {
 /*************************
 *******Footer CSS******
 **************************/
-
 #footer {
   background: #F0F0E9;
 }
-
 
 .footer-top .container {
   border-bottom: 1px solid #E0E0DA;
@@ -455,7 +392,6 @@ ul.sub-menu {
   margin-top:0px;
 }
 
-
 .address {
   margin-top: 30px;
   position: relative;
@@ -534,7 +470,6 @@ ul.sub-menu {
 .searchform  button:hover, .searchform  button:focus{
 	background-color:#FE980F;
 	color: #696763;
-	
 }
 
 .searchform p {
@@ -563,12 +498,9 @@ ul.sub-menu {
   text-decoration: underline;
 }
 
-
 /*************************
 ******* Home ******
 **************************/
-
-
 #slider {
   padding-bottom: 45px;
 }
@@ -584,7 +516,6 @@ ul.sub-menu {
 .item {
   padding-left: 100px;
 }
-
 
 .pricing {
   position: absolute;
@@ -633,7 +564,6 @@ ul.sub-menu {
   font-weight: 300;
   margin-top: 23px;
 }
-
 
 .item button:hover {
   background: #FE980F;
@@ -753,7 +683,6 @@ h2.title:before{
   padding-left: 20px;
 }
 
-
 .panel-body ul li a {
   color: #696763;
   font-family: 'Roboto', sans-serif;
@@ -766,7 +695,6 @@ h2.title:before{
   padding-bottom: 20px;
   padding-top: 15px;
 }
-
 
 .brands-name .nav-stacked li a {
   background-color: #FFFFFF;
@@ -791,7 +719,6 @@ h2.title:before{
   position: relative;
 }
 
-
 .price-range{
   margin-top:30px;
 }
@@ -805,7 +732,6 @@ h2.title:before{
   min-height: 20px;
   padding: 35px;
 }
-
 
 .tooltip-inner {
   background-color: #FE980F;
@@ -825,7 +751,6 @@ h2.title:before{
   margin-left: -5px;
 }
 
-
 .padding-right {
   padding-right: 0;
 }
@@ -833,7 +758,6 @@ h2.title:before{
 .features_items{
 	overflow:hidden;
 }
-
 
 h2.title {
   color: #FE980F;
@@ -875,7 +799,6 @@ h2.title {
 	font-weight: 700;
 }
 
-
 .productinfo p{
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
@@ -907,7 +830,6 @@ h2.title {
   display:block;
   height:100%;
 }
-
 
 .product-overlay .overlay-content {
   bottom: 0;
@@ -1077,7 +999,6 @@ h2.title {
 *******Shop CSS******
 **************************/
 
-
 #advertisement {
   padding-bottom: 45px;
 }
@@ -1130,8 +1051,6 @@ h2.title {
 	color:#fff;
 }
 
-
-
 /*************************
 *******Product Details CSS******
 **************************/
@@ -1140,11 +1059,9 @@ h2.title {
 	overflow:hidden;
 }
 
-
 #similar-product {
   margin-top: 40px;
 }
-
 
 #reviews, #details {
   padding-left: 25px;
@@ -1156,8 +1073,6 @@ h2.title {
   overflow: hidden;
   margin-top: 10px;
 }
-
-
 
 .view-product {
   position: relative;
@@ -1273,7 +1188,6 @@ h2.title {
   margin-top: 15px;
 }
 
-
 .cart {
   background: #FE980F;
   border: 0 none;
@@ -1284,7 +1198,6 @@ h2.title {
   margin-bottom: 10px;
   margin-left: 20px;
 }
-
 
 .shop-details-tab {
   border: 1px solid #F7F7F0;
@@ -1297,7 +1210,6 @@ h2.title {
 	padding-left: 0;
 	padding-right: 0;
 }
-
 
 #reviews ul {
   background: #FFFFFF;
@@ -1374,7 +1286,6 @@ h2.title {
   font-size: 14px;
 }
 
-
 /*************************
 *******404 CSS******
 **************************/
@@ -1417,7 +1328,6 @@ h2.title {
 /*************************
 *******login page CSS******
 **************************/
-
 #form {
   display: block;
   margin-bottom: 185px;
@@ -1440,7 +1350,6 @@ h2.title {
   font-weight: 300;
   margin-bottom: 30px;
 }
-
 
 .login-form form input, .signup-form form input {
   background: #F0F0E9;
@@ -1486,7 +1395,6 @@ h2.title {
 
 }
 
-
 .login-form label input {
   border: medium none;
   display: inline-block;
@@ -1495,7 +1403,6 @@ h2.title {
   outline: medium none;
   padding-left: 0;
 }
-
 
 .or{
 	background: #FE980F;
@@ -1509,7 +1416,6 @@ h2.title {
 	text-align: center;
 	width: 50px;
 }
-
 
 /*************************
 *******Cart CSS******
@@ -1545,7 +1451,6 @@ h2.title {
   position: absolute;
   top: 11px;
   left:48px;
-
 }
 
 .breadcrumbs .breadcrumb > li + li:before {
@@ -1556,7 +1461,6 @@ h2.title {
   border: 1px solid #E6E4DF;
   margin-bottom: 50px
 }
-
 
 #cart_items .cart_info .cart_menu {
   background: #FE980F;
@@ -1569,7 +1473,6 @@ h2.title {
 #cart_items .cart_info .table.table-condensed thead tr {
   height: 51px;
 }
-
 
 #cart_items .cart_info .table.table-condensed tr {
   border-bottom: 1px solid#F7F7F0
@@ -1584,11 +1487,9 @@ h2.title {
   vertical-align: inherit;
 }
 
-
 #cart_items .cart_info .image {
   padding-left: 30px;
 }
-
 
 #cart_items .cart_info .cart_description h4 {
   margin-bottom: 0
@@ -1599,19 +1500,16 @@ h2.title {
   font-family: 'Roboto',sans-serif;
   font-size: 20px;
   font-weight: normal;
-
 }
 
 #cart_items .cart_info .cart_description p {
   color:#696763
 }
 
-
 #cart_items .cart_info .cart_price p {
   color:#696763;
   font-size: 18px
 }
-
 
 #cart_items .cart_info .cart_total_price {
   color: #FE980F;
@@ -1635,23 +1533,19 @@ h2.title {
   float: left;
 }
 
-
 .cart_quantity_input {
   color: #696763;
   float: left;
   font-size: 16px;
   text-align: center;
   font-family: 'Roboto',sans-serif;
-  
 }
-
 
 .cart_delete  {
   display: block;
   margin-right: -12px;
   overflow: hidden;
 }
-
 
 .cart_delete a {
   background:#F0F0E9;
@@ -1663,7 +1557,6 @@ h2.title {
 .cart_delete a:hover {
   background:#FE980F
 }
-
 
 .bg h2.title {
   margin-right:0;
@@ -1682,7 +1575,6 @@ h2.title {
   font-size: 16px;
   font-weight: 300;
 }
-
 
 #do_action .total_area {
   padding-bottom: 18px !important;
@@ -1706,13 +1598,11 @@ h2.title {
   padding: 7px 20px;
 }
 
-
 .user_option label {
   color: #696763;
   font-weight: normal;
   margin-left: 10px;
 }
-
 
 .user_info {
   display: block;
@@ -1760,7 +1650,6 @@ h2.title {
   border: 0
 }
 
-
 .chose_area .update {
   margin-left: 40px;
 }
@@ -1780,8 +1669,6 @@ h2.title {
 .check_out {
   margin-left: 20px
 }
-
-
 
 /*************************
 *******checkout CSS******
@@ -1803,7 +1690,6 @@ h2.title {
 .checkout-options {
   padding-left: 20px
 }
-
 
 .checkout-options h3 {
   color: #363432;
@@ -1853,7 +1739,6 @@ h2.title {
   padding: 2px 3px;
 }
 
-
 .register-req  {
   font-size: 14px;
   font-weight: 300;
@@ -1874,7 +1759,6 @@ h2.title {
   font-weight: 300
 }
 
-
 .shopper-info .btn-primary {
   background: #FE980F;
   border: 0 none;
@@ -1883,12 +1767,10 @@ h2.title {
   margin-top: 20px;
 }
 
-
 .form-two, .form-one {
   float: left;
   width: 47%
 }
-
 
 .shopper-info > form > input, 
 .form-two > form > select, 
@@ -1910,7 +1792,6 @@ h2.title {
   margin-left: 5%
 }
 
-
 .order-message textarea {
   font-size: 12px;
   height: 335px;
@@ -1925,7 +1806,6 @@ h2.title {
   margin-left: 10px;
   font-size: 14px
 }
-
 
 .review-payment h2 {
   color: #696763;
@@ -1972,14 +1852,9 @@ h2.title {
   border-bottom: 1px solid #F7F7F0;
 }
 
-
-
-
 /*************************
 *******Blog CSS******
 **************************/
-
-
 
 .blog-post-area 
 .single-blog-post h3 {
@@ -2067,7 +1942,6 @@ h2.title {
   color: #FE980F
 }
 
-
 .blog-post-area  
 .single-blog-post 
 .btn-primary {
@@ -2101,8 +1975,6 @@ h2.title {
   background:#FE980F;
   color: #fff
 }
-
-
 
 /*************************
 *******Blog Single CSS******
@@ -2148,7 +2020,6 @@ h2.title {
   margin-bottom: 0
 }
 
-
 .rating-area 
 .ratings li i {
   color:#CCCCCC
@@ -2167,7 +2038,6 @@ h2.title {
   color: #FE980F
 }
 
-
 .rating-area .tag {
   float: right;
   margin-bottom: 0;
@@ -2181,12 +2051,10 @@ h2.title {
   color: #363432;
 }
 
-
 .socials-share {
   margin-bottom: 30px;
   margin-top: 18px;
 }
-
 
 .commnets 
 .media-object {
@@ -2242,7 +2110,6 @@ h2.title {
   width: 17px;
 }
 
-
 .blog-socials ul li a {
   color: #393B3B;
   display: block;
@@ -2255,7 +2122,6 @@ h2.title {
   color: #fff;
   background:#FE980F
 }
-
 
 .media-list .btn-primary, 
 .commnets .btn-primary {
@@ -2295,14 +2161,11 @@ h2.title {
   width: 95%;
 }
 
-
 .sinlge-post-meta {
   overflow: hidden;
   padding-left: 0;
   margin-bottom: 15px
 }
-
-
 
 .sinlge-post-meta li {
   background:#F0F0E9;
@@ -2405,8 +2268,6 @@ h2.title {
   left: 5px
 } 
 
-
-
 /*************************
 ******* Contact CSS ********
 **************************/
@@ -2452,7 +2313,6 @@ h2.title {
   margin-bottom: 15px;
   margin-top: 20px;
 }
-
 
 #contact-page .form-control:focus, 
 #contact-page .form-control:hover {
@@ -2518,15 +2378,76 @@ h2.title {
 
 .header-middle .container{
 	width: 1230px;
+	height: 50px;
 }
 
-.header-middle .container .row .col-sm-6 {
-    padding-left: 0;
-    padding-right: 0;
+.header-middle .container .row {
+  margin-left: 0;
+  margin-right: 0;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  height: 50px;
 }
 
-.header-middle .container .row .col-sm-4 {
+.ps-logo {
     padding-left: 0;
-    padding-right: 0;
+	padding-right: 0;
+    font-family: abel;
+    font-size: 30px;
+    top: 4px;
+	width: 150px;
+	position: absolute;
+}
+
+.mainmenu {
+	margin-left: 200px;
+}
+
+.mainmenu ul li a {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    font-size: 15px;
+    padding: 0 20px;
+    color: #ffffff;
+}
+
+.mainmenu ul li{
+  float:left;
+}
+
+.shop-menu{
+	margin-right: 10px;
+}
+
+.shop-menu ul li a {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    font-size: 14px;
+    padding: 0 18px;
+    color: #ffffff;
+}
+
+.shop-menu ul li a:hover {
+	color:#fe980f;
+	background: #1d1d1d;
+}
+
+.search_box{
+	margin-right: 25px;
+}
+
+.header-bottom .container {
+	width: 1230px;
+}
+
+.header-bottom .container .row {
+  margin: 0;
+  padding: 0;
 }
 /*.........End Configuration Template-Giang Truong Dinh................*/
