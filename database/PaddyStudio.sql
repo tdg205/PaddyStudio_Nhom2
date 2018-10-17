@@ -100,7 +100,7 @@ N'- Bộ xử lý: Intel Core i7 7Y75 (2x1.30 GHz), Max Turbo Frequency: 3.60 GH
 - Hệ điều hành: Windows 10 Home Single Language 64Bit + Office Personal 365<br/>','54990000','24','2017','Dell'
 ),
 
-('Dell XPS15/i7-8750H','Dell02.jpg',
+('Dell XPS15-Core i7 8750HQ','Dell02.jpg',
 N'- Bộ xử lý: Intel Core i7 8750HQ 2.20GHz-9MB cache<br/>
 - RAM: 16GB DDR4 2666MHz, 2 khe RAM<br/>
 - Đĩa cứng: SSD PCLE 512GB<br/>
@@ -125,7 +125,7 @@ N'- Bộ xử lý: Intel Core i7 8750HQ 2.20GHz-9MB cache<br/>
 - Hệ điều hành: Windows 10 Home Single Language 64Bit + Office Personal 365<br/>','45990000','12','2018','Dell'
 ),
 
-('Dell XPS 13 (9360)/Core i5-7200U','Dell04.jpg',
+('Dell XPS 13 9360-Core i5 7200U','Dell04.jpg',
 N'- Bộ xử lý: Intel Core i5-7200U 2.50 GHz, 3MB Cache<br/>
 - RAM: DDRAM 8GB LPDDR3/	2133 MHz, onboard RAM<br/>
 - Đĩa cứng:	SSD 256GB<br/>
@@ -268,7 +268,7 @@ N'- Bộ xử lý: Intel 	Core i7 	8550U 1.80 GHz, 8M Cache<br/>
 - Pin 3 cell Li-ion liền, trọng lượng 1.43 Kg nhôm nguyên khối<br/>','19490000','24','2018','Asus'
 ),
 
-('Asus UX430UA-GV344/Core i5-7200U','Asus05.jpg',
+('Asus UX430UA GV344-Core i5 7200U','Asus05.jpg',
 N'- Bộ xử lý: Intel® Core™ i5 7200U 2.5GHz, 3M Cache <br/>
 - RAM: 8GB DDR4 	2133MHz<br/>
 - Đĩa cứng: SSD 256GB, có khe cắm ổ SSD<br/>
@@ -295,7 +295,7 @@ N'- Bộ xử lý: Intel® Core™ i7 8750H 2.20GHz, 9 MB Cache <br/>
 - Pin 3-cell 52.5 Wh Li-ion prismatic and polymer liền, trọng lượng 2.17Kg nhựa<br/>','29990000','12','2018','HP'
 ),
 
-('HP Envy 13-ah0027TU/Core i7-8550U','HP02.jpg',
+('HP Envy 13 ah0027TU-Core i7 8550U','HP02.jpg',
 N'- Bộ xử lý: Intel® Core™ i7 8550U 1.8GHz, 8MB Cache<br/>
 - Bo mạch: Chipset 8th Generation Intel® Core™ i7 processor, Bus 2400MHz, hỗ trợ tối đa 16GB<br/>
 - RAM: 8GB LPDDR3 2400MHz, 2 khe RAM<br/>
@@ -323,7 +323,7 @@ N'- Bộ xử lý: Intel® Core™ i5 8250U 1.60GHz, 6MB Cache<br/>
 - Pin HP Long Life 4-cell 53.2Wh Li-ion polymer liền, trọng lượng 1.21Kg nhôm nguyên khối<br/>','21990000','12','2018','HP'
 ),
 
-('HP Pavilion 15-cs0104TX/i7-8550U','HP04.jpg',
+('HP Pavilion 15 cs0104TX-Core i7 8550U','HP04.jpg',
 N'- Bộ xử lý: Intel® Core™ i7 8550U 	1.80GHz, 8MB cache<br/>
 - Bo mạch: Chipset intel, Bus 4 GT/s OPI, hỗ trợ tối đa 16GB<br/>
 - RAM: 4GB DDR4 2400 MHz, 2 khe RAM<br/>
@@ -350,7 +350,7 @@ N'- Bộ xử lý: Intel® Core™ i5 7200U 2.50 GHz, 3MB cache<br/>
 - Pin 3 cell li ion, trọng lượng 1.63kg nhựa<br/>','16990000','12','2018','HP'
 ),
 
-('Lenovo Legion Y520-15IKBN/I5-7300HQ','Lenovo01.jpg',
+('Lenovo Legion Y520 15IKBN-Core i5 7300HQ','Lenovo01.jpg',
 N'- Bộ xử lý: Intel® Core™ i5 7300HQ 2.5Ghz, 6MB Cache<br/>
 - Bo mạch: Chipset Intel® Chipset Express<br/>
 - RAM: 8GB DDR4 	2400MHz, 2 khe RAM<br/>

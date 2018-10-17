@@ -198,7 +198,8 @@ Function MM_joinChar(firstItem)
 End Function
 %>
 <!doctype html>
-<html><!-- InstanceBegin template="/Templates/temp.dwt.asp" codeOutsideHTMLIsLocked="false" -->
+<html>
+<!-- InstanceBegin template="/Templates/temp.dwt.asp" codeOutsideHTMLIsLocked="false" -->
 <head>
 <%
 Dim rsFeedbackID
@@ -272,9 +273,20 @@ End If
 function cut_string()
 {
 	var s = new String(document.getElementById("fileImage").value);
-	var p = s.lastIndexOf("\\");
+	var p = s.lastIndexOf("\\"); 
+	/*Tra ve vi tri cuoi cua item dang tim kiem.Tra ve -1 neu ko co*/
 	var name = s.substr(p+1);
-	document.getElementById("ProductImage").value = name;
+	/*Tra ve vi tri loai file cua name*/
+	p = name.lastIndexOf("\.");
+	var tof = name.substr(p+1);//Tra ve duoi bmp/ png/ jpg...
+	tof = tof.toLowerCase();
+	if((tof != 'jpg') && (tof != 'jpeg') && (tof != 'gif') && (tof != 'bmp')&& (tof != 'png')){
+		alert("Hãy chọn file ảnh có định dạng *.gif, *.jpg, *.bmp, *.jpeg, *.png.");
+		document.getElementById("fileImage").value = "";
+		return false;
+	} else {
+		document.getElementById("ProductImage").value = name;
+	}
 }
 
 function check()
@@ -285,37 +297,56 @@ function check()
 	var Price = document.getElementById("Price").value;
 	var WarrantyTime = document.getElementById("WarrantyTime").value;
 	var ManufacturerYear = document.getElementById("ManufacturerYear").value;
-	
+
+/*	Check Product Name
+	- không được rỗng
+ 	- nhỏ hơn hoặc bằng 50 ký tự
+	 /^[a-zA-Z][\w\s\-/.()]+$/;
+	- bắt đầu bằng 1 chữ cái hoa hoặc thường
+	- Ký tự còn lại chứa: chữ hoa hoặc thường hoặc dấu gạch dưới 
+	hoặc số, khoảng trắng, dấu gạch ngang, dấu /, dấu . hoặc dấu ()*/
 	if(ProductName == "")
 	{
-		alert("Tên Sản Phẩm không được để trống!");
+		alert("Tên Sản Phẩm không được để trống.");
 		document.getElementById("ProductName").focus();
 		return false;
 	}
 	
 	if(ProductName.length > 50)
 	{
-		alert("Tên Sản Phẩm không được quá 50 ký tự!");
+		alert("Tên Sản Phẩm không được quá 50 ký tự.");
 		document.getElementById("ProductName").focus();
-		document.getElementById("ProductName").value = "";
 		return false;
 	}
 	
+	var re_ProductName = /^[a-zA-Z][\w\s\-\/\.\(\)]+$/;												
+	if(re_ProductName.test(ProductName) == false){
+		alert("Bạn nhập Tên Sản Phẩm chưa hợp lệ.");
+		document.getElementById("ProductName").focus();
+		return false;
+	}
+
+/*	Check Product Image
+	- Ten hình ảnh không được quá 200 ký tự
+	- Không được để trống
+	- Băt đuôi ảnh /(\.jpg|\.jpeg|\.png|\.gif|\.bmp)$/;*/
 	if(ProductImage == "")
 	{
-		alert("Hình Ảnh không được để trống!");
+		alert("Hình Ảnh không được để trống.");
 		document.getElementById("fileImage").focus();
 		return false;
 	}
 	
 	if(ProductImage.length > 200)
 	{
-		alert("Hình Ảnh không được quá 200 ký tự!");
+		alert("Hình Ảnh không được quá 200 ký tự.");
 		document.getElementById("fileImage").focus();
 		document.getElementById("fileImage").value = "";
 		return false;
 	}
-	
+
+
+
 	if(ProductDescription == "")
 	{
 		alert("Mô Tả không được để trống!");
@@ -323,13 +354,13 @@ function check()
 		return false;
 	}
 	
-	/*if(ProductDescription.length > 500)
+	if(ProductDescription.length > 1000)
 	{
 		alert("Mô Tả không được quá 500 ký tự!");
 		document.getElementById("ProductDescription").focus();
 		document.getElementById("ProductDescription").value = "";
 		return false;
-	}*/
+	}
 	
 	if(Price == "")
 	{
@@ -479,9 +510,7 @@ function check()
 </header>
 <!--/header-->
 <!-- InstanceBeginEditable name="Slider" -->
-    
-    
-	<!-- InstanceEndEditable -->
+<!-- InstanceEndEditable -->
 <section><!--section-->
   <div class="container">
     <div class="row">
@@ -517,50 +546,50 @@ function check()
           </div>
           <!--/brands_products-->
           <!-- InstanceBeginEditable name="left" -->
-						<!-- InstanceEndEditable -->
+          <!-- InstanceEndEditable -->
         </div>
       </div>
       <div class="col-sm-9 padding-right">
         <!-- InstanceBeginEditable name="Content" -->
-                    <h2 class="title text-center">Thêm Sản Phẩm</h2>
-                    <div class="col-sm-12">
-                    <form ACTION="<%=MM_editAction%>" id="form1" name="form1" method="POST" onSubmit="return check()">
-                   	  <table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
-                            <tr>
-          						<td width="40%" align="right" valign="top"><strong>Tên Sản Phẩm:* &nbsp;</strong></td>
-          						<td width="60%" align="left" valign="top"><input id="ProductName" name="ProductName" type="text" size="32"></td>
-       						</tr>
-        					<tr>
-          						<td align="right" valign="top"><strong>Hình Ảnh:* &nbsp;</strong></td>
-                                <td align="left" valign="top">
-                                    <input name="ProductImage" id="ProductImage" type="text" readonly/><br/><br/>
-                                	<input name="fileImage" id="fileImage" type="file" onChange="cut_string()">
-                              </td>
-       						</tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Mô Tả:* &nbsp;</strong></td>
-                                <td align="left" valign="top"><textarea id="ProductDescription" name="ProductDescription" cols="32" rows="12" ></textarea></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Giá (VNĐ):* &nbsp;</strong></td>
-                                <td align="left" valign="top"><input id="Price" name="Price" type="text" size="32" /></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Bảo Hành (Tháng):* &nbsp;</strong></td>
-                                <td align="left" valign="top"><input id="WarrantyTime" name="WarrantyTime" type="text" size="32" /></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Năm Sản Xuất:* &nbsp;</strong></td>
-                                <td align="left" valign="top"><input id="ManufacturerYear" name="ManufacturerYear" type="text" size="32"  /></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Tên Thương Hiệu: &nbsp;</strong></td>
-                                <td align="left" valign="top"><select name="lsBrands">
-                              	<%
+        <h2 class="title text-center">Thêm Sản Phẩm</h2>
+        <div class="col-sm-12">
+          <form ACTION="<%=MM_editAction%>" id="form1" name="form1" method="POST" onSubmit="return check()">
+            <table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
+              <tr>
+                <td width="40%" align="right" valign="top"><strong>Tên Sản Phẩm:* &nbsp;</strong></td>
+                <td width="60%" align="left" valign="top"><input id="ProductName" name="ProductName" type="text" size="32"></td>
+              </tr>
+              <tr>
+                <td align="right" valign="top"><strong>Hình Ảnh:* &nbsp;</strong></td>
+                <td align="left" valign="top"><input name="ProductImage" id="ProductImage" type="text" readonly/>
+                  <br/>
+                  <br/>
+                  <input name="fileImage" id="fileImage" type="file" accept=".jpg, .jpeg, .png, .gif, .bmp" onChange="cut_string()"></td>
+              </tr>
+              <tr>
+                <td align="right" valign="top"><strong>Mô Tả:* &nbsp;</strong></td>
+                <td align="left" valign="top"><textarea id="ProductDescription" name="ProductDescription" cols="32" rows="12" ></textarea></td>
+              </tr>
+              <tr>
+                <td align="right" valign="top"><strong>Giá (VNĐ):* &nbsp;</strong></td>
+                <td align="left" valign="top"><input id="Price" name="Price" type="text" size="32" /></td>
+              </tr>
+              <tr>
+                <td align="right" valign="top"><strong>Bảo Hành (Tháng):* &nbsp;</strong></td>
+                <td align="left" valign="top"><input id="WarrantyTime" name="WarrantyTime" type="text" size="32" /></td>
+              </tr>
+              <tr>
+                <td align="right" valign="top"><strong>Năm Sản Xuất:* &nbsp;</strong></td>
+                <td align="left" valign="top"><input id="ManufacturerYear" name="ManufacturerYear" type="text" size="32"  /></td>
+              </tr>
+              <tr>
+                <td align="right" valign="top"><strong>Tên Thương Hiệu: &nbsp;</strong></td>
+                <td align="left" valign="top"><select name="lsBrands">
+                    <%
 									While (NOT rsBrandList.EOF)
 								%>
-                             	<option value="<%=(rsBrandList.Fields.Item("BrandName").Value)%>"><%=(rsBrandList.Fields.Item("BrandName").Value)%></option>
-                              	<%
+                    <option value="<%=(rsBrandList.Fields.Item("BrandName").Value)%>"><%=(rsBrandList.Fields.Item("BrandName").Value)%></option>
+                    <%
   									rsBrandList.MoveNext()
 									Wend
 									If (rsBrandList.CursorType > 0) Then
@@ -569,26 +598,26 @@ function check()
   										rsBrandList.Requery
 									End If
 								%>
-                              </select></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><input type="submit" id="btnAdd" name="btnAdd" value="Thêm" class="btn search"/></td>
-                                <td align="left" valign="top"><input type="reset" value="Hủy" class="btn search"/>&nbsp;&nbsp;<a href="javascript:history.back()" class="btn search">Trở Về</a></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top">&nbsp;</td>
-                                <td align="left" valign="top"><strong><b>(*) : Không Được Để Trống</strong></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top">&nbsp;</td>
-                                <td align="left" valign="top">&nbsp;</td>
-                            </tr>
-                            
-   					  </table>
-                      <input type="hidden" name="MM_insert" value="form1">
-                    </form>
-                    </div>
-					<!-- InstanceEndEditable -->
+                  </select></td>
+              </tr>
+              <tr>
+                <td align="right" valign="top"><input type="submit" id="btnAdd" name="btnAdd" value="Thêm" class="btn search"/></td>
+                <td align="left" valign="top"><input type="reset" value="Hủy" class="btn search"/>
+                  &nbsp;&nbsp;<a href="javascript:history.back()" class="btn search">Trở Về</a></td>
+              </tr>
+              <tr>
+                <td align="right" valign="top">&nbsp;</td>
+                <td align="left" valign="top"><strong><b>(*) : Không Được Để Trống</strong></td>
+              </tr>
+              <tr>
+                <td align="right" valign="top">&nbsp;</td>
+                <td align="left" valign="top">&nbsp;</td>
+              </tr>
+            </table>
+            <input type="hidden" name="MM_insert" value="form1">
+          </form>
+        </div>
+        <!-- InstanceEndEditable -->
       </div>
     </div>
   </div>
@@ -665,7 +694,7 @@ function check()
     <div class="container">
       <div class="row">
         <p class="pull-left">Copyright 2016 - 2018 Paddy Studio. All rights reserved.</p>
-        <p class="pull-right">Designed by <span> Group 2 - Paddy Studio</span></p>
+        <p class="pull-right">Designed by<span>Group 2 - Paddy Studio</span></p>
       </div>
     </div>
   </div>
@@ -673,7 +702,8 @@ function check()
 <!--/Footer-->
 
 </body>
-<!-- InstanceEnd --></html>
+<!-- InstanceEnd -->
+</html>
 <%
 rsBrands.Close()
 Set rsBrands = Nothing
