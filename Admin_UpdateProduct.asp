@@ -326,10 +326,21 @@ End If
 function cut_string()
 {
 	var s = new String(document.getElementById("fileImage").value);
-	var p = s.lastIndexOf("\\");
+	var p = s.lastIndexOf("\\"); 
+	/*Tra ve vi tri cuoi cua item dang tim kiem.Tra ve -1 neu ko co*/
 	var name = s.substr(p+1);
-	document.getElementById("ProductImage").value = name;
-	document.getElementById("fieldImage").src = "images\\product\\" + name;
+	/*Tra ve vi tri loai file cua name*/
+	p = name.lastIndexOf("\.");
+	var tof = name.substr(p+1);//Tra ve duoi bmp/ png/ jpg...
+	tof = tof.toLowerCase();
+	if((tof != 'jpg') && (tof != 'jpeg') && (tof != 'gif') && (tof != 'bmp')&& (tof != 'png')){
+		alert("Hãy chọn file ảnh có định dạng *.gif, *.jpg, *.bmp, *.jpeg, *.png.");
+		document.getElementById("fileImage").value = "";
+		return false;
+	} else {
+		document.getElementById("ProductImage").value = name;
+		document.getElementById("fieldImage").src = "images\\product\\" + name;
+	}
 }
 
 function check()
@@ -341,61 +352,87 @@ function check()
 	var WarrantyTime = document.getElementById("WarrantyTime").value;
 	var ManufacturerYear = document.getElementById("ManufacturerYear").value;
 	
+	/*	Check Product Name
+	- không được rỗng
+ 	- nhỏ hơn hoặc bằng 50 ký tự
+	 /^[a-zA-Z][\w\s\-/.()]+$/;
+	- bắt đầu bằng 1 chữ cái hoa hoặc thường
+	- Ký tự còn lại chứa: chữ hoa hoặc thường hoặc dấu gạch dưới 
+	hoặc số, khoảng trắng, dấu gạch ngang, dấu /, dấu . hoặc dấu ()*/
 	if(ProductName == "")
 	{
-		alert("Tên Sản Phẩm không được để trống!");
+		alert("Tên Sản Phẩm không được để trống.");
 		document.getElementById("ProductName").focus();
 		return false;
 	}
 	
-	if(ProductName.length > 50)
+	if(ProductName.length < 3 || ProductName.length > 50)
 	{
-		alert("Tên Sản Phẩm không được quá 50 ký tự!");
+		alert("Tên Sản Phẩm phải từ 3 đến 50 ký tự.");
 		document.getElementById("ProductName").focus();
-		document.getElementById("ProductName").value = "";
 		return false;
 	}
 	
+	var re_ProductName = /^[a-zA-Z][\w\s\-\/\.\(\)]+$/;												
+	if(re_ProductName.test(ProductName) == false){
+		alert("Tên Sản Phẩm phải bắt đầu bằng 1 ký tự chữ cái tiếng Anh. Ký tự còn lại chỉ chứa: chữ cái tiếng Anh, dấu gạch dưới, chữ số, khoảng trắng, dấu gạch ngang, dấu /, dấu chấm, dấu ()");
+		document.getElementById("ProductName").focus();
+		return false;
+	}
+
+/*	Check Product Image
+	- Ten hình ảnh không được quá 200 ký tự
+	- Không được để trống
+	- Băt đuôi ảnh /(\.jpg|\.jpeg|\.png|\.gif|\.bmp)$/;
+	- Chọn file trong folder image/product*/
 	if(ProductImage == "")
 	{
-		alert("Hình Ảnh không được để trống!");
+		alert("Hãy lựa chọn một Hình Ảnh.");
 		document.getElementById("fileImage").focus();
 		return false;
 	}
 	
 	if(ProductImage.length > 200)
 	{
-		alert("Hình Ảnh không được quá 200 ký tự!");
+		alert("Tên Hình Ảnh không được quá 200 ký tự.");
 		document.getElementById("fileImage").focus();
 		document.getElementById("fileImage").value = "";
 		return false;
 	}
-	
+
+	/*Mo ta san pham:
+	- Khong rỗng
+	- Độ dài khong lon hơn 1000*/
 	if(ProductDescription == "")
 	{
-		alert("Mô Tả không được để trống!");
+		alert("Mô Tả không được để trống.");
 		document.getElementById("ProductDescription").focus();
 		return false;
 	}
 	
-	if(ProductDescription.length > 500)
+	if(ProductDescription.length > 1000)
 	{
-		alert("Mô Tả không được quá 500 ký tự!");
+		alert("Mô Tả không được quá 1000 ký tự.");
 		document.getElementById("ProductDescription").focus();
-		document.getElementById("ProductDescription").value = "";
 		return false;
 	}
 	
+	/*Gia:
+	- Khong cho phep trong
+	- Phai la so
+	- Phai lon hon hoặc bằng 0
+	- Không lớn hơn 200 triệu*/
+		
 	if(Price == "")
 	{
-		alert("Giá (VNĐ) không được để trống!");
+		alert("Giá (VNĐ) không được để trống.");
 		document.getElementById("Price").focus();
 		return false;
 	}
 	
 	if(isNaN(Price))
 	{
-		alert("Giá (VNĐ) phải là kiểu số!");
+		alert("Giá (VNĐ) phải là kiểu số.");
 		document.getElementById("Price").focus();
 		document.getElementById("Price").value = "";
 		return false;
@@ -403,56 +440,67 @@ function check()
 	
 	if(Price < 0)
 	{
-		alert("Giá (VNĐ) phải lớn hơn hoặc bằng 0!");
+		alert("Giá (VNĐ) phải lớn hơn hoặc bằng 0.");
 		document.getElementById("Price").focus();
-		document.getElementById("Price").value = "";
 		return false;
 	}
 	
+	if(Price > 200000000)
+	{
+		alert("Giá (VNĐ) không được lớn hơn 200 triệu.");
+		document.getElementById("Price").focus();
+		return false;
+	}
+	
+	/*Bao hanh:
+	- Khong được rỗng.
+	- Phải là kiểu số.
+	- Phải từ 0 đến 36*/	
 	if(WarrantyTime == "")
 	{
-		alert("Bảo Hành (Tháng) không được để trống!");
+		alert("Bảo Hành (Tháng) không được để trống.");
 		document.getElementById("WarrantyTime").focus();
 		return false;
 	}
 	
 	if(isNaN(WarrantyTime))
 	{
-		alert("Bảo Hành (Tháng) phải là kiểu số!");
+		alert("Bảo Hành (Tháng) phải là kiểu số.");
 		document.getElementById("WarrantyTime").focus();
 		document.getElementById("WarrantyTime").value = "";
 		return false;
 	}
 	
-	if(WarrantyTime < 0 || WarrantyTime > 60)
+	if(WarrantyTime < 0 || WarrantyTime > 36)
 	{
-		alert("Bảo Hành (Tháng) phải từ 0 đến 60!");
+		alert("Bảo Hành (Tháng) phải từ 0 đến 36.");
 		document.getElementById("WarrantyTime").focus();
-		document.getElementById("WarrantyTime").value = "";
 		return false;
 	}
 	
-	var d = new Date();
-	var n = d.getFullYear();
-	
+	/*Nam san xuat:
+	- Khong được trống
+	- Phải là số
+	- Phải từ năm 2010 đến nay*/	
 	if(ManufacturerYear == "")
 	{
-		alert("Năm Sản Xuất không được để trống!");
+		alert("Năm Sản Xuất không được để trống.");
 		document.getElementById("ManufacturerYear").focus();
 		return false;
 	}
 	
 	if(isNaN(ManufacturerYear))
 	{
-		alert("Năm Sản Xuất phải là kiểu số!");
+		alert("Năm Sản Xuất phải là kiểu số.");
 		document.getElementById("ManufacturerYear").focus();
 		document.getElementById("ManufacturerYear").value = "";
 		return false;
 	}
 	
-	if(ManufacturerYear < 1981 || ManufacturerYear > n)
+	var n = new Date().getFullYear();
+	if(ManufacturerYear < 2010 || ManufacturerYear > n)
 	{
-		alert("Năm Sản Xuất phải từ 1981 đến năm hiện hành!");
+		alert("Năm Sản Xuất phải từ 2010 đến năm hiện hành.");
 		document.getElementById("ManufacturerYear").focus();
 		document.getElementById("ManufacturerYear").value = "";
 		return false;
@@ -591,7 +639,7 @@ function check()
                                 <td align="left" valign="top">
                                   	<input name="fieldImage" id="fieldImage" type="image" src="images/product/<%=(rsUpdateProduct.Fields.Item("ProductImage").Value)%>" width="200" height="200"/><br/>
                                     <input name="ProductImage" id="ProductImage" type="text" value="<%=(rsUpdateProduct.Fields.Item("ProductImage").Value)%>" readonly/><br/><br/>
-                                	<input name="fileImage" id="fileImage" type="file" onChange="cut_string()">
+                                	<input name="fileImage" id="fileImage" type="file" accept=".jpg, .jpeg, .png, .gif, .bmp" onChange="cut_string()">
                               </td>
        						</tr>
                             <tr>
@@ -630,7 +678,7 @@ function check()
                             </tr>
                             <tr>
                                 <td align="right" valign="top"><input type="submit" id="btnUpdate" name="btnUpdate" value="Cập Nhật" class="btn search"/></td>
-                                <td align="left" valign="top"><input type="reset" value="Hủy" class="btn search"/>&nbsp;&nbsp;<a href="javascript:history.back()" class="btn search">Trở Về</a></td>
+                                <td align="left" valign="top"><!--<input type="reset" value="Hủy" class="btn search"/>&nbsp;&nbsp;--><a href="javascript:history.back()" class="btn search">Trở Về</a></td>
                             </tr>
                             <tr>
                                 <td align="right" valign="top">&nbsp;</td>
