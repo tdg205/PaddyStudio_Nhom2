@@ -340,7 +340,8 @@ Else
 End If
 %>
 <!doctype html>
-<html><!-- InstanceBegin template="/Templates/temp.dwt.asp" codeOutsideHTMLIsLocked="false" -->
+<html>
+<!-- InstanceBegin template="/Templates/temp.dwt.asp" codeOutsideHTMLIsLocked="false" -->
 <head>
 <%
 Dim rsFeedbackID
@@ -411,9 +412,8 @@ End If
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>Quản Lý Sản Phẩm</title>
 <style>
-td, th
-{
-	text-align:center;
+td, th {
+	text-align: center;
 }
 </style>
 <!-- InstanceEndEditable -->
@@ -489,9 +489,7 @@ td, th
 </header>
 <!--/header-->
 <!-- InstanceBeginEditable name="Slider" -->
-    
-    
-	<!-- InstanceEndEditable -->
+<!-- InstanceEndEditable -->
 <section><!--section-->
   <div class="container">
     <div class="row">
@@ -527,56 +525,56 @@ td, th
           </div>
           <!--/brands_products-->
           <!-- InstanceBeginEditable name="left" -->
-						<!-- InstanceEndEditable -->
+          <!-- InstanceEndEditable -->
         </div>
       </div>
       <div class="col-sm-9 padding-right">
         <!-- InstanceBeginEditable name="Content" -->
-                    <h2 class="title text-center">Quản Lý Sản Phẩm</h2>
-                    <div class="col-sm-12">
-                   		<table width="100%" border="1" cellpadding="5" cellspacing="5">
-                      		<tr>
-                        		<td><strong>Mã Sản Phẩm</strong></td>
-                        		<td><strong>Tên Sản Phẩm</strong></td>
-                        		<td><strong>Hình Ảnh</strong></td>
-                        		<td colspan="2"><strong>Thao Tác</strong></td>
-                      		</tr>
-                      		<% While ((Repeat2__numRows <> 0) AND (NOT rsManageProduct.EOF)) %>
-                        	<tr>
-                          		<th><%=(rsManageProduct.Fields.Item("ProductID").Value)%></th>
-                          		<td><%=(rsManageProduct.Fields.Item("ProductName").Value)%></td>
-                          		<td><img src="images/product/<%=(rsManageProduct.Fields.Item("ProductImage").Value)%>" width="200" height="200"></td>
-                          		<td><a HREF="Admin_DetailProduct.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "ProductID=" & rsManageProduct.Fields.Item("ProductID").Value %>" class="btn search">Xem</a></td>
-                          		<td><a HREF="Admin_UpdateProduct.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "ProductID=" & rsManageProduct.Fields.Item("ProductID").Value %>" class="btn search">Sửa</a></td>
-                        	</tr>
-                        	<% 
+        <h2 class="title text-center">Quản Lý Sản Phẩm</h2>
+        <div class="col-sm-12">
+          <table width="100%" border="1" cellpadding="5" cellspacing="5">
+            <tr>
+              <td><strong>Mã Sản Phẩm</strong></td>
+              <td><strong>Tên Sản Phẩm</strong></td>
+              <td><strong>Hình Ảnh</strong></td>
+              <td colspan="2"><strong>Thao Tác</strong></td>
+            </tr>
+            <% While ((Repeat2__numRows <> 0) AND (NOT rsManageProduct.EOF)) %>
+              <tr>
+                <th><%=(rsManageProduct.Fields.Item("ProductID").Value)%></th>
+                <td><%=(rsManageProduct.Fields.Item("ProductName").Value)%></td>
+                <td><img src="images/product/<%=(rsManageProduct.Fields.Item("ProductImage").Value)%>" width="200" height="200"></td>
+                <td><a HREF="Admin_DetailProduct.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "ProductID=" & rsManageProduct.Fields.Item("ProductID").Value %>" class="btn search">Xem</a></td>
+                <td><a HREF="Admin_UpdateProduct.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "ProductID=" & rsManageProduct.Fields.Item("ProductID").Value %>" class="btn search">Sửa</a></td>
+              </tr>
+              <% 
   								Repeat2__index=Repeat2__index+1
   								Repeat2__numRows=Repeat2__numRows-1
   								rsManageProduct.MoveNext()
 								Wend
 							%>
-                    	</table>
-                        <br/>
-                      	<table border="0" align="right">
-                      		<tr>
-                        		<td><% If MM_offset <> 0 Then %>
-                            		<a href="<%=MM_moveFirst%>" class="btn btn-default add-to-cart">Trang Đầu Tiên</a>
-                            		<% End If ' end MM_offset <> 0 %></td>
-                        		<td><% If MM_offset <> 0 Then %>
-                            		<a href="<%=MM_movePrev%>" class="btn btn-default add-to-cart">Trang Trước</a>
-                            		<% End If ' end MM_offset <> 0 %></td>
-                        		<td><% If Not MM_atTotal Then %>
-                            		<a href="<%=MM_moveNext%>" class="btn btn-default add-to-cart">Trang Sau</a>
-                            		<% End If ' end Not MM_atTotal %></td>
-                        		<td><% If Not MM_atTotal Then %>
-                            		<a href="<%=MM_moveLast%>" class="btn btn-default add-to-cart">Trang Cuối</a>
-                            		<% End If ' end Not MM_atTotal %></td>
-                      		</tr>
-                    	</table>
-                        <a href="Admin_InsertProduct.asp" class="btn search">Thêm Sản Phẩm</a>
-                        <br/><br/>
-                 	</div>
-                    <!-- InstanceEndEditable -->
+          </table>
+          <br/>
+          <table border="0" align="right">
+            <tr>
+              <td><% If MM_offset <> 0 Then %>
+                  <a href="<%=MM_moveFirst%>" class="btn btn-default add-to-cart">Trang Đầu Tiên</a>
+                  <% End If ' end MM_offset <> 0 %></td>
+              <td><% If MM_offset <> 0 Then %>
+                  <a href="<%=MM_movePrev%>" class="btn btn-default add-to-cart">Trang Trước</a>
+                  <% End If ' end MM_offset <> 0 %></td>
+              <td><% If Not MM_atTotal Then %>
+                  <a href="<%=MM_moveNext%>" class="btn btn-default add-to-cart">Trang Sau</a>
+                  <% End If ' end Not MM_atTotal %></td>
+              <td><% If Not MM_atTotal Then %>
+                  <a href="<%=MM_moveLast%>" class="btn btn-default add-to-cart">Trang Cuối</a>
+                  <% End If ' end Not MM_atTotal %></td>
+            </tr>
+          </table>
+          <a href="Admin_InsertProduct.asp" class="btn search">Thêm Sản Phẩm</a><br/>
+          <br/>
+        </div>
+        <!-- InstanceEndEditable -->
       </div>
     </div>
   </div>
@@ -653,7 +651,7 @@ td, th
     <div class="container">
       <div class="row">
         <p class="pull-left">Copyright 2016 - 2018 Paddy Studio. All rights reserved.</p>
-        <p class="pull-right">Designed by <span> Group 2 - Paddy Studio</span></p>
+        <p class="pull-right">Designed by<span>Group 2 - Paddy Studio</span></p>
       </div>
     </div>
   </div>
@@ -661,7 +659,8 @@ td, th
 <!--/Footer-->
 
 </body>
-<!-- InstanceEnd --></html>
+<!-- InstanceEnd -->
+</html>
 <%
 rsBrands.Close()
 Set rsBrands = Nothing

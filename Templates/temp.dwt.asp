@@ -1,4 +1,5 @@
 
+
 <%@LANGUAGE="VBSCRIPT" CODEPAGE="65001"%>
 <!--#include file="../Connections/cn.asp" -->
 <%
@@ -178,7 +179,7 @@ End If
         <div class="shop-menu pull-right">
           <ul class="nav navbar-nav">
             <% 	If(Session("MM_Username") <> "") Then %>
-            <li><a>Xin chào,<%=Session("MM_Username")%></a></li>
+            <li><a>Xin chào, <%=Session("MM_Username")%></a></li>
             <% 	If(Session("MM_UserRole") = "1") Then %>
             <li><a href="../Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Tài Khoản</a></li>
             <% 	Else If(Session("MM_UserRole") = "0") Then %>

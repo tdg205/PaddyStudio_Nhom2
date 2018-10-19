@@ -375,7 +375,7 @@ End If
         <!-- InstanceBeginEditable name="Content" -->
                     <h2 class="title text-center">Xem Sản Phẩm</h2>
                     <div class="col-sm-12">
-                    <form ACTION="<%=MM_editAction%>"  id="form1" name="form1" method="POST">
+                    <form ACTION="<%=MM_editAction%>" id="form1" name="form1" method="POST">
                    	  <table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
                             <tr>
           						<td colspan="2" align="center" valign="middle"><img src="images/product/<%=(rsAdmin_ProductDetail.Fields.Item("ProductImage").Value)%>" width="400" height="400"></td>
