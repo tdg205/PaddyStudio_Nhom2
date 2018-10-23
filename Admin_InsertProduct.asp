@@ -79,7 +79,7 @@ If (CStr(Request("MM_insert")) = "form1") Then
     MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param1", 201, 1, 50, Request.Form("ProductName")) ' adLongVarChar
     MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param2", 201, 1, 200, Request.Form("ProductImage")) ' adLongVarChar
     MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param3", 202, 1, 500, Request.Form("ProductDescription")) ' adVarWChar
-    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param4", 5, 1, -1, MM_IIF(Request.Form("Price"), Request.Form("Price"), null)) ' adDouble
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param4", 201, 1, 20, Request.Form("Price")) ' adLongVarChar
     MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param5", 5, 1, -1, MM_IIF(Request.Form("WarrantyTime"), Request.Form("WarrantyTime"), null)) ' adDouble
     MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param6", 5, 1, -1, MM_IIF(Request.Form("ManufacturerYear"), Request.Form("ManufacturerYear"), null)) ' adDouble
     MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param7", 201, 1, 20, Request.Form("lsBrands")) ' adLongVarChar

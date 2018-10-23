@@ -187,7 +187,8 @@ Function MM_joinChar(firstItem)
 End Function
 %>
 <!doctype html>
-<html><!-- InstanceBegin template="/Templates/temp.dwt.asp" codeOutsideHTMLIsLocked="false" -->
+<html>
+<!-- InstanceBegin template="/Templates/temp.dwt.asp" codeOutsideHTMLIsLocked="false" -->
 <head>
 <%
 Dim rsFeedbackID
@@ -257,6 +258,16 @@ End If
 <script src="js/main.js"></script>
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>Xem Sản Phẩm</title>
+<script>
+function confirmDelete()
+{
+	if(confirm("Bạn muốn xóa thông tin Sản Phẩm này?")){
+		return true;
+	} else {
+		return false;
+	}
+}
+</script>
 <!-- InstanceEndEditable -->
 <!-- InstanceBeginEditable name="head" -->
 <!-- InstanceEndEditable -->
@@ -279,7 +290,7 @@ End If
         <div class="shop-menu pull-right">
           <ul class="nav navbar-nav">
             <% 	If(Session("MM_Username") <> "") Then %>
-            <li><a>Xin chào, <%=Session("MM_Username")%></a></li>
+            <li><a>Xin chào,<%=Session("MM_Username")%></a></li>
             <% 	If(Session("MM_UserRole") = "1") Then %>
             <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Tài Khoản</a></li>
             <% 	Else If(Session("MM_UserRole") = "0") Then %>
@@ -331,9 +342,7 @@ End If
 <!--/header-->
 
 <!-- InstanceBeginEditable name="Slider" -->
-    
-    
-	<!-- InstanceEndEditable -->
+<!-- InstanceEndEditable -->
 <section><!--section-->
   <div class="container">
     <div class="row">
@@ -369,56 +378,56 @@ End If
           </div>
           <!--/brands_products-->
           <!-- InstanceBeginEditable name="left" -->
-						<!-- InstanceEndEditable -->
+          <!-- InstanceEndEditable -->
         </div>
       </div>
       <div class="col-sm-9 padding-right">
         <!-- InstanceBeginEditable name="Content" -->
-                    <h2 class="title text-center">Xem Sản Phẩm</h2>
-                    <div class="col-sm-12">
-                    <form ACTION="<%=MM_editAction%>" id="form1" name="form1" method="POST">
-                   	  <table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
-                            <tr>
-          						<td colspan="2" align="center" valign="middle"><img src="images/product/<%=(rsAdmin_ProductDetail.Fields.Item("ProductImage").Value)%>" width="400" height="400"></td>
-       						</tr>
-        					<tr>
-          						<td width="40%" align="right" valign="top"><strong>Tên Sản Phẩm: &nbsp;</strong></td>
-          						<td width="60%" align="left" valign="top"><%=(rsAdmin_ProductDetail.Fields.Item("ProductName").Value)%></td>
-       						</tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Mô Tả: &nbsp;</strong></td>
-                                <td align="left" valign="top"><%=(rsAdmin_ProductDetail.Fields.Item("ProductDescription").Value)%></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Giá (VNĐ): &nbsp;</strong></td>
-                                <td align="left" valign="top"><%=(rsAdmin_ProductDetail.Fields.Item("Price").Value)%></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Bảo Hành (Tháng): &nbsp;</strong></td>
-                                <td align="left" valign="top"><%=(rsAdmin_ProductDetail.Fields.Item("WarrantyTime").Value)%></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Năm Sản Xuất: &nbsp;</strong></td>
-                                <td align="left" valign="top"><%=(rsAdmin_ProductDetail.Fields.Item("ManufacturerYear").Value)%></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Tên Thương Hiệu: &nbsp;</strong></td>
-                                <td align="left" valign="top"><%=(rsAdmin_ProductDetail.Fields.Item("BrandName").Value)%></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><a href="javascript:history.back()" class="btn search">Trở Về</a></td>
-                                <td align="left" valign="top"><input type="submit" id="btnXoa" name="btnXoa" value="Xóa" class="btn search"/></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top">&nbsp;</td>
-                                <td align="left" valign="top">&nbsp;</td>
-                            </tr>
-      					</table>
-                      <input type="hidden" name="MM_delete" value="form1">
-                      <input type="hidden" name="MM_recordId" value="<%= rsXoa.Fields.Item("ProductID").Value %>">
-                    </form>
-                    </div>
-					<!-- InstanceEndEditable -->
+        <h2 class="title text-center">Xem Sản Phẩm</h2>
+        <div class="col-sm-12">
+          <form ACTION="<%=MM_editAction%>" id="form1" name="form1" method="POST">
+            <table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
+              <tr>
+                <td colspan="2" align="center" valign="middle"><img src="images/product/<%=(rsAdmin_ProductDetail.Fields.Item("ProductImage").Value)%>" width="400" height="400"></td>
+              </tr>
+              <tr>
+                <td width="40%" align="right" valign="top"><strong>Tên Sản Phẩm: &nbsp;</strong></td>
+                <td width="60%" align="left" valign="top"><%=(rsAdmin_ProductDetail.Fields.Item("ProductName").Value)%></td>
+              </tr>
+              <tr>
+                <td align="right" valign="top"><strong>Mô Tả: &nbsp;</strong></td>
+                <td align="left" valign="top"><%=(rsAdmin_ProductDetail.Fields.Item("ProductDescription").Value)%></td>
+              </tr>
+              <tr>
+                <td align="right" valign="top"><strong>Giá (VNĐ): &nbsp;</strong></td>
+                <td align="left" valign="top"><%=(rsAdmin_ProductDetail.Fields.Item("Price").Value)%></td>
+              </tr>
+              <tr>
+                <td align="right" valign="top"><strong>Bảo Hành (Tháng): &nbsp;</strong></td>
+                <td align="left" valign="top"><%=(rsAdmin_ProductDetail.Fields.Item("WarrantyTime").Value)%></td>
+              </tr>
+              <tr>
+                <td align="right" valign="top"><strong>Năm Sản Xuất: &nbsp;</strong></td>
+                <td align="left" valign="top"><%=(rsAdmin_ProductDetail.Fields.Item("ManufacturerYear").Value)%></td>
+              </tr>
+              <tr>
+                <td align="right" valign="top"><strong>Tên Thương Hiệu: &nbsp;</strong></td>
+                <td align="left" valign="top"><%=(rsAdmin_ProductDetail.Fields.Item("BrandName").Value)%></td>
+              </tr>
+              <tr>
+                <td align="right" valign="top"><a href="javascript:history.back()" class="btn search">Trở Về</a></td>
+                <td align="left" valign="top"><input type="submit" id="btnXoa" name="btnXoa" value="Xóa" class="btn search" onClick="return confirmDelete()"/></td>
+              </tr>
+              <tr>
+                <td align="right" valign="top">&nbsp;</td>
+                <td align="left" valign="top">&nbsp;</td>
+              </tr>
+            </table>
+            <input type="hidden" name="MM_delete" value="form1">
+            <input type="hidden" name="MM_recordId" value="<%= rsXoa.Fields.Item("ProductID").Value %>">
+          </form>
+        </div>
+        <!-- InstanceEndEditable -->
       </div>
     </div>
   </div>
@@ -495,7 +504,7 @@ End If
     <div class="container">
       <div class="row">
         <p class="pull-left">Copyright 2016 - 2018 Paddy Studio. All rights reserved.</p>
-        <p class="pull-right">Designed by <span>Group 2 - Paddy Studio</span></p>
+        <p class="pull-right">Designed by<span>Group 2 - Paddy Studio</span></p>
       </div>
     </div>
   </div>
@@ -503,7 +512,8 @@ End If
 <!--/Footer-->
 
 </body>
-<!-- InstanceEnd --></html>
+<!-- InstanceEnd -->
+</html>
 <%
 rsBrands.Close()
 Set rsBrands = Nothing

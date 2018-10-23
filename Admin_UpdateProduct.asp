@@ -42,34 +42,6 @@ Function MM_IIf(condition, ifTrue, ifFalse)
 End Function
 %>
 <%
-Session("newProductName") = CStr(Request.Form("ProductName"))
-Session("oldProductName") = CStr(Request.Form("ProductName1"))
-
-If(Session("newProductName") <> Session("oldProductName")) Then
-	MM_flag = "MM_update"
-	If (CStr(Request(MM_flag)) <> "") Then
-  		Dim MM_rsKey
-  		Dim MM_rsKey_cmd
-  
-  		MM_dupKeyRedirect = "Admin_DuplicatedProductName.asp"
-  		MM_dupKeyUsernameValue = CStr(Request.Form("ProductName"))
-  		Set MM_rsKey_cmd = Server.CreateObject ("ADODB.Command")
-  		MM_rsKey_cmd.ActiveConnection = MM_cn_STRING
-  		MM_rsKey_cmd.CommandText = "SELECT ProductName FROM dbo.tbProduct WHERE ProductName = ?"
-  		MM_rsKey_cmd.Prepared = true
-  		MM_rsKey_cmd.Parameters.Append MM_rsKey_cmd.CreateParameter("param1", 200, 1, 50, MM_dupKeyUsernameValue) ' adVarChar
-  		Set MM_rsKey = MM_rsKey_cmd.Execute
-  		If Not MM_rsKey.EOF Or Not MM_rsKey.BOF Then 
-    		' the username was found - can not add the requested username
-    		MM_qsChar = "?"
-    		If (InStr(1, MM_dupKeyRedirect, "?") >= 1) Then MM_qsChar = "&"
-    		MM_dupKeyRedirect = MM_dupKeyRedirect & MM_qsChar & "requsername=" & MM_dupKeyUsernameValue
-    		Response.Redirect(MM_dupKeyRedirect)
-  		End If
-  		MM_rsKey.Close
-	End If
-End If
-
 If (CStr(Request("MM_update")) = "form1") Then
   If (Not MM_abortEdit) Then
     ' execute the update
@@ -82,7 +54,7 @@ If (CStr(Request("MM_update")) = "form1") Then
     MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param1", 201, 1, 50, Request.Form("ProductName")) ' adLongVarChar
     MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param2", 201, 1, 200, Request.Form("ProductImage")) ' adLongVarChar
     MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param3", 202, 1, 500, Request.Form("ProductDescription")) ' adVarWChar
-    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param4", 5, 1, -1, MM_IIF(Request.Form("Price"), Request.Form("Price"), null)) ' adDouble
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param4", 201, 1, 20, Request.Form("Price")) ' adLongVarChar
     MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param5", 5, 1, -1, MM_IIF(Request.Form("WarrantyTime"), Request.Form("WarrantyTime"), null)) ' adDouble
     MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param6", 5, 1, -1, MM_IIF(Request.Form("ManufacturerYear"), Request.Form("ManufacturerYear"), null)) ' adDouble
     MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param7", 201, 1, 20, Request.Form("BrandName")) ' adLongVarChar
@@ -252,7 +224,8 @@ Function MM_joinChar(firstItem)
 End Function
 %>
 <!doctype html>
-<html><!-- InstanceBegin template="/Templates/temp.dwt.asp" codeOutsideHTMLIsLocked="false" -->
+<html>
+<!-- InstanceBegin template="/Templates/temp.dwt.asp" codeOutsideHTMLIsLocked="false" -->
 <head>
 <%
 Dim rsFeedbackID
@@ -323,6 +296,40 @@ End If
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>Cập Nhật Sản Phẩm</title>
 <script>
+function confirmUpdate()
+{
+	if(confirm("Bạn muốn cập nhật thông tin Sản Phẩm ?")){
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function change_price()
+{
+	var Price = document.getElementById("Price").value;
+	//alert(Number(Price));
+	if(!isNaN(Number(Price))){		
+		var chPrice = "";
+		var count = Price.length;
+		for(count; ;count=count-3){
+			if(count<=3){
+				//substring(bengin, end)
+				var subPrice = Price.substring(0, count);
+				chPrice = subPrice + chPrice;
+				break;
+			} else {		
+				//substr(bengin, length)	
+				var subPrice = Price.substr(count-3, 3);
+				chPrice = "." + subPrice + chPrice;	
+				//alert(subPrice);		
+			}					
+		}
+		//alert(chPrice);
+		document.getElementById("Price").value = chPrice;
+	}
+}
+
 function cut_string()
 {
 	var s = new String(document.getElementById("fileImage").value);
@@ -422,7 +429,11 @@ function check()
 	- Phai la so
 	- Phai lon hon hoặc bằng 0
 	- Không lớn hơn 200 triệu*/
-		
+	//string.replace(chuoicantim,chuoithaythe);
+	for(var i=0; i<Price.length; i++) {	 
+		Price = Price.replace(".","");	 
+	}
+	//alert(Price);	
 	if(Price == "")
 	{
 		alert("Giá (VNĐ) không được để trống.");
@@ -442,6 +453,7 @@ function check()
 	{
 		alert("Giá (VNĐ) phải lớn hơn hoặc bằng 0.");
 		document.getElementById("Price").focus();
+		document.getElementById("Price").value = "";
 		return false;
 	}
 	
@@ -449,6 +461,7 @@ function check()
 	{
 		alert("Giá (VNĐ) không được lớn hơn 200 triệu.");
 		document.getElementById("Price").focus();
+		document.getElementById("Price").value = "";
 		return false;
 	}
 	
@@ -531,7 +544,7 @@ function check()
         <div class="shop-menu pull-right">
           <ul class="nav navbar-nav">
             <% 	If(Session("MM_Username") <> "") Then %>
-            <li><a>Xin chào, <%=Session("MM_Username")%></a></li>
+            <li><a>Xin chào,<%=Session("MM_Username")%></a></li>
             <% 	If(Session("MM_UserRole") = "1") Then %>
             <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Tài Khoản</a></li>
             <% 	Else If(Session("MM_UserRole") = "0") Then %>
@@ -583,9 +596,7 @@ function check()
 <!--/header-->
 
 <!-- InstanceBeginEditable name="Slider" -->
-    
-    
-	<!-- InstanceEndEditable -->
+<!-- InstanceEndEditable -->
 <section><!--section-->
   <div class="container">
     <div class="row">
@@ -621,52 +632,53 @@ function check()
           </div>
           <!--/brands_products-->
           <!-- InstanceBeginEditable name="left" -->
-						<!-- InstanceEndEditable -->
+          <!-- InstanceEndEditable -->
         </div>
       </div>
       <div class="col-sm-9 padding-right">
         <!-- InstanceBeginEditable name="Content" -->
-                    <h2 class="title text-center">Cập Nhật Sản Phẩm</h2>
-                    <div class="col-sm-12">
-                    <form ACTION="<%=MM_editAction%>" id="form1" name="form1" method="POST" onSubmit="return check()">
-                   	  <table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
-                            <% While ((Repeat2__numRows <> 0) AND (NOT rsUpdateProduct.EOF)) %>
-                            <tr>
-          						<td width="40%" align="right" valign="top"><strong>Tên Sản Phẩm:* &nbsp;</strong></td>
-          						<td width="60%" align="left" valign="top"><input id="ProductName" name="ProductName" type="text" size="35" value="<%=(rsUpdateProduct.Fields.Item("ProductName").Value)%>"/></td>
-       						</tr>
-        					<tr>
-          						<td align="right" valign="top"><strong>Hình Ảnh:* &nbsp;</strong></td>
-                                <td align="left" valign="top">
-                                  	<input name="fieldImage" id="fieldImage" type="image" src="images/product/<%=(rsUpdateProduct.Fields.Item("ProductImage").Value)%>" width="200" height="200"/><br/>
-                                    <input name="ProductImage" id="ProductImage" type="text" value="<%=(rsUpdateProduct.Fields.Item("ProductImage").Value)%>" readonly/><br/><br/>
-                                	<input name="fileImage" id="fileImage" type="file" accept=".jpg, .jpeg, .png, .gif, .bmp" onChange="cut_string()">
-                              </td>
-       						</tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Mô Tả:* &nbsp;</strong></td>
-                                <td align="left" valign="top"><textarea id="ProductDescription" name="ProductDescription" cols="32" rows="12" ><%=(rsUpdateProduct.Fields.Item("ProductDescription").Value)%></textarea></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Giá (VNĐ):* &nbsp;</strong></td>
-                                <td align="left" valign="top"><input id="Price" name="Price" type="text" size="35" value="<%=(rsUpdateProduct.Fields.Item("Price").Value)%>" /></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Bảo Hành (Tháng):* &nbsp;</strong></td>
-                                <td align="left" valign="top"><input id="WarrantyTime" name="WarrantyTime" type="text" size="35" value="<%=(rsUpdateProduct.Fields.Item("WarrantyTime").Value)%>" /></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Năm Sản Xuất:* &nbsp;</strong></td>
-                                <td align="left" valign="top"><input id="ManufacturerYear" name="ManufacturerYear" type="text" size="35" value="<%=(rsUpdateProduct.Fields.Item("ManufacturerYear").Value)%>" /></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Tên Thương Hiệu: &nbsp;</strong></td>
-                                <td align="left" valign="top"><select id="BrandName" name="BrandName" >
-                        		<%
+        <h2 class="title text-center">Cập Nhật Sản Phẩm</h2>
+        <div class="col-sm-12">
+          <form ACTION="<%=MM_editAction%>" id="form1" name="form1" method="POST" onSubmit="return check()">
+            <table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
+              <% While ((Repeat2__numRows <> 0) AND (NOT rsUpdateProduct.EOF)) %>
+                <tr>
+                  <td width="40%" align="right" valign="top"><strong>Tên Sản Phẩm:* &nbsp;</strong></td>
+                  <td width="60%" align="left" valign="top"><input id="ProductName" name="ProductName" type="text" size="35" value="<%=(rsUpdateProduct.Fields.Item("ProductName").Value)%>"/></td>
+                </tr>
+                <tr>
+                  <td align="right" valign="top"><strong>Hình Ảnh:* &nbsp;</strong></td>
+                  <td align="left" valign="top"><input name="fieldImage" id="fieldImage" type="image" src="images/product/<%=(rsUpdateProduct.Fields.Item("ProductImage").Value)%>" width="200" height="200"/>
+                    <br/>
+                    <input name="ProductImage" id="ProductImage" type="text" value="<%=(rsUpdateProduct.Fields.Item("ProductImage").Value)%>" readonly/>
+                    <br/>
+                    <br/>
+                    <input name="fileImage" id="fileImage" type="file" accept=".jpg, .jpeg, .png, .gif, .bmp" onChange="cut_string()"></td>
+                </tr>
+                <tr>
+                  <td align="right" valign="top"><strong>Mô Tả:* &nbsp;</strong></td>
+                  <td align="left" valign="top"><textarea id="ProductDescription" name="ProductDescription" cols="32" rows="12" ><%=(rsUpdateProduct.Fields.Item("ProductDescription").Value)%></textarea></td>
+                </tr>
+                <tr>
+                  <td align="right" valign="top"><strong>Giá (VNĐ):* &nbsp;</strong></td>
+                  <td align="left" valign="top"><input id="Price" name="Price" type="text" size="35" value="<%=(rsUpdateProduct.Fields.Item("Price").Value)%>" onChange="change_price()"/></td>
+                </tr>
+                <tr>
+                  <td align="right" valign="top"><strong>Bảo Hành (Tháng):* &nbsp;</strong></td>
+                  <td align="left" valign="top"><input id="WarrantyTime" name="WarrantyTime" type="text" size="35" value="<%=(rsUpdateProduct.Fields.Item("WarrantyTime").Value)%>" /></td>
+                </tr>
+                <tr>
+                  <td align="right" valign="top"><strong>Năm Sản Xuất:* &nbsp;</strong></td>
+                  <td align="left" valign="top"><input id="ManufacturerYear" name="ManufacturerYear" type="text" size="35" value="<%=(rsUpdateProduct.Fields.Item("ManufacturerYear").Value)%>" /></td>
+                </tr>
+                <tr>
+                  <td align="right" valign="top"><strong>Tên Thương Hiệu: &nbsp;</strong></td>
+                  <td align="left" valign="top"><select id="BrandName" name="BrandName" >
+                      <%
 									While (NOT rsBrandList.EOF)
 								%>
-                                  <option value="<%=(rsBrandList.Fields.Item("BrandName").Value)%>" <%If (Not isNull((rsUpdateProduct.Fields.Item("BrandName").Value))) Then If (CStr(rsBrandList.Fields.Item("BrandName").Value) = CStr((rsUpdateProduct.Fields.Item("BrandName").Value))) Then Response.Write("selected=""selected""") : Response.Write("")%> ><%=(rsBrandList.Fields.Item("BrandName").Value)%></option>
-                         		<%
+                      <option value="<%=(rsBrandList.Fields.Item("BrandName").Value)%>" <%If (Not isNull((rsUpdateProduct.Fields.Item("BrandName").Value))) Then If (CStr(rsBrandList.Fields.Item("BrandName").Value) = CStr((rsUpdateProduct.Fields.Item("BrandName").Value))) Then Response.Write("selected=""selected""") : Response.Write("")%> ><%=(rsBrandList.Fields.Item("BrandName").Value)%></option>
+                      <%
   									rsBrandList.MoveNext()
 									Wend
 									If (rsBrandList.CursorType > 0) Then
@@ -675,32 +687,32 @@ function check()
   										rsBrandList.Requery
 									End If
 								%>
-                              </select></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><input type="submit" id="btnUpdate" name="btnUpdate" value="Cập Nhật" class="btn search"/></td>
-                                <td align="left" valign="top"><!--<input type="reset" value="Hủy" class="btn search"/>&nbsp;&nbsp;--><a href="javascript:history.back()" class="btn search">Trở Về</a></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top">&nbsp;</td>
-                                <td align="left" valign="top"><strong><b>(*) : Không Được Để Trống</strong></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top">&nbsp;</td>
-                                <td align="left" valign="top"><input id="ProductName1" name="ProductName1" type="hidden" size="35" value="<%=(rsUpdateProduct.Fields.Item("ProductName").Value)%>"/></td>
-                            </tr>
-                            <% 
+                    </select></td>
+                </tr>
+                <tr>
+                  <td align="right" valign="top"><input type="submit" id="btnUpdate" name="btnUpdate" value="Cập Nhật" class="btn search" onClick="return confirmUpdate()"/></td>
+                  <td align="left" valign="top"><!--<input type="reset" value="Hủy" class="btn search"/>&nbsp;&nbsp;--><a href="javascript:history.back()" class="btn search">Trở Về</a></td>
+                </tr>
+                <tr>
+                  <td align="right" valign="top">&nbsp;</td>
+                  <td align="left" valign="top"><strong><b>(*) : Không Được Để Trống</strong></td>
+                </tr>
+                <tr>
+                  <td align="right" valign="top">&nbsp;</td>
+                  <td align="left" valign="top"><input id="ProductName1" name="ProductName1" type="hidden" size="35" value="<%=(rsUpdateProduct.Fields.Item("ProductName").Value)%>"/></td>
+                </tr>
+                <% 
   								Repeat2__index=Repeat2__index+1
   								Repeat2__numRows=Repeat2__numRows-1
   								rsUpdateProduct.MoveNext()
 								Wend
 							%>
-   					  </table>
-                      <input type="hidden" name="MM_update" value="form1">
-                      <input type="hidden" name="MM_recordId" value="<%= rsUpdate.Fields.Item("ProductID").Value %>">
-                    </form>
-                    </div>
-					<!-- InstanceEndEditable -->
+            </table>
+            <input type="hidden" name="MM_update" value="form1">
+            <input type="hidden" name="MM_recordId" value="<%= rsUpdate.Fields.Item("ProductID").Value %>">
+          </form>
+        </div>
+        <!-- InstanceEndEditable -->
       </div>
     </div>
   </div>
@@ -777,7 +789,7 @@ function check()
     <div class="container">
       <div class="row">
         <p class="pull-left">Copyright 2016 - 2018 Paddy Studio. All rights reserved.</p>
-        <p class="pull-right">Designed by <span>Group 2 - Paddy Studio</span></p>
+        <p class="pull-right">Designed by<span>Group 2 - Paddy Studio</span></p>
       </div>
     </div>
   </div>
@@ -785,7 +797,8 @@ function check()
 <!--/Footer-->
 
 </body>
-<!-- InstanceEnd --></html>
+<!-- InstanceEnd -->
+</html>
 <%
 rsBrands.Close()
 Set rsBrands = Nothing
