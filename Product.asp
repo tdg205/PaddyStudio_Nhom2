@@ -7,7 +7,7 @@ Dim rsBrands_numRows
 
 Set rsBrands_cmd = Server.CreateObject ("ADODB.Command")
 rsBrands_cmd.ActiveConnection = MM_cn_STRING
-rsBrands_cmd.CommandText = "SELECT a. BrandName, count(*) as ProCount  FROM dbo.tbProduct a join dbo.tbBrand b on a.BrandName = b.BrandName group by a. BrandName" 
+rsBrands_cmd.CommandText = "SELECT a. BrandName, count(*) as ProCount  FROM dbo.tbProduct a join dbo.tbBrand b on a.BrandName = b.BrandName group by a.BrandName" 
 rsBrands_cmd.Prepared = true
 
 Set rsBrands = rsBrands_cmd.Execute
@@ -449,7 +449,7 @@ End If
         <div class="shop-menu pull-right">
           <ul class="nav navbar-nav">
             <% 	If(Session("MM_Username") <> "") Then %>
-            <li><a>Xin chào,<%=Session("MM_Username")%></a></li>
+            <li><a>Xin chào, <%=Session("MM_Username")%></a></li>
             <% 	If(Session("MM_UserRole") = "1") Then %>
             <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Tài Khoản</a></li>
             <% 	Else If(Session("MM_UserRole") = "0") Then %>
@@ -499,10 +499,9 @@ End If
   <!--/header-bottom-->
 </header>
 <!--/header-->
+
 <!-- InstanceBeginEditable name="Slider" -->
-    
-    
-	<!-- InstanceEndEditable -->
+<!-- InstanceEndEditable -->
 <section><!--section-->
   <div class="container">
     <div class="row">
@@ -528,74 +527,75 @@ End If
                 <% While ((Repeat1__numRows <> 0) AND (NOT rsBrands.EOF)) %>
                   <li><a HREF="Product_withBrands.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "BrandName=" & rsBrands.Fields.Item("BrandName").Value %>"><span class="pull-right">(<%=(rsBrands.Fields.Item("ProCount").Value)%>)</span><%=(rsBrands.Fields.Item("BrandName").Value)%></a></li>
                   <% 
-  										Repeat1__index=Repeat1__index+1
-  										Repeat1__numRows=Repeat1__numRows-1
-  										rsBrands.MoveNext()
-										Wend
-									%>
+					Repeat1__index=Repeat1__index+1
+					Repeat1__numRows=Repeat1__numRows-1
+					rsBrands.MoveNext()
+					Wend
+				%>
               </ul>
             </div>
           </div>
           <!--/brands_products-->
           <!-- InstanceBeginEditable name="left" -->
-                        <br/><p></p>
-                        <div class="brands_products"><!--brands_products-->
-							<h2>Sắp Xếp</h2>
-							<div class="brands-name">
-								<ul class="nav nav-pills nav-stacked">
-                                   	<li><a href="Product.asp">Mới Nhất -> Cũ Nhất</a></li>
-                                    <li><a href="Product_SortOldest.asp">Cũ Nhất -> Mới Nhất</a></li> 
-                                    <li><a href="Product_SortPrice.asp">Giá Tăng Dần</a></li>	
-                                 	<li><a href="Product_SortPriceDESC.asp">Giá Giảm Dần</a></li>
-                                </ul>
-							</div>
-						</div><!--/brands_products-->
-						<!-- InstanceEndEditable -->
+          <br/>
+          <p></p>
+          <div class="brands_products"><!--brands_products-->
+            <h2>Sắp Xếp</h2>
+            <div class="brands-name">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="Product.asp">Mới Nhất -> Cũ Nhất</a></li>
+                <li><a href="Product_SortOldest.asp">Cũ Nhất -> Mới Nhất</a></li>
+                <li><a href="Product_SortPrice.asp">Giá Tăng Dần</a></li>
+                <li><a href="Product_SortPriceDESC.asp">Giá Giảm Dần</a></li>
+              </ul>
+            </div>
+          </div>
+          <!--/brands_products-->
+          <!-- InstanceEndEditable -->
         </div>
       </div>
       <div class="col-sm-9 padding-right">
         <!-- InstanceBeginEditable name="Content" -->
-                    <h2 class="title text-center">Hiển Thị Sản Phẩm</h2>
-                    <div class="features_items"><!--features_items-->
-						<% While ((Repeat2__numRows <> 0) AND (NOT rsProducts.EOF)) %>
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="images/product/<%=(rsProducts.Fields.Item("ProductImage").Value)%>" width="268" height="249" />
-										<h2><%=(rsProducts.Fields.Item("Price").Value)%> VNĐ</h2>
-										<p><%=(rsProducts.Fields.Item("ProductName").Value)%></p>
-                                        <a HREF="Product_Detail.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "ProductID=" & rsProducts.Fields.Item("ProductID").Value %>" class="btn btn-default add-to-cart">Xem Chi Tiết</a>
-									</div>
-								</div>
-							</div>
-						</div>
-                        <% 
+        <h2 class="title text-center">Hiển Thị Sản Phẩm</h2>
+        <div class="features_items"><!--features_items-->
+          <% While ((Repeat2__numRows <> 0) AND (NOT rsProducts.EOF)) %>
+            <div class="col-sm-4">
+              <div class="product-image-wrapper">
+                <div class="single-products">
+                  <div class="productinfo text-center"><img src="images/product/<%=(rsProducts.Fields.Item("ProductImage").Value)%>" width="268" height="249" />
+                    <h2><%=(rsProducts.Fields.Item("Price").Value)%> đ</h2>
+                    <p><%=(rsProducts.Fields.Item("ProductName").Value)%></p>
+                    <a HREF="Product_Detail.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "ProductID=" & rsProducts.Fields.Item("ProductID").Value %>" class="btn btn-default add-to-cart">Xem Chi Tiết</a></div>
+                </div>
+              </div>
+            </div>
+            <% 
   							Repeat2__index=Repeat2__index+1
   							Repeat2__numRows=Repeat2__numRows-1
   							rsProducts.MoveNext()
 							Wend
 						%>
-                    </div><!--features_items-->
-                    <div class="col-sm-12">
-                    <table border="0" align="right">
-                    	<tr>
-                        	<td><% If MM_offset <> 0 Then %>
-                                <a href="<%=MM_moveFirst%>" class="btn btn-default add-to-cart">Trang Đầu Tiên</a>
-                                <% End If ' end MM_offset <> 0 %></td>
-                            <td><% If MM_offset <> 0 Then %>
-                                <a href="<%=MM_movePrev%>" class="btn btn-default add-to-cart">Trang Trước</a>
-                                <% End If ' end MM_offset <> 0 %></td>
-                            <td><% If Not MM_atTotal Then %>
-                                <a href="<%=MM_moveNext%>" class="btn btn-default add-to-cart">Trang Sau</a>
-                                <% End If ' end Not MM_atTotal %></td>
-                            <td><% If Not MM_atTotal Then %>
-                                <a href="<%=MM_moveLast%>" class="btn btn-default add-to-cart">Trang Cuối Cùng</a>
-                                <% End If ' end Not MM_atTotal %></td>
-                    	</tr>
-            		</table>
-                    </div>
-					<!-- InstanceEndEditable -->
+        </div>
+        <!--features_items-->
+        <div class="col-sm-12">
+          <table border="0" align="right">
+            <tr>
+              <td><% If MM_offset <> 0 Then %>
+                  <a href="<%=MM_moveFirst%>" class="btn btn-default add-to-cart">Trang Đầu Tiên</a>
+                  <% End If ' end MM_offset <> 0 %></td>
+              <td><% If MM_offset <> 0 Then %>
+                  <a href="<%=MM_movePrev%>" class="btn btn-default add-to-cart">Trang Trước</a>
+                  <% End If ' end MM_offset <> 0 %></td>
+              <td><% If Not MM_atTotal Then %>
+                  <a href="<%=MM_moveNext%>" class="btn btn-default add-to-cart">Trang Sau</a>
+                  <% End If ' end Not MM_atTotal %></td>
+              <td><% If Not MM_atTotal Then %>
+                  <a href="<%=MM_moveLast%>" class="btn btn-default add-to-cart">Trang Cuối Cùng</a>
+                  <% End If ' end Not MM_atTotal %></td>
+            </tr>
+          </table>
+        </div>
+        <!-- InstanceEndEditable -->
       </div>
     </div>
   </div>
@@ -672,7 +672,7 @@ End If
     <div class="container">
       <div class="row">
         <p class="pull-left">Copyright 2016 - 2018 Paddy Studio. All rights reserved.</p>
-        <p class="pull-right">Designed by <span> Group 2 - Paddy Studio</span></p>
+        <p class="pull-right">Designed by <span>Group 2 - Paddy Studio</span></p>
       </div>
     </div>
   </div>

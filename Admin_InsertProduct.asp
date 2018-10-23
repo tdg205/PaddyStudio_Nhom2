@@ -198,8 +198,7 @@ Function MM_joinChar(firstItem)
 End Function
 %>
 <!doctype html>
-<html>
-<!-- InstanceBegin template="/Templates/temp.dwt.asp" codeOutsideHTMLIsLocked="false" -->
+<html><!-- InstanceBegin template="/Templates/temp.dwt.asp" codeOutsideHTMLIsLocked="false" -->
 <head>
 <%
 Dim rsFeedbackID
@@ -270,6 +269,31 @@ End If
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>Thêm Sản Phẩm</title>
 <script>
+function change_price()
+{
+	var Price = document.getElementById("Price").value;
+	//alert(Number(Price));
+	if(!isNaN(Number(Price))){		
+		var chPrice = "";
+		var count = Price.length;
+		for(count; ;count=count-3){
+			if(count<=3){
+				//substring(bengin, end)
+				var subPrice = Price.substring(0, count);
+				chPrice = subPrice + chPrice;
+				break;
+			} else {		
+				//substr(bengin, length)	
+				var subPrice = Price.substr(count-3, 3);
+				chPrice = "." + subPrice + chPrice;	
+				//alert(subPrice);		
+			}					
+		}
+		//alert(chPrice);
+		document.getElementById("Price").value = chPrice;
+	}
+}
+
 function cut_string()
 {
 	var s = new String(document.getElementById("fileImage").value);
@@ -299,10 +323,10 @@ function check()
 	var ManufacturerYear = document.getElementById("ManufacturerYear").value;
 
 /*	Check Product Name
-	- không được rỗng
- 	- nhỏ hơn hoặc bằng 50 ký tự
+	- Không được rỗng
+ 	- Nhỏ hơn hoặc bằng 50 ký tự
 	 /^[a-zA-Z][\w\s\-/.()]+$/;
-	- bắt đầu bằng 1 chữ cái hoa hoặc thường
+	- Bắt đầu bằng 1 chữ cái hoa hoặc thường
 	- Ký tự còn lại chứa: chữ hoa hoặc thường hoặc dấu gạch dưới 
 	hoặc số, khoảng trắng, dấu gạch ngang, dấu /, dấu . hoặc dấu ()*/
 	if(ProductName == "")
@@ -327,7 +351,7 @@ function check()
 	}
 
 /*	Check Product Image
-	- Ten hình ảnh không được quá 200 ký tự
+	- Tên hình ảnh không được quá 200 ký tự
 	- Không được để trống
 	- Băt đuôi ảnh /(\.jpg|\.jpeg|\.png|\.gif|\.bmp)$/;
 	- Chọn file trong folder image/product*/
@@ -346,9 +370,9 @@ function check()
 		return false;
 	}
 
-	/*Mo ta san pham:
-	- Khong rỗng
-	- Độ dài khong lon hơn 1000*/
+	/*Mô tả sản phẩm:
+	- Không rỗng
+	- Độ dài không lớn hơn 1000*/
 	if(ProductDescription == "")
 	{
 		alert("Mô Tả không được để trống.");
@@ -363,12 +387,16 @@ function check()
 		return false;
 	}
 	
-	/*Gia:
-	- Khong cho phep trong
-	- Phai la so
-	- Phai lon hon hoặc bằng 0
+	/*Giá:
+	- Không trống
+	- Phải là số
+	- Phải lớn hơn hoặc bằng 0
 	- Không lớn hơn 200 triệu*/
-		
+	//string.replace(chuoicantim,chuoithaythe);
+	for(var i=0; i<Price.length; i++) {	 
+		Price = Price.replace(".","");	 
+	}
+	//alert(Price);	
 	if(Price == "")
 	{
 		alert("Giá (VNĐ) không được để trống.");
@@ -388,6 +416,7 @@ function check()
 	{
 		alert("Giá (VNĐ) phải lớn hơn hoặc bằng 0.");
 		document.getElementById("Price").focus();
+		document.getElementById("Price").value = "";
 		return false;
 	}
 	
@@ -395,13 +424,14 @@ function check()
 	{
 		alert("Giá (VNĐ) không được lớn hơn 200 triệu.");
 		document.getElementById("Price").focus();
+		document.getElementById("Price").value = "";
 		return false;
 	}
 	
-	/*Bao hanh:
-	- Khong được rỗng.
+	/*Bảo hành:
+	- Không được rỗng.
 	- Phải là kiểu số.
-	- Phải từ 0 đến 36*/	
+	- Phải từ 0 đến 36.*/	
 	if(WarrantyTime == "")
 	{
 		alert("Bảo Hành (Tháng) không được để trống.");
@@ -417,15 +447,22 @@ function check()
 		return false;
 	}
 	
-	if(WarrantyTime < 0 || WarrantyTime > 36)
+	if(WarrantyTime < 0)
 	{
-		alert("Bảo Hành (Tháng) phải từ 0 đến 36.");
+		alert("Bảo Hành (Tháng) phải lớn hơn hoặc bằng 0.");
 		document.getElementById("WarrantyTime").focus();
 		return false;
 	}
 	
-	/*Nam san xuat:
-	- Khong được trống
+	if(WarrantyTime > 36)
+	{
+		alert("Bảo Hành (Tháng) không được quá 36 tháng.");
+		document.getElementById("WarrantyTime").focus();
+		return false;
+	}
+	
+	/*Năm sản xuất:
+	- Không được trống
 	- Phải là số
 	- Phải từ năm 2010 đến nay*/	
 	if(ManufacturerYear == "")
@@ -477,7 +514,7 @@ function check()
         <div class="shop-menu pull-right">
           <ul class="nav navbar-nav">
             <% 	If(Session("MM_Username") <> "") Then %>
-            <li><a>Xin chào,<%=Session("MM_Username")%></a></li>
+            <li><a>Xin chào, <%=Session("MM_Username")%></a></li>
             <% 	If(Session("MM_UserRole") = "1") Then %>
             <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Tài Khoản</a></li>
             <% 	Else If(Session("MM_UserRole") = "0") Then %>
@@ -527,6 +564,7 @@ function check()
   <!--/header-bottom-->
 </header>
 <!--/header-->
+
 <!-- InstanceBeginEditable name="Slider" -->
 <!-- InstanceEndEditable -->
 <section><!--section-->
@@ -554,11 +592,11 @@ function check()
                 <% While ((Repeat1__numRows <> 0) AND (NOT rsBrands.EOF)) %>
                   <li><a HREF="Product_withBrands.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "BrandName=" & rsBrands.Fields.Item("BrandName").Value %>"><span class="pull-right">(<%=(rsBrands.Fields.Item("ProCount").Value)%>)</span><%=(rsBrands.Fields.Item("BrandName").Value)%></a></li>
                   <% 
-  										Repeat1__index=Repeat1__index+1
-  										Repeat1__numRows=Repeat1__numRows-1
-  										rsBrands.MoveNext()
-										Wend
-									%>
+					Repeat1__index=Repeat1__index+1
+					Repeat1__numRows=Repeat1__numRows-1
+					rsBrands.MoveNext()
+					Wend
+				%>
               </ul>
             </div>
           </div>
@@ -575,7 +613,7 @@ function check()
             <table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
               <tr>
                 <td width="40%" align="right" valign="top"><strong>Tên Sản Phẩm:* &nbsp;</strong></td>
-                <td width="60%" align="left" valign="top"><input id="ProductName" name="ProductName" type="text" size="32"></td>
+                <td width="60%" align="left" valign="top"><input id="ProductName" name="ProductName" type="text" size="35"></td>
               </tr>
               <tr>
                 <td align="right" valign="top"><strong>Hình Ảnh:* &nbsp;</strong></td>
@@ -590,15 +628,15 @@ function check()
               </tr>
               <tr>
                 <td align="right" valign="top"><strong>Giá (VNĐ):* &nbsp;</strong></td>
-                <td align="left" valign="top"><input id="Price" name="Price" type="text" size="32" /></td>
+                <td align="left" valign="top"><input id="Price" name="Price" type="text" size="35"  onChange="change_price()"/></td>
               </tr>
               <tr>
                 <td align="right" valign="top"><strong>Bảo Hành (Tháng):* &nbsp;</strong></td>
-                <td align="left" valign="top"><input id="WarrantyTime" name="WarrantyTime" type="text" size="32" /></td>
+                <td align="left" valign="top"><input id="WarrantyTime" name="WarrantyTime" type="text" size="35" /></td>
               </tr>
               <tr>
                 <td align="right" valign="top"><strong>Năm Sản Xuất:* &nbsp;</strong></td>
-                <td align="left" valign="top"><input id="ManufacturerYear" name="ManufacturerYear" type="text" size="32"  /></td>
+                <td align="left" valign="top"><input id="ManufacturerYear" name="ManufacturerYear" type="text" size="35"  /></td>
               </tr>
               <tr>
                 <td align="right" valign="top"><strong>Tên Thương Hiệu: &nbsp;</strong></td>
@@ -712,7 +750,7 @@ function check()
     <div class="container">
       <div class="row">
         <p class="pull-left">Copyright 2016 - 2018 Paddy Studio. All rights reserved.</p>
-        <p class="pull-right">Designed by<span>Group 2 - Paddy Studio</span></p>
+        <p class="pull-right">Designed by <span>Group 2 - Paddy Studio</span></p>
       </div>
     </div>
   </div>
@@ -720,8 +758,7 @@ function check()
 <!--/Footer-->
 
 </body>
-<!-- InstanceEnd -->
-</html>
+<!-- InstanceEnd --></html>
 <%
 rsBrands.Close()
 Set rsBrands = Nothing

@@ -438,7 +438,7 @@ td, th
         <div class="shop-menu pull-right">
           <ul class="nav navbar-nav">
             <% 	If(Session("MM_Username") <> "") Then %>
-            <li><a>Xin chào,<%=Session("MM_Username")%></a></li>
+            <li><a>Xin chào, <%=Session("MM_Username")%></a></li>
             <% 	If(Session("MM_UserRole") = "1") Then %>
             <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Tài Khoản</a></li>
             <% 	Else If(Session("MM_UserRole") = "0") Then %>
@@ -488,6 +488,7 @@ td, th
   <!--/header-bottom-->
 </header>
 <!--/header-->
+
 <!-- InstanceBeginEditable name="Slider" -->
     
     
@@ -517,11 +518,11 @@ td, th
                 <% While ((Repeat1__numRows <> 0) AND (NOT rsBrands.EOF)) %>
                   <li><a HREF="Product_withBrands.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "BrandName=" & rsBrands.Fields.Item("BrandName").Value %>"><span class="pull-right">(<%=(rsBrands.Fields.Item("ProCount").Value)%>)</span><%=(rsBrands.Fields.Item("BrandName").Value)%></a></li>
                   <% 
-  										Repeat1__index=Repeat1__index+1
-  										Repeat1__numRows=Repeat1__numRows-1
-  										rsBrands.MoveNext()
-										Wend
-									%>
+					Repeat1__index=Repeat1__index+1
+					Repeat1__numRows=Repeat1__numRows-1
+					rsBrands.MoveNext()
+					Wend
+				%>
               </ul>
             </div>
           </div>
@@ -654,7 +655,7 @@ td, th
     <div class="container">
       <div class="row">
         <p class="pull-left">Copyright 2016 - 2018 Paddy Studio. All rights reserved.</p>
-        <p class="pull-right">Designed by <span> Group 2 - Paddy Studio</span></p>
+        <p class="pull-right">Designed by <span>Group 2 - Paddy Studio</span></p>
       </div>
     </div>
   </div>

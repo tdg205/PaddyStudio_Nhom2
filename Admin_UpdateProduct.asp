@@ -531,7 +531,7 @@ function check()
         <div class="shop-menu pull-right">
           <ul class="nav navbar-nav">
             <% 	If(Session("MM_Username") <> "") Then %>
-            <li><a>Xin chào,<%=Session("MM_Username")%></a></li>
+            <li><a>Xin chào, <%=Session("MM_Username")%></a></li>
             <% 	If(Session("MM_UserRole") = "1") Then %>
             <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Tài Khoản</a></li>
             <% 	Else If(Session("MM_UserRole") = "0") Then %>
@@ -581,6 +581,7 @@ function check()
   <!--/header-bottom-->
 </header>
 <!--/header-->
+
 <!-- InstanceBeginEditable name="Slider" -->
     
     
@@ -610,11 +611,11 @@ function check()
                 <% While ((Repeat1__numRows <> 0) AND (NOT rsBrands.EOF)) %>
                   <li><a HREF="Product_withBrands.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "BrandName=" & rsBrands.Fields.Item("BrandName").Value %>"><span class="pull-right">(<%=(rsBrands.Fields.Item("ProCount").Value)%>)</span><%=(rsBrands.Fields.Item("BrandName").Value)%></a></li>
                   <% 
-  										Repeat1__index=Repeat1__index+1
-  										Repeat1__numRows=Repeat1__numRows-1
-  										rsBrands.MoveNext()
-										Wend
-									%>
+					Repeat1__index=Repeat1__index+1
+					Repeat1__numRows=Repeat1__numRows-1
+					rsBrands.MoveNext()
+					Wend
+				%>
               </ul>
             </div>
           </div>
@@ -632,7 +633,7 @@ function check()
                             <% While ((Repeat2__numRows <> 0) AND (NOT rsUpdateProduct.EOF)) %>
                             <tr>
           						<td width="40%" align="right" valign="top"><strong>Tên Sản Phẩm:* &nbsp;</strong></td>
-          						<td width="60%" align="left" valign="top"><input id="ProductName" name="ProductName" type="text" size="32" value="<%=(rsUpdateProduct.Fields.Item("ProductName").Value)%>"/></td>
+          						<td width="60%" align="left" valign="top"><input id="ProductName" name="ProductName" type="text" size="35" value="<%=(rsUpdateProduct.Fields.Item("ProductName").Value)%>"/></td>
        						</tr>
         					<tr>
           						<td align="right" valign="top"><strong>Hình Ảnh:* &nbsp;</strong></td>
@@ -648,15 +649,15 @@ function check()
                             </tr>
                             <tr>
                                 <td align="right" valign="top"><strong>Giá (VNĐ):* &nbsp;</strong></td>
-                                <td align="left" valign="top"><input id="Price" name="Price" type="text" size="32" value="<%=(rsUpdateProduct.Fields.Item("Price").Value)%>" /></td>
+                                <td align="left" valign="top"><input id="Price" name="Price" type="text" size="35" value="<%=(rsUpdateProduct.Fields.Item("Price").Value)%>" /></td>
                             </tr>
                             <tr>
                                 <td align="right" valign="top"><strong>Bảo Hành (Tháng):* &nbsp;</strong></td>
-                                <td align="left" valign="top"><input id="WarrantyTime" name="WarrantyTime" type="text" size="32" value="<%=(rsUpdateProduct.Fields.Item("WarrantyTime").Value)%>" /></td>
+                                <td align="left" valign="top"><input id="WarrantyTime" name="WarrantyTime" type="text" size="35" value="<%=(rsUpdateProduct.Fields.Item("WarrantyTime").Value)%>" /></td>
                             </tr>
                             <tr>
                                 <td align="right" valign="top"><strong>Năm Sản Xuất:* &nbsp;</strong></td>
-                                <td align="left" valign="top"><input id="ManufacturerYear" name="ManufacturerYear" type="text" size="32" value="<%=(rsUpdateProduct.Fields.Item("ManufacturerYear").Value)%>" /></td>
+                                <td align="left" valign="top"><input id="ManufacturerYear" name="ManufacturerYear" type="text" size="35" value="<%=(rsUpdateProduct.Fields.Item("ManufacturerYear").Value)%>" /></td>
                             </tr>
                             <tr>
                                 <td align="right" valign="top"><strong>Tên Thương Hiệu: &nbsp;</strong></td>
@@ -686,7 +687,7 @@ function check()
                             </tr>
                             <tr>
                                 <td align="right" valign="top">&nbsp;</td>
-                                <td align="left" valign="top"><input id="ProductName1" name="ProductName1" type="hidden" size="32" value="<%=(rsUpdateProduct.Fields.Item("ProductName").Value)%>"/></td>
+                                <td align="left" valign="top"><input id="ProductName1" name="ProductName1" type="hidden" size="35" value="<%=(rsUpdateProduct.Fields.Item("ProductName").Value)%>"/></td>
                             </tr>
                             <% 
   								Repeat2__index=Repeat2__index+1
@@ -776,7 +777,7 @@ function check()
     <div class="container">
       <div class="row">
         <p class="pull-left">Copyright 2016 - 2018 Paddy Studio. All rights reserved.</p>
-        <p class="pull-right">Designed by <span> Group 2 - Paddy Studio</span></p>
+        <p class="pull-right">Designed by <span>Group 2 - Paddy Studio</span></p>
       </div>
     </div>
   </div>

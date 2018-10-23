@@ -30,7 +30,7 @@ create table tbProduct
 	ProductName varchar(50) unique not null,
 	ProductImage varchar(200) not null,
 	ProductDescription nvarchar(1000) not null,
-	Price int check(Price>=0) default 0,
+	Price varchar(20),
 	WarrantyTime int check(WarrantyTime>=0 and WarrantyTime <=60) not null,
 	ManufacturerYear smallint check(ManufacturerYear<=year(getdate()) and ManufacturerYear >1980) default year(getdate()) not null,
 	BrandName varchar(20) foreign key references tbBrand(BrandName) not null
@@ -97,7 +97,7 @@ N'- Bộ xử lý: Intel Core i7 7Y75 (2x1.30 GHz), Max Turbo Frequency: 3.60 GH
 - Giao tiếp mạng: Không LAN, wifi: Intel (802.11 ac), Bluetooth 4.2<br/>
 - Tính năng mở rộng & cổng giao tiếp: 1xThunderbolt 3 (4 lanes of PCI Express Gen 3) with PowerShare & DC-In ; 1 x DisplayPort over USB-C with PowerShare, DC-In & DisplayPort ; 1 x Headphone/ Microphone combo ; 1 x USB-C to HDMI (2.0) A<br/>
 - Trọng lượng 1.24 kg, pin 4 Cell Int (46WHr)<br/>
-- Hệ điều hành: Windows 10 Home Single Language 64Bit + Office Personal 365<br/>','54990000','24','2017','Dell'
+- Hệ điều hành: Windows 10 Home Single Language 64Bit + Office Personal 365<br/>','54.990.000','24','2017','Dell'
 ),
 
 ('Dell XPS15-Core i7 8750HQ','Dell02.jpg',
@@ -110,7 +110,7 @@ N'- Bộ xử lý: Intel Core i7 8750HQ 2.20GHz-9MB cache<br/>
 - Giao tiếp mạng: LAN 10/100/1000, Wifi 802.11ac Dual Band, Bluetooth v4.1<br/>
 - Tính năng mở rộng & cổng giao tiếp: USB 3.0, Headset, Finger Print Reader<br/>
 - Trọng lượng 1.80 kg, Pin 4 Cell Int (46WHr)<br/>
-- Hệ điều hành: Windows 10 Home Plus + Microsoft Office 365 Personal DFO<br/>','53990000','24','2017','Dell'
+- Hệ điều hành: Windows 10 Home Plus + Microsoft Office 365 Personal DFO<br/>','53.990.000','24','2017','Dell'
 ),
 
 ('Dell XPS13 9370','Dell03.jpg',N'- Bộ xử lý: Intel Core i7-8550U 1.80 GHz, 8MB Cache<br/>
@@ -122,7 +122,7 @@ N'- Bộ xử lý: Intel Core i7 8750HQ 2.20GHz-9MB cache<br/>
 - Giao tiếp mạng: Không LAN, Wifi 802.11ac Dual Band, Bluetooth v4.1<br/>
 - Tính năng mở rộng & cổng giao tiếp: 2 x Thunderbolt™ 3 (with PowerShare & DC-In & DisplayPort); 1 x USB-C 3.1 (with PowerShare, DC-In & DisplayPort); 1 x Headphone/ Microphone<br/>
 - Trọng lượng 1.21kg, Pin 4 Cell Ext (52Wh) liền<br/>
-- Hệ điều hành: Windows 10 Home Single Language 64Bit + Office Personal 365<br/>','45990000','12','2018','Dell'
+- Hệ điều hành: Windows 10 Home Single Language 64Bit + Office Personal 365<br/>','45.990.000','12','2018','Dell'
 ),
 
 ('Dell XPS 13 9360-Core i5 7200U','Dell04.jpg',
@@ -135,7 +135,7 @@ N'- Bộ xử lý: Intel Core i5-7200U 2.50 GHz, 3MB Cache<br/>
 - Giao tiếp mạng: Không LAN, wifi 802.11ac<br/>
 - Tính năng mở rộng & cổng giao tiếp: USB 3.0, USB Type-C, Multi TouchPad<br/>
 - Trọng lượng vỏ nhôm 1.23kg - Pin 	4 cell 60WHr liền<br/>
-- Hệ điều hành: Windows 10 Home SL + Microsoft Office 365<br/>','35990000','12','2018','Dell'
+- Hệ điều hành: Windows 10 Home SL + Microsoft Office 365<br/>','35.990.000','12','2018','Dell'
 ),
 
 ('Dell Vostro V5468A','Dell05.jpg',
@@ -148,7 +148,7 @@ N'- Bộ xử lý: Intel Core i5-7200U 2.50 GHz, 3MB Cache<br/>
 - Giao tiếp mạng: LAN 10/100Mbps, wifi IEEE 802.11b/g/n<br/>
 - Tính năng mở rộng & cổng giao tiếp: 2 x USB 3.0, HDMI, LAN (RJ45), USB 2.0, VGA (D-Sub), Multi TouchPad<br/>
 - Trọng lượng kim loai 1.7 kg, Pin 3 cell liền<br/>
-- Hệ điều hành: Windows 10 + Microsoft Office 365<br/>','17990000','12','2017','Dell'
+- Hệ điều hành: Windows 10 + Microsoft Office 365<br/>','17.990.000','12','2017','Dell'
 ),
 
 ('Macbook Air 13 128GB MQD32SA/A','Macbook01.jpg',
@@ -161,7 +161,7 @@ N'- Bộ xử lý: Intel Core i5 1.8Ghz-	Dual Core, 3MB (L3 Cache)<br/>
 - Tính năng mở rộng & cổng giao tiếp: 2xUSB 3.0, 2xThunderbolt 2, 1xSDXC Card, 1xMagSafe 2, 1xHeadphone<br/>
 - Giao tiếp mạng: LAN 802.11ac Wi-Fi wireless networking, Wi-Fi IEEE 802.11a/b/g/n compatible<br/>
 - Hệ điều hành: 	Mac Os<br/>
-- Pin lithium polymer, trọng lượng 1.35 Kg<br/>','23999000','12','2017','Apple'
+- Pin lithium polymer, trọng lượng 1.35 Kg<br/>','23.999.000','12','2017','Apple'
 ),
 
 ('Macbook Air 13 256GB MQD42SA/A','Macbook02.jpg',
@@ -174,7 +174,7 @@ N'- Bộ xử lý: Intel Core i5 1.8Ghz-	Dual Core, 3MB (L3 Cache)<br/>
 - Tính năng mở rộng & cổng giao tiếp: 2xUSB 3.0, 2xThunderbolt 2, 1xSDXC Card, 1xMagSafe 2, 1xHeadphone<br/>
 - Giao tiếp mạng: LAN 802.11ac Wi-Fi wireless networking, Wi-Fi IEEE 802.11a/b/g/n compatible<br/>
 - Hệ điều hành: 	Mac Os<br/>
-- Pin lithium polymer, trọng lượng 1.35 Kg<br/>','28999000','12','2017','Apple'
+- Pin lithium polymer, trọng lượng 1.35 Kg<br/>','28.999.000','12','2017','Apple'
 ),
 
 ('Macbook 12 256GB','Macbook03.jpg',
@@ -187,7 +187,7 @@ N'- Bộ xử lý: Intel Core M3 1.2Ghz-Dual Core, 4MB (L3 Cache)<br/>
 - Tính năng mở rộng & cổng giao tiếp: 1xUSB Type-C, 1x3.5mm headphone jack<br/>
 - Giao tiếp mạng: LAN 802.11ac Wi-Fi wireless networking, Wi-Fi IEEE 802.11a/b/g/n compatible<br/>
 - Hệ điều hành: 	Mac Os<br/>
-- Pin lithium polymer, trọng lượng 0.92 Kg<br/>','33999000','12','2017','Apple'
+- Pin lithium polymer, trọng lượng 0.92 Kg<br/>','33.999.000','12','2017','Apple'
 ),
 
 ('Macbook Pro 13 inch','Macbook04.jpg',
@@ -200,7 +200,7 @@ N'- Bộ xử lý: Intel 	Core i5 	2.3 GHz-Dual Core<br/>
 - Tính năng mở rộng & cổng giao tiếp: 2xThunderbolt 3(USB-C), 1xHeadphone<br/>
 - Giao tiếp mạng: LAN 802.11ac Wifi wireless networking, Wi-Fi IEEE 802.11a/b/g/n compatible<br/>
 - Hệ điều hành: 	Mac Os<br/>
-- Pin lithium polymer, trọng lượng 1.37kg<br/>','33999000','12','2017','Apple'
+- Pin lithium polymer, trọng lượng 1.37kg<br/>','33.999.000','12','2017','Apple'
 ),
 
 ('Macbook Pro 13 Touch Bar','Macbook05.jpg',
@@ -213,7 +213,7 @@ N'- Bộ xử lý: Intel 	Core i5 2.3GHz-Quad Core, 8MB<br/>
 - Tính năng mở rộng & cổng giao tiếp: 4 cổng USB-C tích hợp Thunderbolt 3 và 1 cổng tai nghe 3.5<br/>
 - Giao tiếp mạng: không có LAN, Wi-Fi 802.11ac Wi-Fi wireless networking; IEEE 802.11a/b/g/n compatible, Bluetooth 5.0 wireless<br/>
 - Hệ điều hành: Mac Os High Sierra<br/>
-- Pin lithium polymer 58Wh, trọng lượng 1.37kg<br/>','49999000','12','2018','Apple'
+- Pin lithium polymer 58Wh, trọng lượng 1.37kg<br/>','49.999.000','12','2018','Apple'
 ),
 
 ('Asus TUF FX504GE-E4059T','Asus01.jpg',
@@ -226,7 +226,7 @@ N'- Bộ xử lý: Intel 	Core i7 	8750H 2.20GHz-Quad Core, 9 MB Smart Cache<br/
 - Tính năng mở rộng & cổng giao tiếp: 1 x SSD (M2 2280); 2 x USB 3.0 ; 1 x USB 2.0; 1 x HDMI ; 1 x RJ45 ; 1 x Microphone-in/Headphone-out Combo<br/>
 - Giao tiếp mạng: LAN 10/100/1000 Mbps, Wi-Fi 802.11 AC (2x2), Bluetooth V4.0<br/>
 - Hệ điều hành:	Windows 10 Home SL<br/>
-- Pin 4 cell-48 Whrs liền, trọng lượng 2.3 kg nhựa<br/>','25990000','24','2017','Asus'
+- Pin 4 cell-48 Whrs liền, trọng lượng 2.3 kg nhựa<br/>','25.990.000','24','2017','Asus'
 ),
 
 ('ASUS ZenBook 13 UX331UN','Asus02.jpg',
@@ -239,7 +239,7 @@ N'- Bộ xử lý: Intel 	Core i5 8250U 1.60 GHz, 6 MB Cache<br/>
 - Tính năng mở rộng & cổng giao tiếp: 2 x USB 3.0; 1 x USB 3.1 Type C (Gen 1)<br/>
 - Giao tiếp mạng: LAN 10/100/1000 Mbps, Wi-Fi 802.11 AC, Bluetooth 4.2<br/>
 - Hệ điều hành:	Windows 10 64bit<br/>
-- Pin 50WHrs 4S1P-4 cell Li-ion, trọng lượng 1.12Kg vỏ kim loại<br/>','23690000','24','2017','Asus'
+- Pin 50WHrs 4S1P-4 cell Li-ion, trọng lượng 1.12Kg vỏ kim loại<br/>','23.690.000','24','2017','Asus'
 ),
 
 ('Asus UX430UA-GV261T','Asus03.jpg',
@@ -252,7 +252,7 @@ N'- Bộ xử lý: Intel 	Core i5 8250U 1.60 GHz, 6MB SmartCache<br/>
 - Tính năng mở rộng & cổng giao tiếp: 1 x USB 2.0; 1 x USB 3.0; 1 x USB3.1 Type C (gen 1)<br/>
 - Giao tiếp mạng: không LAN, Wi-Fi 802.11 AC, Bluetooth <br/>
 - Hệ điều hành:	Windows 10 64bit<br/>
-- Pin 50WHrs, 3S1P, 3-cell Li-ion liền, trọng lượng 1.3 Kg nhôm nguyên khối<br/>','21990000','24','2017','Asus'
+- Pin 50WHrs, 3S1P, 3-cell Li-ion liền, trọng lượng 1.3 Kg nhôm nguyên khối<br/>','21.990.000','24','2017','Asus'
 ),
 
 ('Asus Vivobook S14 S410UA','Asus04.jpg',
@@ -265,7 +265,7 @@ N'- Bộ xử lý: Intel 	Core i7 	8550U 1.80 GHz, 8M Cache<br/>
 - Tính năng mở rộng & cổng giao tiếp: 2 x USB 2.0; 1 x USB 3.0; 1 x USB3.1 Type C (Gen 1); 1 x Headphone-out & Audio-in Combo Jack; 1 x HDMI<br/>
 - Giao tiếp mạng: không LAN, Wi-Fi 802.11 AC, Bluetooth 4.2 (Dual band) 2*2<br/>
 - Hệ điều hành:	Windows 10 64bit<br/>
-- Pin 3 cell Li-ion liền, trọng lượng 1.43 Kg nhôm nguyên khối<br/>','19490000','24','2018','Asus'
+- Pin 3 cell Li-ion liền, trọng lượng 1.43 Kg nhôm nguyên khối<br/>','19.490.000','24','2018','Asus'
 ),
 
 ('Asus UX430UA GV344-Core i5 7200U','Asus05.jpg',
@@ -278,7 +278,7 @@ N'- Bộ xử lý: Intel® Core™ i5 7200U 2.5GHz, 3M Cache <br/>
 - Tính năng mở rộng & cổng giao tiếp: 1x USB 2.0 1x USB 3.0 1x USB3.1 Type C (gen 1)<br/>
 - Giao tiếp mạng: không LAN, Wi-Fi 802.11 AC<br/>
 - Hệ điều hành: Free DOS<br/>
-- Pin 3 cell Li-ion liền, trọng lượng 1.30 Kg nhôm nguyên khối<br/>','18990000','24','2018','Asus'
+- Pin 3 cell Li-ion liền, trọng lượng 1.30 Kg nhôm nguyên khối<br/>','18.990.000','24','2018','Asus'
 ),
 
 ('HP Pavilion Power 15-cx0182TX','HP01.jpg',
@@ -292,7 +292,7 @@ N'- Bộ xử lý: Intel® Core™ i7 8750H 2.20GHz, 9 MB Cache <br/>
 - Tính năng mở rộng & cổng giao tiếp:1 HDMI 2.0; 1 headphone/microphone combo; 1 RJ-45; 1 USB 3.1 Type-C™ Gen 1 (Data Transfer up to 5 Gb/s); 3 USB 3.1 Gen 1 (Data transfer only)<br/>
 - Giao tiếp mạng: LAN Integrated 10/100/1000 GbE LAN, Wi-Fi 	Intel® Wireless-AC 9560 802.11a/b/g/n/ac(2x2) Wi-Fi® and Bluetooth® 5 Combo<br/>
 - Hệ điều hành: 	Windows 10 Home Single Language 64<br/>
-- Pin 3-cell 52.5 Wh Li-ion prismatic and polymer liền, trọng lượng 2.17Kg nhựa<br/>','29990000','12','2018','HP'
+- Pin 3-cell 52.5 Wh Li-ion prismatic and polymer liền, trọng lượng 2.17Kg nhựa<br/>','29.990.000','12','2018','HP'
 ),
 
 ('HP Envy 13 ah0027TU-Core i7 8550U','HP02.jpg',
@@ -306,7 +306,7 @@ N'- Bộ xử lý: Intel® Core™ i7 8550U 1.8GHz, 8MB Cache<br/>
 - Tính năng mở rộng & cổng giao tiếp: 1 USB 3.1 Type-C™ Gen 1 (Data Transfer up to 5Gb/s, Power Delivery, DisplayPort™ 1.2, HP Sleep and Charge); 2 USB 3.1 Gen 1 (1 HP Sleep and Charge); 1 headphone/microphone combo<br/>
 - Giao tiếp mạng: LAN Integrated 10/100/1000 GbE LAN, Wi-Fi 802.11 ac<br/>
 - Hệ điều hành: Windows 10 Home<br/>
-- Pin HP Long Life 4-cell, 53.2Wh Li-ion polymer liền, trọng lượng 	1.22Kg nhôm nguyên khối<br/>','26990000','12','2018','HP'
+- Pin HP Long Life 4-cell, 53.2Wh Li-ion polymer liền, trọng lượng 	1.22Kg nhôm nguyên khối<br/>','26.990.000','12','2018','HP'
 ),
 
 ('HP Envy 13-ah0026TU','HP03.jpg',
@@ -320,7 +320,7 @@ N'- Bộ xử lý: Intel® Core™ i5 8250U 1.60GHz, 6MB Cache<br/>
 - Tính năng mở rộng & cổng giao tiếp: 1 USB 3.1 Type-C™ Gen 1 (Data Transfer up to 5 Gb/s, Power Delivery, DisplayPort™ 1.2, HP Sleep and Charge); 2 USB 3.1 Gen 1 (1 HP Sleep and Charge); 1 headphone/microphone combo<br/>
 - Giao tiếp mạng: không có LAN, Wi-Fi Intel® Wireless-AC 7265 802.11ac (2x2) Wi-Fi® and Bluetooth® 4.2 Combo<br/>
 - Hệ điều hành: Windows 10 Home<br/>
-- Pin HP Long Life 4-cell 53.2Wh Li-ion polymer liền, trọng lượng 1.21Kg nhôm nguyên khối<br/>','21990000','12','2018','HP'
+- Pin HP Long Life 4-cell 53.2Wh Li-ion polymer liền, trọng lượng 1.21Kg nhôm nguyên khối<br/>','21.990.000','12','2018','HP'
 ),
 
 ('HP Pavilion 15 cs0104TX-Core i7 8550U','HP04.jpg',
@@ -334,7 +334,7 @@ N'- Bộ xử lý: Intel® Core™ i7 8550U 	1.80GHz, 8MB cache<br/>
 - Tính năng mở rộng & cổng giao tiếp: 1 x SSD (M2 2280); 2 x USB 3.1 Gen 1 (Data transfer only); 1 x USB 3.1 Type-C™ Gen 1 (Data Transfer Only); 1 x HDMI; 1 x RJ45; 1 x headphone/microphone combo<br/>
 - Giao tiếp mạng: LAN 	10/100/1000 Mbps, Wi-Fi 	Intel® 802.11a/b/g/n/ac (1x1) Wi-Fi®, Bluetooth® 4.2 Combo<br/>
 - Hệ điều hành: Windows 10 Home Single Language 64-Bit<br/>
-- Pin 3 cell, 41 Wh Li-ion rời, trọng lượng 1.86 Kg vỏ hợp kim<br/>','19990000','12','2018','HP'
+- Pin 3 cell, 41 Wh Li-ion rời, trọng lượng 1.86 Kg vỏ hợp kim<br/>','19.990.000','12','2018','HP'
 ),
 
 ('HP Pavilion x360 14-ba066TU','HP05.jpg',
@@ -347,10 +347,10 @@ N'- Bộ xử lý: Intel® Core™ i5 7200U 2.50 GHz, 3MB cache<br/>
 - Tính năng mở rộng & cổng giao tiếp: 1 x HDMI; 1 x headphone/microphone combo; 1 x USB 3.1 Type-C™ Gen 1 (Data up to 5 Gb/s); 2 x USB 3.1 Gen 1 (Data transfer only)<br/>
 - Giao tiếp mạng: Không có LAN, Wi-Fi IEEE 802.11a/b/g/n/ac, Bluetooth 4.2<br/>
 - Hệ điều hành: Windows 10 Home Single Language 64-Bit<br/>
-- Pin 3 cell li ion, trọng lượng 1.63kg nhựa<br/>','16990000','12','2018','HP'
+- Pin 3 cell li ion, trọng lượng 1.63kg nhựa<br/>','16.990.000','12','2018','HP'
 ),
 
-('Lenovo Legion Y520 15IKBN-Core i5 7300HQ','Lenovo01.jpg',
+('Lenovo Legion Y520 15IKBN','Lenovo01.jpg',
 N'- Bộ xử lý: Intel® Core™ i5 7300HQ 2.5Ghz, 6MB Cache<br/>
 - Bo mạch: Chipset Intel® Chipset Express<br/>
 - RAM: 8GB DDR4 	2400MHz, 2 khe RAM<br/>
@@ -361,7 +361,7 @@ N'- Bộ xử lý: Intel® Core™ i5 7300HQ 2.5Ghz, 6MB Cache<br/>
 - Tính năng mở rộng & cổng giao tiếp:2 x USB 3.0 1 x USB 2.0 1 x HDMI™ 1 x USB Type C(USB 3.1) 1 x RJ45 LAN 1<br/>
 - Giao tiếp mạng: LAN 10/100/1000M Gigabit Ethernet, Wi-Fi 802.11AC<br/>
 - Hệ điều hành: 	Free Dos<br/>
-- Pin 3 Cell Pin Li-Polymer liền, trọng lượng 2.4 kg nhựa đen tráng nhôm<br/>','20490000','12','2018','Lenovo'
+- Pin 3 Cell Pin Li-Polymer liền, trọng lượng 2.4 kg nhựa đen tráng nhôm<br/>','20.490.000','12','2018','Lenovo'
 ),
 
 ('Lenovo ThinkPad Edge E580','Lenovo02.jpg',
@@ -375,7 +375,7 @@ N'- Bộ xử lý: Intel® Core™ i5 8250U 1.60 GHz, 6MB SmartCache<br/>
 - Tính năng mở rộng & cổng giao tiếp: 1 x USB 2.0, 2 x USB 3.1 Gen 1 (one Always On), 1 x USB 3.1 Gen 2 Type-C (Power Delivery, DisplayPort, Data transfer) 1 x Smart Card Reader, HDMI<br/>
 - Giao tiếp mạng: LAN 10/100/1000Mbps, Wi-Fi Intel® Dual Band Wireless AC<br/>
 - Hệ điều hành: Windows 10<br/>
-- Pin 3 Cells 42Whrs rời, trọng lượng 1.75 Kg nhựa<br/>','17490000','12','2018','Lenovo'
+- Pin 3 Cells 42Whrs rời, trọng lượng 1.75 Kg nhựa<br/>','17.490.000','12','2018','Lenovo'
 ),
 
 ('Lenovo ThinkPad Edge E480','Lenovo03.jpg',
@@ -389,7 +389,7 @@ N'- Bộ xử lý: Intel® Core™ i5 8250U 1.60GHz, 6MB SmartCache<br/>
 - Tính năng mở rộng & cổng giao tiếp: 1 x USB 2.0 1 x USB 3.0 1 x HDMI Card Reader<br/>
 - Giao tiếp mạng: LAN 10/100/1000Mbps, Wi-Fi 11a/b/g/n/ac Wi-Fi wireless<br/>
 - Hệ điều hành: 	Windows 10 Home<br/>
-- Pin 3 Cells rời, trọng lượng 2.1Kg nhựa<br/>','16490000','12','2018','Lenovo'
+- Pin 3 Cells rời, trọng lượng 2.1Kg nhựa<br/>','16.490.000','12','2018','Lenovo'
 ),
 
 ('Lenovo ThinkPad E570','Lenovo04.jpg',
@@ -403,7 +403,7 @@ N'- Bộ xử lý: Intel® Core™ i5 7200U 2.50 GHz, 3 MB Cache<br/>
 - Tính năng mở rộng & cổng giao tiếp: LAN, USB 2.0, USB 3.0, HDMI<br/>
 - Giao tiếp mạng: LAN 10/100/1000Mbps, Wi-Fi 802.11ac<br/>
 - Hệ điều hành:	Windows 10 Single Language Home<br/>
-- Pin 4 Cells rời, trọng lượng 2.30kg nhựa<br/>','15990000','12','2017','Lenovo'
+- Pin 4 Cells rời, trọng lượng 2.30kg nhựa<br/>','15.990.000','12','2017','Lenovo'
 ),
 
 ('Lenovo ThinkPad E470','Lenovo05.jpg',
@@ -417,7 +417,7 @@ N'- Bộ xử lý: Intel® Core™ i5 7200U 2.50 GHz, 3MB Cache<br/>
 - Tính năng mở rộng & cổng giao tiếp: HDMI, LAN (RJ45), USB 2.0, USB 3.0<br/>
 - Giao tiếp mạng: LAN 10/100/1000Mbps, Wi-Fi 802.11ac<br/>
 - Hệ điều hành:	Windows 10 Single Language Home<br/>
-- Pin 6 Cells rời, trọng lượng 1.87kg nhôm<br/>','14990000','12','2017','Lenovo'
+- Pin 6 Cells rời, trọng lượng 1.87kg nhôm<br/>','14.990.000','12','2017','Lenovo'
 )
 go
 

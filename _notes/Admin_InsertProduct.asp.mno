@@ -3,4 +3,5 @@
 	<infoitem key="UD_rsBrands" value="name:BrandName;datatype:varchar,name:ProCount;datatype:int" />
 	<infoitem key="UD_rsBrandList" value="name:BrandName;datatype:varchar,name:BrandDescription;datatype:varchar,name:BrandLogo;datatype:varchar" />
 	<infoitem key="UD_rsUserID" value="name:UserID;datatype:varchar,name:FullName;datatype:varchar,name:UserPassword;datatype:varchar,name:UserEmail;datatype:varchar,name:UserAddress;datatype:varchar,name:UserPhone;datatype:varchar,name:UserRole;datatype:bit" />
+	<infoitem key="UD_rsProducts" value="name:ProductID;datatype:3,name:ProductName;datatype:200,name:ProductImage;datatype:200,name:Price;datatype:3" />
 </info>
