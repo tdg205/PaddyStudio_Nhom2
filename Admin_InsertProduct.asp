@@ -594,11 +594,10 @@ function check()
         <div class="shop-menu pull-right">
           <ul class="nav navbar-nav">
             <% 	If(Session("MM_Username") <> "") Then %>
-            
             <% 	If(Session("MM_UserRole") = "1") Then %>
-            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,  <%=Session("MM_Username")%></a></li>
+            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,<%=Session("MM_Username")%></a></li>
             <% 	Else If(Session("MM_UserRole") = "0") Then %>
-            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,  <%=Session("MM_Username")%></a></li>
+            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,<%=Session("MM_Username")%></a></li>
             <li><a href="User_Feedback.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "FeedbackMemberID=" & Session("MM_Username") %>">Phản Hồi</a></li>
             <%	End If %>
             <%	End If %>
@@ -613,21 +612,9 @@ function check()
     </div>
   </div>
   <!--/header-middle-->
-  <!--header-bottom-->
-  <div class="header-bottom">
+  <div class="header-bottom"><!--header-bottom-->
     <div class="container">
       <div class="row">
-        <!--/*<div class="col-sm-9">
-          <div class="navbar-header"></div>
-          <div class="mainmenu pull-left">
-            <ul class="nav navbar-nav collapse navbar-collapse">
-              <li><a href="../Introduction.asp">Giới Thiệu</a></li>
-              <li><a href="../Product.asp">Sản Phẩm</a></li>
-              <li><a href="../EventAndNews.asp">Tin Tức</a></li>
-              <li><a href="../Contact.asp">Liên Hệ</a></li>
-            </ul>
-          </div>
-        </div>*/-->
         <div class="search_box pull-right">
           <form id="form1" name="form1" method="get" action="Result_Search.asp">
             <table border="0" cellpadding="0" cellpadding="0">
@@ -653,7 +640,7 @@ function check()
       <div class="col-sm-3">
         <div class="left-sidebar">
           <% 	If(Session("MM_UserRole") = "1") Then %>
-          <div class="brands_products"><!--brands_products-->
+          <div class="brands_products"><!--brands manage products-->
             <h2>Ban Quản Trị</h2>
             <div class="brands-name">
               <ul class="nav nav-pills nav-stacked">
@@ -661,7 +648,7 @@ function check()
               </ul>
             </div>
           </div>
-          <!--/brands_products-->
+          <!--/brands manage products-->
           <br/>
           <p></p>
           <%	End If %>
@@ -854,13 +841,12 @@ function check()
     <div class="container">
       <div class="row">
         <p class="pull-left">Copyright 2016 - 2018 Paddy Studio. All rights reserved.</p>
-        <p class="pull-right">Designed by <span>Group 2 - Paddy Studio</span></p>
+        <p class="pull-right">Designed by<span>Group 2 - Paddy Studio</span></p>
       </div>
     </div>
   </div>
 </footer>
 <!--/Footer-->
-
 </body>
 <!-- InstanceEnd --></html>
 <%
