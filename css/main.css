@@ -294,16 +294,16 @@ ul.sub-menu {
 *******Footer CSS******
 **************************/
 #footer {
-  background: #F0F0E9;
+  background: #f3f3f3;
 }
 
 .footer-top .container {
   border-bottom: 1px solid #E0E0DA;
-  padding-bottom: 20px;
+  padding-bottom: 5px;
 }
 
 .companyinfo {
-  margin-top: 57px;
+  margin-top: 15px;
 }
 
 .companyinfo h2 {
@@ -412,7 +412,7 @@ ul.sub-menu {
 }
 
 .footer-widget {
-  margin-bottom: 68px;
+  margin-bottom: 15px;
 }
 
 .footer-widget .container {

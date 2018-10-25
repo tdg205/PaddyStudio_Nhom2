@@ -187,8 +187,7 @@ Function MM_joinChar(firstItem)
 End Function
 %>
 <!doctype html>
-<html>
-<!-- InstanceBegin template="/Templates/temp.dwt.asp" codeOutsideHTMLIsLocked="false" -->
+<html><!-- InstanceBegin template="/Templates/temp.dwt.asp" codeOutsideHTMLIsLocked="false" -->
 <head>
 <%
 Dim rsFeedbackID
@@ -290,11 +289,11 @@ function confirmDelete()
         <div class="shop-menu pull-right">
           <ul class="nav navbar-nav">
             <% 	If(Session("MM_Username") <> "") Then %>
-            <li><a>Xin chào,<%=Session("MM_Username")%></a></li>
+            
             <% 	If(Session("MM_UserRole") = "1") Then %>
-            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Tài Khoản</a></li>
+            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,  <%=Session("MM_Username")%></a></li>
             <% 	Else If(Session("MM_UserRole") = "0") Then %>
-            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Tài Khoản</a></li>
+            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,  <%=Session("MM_Username")%></a></li>
             <li><a href="User_Feedback.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "FeedbackMemberID=" & Session("MM_Username") %>">Phản Hồi</a></li>
             <%	End If %>
             <%	End If %>
@@ -504,7 +503,7 @@ function confirmDelete()
     <div class="container">
       <div class="row">
         <p class="pull-left">Copyright 2016 - 2018 Paddy Studio. All rights reserved.</p>
-        <p class="pull-right">Designed by<span>Group 2 - Paddy Studio</span></p>
+        <p class="pull-right">Designed by <span>Group 2 - Paddy Studio</span></p>
       </div>
     </div>
   </div>
@@ -512,8 +511,7 @@ function confirmDelete()
 <!--/Footer-->
 
 </body>
-<!-- InstanceEnd -->
-</html>
+<!-- InstanceEnd --></html>
 <%
 rsBrands.Close()
 Set rsBrands = Nothing

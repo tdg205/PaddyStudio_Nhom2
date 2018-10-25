@@ -300,11 +300,11 @@ End If
         <div class="shop-menu pull-right">
           <ul class="nav navbar-nav">
             <% 	If(Session("MM_Username") <> "") Then %>
-            <li><a>Xin chào, <%=Session("MM_Username")%></a></li>
+            
             <% 	If(Session("MM_UserRole") = "1") Then %>
-            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Tài Khoản</a></li>
+            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,  <%=Session("MM_Username")%></a></li>
             <% 	Else If(Session("MM_UserRole") = "0") Then %>
-            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Tài Khoản</a></li>
+            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,  <%=Session("MM_Username")%></a></li>
             <li><a href="User_Feedback.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "FeedbackMemberID=" & Session("MM_Username") %>">Phản Hồi</a></li>
             <%	End If %>
             <%	End If %>
@@ -422,7 +422,7 @@ End If
                                 	<tr>
                                 		<td align="right" valign="top"><a href="javascript:history.back()" class="btn search">Trở Về</a></td>
                                 		<td align="left" valign="top"><% If rsAdmin.EOF And rsAdmin.BOF Then %>
-                                		    <input type="submit" id="btnXoa" name="btnXoa" value="Xóa" class="btn search"/>
+                                		    <input type="submit" id="btnXoa" name="btnXoa" value="Xóa" class="btn search" onclick="return confirm('Bạn có muốn xóa user này không?');"/>
                                 		    <% End If ' end rsAdmin.EOF And rsAdmin.BOF %></td>
                             		</tr>
                        				<tr>

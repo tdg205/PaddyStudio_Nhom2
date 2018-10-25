@@ -224,8 +224,7 @@ Function MM_joinChar(firstItem)
 End Function
 %>
 <!doctype html>
-<html>
-<!-- InstanceBegin template="/Templates/temp.dwt.asp" codeOutsideHTMLIsLocked="false" -->
+<html><!-- InstanceBegin template="/Templates/temp.dwt.asp" codeOutsideHTMLIsLocked="false" -->
 <head>
 <%
 Dim rsFeedbackID
@@ -295,6 +294,14 @@ End If
 <script src="js/main.js"></script>
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>Cập Nhật Sản Phẩm</title>
+<STYLE type="text/css">
+.showMsg {
+	font-family: verdana;
+	font-size: 10px;
+	color: red;
+	display: none;
+}
+</STYLE>
 <script>
 function confirmUpdate()
 {
@@ -358,76 +365,104 @@ function check()
 	var Price = document.getElementById("Price").value;
 	var WarrantyTime = document.getElementById("WarrantyTime").value;
 	var ManufacturerYear = document.getElementById("ManufacturerYear").value;
-	
-	/*	Check Product Name
-	- không được rỗng
- 	- nhỏ hơn hoặc bằng 50 ký tự
+
+/*	Check Product Name
+	- Không được rỗng
+ 	- Nhỏ hơn hoặc bằng 50 ký tự
 	 /^[a-zA-Z][\w\s\-/.()]+$/;
-	- bắt đầu bằng 1 chữ cái hoa hoặc thường
+	- Bắt đầu bằng 1 chữ cái hoa hoặc thường
 	- Ký tự còn lại chứa: chữ hoa hoặc thường hoặc dấu gạch dưới 
 	hoặc số, khoảng trắng, dấu gạch ngang, dấu /, dấu . hoặc dấu ()*/
 	if(ProductName == "")
 	{
-		alert("Tên Sản Phẩm không được để trống.");
+		document.getElementById("errProductName1").style.display = "inline";
+		document.getElementById("ProductName").style.border = "1px solid #e00";
 		document.getElementById("ProductName").focus();
 		return false;
+	} else {
+		document.getElementById("errProductName1").style.display = "none";
+		document.getElementById("ProductName").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(ProductName.length < 3 || ProductName.length > 50)
 	{
-		alert("Tên Sản Phẩm phải từ 3 đến 50 ký tự.");
+		document.getElementById("errProductName2").style.display = "inline";
+		document.getElementById("ProductName").style.border = "1px solid #e00";
 		document.getElementById("ProductName").focus();
 		return false;
-	}
+	} else {
+		document.getElementById("errProductName2").style.display = "none";
+		document.getElementById("ProductName").style.border = "1px solid #d6d6d6";		
+	} 
 	
 	var re_ProductName = /^[a-zA-Z][\w\s\-\/\.\(\)]+$/;												
 	if(re_ProductName.test(ProductName) == false){
-		alert("Tên Sản Phẩm phải bắt đầu bằng 1 ký tự chữ cái tiếng Anh. Ký tự còn lại chỉ chứa: chữ cái tiếng Anh, dấu gạch dưới, chữ số, khoảng trắng, dấu gạch ngang, dấu /, dấu chấm, dấu ()");
+		document.getElementById("errProductName3").style.display = "inline";
+		document.getElementById("ProductName").style.border = "1px solid #e00";
 		document.getElementById("ProductName").focus();
-		return false;
-	}
-
+		return false;	
+	} else {
+		document.getElementById("errProductName3").style.display = "none";
+		document.getElementById("ProductName").style.border = "1px solid #d6d6d6";		
+	} 
+	
 /*	Check Product Image
-	- Ten hình ảnh không được quá 200 ký tự
+	- Tên hình ảnh không được quá 200 ký tự
 	- Không được để trống
 	- Băt đuôi ảnh /(\.jpg|\.jpeg|\.png|\.gif|\.bmp)$/;
 	- Chọn file trong folder image/product*/
 	if(ProductImage == "")
 	{
-		alert("Hãy lựa chọn một Hình Ảnh.");
+		document.getElementById("errProductImage1").style.display = "inline";
+		document.getElementById("ProductImage").style.border = "1px solid #e00";
 		document.getElementById("fileImage").focus();
 		return false;
+	} else {
+		document.getElementById("errProductImage1").style.display = "none";
+		document.getElementById("ProductImage").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(ProductImage.length > 200)
 	{
-		alert("Tên Hình Ảnh không được quá 200 ký tự.");
+		document.getElementById("errProductImage2").style.display = "inline";
+		document.getElementById("ProductImage").style.border = "1px solid #e00";
 		document.getElementById("fileImage").focus();
 		document.getElementById("fileImage").value = "";
 		return false;
+	} else {
+		document.getElementById("errProductImage2").style.display = "none";
+		document.getElementById("ProductImage").style.border = "1px solid #d6d6d6";		
 	}
 
-	/*Mo ta san pham:
-	- Khong rỗng
-	- Độ dài khong lon hơn 1000*/
+	/*Mô tả sản phẩm:
+	- Không rỗng
+	- Độ dài không lớn hơn 1000*/
 	if(ProductDescription == "")
 	{
-		alert("Mô Tả không được để trống.");
+		document.getElementById("errProductDescription1").style.display = "inline";
+		document.getElementById("ProductDescription").style.border = "1px solid #e00";
 		document.getElementById("ProductDescription").focus();
 		return false;
+	} else {
+		document.getElementById("errProductDescription1").style.display = "none";
+		document.getElementById("ProductDescription").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(ProductDescription.length > 1000)
 	{
-		alert("Mô Tả không được quá 1000 ký tự.");
+		document.getElementById("errProductDescription2").style.display = "inline";
+		document.getElementById("ProductDescription").style.border = "1px solid #e00";
 		document.getElementById("ProductDescription").focus();
 		return false;
+	} else {
+		document.getElementById("errProductDescription2").style.display = "none";
+		document.getElementById("ProductDescription").style.border = "1px solid #d6d6d6";		
 	}
 	
-	/*Gia:
-	- Khong cho phep trong
-	- Phai la so
-	- Phai lon hon hoặc bằng 0
+	/*Giá:
+	- Không trống
+	- Phải là số
+	- Phải lớn hơn hoặc bằng 0
 	- Không lớn hơn 200 triệu*/
 	//string.replace(chuoicantim,chuoithaythe);
 	for(var i=0; i<Price.length; i++) {	 
@@ -436,87 +471,138 @@ function check()
 	//alert(Price);	
 	if(Price == "")
 	{
-		alert("Giá (VNĐ) không được để trống.");
+		document.getElementById("errPrice1").style.display = "inline";
+		document.getElementById("Price").style.border = "1px solid #e00";
 		document.getElementById("Price").focus();
 		return false;
+	} else {
+		document.getElementById("errPrice1").style.display = "none";
+		document.getElementById("Price").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(isNaN(Price))
 	{
-		alert("Giá (VNĐ) phải là kiểu số.");
+		document.getElementById("errPrice2").style.display = "inline";
+		document.getElementById("Price").style.border = "1px solid #e00";
 		document.getElementById("Price").focus();
 		document.getElementById("Price").value = "";
 		return false;
+	} else {
+		document.getElementById("errPrice2").style.display = "none";
+		document.getElementById("Price").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(Price < 0)
 	{
-		alert("Giá (VNĐ) phải lớn hơn hoặc bằng 0.");
+		document.getElementById("errPrice3").style.display = "inline";
+		document.getElementById("Price").style.border = "1px solid #e00";
 		document.getElementById("Price").focus();
 		document.getElementById("Price").value = "";
 		return false;
+	} else {
+		document.getElementById("errPrice3").style.display = "none";
+		document.getElementById("Price").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(Price > 200000000)
 	{
-		alert("Giá (VNĐ) không được lớn hơn 200 triệu.");
+		document.getElementById("errPrice4").style.display = "inline";
+		document.getElementById("Price").style.border = "1px solid #e00";
 		document.getElementById("Price").focus();
 		document.getElementById("Price").value = "";
 		return false;
+	} else {
+		document.getElementById("errPrice4").style.display = "none";
+		document.getElementById("Price").style.border = "1px solid #d6d6d6";		
 	}
 	
-	/*Bao hanh:
-	- Khong được rỗng.
+	/*Bảo hành:
+	- Không được rỗng.
 	- Phải là kiểu số.
-	- Phải từ 0 đến 36*/	
+	- Phải từ 0 đến 36.*/	
 	if(WarrantyTime == "")
 	{
-		alert("Bảo Hành (Tháng) không được để trống.");
+		document.getElementById("errWarrantyTime1").style.display = "inline";
+		document.getElementById("WarrantyTime").style.border = "1px solid #e00";
 		document.getElementById("WarrantyTime").focus();
 		return false;
+	} else {
+		document.getElementById("errWarrantyTime1").style.display = "none";
+		document.getElementById("WarrantyTime").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(isNaN(WarrantyTime))
 	{
-		alert("Bảo Hành (Tháng) phải là kiểu số.");
+		document.getElementById("errWarrantyTime2").style.display = "inline";
+		document.getElementById("WarrantyTime").style.border = "1px solid #e00";
 		document.getElementById("WarrantyTime").focus();
 		document.getElementById("WarrantyTime").value = "";
 		return false;
+	} else {
+		document.getElementById("errWarrantyTime2").style.display = "none";
+		document.getElementById("WarrantyTime").style.border = "1px solid #d6d6d6";		
 	}
 	
-	if(WarrantyTime < 0 || WarrantyTime > 36)
+	if(WarrantyTime < 0)
 	{
-		alert("Bảo Hành (Tháng) phải từ 0 đến 36.");
+		document.getElementById("errWarrantyTime3").style.display = "inline";
+		document.getElementById("WarrantyTime").style.border = "1px solid #e00";
 		document.getElementById("WarrantyTime").focus();
 		return false;
+	} else {
+		document.getElementById("errWarrantyTime3").style.display = "none";
+		document.getElementById("WarrantyTime").style.border = "1px solid #d6d6d6";		
 	}
 	
-	/*Nam san xuat:
-	- Khong được trống
+	if(WarrantyTime > 36)
+	{
+		document.getElementById("errWarrantyTime4").style.display = "inline";
+		document.getElementById("WarrantyTime").style.border = "1px solid #e00";
+		document.getElementById("WarrantyTime").focus();
+		return false;
+	} else {
+		document.getElementById("errWarrantyTime4").style.display = "none";
+		document.getElementById("WarrantyTime").style.border = "1px solid #d6d6d6";		
+	}
+	
+	/*Năm sản xuất:
+	- Không được trống
 	- Phải là số
 	- Phải từ năm 2010 đến nay*/	
 	if(ManufacturerYear == "")
 	{
-		alert("Năm Sản Xuất không được để trống.");
+		document.getElementById("errManufacturerYear1").style.display = "inline";
+		document.getElementById("ManufacturerYear").style.border = "1px solid #e00";
 		document.getElementById("ManufacturerYear").focus();
 		return false;
+	} else {
+		document.getElementById("errManufacturerYear1").style.display = "none";
+		document.getElementById("ManufacturerYear").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(isNaN(ManufacturerYear))
 	{
-		alert("Năm Sản Xuất phải là kiểu số.");
+		document.getElementById("errManufacturerYear2").style.display = "inline";
+		document.getElementById("ManufacturerYear").style.border = "1px solid #e00";
 		document.getElementById("ManufacturerYear").focus();
 		document.getElementById("ManufacturerYear").value = "";
 		return false;
+	} else {
+		document.getElementById("errManufacturerYear2").style.display = "none";
+		document.getElementById("ManufacturerYear").style.border = "1px solid #d6d6d6";		
 	}
 	
 	var n = new Date().getFullYear();
 	if(ManufacturerYear < 2010 || ManufacturerYear > n)
 	{
-		alert("Năm Sản Xuất phải từ 2010 đến năm hiện hành.");
+		document.getElementById("errManufacturerYear3").style.display = "inline";
+		document.getElementById("ManufacturerYear").style.border = "1px solid #e00";
 		document.getElementById("ManufacturerYear").focus();
 		document.getElementById("ManufacturerYear").value = "";
 		return false;
+	} else {
+		document.getElementById("errManufacturerYear3").style.display = "none";
+		document.getElementById("ManufacturerYear").style.border = "1px solid #d6d6d6";		
 	}
 	
 	return true;
@@ -544,11 +630,11 @@ function check()
         <div class="shop-menu pull-right">
           <ul class="nav navbar-nav">
             <% 	If(Session("MM_Username") <> "") Then %>
-            <li><a>Xin chào,<%=Session("MM_Username")%></a></li>
+            
             <% 	If(Session("MM_UserRole") = "1") Then %>
-            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Tài Khoản</a></li>
+            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,  <%=Session("MM_Username")%></a></li>
             <% 	Else If(Session("MM_UserRole") = "0") Then %>
-            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Tài Khoản</a></li>
+            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,  <%=Session("MM_Username")%></a></li>
             <li><a href="User_Feedback.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "FeedbackMemberID=" & Session("MM_Username") %>">Phản Hồi</a></li>
             <%	End If %>
             <%	End If %>
@@ -644,7 +730,11 @@ function check()
               <% While ((Repeat2__numRows <> 0) AND (NOT rsUpdateProduct.EOF)) %>
                 <tr>
                   <td width="40%" align="right" valign="top"><strong>Tên Sản Phẩm:* &nbsp;</strong></td>
-                  <td width="60%" align="left" valign="top"><input id="ProductName" name="ProductName" type="text" size="35" value="<%=(rsUpdateProduct.Fields.Item("ProductName").Value)%>"/></td>
+                  <td width="60%" align="left" valign="top"><input id="ProductName" name="ProductName" type="text" size="35" value="<%=(rsUpdateProduct.Fields.Item("ProductName").Value)%>"/>
+                  <br/>
+                  <div class="showMsg" id="errProductName1">Tên Sản Phẩm không được để trống.</div>
+                  <div class="showMsg" id="errProductName2">Tên Sản Phẩm phải từ 3 đến 50 ký tự.</div>
+                  <div class="showMsg" id="errProductName3">Tên Sản Phẩm phải bắt đầu bằng 1 ký tự chữ cái tiếng Anh. Ký tự còn lại chỉ chứa: chữ cái tiếng Anh, dấu gạch dưới, chữ số, khoảng trắng, dấu gạch ngang, dấu /, dấu chấm, dấu ().</div></td>
                 </tr>
                 <tr>
                   <td align="right" valign="top"><strong>Hình Ảnh:* &nbsp;</strong></td>
@@ -653,23 +743,48 @@ function check()
                     <input name="ProductImage" id="ProductImage" type="text" value="<%=(rsUpdateProduct.Fields.Item("ProductImage").Value)%>" readonly/>
                     <br/>
                     <br/>
-                    <input name="fileImage" id="fileImage" type="file" accept=".jpg, .jpeg, .png, .gif, .bmp" onChange="cut_string()"></td>
+                    <input name="fileImage" id="fileImage" type="file" accept=".jpg, .jpeg, .png, .gif, .bmp" onChange="cut_string()">
+                    <br/>
+                  <div class="showMsg" id="errProductImage1">Hãy lựa chọn một Hình Ảnh.</div>
+                  <div class="showMsg" id="errProductImage2">Tên Hình Ảnh không được quá 200 ký tự.</div>
+                    </td>
                 </tr>
                 <tr>
                   <td align="right" valign="top"><strong>Mô Tả:* &nbsp;</strong></td>
-                  <td align="left" valign="top"><textarea id="ProductDescription" name="ProductDescription" cols="32" rows="12" ><%=(rsUpdateProduct.Fields.Item("ProductDescription").Value)%></textarea></td>
+                  <td align="left" valign="top"><textarea id="ProductDescription" name="ProductDescription" cols="32" rows="12" ><%=(rsUpdateProduct.Fields.Item("ProductDescription").Value)%></textarea>
+                   <br/>
+                  <div class="showMsg" id="errProductDescription1">Mô Tả không được để trống.</div>
+                  <div class="showMsg" id="errProductDescription2">Mô Tả không được quá 1000 ký tự.</div>
+                  </td>
                 </tr>
                 <tr>
                   <td align="right" valign="top"><strong>Giá (VNĐ):* &nbsp;</strong></td>
-                  <td align="left" valign="top"><input id="Price" name="Price" type="text" size="35" value="<%=(rsUpdateProduct.Fields.Item("Price").Value)%>" onChange="change_price()"/></td>
+                  <td align="left" valign="top"><input id="Price" name="Price" type="text" size="35" value="<%=(rsUpdateProduct.Fields.Item("Price").Value)%>" onChange="change_price()"/>
+                  <br/>
+                  <div class="showMsg" id="errPrice1">Giá (VNĐ) không được để trống.</div>
+                  <div class="showMsg" id="errPrice2">Giá (VNĐ) phải là kiểu số.</div>
+                  <div class="showMsg" id="errPrice3">Giá (VNĐ) phải lớn hơn hoặc bằng 0.</div>
+                  <div class="showMsg" id="errPrice4">Giá (VNĐ) không được lớn hơn 200 triệu.</div>
+                  </td>
                 </tr>
                 <tr>
                   <td align="right" valign="top"><strong>Bảo Hành (Tháng):* &nbsp;</strong></td>
-                  <td align="left" valign="top"><input id="WarrantyTime" name="WarrantyTime" type="text" size="35" value="<%=(rsUpdateProduct.Fields.Item("WarrantyTime").Value)%>" /></td>
+                  <td align="left" valign="top"><input id="WarrantyTime" name="WarrantyTime" type="text" size="35" value="<%=(rsUpdateProduct.Fields.Item("WarrantyTime").Value)%>" />
+                   <br/>
+                  <div class="showMsg" id="errWarrantyTime1">Bảo Hành (Tháng) không được để trống.</div>
+                  <div class="showMsg" id="errWarrantyTime2">Bảo Hành (Tháng) phải là kiểu số.</div>
+                  <div class="showMsg" id="errWarrantyTime3">Bảo Hành (Tháng) phải lớn hơn hoặc bằng 0.</div>
+                  <div class="showMsg" id="errWarrantyTime4">Bảo Hành (Tháng) không được quá 36 tháng.</div>
+                  </td>
                 </tr>
                 <tr>
                   <td align="right" valign="top"><strong>Năm Sản Xuất:* &nbsp;</strong></td>
-                  <td align="left" valign="top"><input id="ManufacturerYear" name="ManufacturerYear" type="text" size="35" value="<%=(rsUpdateProduct.Fields.Item("ManufacturerYear").Value)%>" /></td>
+                  <td align="left" valign="top"><input id="ManufacturerYear" name="ManufacturerYear" type="text" size="35" value="<%=(rsUpdateProduct.Fields.Item("ManufacturerYear").Value)%>" />
+                  <br/>
+                  <div class="showMsg" id="errManufacturerYear1">Năm Sản Xuất không được để trống.</div>
+                  <div class="showMsg" id="errManufacturerYear2">Năm Sản Xuất phải là kiểu số.</div>
+                  <div class="showMsg" id="errManufacturerYear3">Năm Sản Xuất phải từ 2010 đến năm hiện hành.</div>
+                  </td>
                 </tr>
                 <tr>
                   <td align="right" valign="top"><strong>Tên Thương Hiệu: &nbsp;</strong></td>
@@ -789,7 +904,7 @@ function check()
     <div class="container">
       <div class="row">
         <p class="pull-left">Copyright 2016 - 2018 Paddy Studio. All rights reserved.</p>
-        <p class="pull-right">Designed by<span>Group 2 - Paddy Studio</span></p>
+        <p class="pull-right">Designed by <span>Group 2 - Paddy Studio</span></p>
       </div>
     </div>
   </div>
@@ -797,8 +912,7 @@ function check()
 <!--/Footer-->
 
 </body>
-<!-- InstanceEnd -->
-</html>
+<!-- InstanceEnd --></html>
 <%
 rsBrands.Close()
 Set rsBrands = Nothing

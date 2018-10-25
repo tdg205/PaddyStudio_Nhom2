@@ -274,15 +274,15 @@ function check()
 	var Email = document.getElementById("Email").value;
 	var Address = document.getElementById("Address").value;
 	var Phone = document.getElementById("Phone").value;
-	
-	if(Username == "")
+	var tenPattern=/^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]+$/
+	if(Username.trim() == "")
 	{
 		alert("Tên Tài Khoản không được để trống!");
 		document.getElementById("Username").focus();
 		return false;
 	}
 	
-	if(Username.length > 20)
+	if(Username.trim().length > 20)
 	{
 		alert("Tên Tài Khoản không được quá 20 ký tự!");
 		document.getElementById("Username").focus();
@@ -290,29 +290,35 @@ function check()
 		return false;
 	}
 	
-	if(FullName == "")
+	if(FullName.trim() == "")
 	{
 		alert("Họ và Tên không được để trống!");
 		document.getElementById("FullName").focus();
 		return false;
 	}
 	
-	if(FullName.length > 40)
+	if(FullName.trim().length > 40)
 	{
 		alert("Họ và Tên không được quá 40 ký tự!");
 		document.getElementById("FullName").focus();
 		document.getElementById("FullName").value = "";
 		return false;
 	}
+	if(FullName.trim().match(tenPattern) == null){
+		alert("Họ và Tên không được có số hoặc kí tự đặc biệt");
+		document.getElementById("FullName").focus();
+		document.getElementById("FullName").value = "";
+		return false;
+	}
 	
-	if(Password == "")
+	if(Password.trim() == "")
 	{
 		alert("Mật Khẩu không được để trống!");
 		document.getElementById("Password").focus();
 		return false;
 	}
 	
-	if(Password.length > 20)
+	if(Password.trim().length > 20)
 	{
 		alert("Mật Khẩu không được quá 20 ký tự!");
 		document.getElementById("Password").focus();
@@ -320,14 +326,14 @@ function check()
 		return false;
 	}
 	
-	if(ConfirmPassword == "")
+	if(ConfirmPassword.trim() == "")
 	{
 		alert("Nhập Lại Mật Khẩu không được để trống!");
 		document.getElementById("ConfirmPassword").focus();
 		return false;
 	}
 	
-	if(ConfirmPassword != Password)
+	if(ConfirmPassword.trim() != Password)
 	{
 		alert("Mật Khẩu nhập lại phải trùng khớp với Mật Khẩu đã nhập!");
 		document.getElementById("ConfirmPassword").focus();
@@ -335,14 +341,14 @@ function check()
 		return false;
 	}
 	
-	if(Email == "")
+	if(Email.trim() == "")
 	{
 		alert("Email không được để trống!");
 		document.getElementById("Email").focus();
 		return false;
 	}
 	
-	if(Email.length > 50)
+	if(Email.trim().length > 50)
 	{
 		alert("Email không được quá 50 ký tự!");
 		document.getElementById("Email").focus()
@@ -358,7 +364,7 @@ function check()
 		return false;
 	}
 	
-	if(Address.length > 300)
+	if(Address.trim().length > 300)
 	{
 		alert("Địa Chỉ không được quá 300 ký tự!");
 		document.getElementById("Address").focus();
@@ -366,7 +372,7 @@ function check()
 		return false;
 	}
 	
-	if(isNaN(Phone))
+	if(isNaN(Phone.trim()))
 	{
 		alert("Số Điện Thoại phải là kiểu số!");
 		document.getElementById("Phone").focus();
@@ -374,9 +380,9 @@ function check()
 		return false;
 	}
 	
-	if(Phone.length > 11)
+	if(Phone.trim().length > 10)
 	{
-		alert("Số Điện Thoại không được quá 11 số!");
+		alert("Số Điện Thoại không được quá 10 số!");
 		document.getElementById("Phone").focus();
 		document.getElementById("Phone").value = "";
 		return false;
@@ -407,11 +413,11 @@ function check()
         <div class="shop-menu pull-right">
           <ul class="nav navbar-nav">
             <% 	If(Session("MM_Username") <> "") Then %>
-            <li><a>Xin chào, <%=Session("MM_Username")%></a></li>
+            
             <% 	If(Session("MM_UserRole") = "1") Then %>
-            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Tài Khoản</a></li>
+            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,  <%=Session("MM_Username")%></a></li>
             <% 	Else If(Session("MM_UserRole") = "0") Then %>
-            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Tài Khoản</a></li>
+            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,  <%=Session("MM_Username")%></a></li>
             <li><a href="User_Feedback.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "FeedbackMemberID=" & Session("MM_Username") %>">Phản Hồi</a></li>
             <%	End If %>
             <%	End If %>
