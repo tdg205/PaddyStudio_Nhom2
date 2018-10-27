@@ -451,8 +451,8 @@ function check()
                                 <td align="left" valign="top"><textarea id="BrandDescription" name="BrandDescription" cols="32" rows="5"><%=(rsUpdateBrand.Fields.Item("BrandDescription").Value)%></textarea></td>
                             </tr>
                             <tr>
-                                <td align="right" valign="top"><input type="submit" id="btnUpdate" name="btnUpdate" value="Cập Nhật" class="btn search"/></td>
-                                <td align="left" valign="top"><input type="reset" value="Hủy" class="btn search"/>&nbsp;&nbsp;<a href="javascript:history.back()" class="btn search">Trở Về</a></td>
+                                <td align="right" valign="top"><input type="submit" id="btnUpdate" name="btnUpdate" value="Cập Nhật" class="btn search" onClick="return confirm('Bạn muốn cập nhật thông tin Thương Hiệu này ?')"/></td>
+                                <td align="left" valign="top"><a href="javascript:history.back()" class="btn search">Trở Về</a></td>
                             </tr>
                             <tr>
                                 <td align="right" valign="top">&nbsp;</td>

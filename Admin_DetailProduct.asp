@@ -257,16 +257,6 @@ End If
 <script src="js/main.js"></script>
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>Xem Sản Phẩm</title>
-<script>
-function confirmDelete()
-{
-	if(confirm("Bạn muốn xóa thông tin Sản Phẩm này?")){
-		return true;
-	} else {
-		return false;
-	}
-}
-</script>
 <!-- InstanceEndEditable -->
 <!-- InstanceBeginEditable name="head" -->
 <!-- InstanceEndEditable -->
@@ -402,7 +392,7 @@ function confirmDelete()
               </tr>
               <tr>
                 <td align="right" valign="top"><a href="javascript:history.back()" class="btn search">Trở Về</a></td>
-                <td align="left" valign="top"><input type="submit" id="btnXoa" name="btnXoa" value="Xóa" class="btn search" onClick="return confirmDelete()"/></td>
+                <td align="left" valign="top"><input type="submit" id="btnXoa" name="btnXoa" value="Xóa" class="btn search" onClick="return confirm('Bạn muốn xóa thông tin Sản Phẩm này?')"/></td>
               </tr>
               <tr>
                 <td align="right" valign="top">&nbsp;</td>

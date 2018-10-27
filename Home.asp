@@ -157,7 +157,7 @@ End If
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>Trang Chủ</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="css/w3.css" rel="stylesheet">
 <style>
 .mySlides {
 	display: none
@@ -171,8 +171,8 @@ End If
 	padding: 0
 }
 .w3-white-custom, .w3-hover-white-custom:hover {
-    color: white!important;
-    background-color: #706f6f!important;
+	color: white!important;
+	background-color: #c9c9c9!important;
 }
 </style>
 <!-- InstanceEndEditable -->
@@ -277,20 +277,19 @@ End If
       </div>
       <div class="col-sm-9 padding-right">
         <!-- InstanceBeginEditable name="Content" -->
-        <div class="w3-content w3-display-container"><img class="mySlides" src="images/home/img_nature_wide.jpg" style="width:100%"><img class="mySlides" src="images/home/img_snow_wide.jpg" style="width:100%">
-          <img class="mySlides" src="images/home/img_mountains_wide.jpg" style="width:100%">
+        <div class="w3-content w3-display-container"><img class="mySlides" src="images/home/img_nature_wide.jpg" style="width:100%"><img class="mySlides" src="images/home/img_snow_wide.jpg" style="width:100%"><img class="mySlides" src="images/home/img_mountains_wide.jpg" style="width:100%"><br/>
           <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
-            <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)" style="color:#706f6f!important;">&#10094;</div>
-            <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)" style="color:#706f6f!important;">&#10095;</div>
-            <span class="w3-badge demo w3-border w3-transparent w3-hover-white-custom" onclick="currentDiv(1)"></span><span class="w3-badge demo w3-border w3-transparent w3-hover-white-custom" onclick="currentDiv(2)"></span><span class="w3-badge demo w3-border w3-transparent w3-hover-white-custom" onclick="currentDiv(3)"></span></div>
+            <!--<div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)" style="color:#706f6f!important;">&#10094;</div>-->
+            <!--<div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)" style="color:#706f6f!important;">&#10095;</div>-->
+            <span class="w3-badge demo w3-border w3-transparent w3-hover-white-custom" onclick="currentDiv(1)"></span>&nbsp;&nbsp;<span class="w3-badge demo w3-border w3-transparent w3-hover-white-custom" onclick="currentDiv(2)"></span>&nbsp;&nbsp;<span class="w3-badge demo w3-border w3-transparent w3-hover-white-custom" onclick="currentDiv(3)"></span></div>
         </div>
-<script>
+        <script>
 	var slideIndex = 1;
 	showDivs(slideIndex);
 	
-	function plusDivs(n) {
+	/*function plusDivs(n) {
 	  showDivs(slideIndex += n);
-	}
+	}*/
 	
 	function currentDiv(n) {
 	  showDivs(slideIndex = n);

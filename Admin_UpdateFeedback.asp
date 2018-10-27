@@ -426,7 +426,7 @@ function check()
                             </tr>
                           	<tr>
                                 <td align="right" valign="top"><input type="submit" value="Trả Lời" class="btn search"/></td>
-                                <td align="left" valign="top"><input type="reset" value="Hủy" class="btn search"/>&nbsp;&nbsp;<a href="javascript:history.back()" class="btn search">Trở Về</a></td>
+                                <td align="left" valign="top"><a href="javascript:history.back()" class="btn search">Trở Về</a></td>
                           	</tr>
                             <tr>
                                 <td align="right" valign="top"><input type="hidden" id="AdminReply" name="AdminReply" value="<%=Session("MM_Username")%>"/></td>

@@ -401,8 +401,12 @@ End If
                                 <td align="right" valign="top"><a href="javascript:history.back()" class="btn search">Trở Về</a></td>
                                 <td align="left" valign="top">
                                   <% If rsPro.EOF And rsPro.BOF Then %>
-                                    <input type="submit" id="btnXoa" name="btnXoa" value="Xóa" class="btn search"/>
-                              <% End If ' end rsPro.EOF And rsPro.BOF %></td>
+								  <!--The BOF and EOF properties are set to True if you open an empty Recordset. 
+								  RecordCount property is zero-->
+                                    <input type="submit" id="btnXoa" name="btnXoa" value="Xóa" class="btn search" onClick="return confirm('Bạn muốn xóa thông tin Thương Hiệu này?')"/>
+								  <% End If ' end rsPro.EOF And rsPro.BOF %>
+								  <!-- If a Recordset holds at least one record, the first record is the current and the BOF and EOF properties are False.-->
+								</td>
                             </tr>
                             <tr>
                                 <td align="right" valign="top">&nbsp;</td>

@@ -303,15 +303,6 @@ End If
 }
 </STYLE>
 <script>
-function confirmUpdate()
-{
-	if(confirm("Bạn muốn cập nhật thông tin Sản Phẩm ?")){
-		return true;
-	} else {
-		return false;
-	}
-}
-
 function change_price()
 {
 	var Price = document.getElementById("Price").value;
@@ -792,7 +783,7 @@ function check()
                     </select></td>
                 </tr>
                 <tr>
-                  <td align="right" valign="top"><input type="submit" id="btnUpdate" name="btnUpdate" value="Cập Nhật" class="btn search" onClick="return confirmUpdate()"/></td>
+                  <td align="right" valign="top"><input type="submit" id="btnUpdate" name="btnUpdate" value="Cập Nhật" class="btn search" onClick="return confirm('Bạn muốn cập nhật thông tin Sản Phẩm ?')"/></td>
                   <td align="left" valign="top"><!--<input type="reset" value="Hủy" class="btn search"/>&nbsp;&nbsp;--><a href="javascript:history.back()" class="btn search">Trở Về</a></td>
                 </tr>
                 <tr>

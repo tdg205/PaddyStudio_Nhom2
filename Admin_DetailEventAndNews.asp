@@ -387,7 +387,7 @@ End If
                                     </tr>
                                 	<tr>
                                    	  <td align="right" valign="top"><a class="btn search" href="javascript:history.back()">Trở Về</a></td>
-                                      <td align="left" valign="top"><input type="submit" id="btnXoa" name="btnXoa" value="Xóa" class="btn search"/></td>
+                                      <td align="left" valign="top"><input type="submit" id="btnXoa" name="btnXoa" value="Xóa" class="btn search"  onClick="return confirm('Bạn muốn xóa Tin Tức này ?')"/></td>
                                     </tr>
                                     <tr>
                                 		<td align="right" valign="top">&nbsp;</td>
