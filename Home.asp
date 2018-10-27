@@ -85,8 +85,7 @@ Function MM_joinChar(firstItem)
 End Function
 %>
 <!doctype html>
-<html>
-<!-- InstanceBegin template="/Templates/temp.dwt.asp" codeOutsideHTMLIsLocked="false" -->
+<html><!-- InstanceBegin template="/Templates/temp.dwt.asp" codeOutsideHTMLIsLocked="false" -->
 <head>
 <%
 Dim rsFeedbackID
@@ -388,15 +387,14 @@ End If
     <div class="container">
       <div class="row">
         <p class="pull-left">Copyright 2016 - 2018 Paddy Studio. All rights reserved.</p>
-        <p class="pull-right">Designed by<span>Group 2 - Paddy Studio</span></p>
+        <p class="pull-right">Designed by <span> Group 2 - Paddy Studio</span></p>
       </div>
     </div>
   </div>
 </footer>
 <!--/Footer-->
 </body>
-<!-- InstanceEnd -->
-</html>
+<!-- InstanceEnd --></html>
 <%
 rsBrands.Close()
 Set rsBrands = Nothing

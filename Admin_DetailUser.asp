@@ -137,6 +137,27 @@ Set rsAdmin = rsAdmin_cmd.Execute
 rsAdmin_numRows = 0
 %>
 <%
+Dim rsFeed__MMColParam
+rsFeed__MMColParam = "1"
+If (Request.QueryString("UserID") <> "") Then 
+  rsFeed__MMColParam = Request.QueryString("UserID")
+End If
+%>
+<%
+Dim rsFeed
+Dim rsFeed_cmd
+Dim rsFeed_numRows
+
+Set rsFeed_cmd = Server.CreateObject ("ADODB.Command")
+rsFeed_cmd.ActiveConnection = MM_cn_STRING
+rsFeed_cmd.CommandText = "SELECT * FROM dbo.tbFeedback WHERE FeedbackMemberID = ?" 
+rsFeed_cmd.Prepared = true
+rsFeed_cmd.Parameters.Append rsFeed_cmd.CreateParameter("param1", 200, 1, 20, rsFeed__MMColParam) ' adVarChar
+
+Set rsFeed = rsFeed_cmd.Execute
+rsFeed_numRows = 0
+%>
+<%
 Dim Repeat1__numRows
 Dim Repeat1__index
 
@@ -408,9 +429,12 @@ End If
                         			</tr>
                                 	<tr>
                                 		<td align="right" valign="top"><a href="javascript:history.back()" class="btn search">Trở Về</a></td>
-                                		<td align="left" valign="top"><% If rsAdmin.EOF And rsAdmin.BOF Then %>
-                                		    <input type="submit" id="btnXoa" name="btnXoa" value="Xóa" class="btn search" onclick="return confirm('Bạn có muốn xóa user này không?');"/>
-                                		    <% End If ' end rsAdmin.EOF And rsAdmin.BOF %></td>
+                                		<td align="left" valign="top">
+										<% If rsAdmin.EOF And rsAdmin.BOF Then %>
+											<% If rsFeed.EOF And rsFeed.BOF Then %>
+												<input type="submit" id="btnXoa" name="btnXoa" value="Xóa" class="btn search" onclick="return confirm('Bạn có muốn xóa user này không?');"/>
+											<% End If ' end rsFeed.EOF And rsFeed.BOF %>
+										<% End If ' end rsAdmin.EOF And rsAdmin.BOF %></td>
                             		</tr>
                        				<tr>
                                 		<td align="right" valign="top">&nbsp;</td>
@@ -498,7 +522,7 @@ End If
     <div class="container">
       <div class="row">
         <p class="pull-left">Copyright 2016 - 2018 Paddy Studio. All rights reserved.</p>
-        <p class="pull-right">Designed by<span>Group 2 - Paddy Studio</span></p>
+        <p class="pull-right">Designed by <span> Group 2 - Paddy Studio</span></p>
       </div>
     </div>
   </div>
@@ -521,4 +545,8 @@ Set rsXoa = Nothing
 <%
 rsAdmin.Close()
 Set rsAdmin = Nothing
+%>
+<%
+rsFeed.Close()
+Set rsFeed = Nothing
 %>

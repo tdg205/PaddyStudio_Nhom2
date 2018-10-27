@@ -427,7 +427,7 @@ function check()
     <div class="container">
       <div class="row">
         <p class="pull-left">Copyright 2016 - 2018 Paddy Studio. All rights reserved.</p>
-        <p class="pull-right">Designed by<span>Group 2 - Paddy Studio</span></p>
+        <p class="pull-right">Designed by <span> Group 2 - Paddy Studio</span></p>
       </div>
     </div>
   </div>
