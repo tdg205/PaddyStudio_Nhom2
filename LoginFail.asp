@@ -28,49 +28,68 @@ Dim MM_paramName
 ' *** Validate request to log in to this site.
 MM_LoginAction = Request.ServerVariables("URL")
 If Request.QueryString <> "" Then MM_LoginAction = MM_LoginAction + "?" + Server.HTMLEncode(Request.QueryString)
+
+'Chuyen doi sang kieu String data lay tu form submit len
 MM_valUsername = CStr(Request.Form("txtUsername"))
-MM_valUserRole = CStr(Request.Form("UserRole"))
+
+'Kiem tra input Username khac rong
 If MM_valUsername <> "" Then
-  Dim MM_fldUserAuthorization
-  Dim MM_redirectLoginSuccess
-  Dim MM_redirectLoginFailed
-  Dim MM_loginSQL
-  Dim MM_rsUser
-  Dim MM_rsUser_cmd
+	Dim MM_fldUserAuthorization
+	Dim MM_redirectLoginSuccess
+	Dim MM_redirectLoginFailed
+	Dim MM_loginSQL
+	Dim MM_rsUser
+	Dim MM_rsUser_cmd  
+	Dim MM_redirectLoginAdminSuccess
+	
+	MM_fldUserAuthorization = "UserRole"
+	MM_redirectLoginSuccess = "LoginSuccess.asp"
+	MM_redirectLoginFailed = "LoginFail.asp"
+	MM_redirectLoginAdminSuccess = "Admin_LoginSuccess.asp"
+	MM_loginSQL = "SELECT UserID, UserPassword"
+
+	'Kiem tra Userrole khac rong -> Tao Select UserId, UserPass, UserRole
+	If MM_fldUserAuthorization <> "" Then MM_loginSQL = MM_loginSQL & ", " & MM_fldUserAuthorization
   
-  MM_fldUserAuthorization = "UserRole"
-  MM_redirectLoginSuccess = "LoginSuccess.asp"
-  MM_redirectLoginFailed = "LoginFail.asp"
+	  ' Gan tiep--Select UserId, UserPass, UserRole From dbo.tbUser where UserId = ? AND UserPassword = ? AND UserRole = 1"
+	  MM_loginSQL = MM_loginSQL & " FROM dbo.tbUser WHERE UserID = ? AND UserPassword = ?"
+	  Set MM_rsUser_cmd = Server.CreateObject ("ADODB.Command")
+	  MM_rsUser_cmd.ActiveConnection = MM_cn_STRING
+	  MM_rsUser_cmd.CommandText = MM_loginSQL
+	  MM_rsUser_cmd.Parameters.Append MM_rsUser_cmd.CreateParameter("param1", 200, 1, 20, MM_valUsername) ' adVarChar
+	  MM_rsUser_cmd.Parameters.Append MM_rsUser_cmd.CreateParameter("param2", 200, 1, 20, Request.Form("txtPass")) ' adVarChar
+	  MM_rsUser_cmd.Prepared = true
+	  Set MM_rsUser = MM_rsUser_cmd.Execute
 
-  MM_loginSQL = "SELECT UserID, UserPassword"
-  If MM_fldUserAuthorization <> "" Then MM_loginSQL = MM_loginSQL & "," & MM_fldUserAuthorization
-  MM_loginSQL = MM_loginSQL & " FROM dbo.tbUser WHERE UserID = ? AND UserPassword = ? AND UserRole = 0"
-  Set MM_rsUser_cmd = Server.CreateObject ("ADODB.Command")
-  MM_rsUser_cmd.ActiveConnection = MM_cn_STRING
-  MM_rsUser_cmd.CommandText = MM_loginSQL
-  MM_rsUser_cmd.Parameters.Append MM_rsUser_cmd.CreateParameter("param1", 200, 1, 20, MM_valUsername) ' adVarChar
-  MM_rsUser_cmd.Parameters.Append MM_rsUser_cmd.CreateParameter("param2", 200, 1, 20, Request.Form("txtPass")) ' adVarChar
-  MM_rsUser_cmd.Prepared = true
-  Set MM_rsUser = MM_rsUser_cmd.Execute
-
-  If Not MM_rsUser.EOF Or Not MM_rsUser.BOF Then 
-    ' username and password match - this is a valid user
-    Session("MM_Username") = MM_valUsername
-	Session("MM_UserRole") = MM_valUserRole
-    If (MM_fldUserAuthorization <> "") Then
-      Session("MM_UserAuthorization") = CStr(MM_rsUser.Fields.Item(MM_fldUserAuthorization).Value)
-    Else
-      Session("MM_UserAuthorization") = ""
-    End If
-    if CStr(Request.QueryString("accessdenied")) <> "" And true Then
-      MM_redirectLoginSuccess = Request.QueryString("accessdenied")
-    End If
-    MM_rsUser.Close
-    Response.Redirect(MM_redirectLoginSuccess)
-  End If
+	  If Not MM_rsUser.EOF Or Not MM_rsUser.BOF Then 
+		' username and password match - this is a valid user
+		Session("MM_Username") = MM_valUsername
+		If (MM_fldUserAuthorization <> "") Then
+			'Gan chuoi kieu String - False if User/ True if Admin
+		  Session("MM_UserAuthorization") = CStr(MM_rsUser.Fields.Item(MM_fldUserAuthorization).Value)
+		Else
+		  Session("MM_UserAuthorization") = ""
+		End If
+		If (Session("MM_UserAuthorization")="True") Then
+			Session("MM_UserRole") = "1"
+			if CStr(Request.QueryString("accessdenied")) <> "" And true Then
+			  MM_redirectLoginAdminSuccess = Request.QueryString("accessdenied")
+			End If
+			MM_rsUser.Close
+			Response.Redirect(MM_redirectLoginAdminSuccess)
+		Else If (Session("MM_UserAuthorization")="False") Then
+			Session("MM_UserRole") = "0"
+			if CStr(Request.QueryString("accessdenied")) <> "" And true Then
+			MM_redirectLoginSuccess = Request.QueryString("accessdenied")
+			End If	
+			MM_rsUser.Close
+			Response.Redirect(MM_redirectLoginSuccess)
+		End If
+		End If
+	  End If	
   MM_rsUser.Close
   Response.Redirect(MM_redirectLoginFailed)
-End If
+End If  
 %>
 <%
 ' *** Go To Record and Move To Record: create strings for maintaining URL and Form parameters
@@ -325,31 +344,31 @@ function check()
           </div>
           <!--/brands_products-->
           <!-- InstanceBeginEditable name="left" -->
-						<!-- InstanceEndEditable -->
+		<!-- InstanceEndEditable -->
         </div>
       </div>
       <div class="col-sm-9 padding-right">
         <!-- InstanceBeginEditable name="Content" -->
-                    <h2 class="title text-center">Tên Đăng Nhập hoặc Mật Khẩu không đúng</h2>
-                    <div class="col-sm-12"><!--login form-->
-							<form ACTION="<%=MM_LoginAction%>" METHOD="POST" id="formLogin" name="formLogin" onSubmit="return check()">
-                            	<table width="100%" border="0" cellpadding="5" cellspacing="5">
-  									<tr>
-          								<td width="50%" align="right" valign="top"><strong>Tên Đăng Nhập:* &nbsp;</strong></td>
-       								  	<td width="50%" align="left" valign="top"><input type="text" id="txtUsername" name="txtUsername"/></td>
-       								</tr>
-                                    <tr>
-    									<td align="right" valign="top"><strong>Mật Khẩu:* &nbsp;</strong></td>
-   									  <td align="left" valign="top"><input type="password" id="txtPass" name="txtPass"/></td>
-  									</tr>
-                                    <tr>
-    									<td align="right" valign="top"><input type="hidden" id="UserRole" name="UserRole" value="0" /></td>
-    									<td align="left" valign="top"><input type="submit" id="btnLog" name="btnLog" value="Đăng Nhập" class="btn search"/></td>
-  									</tr>
-                              	</table>
-						  </form>
-					</div><!--/login form-->
-					<!-- InstanceEndEditable -->
+		<h2 class="title text-center">Tên Đăng Nhập hoặc Mật Khẩu không đúng</h2>
+		<div class="col-sm-12"><!--login form-->
+				<form ACTION="<%=MM_LoginAction%>" METHOD="POST" id="formLogin" name="formLogin" onSubmit="return check()">
+					<table width="100%" border="0" cellpadding="5" cellspacing="5">
+						<tr>
+							<td width="50%" align="right" valign="top"><strong>Tên Đăng Nhập:* &nbsp;</strong></td>
+							<td width="50%" align="left" valign="top"><input type="text" id="txtUsername" name="txtUsername"/></td>
+						</tr>
+						<tr>
+							<td align="right" valign="top"><strong>Mật Khẩu:* &nbsp;</strong></td>
+						  <td align="left" valign="top"><input type="password" id="txtPass" name="txtPass"/></td>
+						</tr>
+						<tr>
+							<td align="right" valign="top"></td>
+							<td align="left" valign="top"><input type="submit" id="btnLog" name="btnLog" value="Đăng Nhập" class="btn search"/></td>
+						</tr>
+					</table>
+			  </form>
+		</div><!--/login form-->
+		<!-- InstanceEndEditable -->
       </div>
     </div>
   </div>
