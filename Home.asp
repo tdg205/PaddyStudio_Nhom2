@@ -26,7 +26,6 @@ Dim MM_paramName
 %>
 <%
 ' *** Go To Record and Move To Record: create strings for maintaining URL and Form parameters
-
 Dim MM_keepNone
 Dim MM_keepURL
 Dim MM_keepForm

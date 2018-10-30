@@ -6,6 +6,7 @@ MM_authorizedUsers="False"
 MM_authFailedURL="Login.asp"
 MM_grantAccess=false
 If Session("MM_Username") <> "" Then
+'Check Session("MM_UserAuthorization") is True/ False
   If (false Or CStr(Session("MM_UserAuthorization"))="") Or _
          (InStr(1,MM_authorizedUsers,Session("MM_UserAuthorization"))>=1) Then
     MM_grantAccess = true
@@ -15,7 +16,7 @@ If Not MM_grantAccess Then
   MM_qsChar = "?"
   If (InStr(1,MM_authFailedURL,"?") >= 1) Then MM_qsChar = "&"
   MM_referrer = Request.ServerVariables("URL")
-  if (Len(Request.QueryString()) > 0) Then MM_referrer = MM_referrer & "?" & Request.QueryString()
+  If (Len(Request.QueryString()) > 0) Then MM_referrer = MM_referrer & "?" & Request.QueryString()
   MM_authFailedURL = MM_authFailedURL & MM_qsChar & "accessdenied=" & Server.URLEncode(MM_referrer)
   Response.Redirect(MM_authFailedURL)
 End If
@@ -35,9 +36,11 @@ rsBrands_numRows = 0
 %>
 <%
 Dim rsFeedbackList__MMColParam
-rsFeedbackList__MMColParam = "1"
-If (Request.QueryString("FeedbackMemberID") <> "") Then 
-  rsFeedbackList__MMColParam = Request.QueryString("FeedbackMemberID")
+rsFeedbackList__MMColParam = "1dasd" 'Help define rsFeedbackList__MMColParam with the String data type, max 20 characters.
+If (Request.QueryString("FeedbackMemberID") <> "") Then 'Check FeedbackMemberID is propagated by GET method.
+	rsFeedbackList__MMColParam = Request.QueryString("FeedbackMemberID") 'Assigned if transmitted according to the GET method.
+Else 
+	rsFeedbackList__MMColParam = Session("MM_Username") 'Assigned if transmitted according to the POST method.
 End If
 %>
 <%
@@ -45,7 +48,7 @@ Dim rsFeedbackList
 Dim rsFeedbackList_cmd
 Dim rsFeedbackList_numRows
 
-Set rsFeedbackList_cmd = Server.CreateObject ("ADODB.Command")
+Set rsFeedbackList_cmd = Server.CreateObject("ADODB.Command")
 rsFeedbackList_cmd.ActiveConnection = MM_cn_STRING
 rsFeedbackList_cmd.CommandText = "SELECT *, left(FeedbackContent, 50)+'...' as 'FeedbackSummary' FROM dbo.tbFeedback WHERE FeedbackMemberID = ? ORDER BY FeedbackID DESC" 
 rsFeedbackList_cmd.Prepared = true
@@ -72,7 +75,6 @@ rsFeedbackList_numRows = rsFeedbackList_numRows + Repeat2__numRows
 %>
 <%
 '  *** Recordset Stats, Move To Record, and Go To Record: declare stats variables
-
 Dim rsFeedbackList_total
 Dim rsFeedbackList_first
 Dim rsFeedbackList_last
@@ -109,7 +111,6 @@ Dim MM_paramName
 %>
 <%
 ' *** Move To Record and Go To Record: declare variables
-
 Dim MM_rs
 Dim MM_rsCount
 Dim MM_size
@@ -135,7 +136,6 @@ End If
 %>
 <%
 ' *** Move To Record: handle 'index' or 'offset' parameter
-
 if (Not MM_paramIsDefined And MM_rsCount <> 0) then
 
   ' use index parameter if defined, otherwise use offset parameter
@@ -218,7 +218,6 @@ End If
 %>
 <%
 ' *** Move To Record: update recordset stats
-
 ' set the first and last displayed record
 rsFeedbackList_first = MM_offset + 1
 rsFeedbackList_last  = MM_offset + MM_size
@@ -237,7 +236,6 @@ MM_atTotal = (MM_rsCount <> -1 And MM_offset + MM_size >= MM_rsCount)
 %>
 <%
 ' *** Go To Record and Move To Record: create strings for maintaining URL and Form parameters
-
 Dim MM_keepNone
 Dim MM_keepURL
 Dim MM_keepForm
@@ -297,7 +295,6 @@ End Function
 %>
 <%
 ' *** Move To Record: set the strings for the first, last, next, and previous links
-
 Dim MM_keepMove
 Dim MM_moveParam
 Dim MM_moveFirst
@@ -523,7 +520,7 @@ td, th
           </div>
           <!--/brands_products-->
           <!-- InstanceBeginEditable name="left" -->
-						<!-- InstanceEndEditable -->
+		<!-- InstanceEndEditable -->
         </div>
       </div>
       <div class="col-sm-9 padding-right">
@@ -556,16 +553,16 @@ td, th
                           <tr>
                             <td><% If MM_offset <> 0 Then %>
                                 <a href="<%=MM_moveFirst%>" class="btn btn-default add-to-cart">Trang Đầu Tiên</a>
-                            <% End If ' end MM_offset <> 0 %></td>
+                            <% End If %><!--' end MM_offset <> 0 --></td>
                             <td><% If MM_offset <> 0 Then %>
                                 <a href="<%=MM_movePrev%>" class="btn btn-default add-to-cart">Trang Trước</a>
-                            <% End If ' end MM_offset <> 0 %></td>
+                            <% End If %><!--' end MM_offset <> 0--></td>
                             <td><% If Not MM_atTotal Then %>
                                 <a href="<%=MM_moveNext%>" class="btn btn-default add-to-cart">Trang Sau</a>
-                            <% End If ' end Not MM_atTotal %></td>
+                            <% End If %><!-- ' end Not MM_atTotal--></td>
                             <td><% If Not MM_atTotal Then %>
                                 <a href="<%=MM_moveLast%>" class="btn btn-default add-to-cart">Trang Cuối Cùng</a>
-                            <% End If ' end Not MM_atTotal %></td>
+                            <% End If %> <!--' end Not MM_atTotal --></td>
                           </tr>
                         </table>
                         <a href="User_FeedbackSend.asp" class="btn search">Gửi Phản Hồi</a>

@@ -33,7 +33,6 @@ MM_abortEdit = false
 %>
 <%
 ' *** Delete Record: construct a sql delete statement and execute it
-
 If (CStr(Request("MM_delete")) = "formUserDetail" And CStr(Request("MM_recordId")) <> "") Then
 
   If (Not MM_abortEdit) Then
@@ -433,8 +432,8 @@ End If
 										<% If rsAdmin.EOF And rsAdmin.BOF Then %>
 											<% If rsFeed.EOF And rsFeed.BOF Then %>
 												<input type="submit" id="btnXoa" name="btnXoa" value="Xóa" class="btn search" onclick="return confirm('Bạn có muốn xóa user này không?');"/>
-											<% End If ' end rsFeed.EOF And rsFeed.BOF %>
-										<% End If ' end rsAdmin.EOF And rsAdmin.BOF %></td>
+											<% End If %> <!--' end rsFeed.EOF And rsFeed.BOF-->
+										<% End If %> <!--' end rsPro.EOF And rsPro.BOF --></td>
                             		</tr>
                        				<tr>
                                 		<td align="right" valign="top">&nbsp;</td>

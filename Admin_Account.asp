@@ -255,11 +255,8 @@ End If
   <!--/header-bottom-->
 </header>
 <!--/header-->
-
-<!-- InstanceBeginEditable name="Slider" -->
-    
-    
-	<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="Slider" -->   
+<!-- InstanceEndEditable -->
 <section><!--section-->
   <div class="container">
     <div class="row">
@@ -295,45 +292,45 @@ End If
           </div>
           <!--/brands_products-->
           <!-- InstanceBeginEditable name="left" -->
-						<!-- InstanceEndEditable -->
+		<!-- InstanceEndEditable -->
         </div>
       </div>
       <div class="col-sm-9 padding-right">
         <!-- InstanceBeginEditable name="Content" -->
-                    <h2 class="title text-center">Thông Tin Tài Khoản</h2>
-                    	<div class="col-sm-12">
-                        		<table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
-                        			<tr>
-                            			<td width="50%" align="right" valign="top"><strong>Tên Tài Khoản: &nbsp;</strong></td>
-                            			<td width="50%" align="left" valign="top"><%=(rsAdminAccountDetail.Fields.Item("UserID").Value)%></td>
-                        			</tr>
-                                	<tr>
-                            			<td width="50%" align="right" valign="top"><strong>Họ Và Tên: &nbsp;</strong></td>
-                            			<td width="50%" align="left" valign="top"><%=(rsAdminAccountDetail.Fields.Item("FullName").Value)%></td>
-                        			</tr>
-                                	<tr>
-                            			<td width="50%" align="right" valign="top"><strong>Email: &nbsp;</strong></td>
-                            			<td width="50%" align="left" valign="top"><%=(rsAdminAccountDetail.Fields.Item("UserEmail").Value)%></td>
-                        			</tr>
-                                	<tr>
-                            			<td width="50%" align="right" valign="top"><strong>Địa Chỉ: &nbsp;</strong></td>
-                            			<td width="50%" align="left" valign="top"><%=(rsAdminAccountDetail.Fields.Item("UserAddress").Value)%></td>
-                        			</tr>
-                                	<tr>
-                            			<td width="50%" align="right" valign="top"><strong>Số Điện Thoại: &nbsp;</strong></td>
-                            			<td width="50%" align="left" valign="top"><%=(rsAdminAccountDetail.Fields.Item("UserPhone").Value)%></td>
-                        			</tr>
-                                	<tr>
-                                		<td align="right" valign="top">&nbsp;</td>
-                                		<td align="left" valign="top"><a HREF="Admin_AccountUpdate.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & rsAdminAccountDetail.Fields.Item("UserID").Value %>" class="btn search">Đến Trang Cập Nhật</a></td>
-                            		</tr>
-                       				<tr>
-                                		<td align="right" valign="top">&nbsp;</td>
-                                		<td align="left" valign="top">&nbsp;</td>
-                           	  		</tr>
-                            	</table>
-                    	</div>
-					<!-- InstanceEndEditable -->
+		<h2 class="title text-center">Thông Tin Tài Khoản</h2>
+		<div class="col-sm-12">
+			<table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
+				<tr>
+					<td width="50%" align="right" valign="top"><strong>Tên Tài Khoản: &nbsp;</strong></td>
+					<td width="50%" align="left" valign="top"><%=(rsAdminAccountDetail.Fields.Item("UserID").Value)%></td>
+				</tr>
+				<tr>
+					<td width="50%" align="right" valign="top"><strong>Họ Và Tên: &nbsp;</strong></td>
+					<td width="50%" align="left" valign="top"><%=(rsAdminAccountDetail.Fields.Item("FullName").Value)%></td>
+				</tr>
+				<tr>
+					<td width="50%" align="right" valign="top"><strong>Email: &nbsp;</strong></td>
+					<td width="50%" align="left" valign="top"><%=(rsAdminAccountDetail.Fields.Item("UserEmail").Value)%></td>
+				</tr>
+				<tr>
+					<td width="50%" align="right" valign="top"><strong>Địa Chỉ: &nbsp;</strong></td>
+					<td width="50%" align="left" valign="top"><%=(rsAdminAccountDetail.Fields.Item("UserAddress").Value)%></td>
+				</tr>
+				<tr>
+					<td width="50%" align="right" valign="top"><strong>Số Điện Thoại: &nbsp;</strong></td>
+					<td width="50%" align="left" valign="top"><%=(rsAdminAccountDetail.Fields.Item("UserPhone").Value)%></td>
+				</tr>
+				<tr>
+					<td align="right" valign="top">&nbsp;</td>
+					<td align="left" valign="top"><a HREF="Admin_AccountUpdate.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & rsAdminAccountDetail.Fields.Item("UserID").Value %>" class="btn search">Đến Trang Cập Nhật</a></td>
+				</tr>
+				<tr>
+					<td align="right" valign="top">&nbsp;</td>
+					<td align="left" valign="top">&nbsp;</td>
+				</tr>
+			</table>
+		</div>
+		<!-- InstanceEndEditable -->
       </div>
     </div>
   </div>

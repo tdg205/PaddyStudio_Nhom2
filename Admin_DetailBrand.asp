@@ -404,7 +404,7 @@ End If
 								  <!--The BOF and EOF properties are set to True if you open an empty Recordset. 
 								  RecordCount property is zero-->
                                     <input type="submit" id="btnXoa" name="btnXoa" value="Xóa" class="btn search" onClick="return confirm('Bạn muốn xóa thông tin Thương Hiệu này?')"/>
-								  <% End If ' end rsPro.EOF And rsPro.BOF %>
+								  <% End If %> <!--end rsPro.EOF And rsPro.BOF-->
 								  <!-- If a Recordset holds at least one record, the first record is the current and the BOF and EOF properties are False.-->
 								</td>
                             </tr>
