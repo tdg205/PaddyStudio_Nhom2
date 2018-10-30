@@ -178,9 +178,9 @@ End If
           <ul class="nav navbar-nav">
             <% 	If(Session("MM_Username") <> "") Then %>
             <% 	If(Session("MM_UserRole") = "1") Then %>
-            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,<%=Session("MM_Username")%></a></li>
+            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào, <%=Session("MM_Username")%></a></li>
             <% 	Else If(Session("MM_UserRole") = "0") Then %>
-            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,<%=Session("MM_Username")%></a></li>
+            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào, <%=Session("MM_Username")%></a></li>
             <li><a href="User_Feedback.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "FeedbackMemberID=" & Session("MM_Username") %>">Phản Hồi</a></li>
             <%	End If %>
             <%	End If %>
@@ -214,7 +214,6 @@ End If
   <!--/header-bottom-->
 </header>
 <!--/header-->
-
 <!-- InstanceBeginEditable name="Slider" -->
     
     
@@ -232,8 +231,7 @@ End If
                 <li><a href="Admin_Home.asp">Trang Chủ Admin</a><a href="Admin_ManageBrand.asp">Quản Lý Thương Hiệu</a><a href="Admin_ManageProduct.asp">Quản Lý Sản Phẩm</a><a href="Admin_ManageFeedback.asp">Quản Lý Phản Hồi</a><a href="Admin_ManageEventAndNews.asp">Quản Lý Tin Tức &amp; Sự Kiện</a><a href="Admin_ManageUser.asp">Quản Lý Thành Viên</a></li>
               </ul>
             </div>
-          </div>
-          <!--/brands manage products-->
+          </div><!--/brands manage products-->
           <br/>
           <p></p>
           <%	End If %>
@@ -243,7 +241,7 @@ End If
               <ul class="nav nav-pills nav-stacked">
                 <% While ((Repeat1__numRows <> 0) AND (NOT rsBrands.EOF)) %>
                   <li><a HREF="Product_withBrands.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "BrandName=" & rsBrands.Fields.Item("BrandName").Value %>"><span class="pull-right">(<%=(rsBrands.Fields.Item("ProCount").Value)%>)</span><%=(rsBrands.Fields.Item("BrandName").Value)%></a></li>
-                  <% 
+				<% 
 					Repeat1__index=Repeat1__index+1
 					Repeat1__numRows=Repeat1__numRows-1
 					rsBrands.MoveNext()
@@ -259,46 +257,46 @@ End If
       </div>
       <div class="col-sm-9 padding-right">
         <!-- InstanceBeginEditable name="Content" -->
-                    <h2 class="title text-center">Liên Hệ</h2>
-                    <div class="col-sm-12">
-                    	<table width="70%" border="0" cellpadding="5" cellspacing="5" align="center">
-  							<tr>
-    							<td width="20%" align="left" valign="top"><strong>Địa Chỉ :&nbsp;</strong></td>
-    							<td width="80%" align="left" valign="middle">364 đường Cộng Hòa - Quận Tân Bình - Thành phố Hồ Chí Minh</td>
-  							</tr>
-                            <tr>
-    							<td rowspan="4" align="left" valign="top"><strong>Số Điện Thoại :&nbsp;</strong></td>
-    							<td align="left" valign="middle">096 250 2799 - Trương Đình Giang</td>
-  							</tr>
-                            <tr>
-                            	<td align="left">094 232 7885 - Đào Thiện Hoàng Huy</td>
-                            </tr>
-                            <tr>
-                            	<td align="left">094 827 7065 - Lê Gia An</td>
-                            </tr>
-                            <tr>
-                            	<td align="left"></td>
-                            </tr>
-                            <tr>
-    							<td rowspan="4" align="left" valign="top"><strong>Email :&nbsp;</strong></td>
-    							<td align="left" valign="middle">giang.itk10@gmail.com</td>
-  							</tr>
-                            <tr>
-                            	<td align="left">huyhoang02@gmail.com</td>
-                            </tr>
-                            <tr>
-                            	<td align="left">giaan123@gmail.com</td>
-                            </tr>
-                            <tr>
-                            	<td align="left"></td>
-                            </tr>
-                            <tr>
-    							<td align="left" valign="top">&nbsp;</td>
-    							<td align="left" valign="middle">&nbsp;</td>
-  							</tr>
-					  </table>
-                    </div>
-					<!-- InstanceEndEditable -->
+			<h2 class="title text-center">Liên Hệ</h2>
+			<div class="col-sm-12">
+				<table width="70%" border="0" cellpadding="5" cellspacing="5" align="center">
+					<tr>
+						<td width="20%" align="left" valign="top"><strong>Địa Chỉ :&nbsp;</strong></td>
+						<td width="80%" align="left" valign="middle">364 đường Cộng Hòa - Quận Tân Bình - Thành phố Hồ Chí Minh</td>
+					</tr>
+					<tr>
+						<td rowspan="4" align="left" valign="top"><strong>Số Điện Thoại :&nbsp;</strong></td>
+						<td align="left" valign="middle">096 250 2799 - Trương Đình Giang</td>
+					</tr>
+					<tr>
+						<td align="left">094 232 7885 - Đào Thiện Hoàng Huy</td>
+					</tr>
+					<tr>
+						<td align="left">094 827 7065 - Lê Gia An</td>
+					</tr>
+					<tr>
+						<td align="left"></td>
+					</tr>
+					<tr>
+						<td rowspan="4" align="left" valign="top"><strong>Email :&nbsp;</strong></td>
+						<td align="left" valign="middle">giang.itk10@gmail.com</td>
+					</tr>
+					<tr>
+						<td align="left">huyhoang02@gmail.com</td>
+					</tr>
+					<tr>
+						<td align="left">giaan123@gmail.com</td>
+					</tr>
+					<tr>
+						<td align="left"></td>
+					</tr>
+					<tr>
+						<td align="left" valign="top">&nbsp;</td>
+						<td align="left" valign="middle">&nbsp;</td>
+					</tr>
+			  </table>
+			</div>
+			<!-- InstanceEndEditable -->
       </div>
     </div>
   </div>
@@ -375,7 +373,7 @@ End If
     <div class="container">
       <div class="row">
         <p class="pull-left">Copyright 2016 - 2018 Paddy Studio. All rights reserved.</p>
-        <p class="pull-right">Designed by <span> Group 2 - Paddy Studio</span></p>
+        <p class="pull-right">Designed by <span>Group 2 - Paddy Studio</span></p>
       </div>
     </div>
   </div>

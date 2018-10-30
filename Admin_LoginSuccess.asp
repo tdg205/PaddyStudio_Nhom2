@@ -3,7 +3,7 @@
 <%
 ' *** Restrict Access To Page: Grant or deny access to this page
 MM_authorizedUsers="True"
-MM_authFailedURL="Admin_Login.asp"
+MM_authFailedURL="Login.asp"
 MM_grantAccess=false
 If Session("MM_Username") <> "" Then
   If (false Or CStr(Session("MM_UserAuthorization"))="") Or _
@@ -198,9 +198,9 @@ End If
           <ul class="nav navbar-nav">
             <% 	If(Session("MM_Username") <> "") Then %>
             <% 	If(Session("MM_UserRole") = "1") Then %>
-            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,<%=Session("MM_Username")%></a></li>
+            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào, <%=Session("MM_Username")%></a></li>
             <% 	Else If(Session("MM_UserRole") = "0") Then %>
-            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,<%=Session("MM_Username")%></a></li>
+            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào, <%=Session("MM_Username")%></a></li>
             <li><a href="User_Feedback.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "FeedbackMemberID=" & Session("MM_Username") %>">Phản Hồi</a></li>
             <%	End If %>
             <%	End If %>
@@ -234,11 +234,8 @@ End If
   <!--/header-bottom-->
 </header>
 <!--/header-->
-
 <!-- InstanceBeginEditable name="Slider" -->
-    
-    
-	<!-- InstanceEndEditable -->
+<!-- InstanceEndEditable -->
 <section><!--section-->
   <div class="container">
     <div class="row">
@@ -252,8 +249,7 @@ End If
                 <li><a href="Admin_Home.asp">Trang Chủ Admin</a><a href="Admin_ManageBrand.asp">Quản Lý Thương Hiệu</a><a href="Admin_ManageProduct.asp">Quản Lý Sản Phẩm</a><a href="Admin_ManageFeedback.asp">Quản Lý Phản Hồi</a><a href="Admin_ManageEventAndNews.asp">Quản Lý Tin Tức &amp; Sự Kiện</a><a href="Admin_ManageUser.asp">Quản Lý Thành Viên</a></li>
               </ul>
             </div>
-          </div>
-          <!--/brands manage products-->
+          </div><!--/brands manage products-->
           <br/>
           <p></p>
           <%	End If %>
@@ -263,7 +259,7 @@ End If
               <ul class="nav nav-pills nav-stacked">
                 <% While ((Repeat1__numRows <> 0) AND (NOT rsBrands.EOF)) %>
                   <li><a HREF="Product_withBrands.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "BrandName=" & rsBrands.Fields.Item("BrandName").Value %>"><span class="pull-right">(<%=(rsBrands.Fields.Item("ProCount").Value)%>)</span><%=(rsBrands.Fields.Item("BrandName").Value)%></a></li>
-                  <% 
+				<% 
 					Repeat1__index=Repeat1__index+1
 					Repeat1__numRows=Repeat1__numRows-1
 					rsBrands.MoveNext()
@@ -274,13 +270,13 @@ End If
           </div>
           <!--/brands_products-->
           <!-- InstanceBeginEditable name="left" -->
-						<!-- InstanceEndEditable -->
+		<!-- InstanceEndEditable -->
         </div>
       </div>
       <div class="col-sm-9 padding-right">
         <!-- InstanceBeginEditable name="Content" -->
-                    <h2 class="title text-center">Đăng Nhập Thành Công</h2>
-					<!-- InstanceEndEditable -->
+		<h2 class="title text-center">Đăng Nhập Thành Công</h2>
+		<!-- InstanceEndEditable -->
       </div>
     </div>
   </div>
@@ -357,7 +353,7 @@ End If
     <div class="container">
       <div class="row">
         <p class="pull-left">Copyright 2016 - 2018 Paddy Studio. All rights reserved.</p>
-        <p class="pull-right">Designed by <span> Group 2 - Paddy Studio</span></p>
+        <p class="pull-right">Designed by <span>Group 2 - Paddy Studio</span></p>
       </div>
     </div>
   </div>

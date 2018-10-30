@@ -3,7 +3,7 @@
 <%
 ' *** Restrict Access To Page: Grant or deny access to this page
 MM_authorizedUsers="True"
-MM_authFailedURL="Admin_Login.asp"
+MM_authFailedURL="Login.asp"
 MM_grantAccess=false
 If Session("MM_Username") <> "" Then
   If (false Or CStr(Session("MM_UserAuthorization"))="") Or _
@@ -107,9 +107,11 @@ rsBrands_numRows = 0
 %>
 <%
 Dim rsAdminAccountUpdate__MMColParam
-rsAdminAccountUpdate__MMColParam = "1"
+rsAdminAccountUpdate__MMColParam = "1aa"
 If (Request.QueryString("UserID") <> "") Then 
   rsAdminAccountUpdate__MMColParam = Request.QueryString("UserID")
+Else
+	rsAdminAccountUpdate__MMColParam = Session("MM_Username")
 End If
 %>
 <%
@@ -366,9 +368,9 @@ function check()
           <ul class="nav navbar-nav">
             <% 	If(Session("MM_Username") <> "") Then %>
             <% 	If(Session("MM_UserRole") = "1") Then %>
-            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,<%=Session("MM_Username")%></a></li>
+            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào, <%=Session("MM_Username")%></a></li>
             <% 	Else If(Session("MM_UserRole") = "0") Then %>
-            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,<%=Session("MM_Username")%></a></li>
+            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào, <%=Session("MM_Username")%></a></li>
             <li><a href="User_Feedback.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "FeedbackMemberID=" & Session("MM_Username") %>">Phản Hồi</a></li>
             <%	End If %>
             <%	End If %>
@@ -402,7 +404,6 @@ function check()
   <!--/header-bottom-->
 </header>
 <!--/header-->
-
 <!-- InstanceBeginEditable name="Slider" -->
     
     
@@ -420,8 +421,7 @@ function check()
                 <li><a href="Admin_Home.asp">Trang Chủ Admin</a><a href="Admin_ManageBrand.asp">Quản Lý Thương Hiệu</a><a href="Admin_ManageProduct.asp">Quản Lý Sản Phẩm</a><a href="Admin_ManageFeedback.asp">Quản Lý Phản Hồi</a><a href="Admin_ManageEventAndNews.asp">Quản Lý Tin Tức &amp; Sự Kiện</a><a href="Admin_ManageUser.asp">Quản Lý Thành Viên</a></li>
               </ul>
             </div>
-          </div>
-          <!--/brands manage products-->
+          </div><!--/brands manage products-->
           <br/>
           <p></p>
           <%	End If %>
@@ -431,7 +431,7 @@ function check()
               <ul class="nav nav-pills nav-stacked">
                 <% While ((Repeat1__numRows <> 0) AND (NOT rsBrands.EOF)) %>
                   <li><a HREF="Product_withBrands.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "BrandName=" & rsBrands.Fields.Item("BrandName").Value %>"><span class="pull-right">(<%=(rsBrands.Fields.Item("ProCount").Value)%>)</span><%=(rsBrands.Fields.Item("BrandName").Value)%></a></li>
-                  <% 
+				<% 
 					Repeat1__index=Repeat1__index+1
 					Repeat1__numRows=Repeat1__numRows-1
 					rsBrands.MoveNext()
@@ -450,6 +450,7 @@ function check()
                     <h2 class="title text-center">Cập Nhật Thông Tin Tài Khoản</h2>
                     <div class="col-sm-12">
                     <form ACTION="<%=MM_editAction%>" id="form1" name="form1" method="POST" onSubmit="return check()">
+					<% If((Not rsAdminAccountUpdate.BOF) And (Not rsAdminAccountUpdate.EOF)) Then %>
                    	  <table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
                             <tr>
           						<td width="50%" align="right" valign="middle"><strong>Tên Tài Khoản:* &nbsp;</strong></td>
@@ -486,6 +487,7 @@ function check()
    					  </table>
                       <input type="hidden" name="MM_update" value="form1">
                       <input type="hidden" name="MM_recordId" value="<%= rsAdminAccountUpdate.Fields.Item("UserID").Value %>">
+					<% End If %>
                     </form>
                     </div>
 					<!-- InstanceEndEditable -->
@@ -565,7 +567,7 @@ function check()
     <div class="container">
       <div class="row">
         <p class="pull-left">Copyright 2016 - 2018 Paddy Studio. All rights reserved.</p>
-        <p class="pull-right">Designed by <span> Group 2 - Paddy Studio</span></p>
+        <p class="pull-right">Designed by <span>Group 2 - Paddy Studio</span></p>
       </div>
     </div>
   </div>

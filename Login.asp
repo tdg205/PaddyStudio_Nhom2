@@ -151,8 +151,7 @@ Function MM_joinChar(firstItem)
 End Function
 %>
 <!doctype html>
-<html>
-<!-- InstanceBegin template="/Templates/temp.dwt.asp" codeOutsideHTMLIsLocked="false" -->
+<html><!-- InstanceBegin template="/Templates/temp.dwt.asp" codeOutsideHTMLIsLocked="false" -->
 <head>
 <%
 Dim rsFeedbackID
@@ -303,7 +302,6 @@ function check()
   <!--/header-bottom-->
 </header>
 <!--/header-->
-
 <!-- InstanceBeginEditable name="Slider" -->
 <!-- InstanceEndEditable -->
 <section><!--section-->
@@ -319,8 +317,7 @@ function check()
                 <li><a href="Admin_Home.asp">Trang Chủ Admin</a><a href="Admin_ManageBrand.asp">Quản Lý Thương Hiệu</a><a href="Admin_ManageProduct.asp">Quản Lý Sản Phẩm</a><a href="Admin_ManageFeedback.asp">Quản Lý Phản Hồi</a><a href="Admin_ManageEventAndNews.asp">Quản Lý Tin Tức &amp; Sự Kiện</a><a href="Admin_ManageUser.asp">Quản Lý Thành Viên</a></li>
               </ul>
             </div>
-          </div>
-          <!--/brands manage products-->
+          </div><!--/brands manage products-->
           <br/>
           <p></p>
           <%	End If %>
@@ -330,7 +327,7 @@ function check()
               <ul class="nav nav-pills nav-stacked">
                 <% While ((Repeat1__numRows <> 0) AND (NOT rsBrands.EOF)) %>
                   <li><a HREF="Product_withBrands.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "BrandName=" & rsBrands.Fields.Item("BrandName").Value %>"><span class="pull-right">(<%=(rsBrands.Fields.Item("ProCount").Value)%>)</span><%=(rsBrands.Fields.Item("BrandName").Value)%></a></li>
-                  <% 
+				<% 
 					Repeat1__index=Repeat1__index+1
 					Repeat1__numRows=Repeat1__numRows-1
 					rsBrands.MoveNext()
@@ -443,15 +440,14 @@ function check()
     <div class="container">
       <div class="row">
         <p class="pull-left">Copyright 2016 - 2018 Paddy Studio. All rights reserved.</p>
-        <p class="pull-right">Designed by<span>Group 2 - Paddy Studio</span></p>
+        <p class="pull-right">Designed by <span>Group 2 - Paddy Studio</span></p>
       </div>
     </div>
   </div>
 </footer>
 <!--/Footer-->
 </body>
-<!-- InstanceEnd -->
-</html>
+<!-- InstanceEnd --></html>
 <%
 rsBrands.Close()
 Set rsBrands = Nothing

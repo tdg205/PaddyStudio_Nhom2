@@ -3,7 +3,7 @@
 <%
 ' *** Restrict Access To Page: Grant or deny access to this page
 MM_authorizedUsers="True"
-MM_authFailedURL="Admin_Login.asp"
+MM_authFailedURL="Login.asp"
 MM_grantAccess=false
 If Session("MM_Username") <> "" Then
   If (false Or CStr(Session("MM_UserAuthorization"))="") Or _
@@ -34,7 +34,6 @@ MM_abortEdit = false
 <%
 ' *** Delete Record: construct a sql delete statement and execute it
 If (CStr(Request("MM_delete")) = "formUserDetail" And CStr(Request("MM_recordId")) <> "") Then
-
   If (Not MM_abortEdit) Then
     ' execute the delete
     Set MM_editCmd = Server.CreateObject ("ADODB.Command")
@@ -56,7 +55,6 @@ If (CStr(Request("MM_delete")) = "formUserDetail" And CStr(Request("MM_recordId"
     End If
     Response.Redirect(MM_editRedirectUrl)
   End If
-
 End If
 %>
 <%
@@ -74,9 +72,11 @@ rsBrands_numRows = 0
 %>
 <%
 Dim rsUserDetail__MMColParam
-rsUserDetail__MMColParam = "1"
+rsUserDetail__MMColParam = "1aaa"
 If (Request.QueryString("UserID") <> "") Then 
-  rsUserDetail__MMColParam = Request.QueryString("UserID")
+	rsUserDetail__MMColParam = Request.QueryString("UserID")
+Else
+	rsUserDetail__MMColParam = Session("MM_Username")
 End If
 %>
 <%
@@ -97,7 +97,9 @@ rsUserDetail_numRows = 0
 Dim rsXoa__MMColParam
 rsXoa__MMColParam = "1"
 If (Request.QueryString("UserID") <> "") Then 
-  rsXoa__MMColParam = Request.QueryString("UserID")
+	rsXoa__MMColParam = Request.QueryString("UserID")
+Else
+	rsXoa__MMColParam = Session("MM_Username")
 End If
 %>
 <%
@@ -116,9 +118,11 @@ rsXoa_numRows = 0
 %>
 <%
 Dim rsAdmin__MMColParam
-rsAdmin__MMColParam = "1"
+rsAdmin__MMColParam = "1aa"
 If (Request.QueryString("UserID") <> "") Then 
-  rsAdmin__MMColParam = Request.QueryString("UserID")
+	rsAdmin__MMColParam = Request.QueryString("UserID")
+Else
+	rsAdmin__MMColParam = Session("MM_Username")
 End If
 %>
 <%
@@ -137,9 +141,11 @@ rsAdmin_numRows = 0
 %>
 <%
 Dim rsFeed__MMColParam
-rsFeed__MMColParam = "1"
+rsFeed__MMColParam = "1aaa"
 If (Request.QueryString("UserID") <> "") Then 
-  rsFeed__MMColParam = Request.QueryString("UserID")
+	rsFeed__MMColParam = Request.QueryString("UserID")
+Else
+	rsFeed__MMColParam = Session("MM_Username")
 End If
 %>
 <%
@@ -321,9 +327,9 @@ End If
           <ul class="nav navbar-nav">
             <% 	If(Session("MM_Username") <> "") Then %>
             <% 	If(Session("MM_UserRole") = "1") Then %>
-            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,<%=Session("MM_Username")%></a></li>
+            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào, <%=Session("MM_Username")%></a></li>
             <% 	Else If(Session("MM_UserRole") = "0") Then %>
-            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,<%=Session("MM_Username")%></a></li>
+            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào, <%=Session("MM_Username")%></a></li>
             <li><a href="User_Feedback.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "FeedbackMemberID=" & Session("MM_Username") %>">Phản Hồi</a></li>
             <%	End If %>
             <%	End If %>
@@ -357,7 +363,6 @@ End If
   <!--/header-bottom-->
 </header>
 <!--/header-->
-
 <!-- InstanceBeginEditable name="Slider" -->
     
     
@@ -375,8 +380,7 @@ End If
                 <li><a href="Admin_Home.asp">Trang Chủ Admin</a><a href="Admin_ManageBrand.asp">Quản Lý Thương Hiệu</a><a href="Admin_ManageProduct.asp">Quản Lý Sản Phẩm</a><a href="Admin_ManageFeedback.asp">Quản Lý Phản Hồi</a><a href="Admin_ManageEventAndNews.asp">Quản Lý Tin Tức &amp; Sự Kiện</a><a href="Admin_ManageUser.asp">Quản Lý Thành Viên</a></li>
               </ul>
             </div>
-          </div>
-          <!--/brands manage products-->
+          </div><!--/brands manage products-->
           <br/>
           <p></p>
           <%	End If %>
@@ -386,7 +390,7 @@ End If
               <ul class="nav nav-pills nav-stacked">
                 <% While ((Repeat1__numRows <> 0) AND (NOT rsBrands.EOF)) %>
                   <li><a HREF="Product_withBrands.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "BrandName=" & rsBrands.Fields.Item("BrandName").Value %>"><span class="pull-right">(<%=(rsBrands.Fields.Item("ProCount").Value)%>)</span><%=(rsBrands.Fields.Item("BrandName").Value)%></a></li>
-                  <% 
+				<% 
 					Repeat1__index=Repeat1__index+1
 					Repeat1__numRows=Repeat1__numRows-1
 					rsBrands.MoveNext()
@@ -405,6 +409,7 @@ End If
                     	<h2 class="title text-center">Xem Thành Viên</h2>
                     	<div class="col-sm-12">
                    	  		<form ACTION="<%=MM_editAction%>" METHOD="POST" id="formUserDetail" name="formUserDetail">
+							<%If((Not rsUserDetail.BOF) And (Not rsUserDetail.EOF)) Then%>
                         		<table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
                         			<tr>
                             			<td width="50%" align="right" valign="top"><strong>Tên Tài Khoản: &nbsp;</strong></td>
@@ -442,6 +447,7 @@ End If
                         			<input type="hidden" name="MM_delete" value="formUserDetail">
                         			<input type="hidden" name="MM_recordId" value="<%= rsXoa.Fields.Item("UserID").Value %>">
                             	</table>
+							<% End If %>
                       		</form>
                     	</div>
 					<!-- InstanceEndEditable -->
@@ -521,7 +527,7 @@ End If
     <div class="container">
       <div class="row">
         <p class="pull-left">Copyright 2016 - 2018 Paddy Studio. All rights reserved.</p>
-        <p class="pull-right">Designed by <span> Group 2 - Paddy Studio</span></p>
+        <p class="pull-right">Designed by <span>Group 2 - Paddy Studio</span></p>
       </div>
     </div>
   </div>

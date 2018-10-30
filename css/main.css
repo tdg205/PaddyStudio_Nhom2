@@ -2456,4 +2456,15 @@ section{
 	font-size: 24px;
 	font-weight: 700;
 }
+
+h3.title {
+    color: red;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 15px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    position: relative;
+}	
 /*.........End Configuration Template-Giang Truong Dinh................*/

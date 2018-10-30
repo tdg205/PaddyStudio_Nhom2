@@ -207,9 +207,9 @@ End If
           <ul class="nav navbar-nav">
             <% 	If(Session("MM_Username") <> "") Then %>
             <% 	If(Session("MM_UserRole") = "1") Then %>
-            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,<%=Session("MM_Username")%></a></li>
+            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào, <%=Session("MM_Username")%></a></li>
             <% 	Else If(Session("MM_UserRole") = "0") Then %>
-            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,<%=Session("MM_Username")%></a></li>
+            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào, <%=Session("MM_Username")%></a></li>
             <li><a href="User_Feedback.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "FeedbackMemberID=" & Session("MM_Username") %>">Phản Hồi</a></li>
             <%	End If %>
             <%	End If %>
@@ -243,7 +243,6 @@ End If
   <!--/header-bottom-->
 </header>
 <!--/header-->
-
 <!-- InstanceBeginEditable name="Slider" -->
     
     
@@ -261,8 +260,7 @@ End If
                 <li><a href="Admin_Home.asp">Trang Chủ Admin</a><a href="Admin_ManageBrand.asp">Quản Lý Thương Hiệu</a><a href="Admin_ManageProduct.asp">Quản Lý Sản Phẩm</a><a href="Admin_ManageFeedback.asp">Quản Lý Phản Hồi</a><a href="Admin_ManageEventAndNews.asp">Quản Lý Tin Tức &amp; Sự Kiện</a><a href="Admin_ManageUser.asp">Quản Lý Thành Viên</a></li>
               </ul>
             </div>
-          </div>
-          <!--/brands manage products-->
+          </div><!--/brands manage products-->
           <br/>
           <p></p>
           <%	End If %>
@@ -272,7 +270,7 @@ End If
               <ul class="nav nav-pills nav-stacked">
                 <% While ((Repeat1__numRows <> 0) AND (NOT rsBrands.EOF)) %>
                   <li><a HREF="Product_withBrands.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "BrandName=" & rsBrands.Fields.Item("BrandName").Value %>"><span class="pull-right">(<%=(rsBrands.Fields.Item("ProCount").Value)%>)</span><%=(rsBrands.Fields.Item("BrandName").Value)%></a></li>
-                  <% 
+				<% 
 					Repeat1__index=Repeat1__index+1
 					Repeat1__numRows=Repeat1__numRows-1
 					rsBrands.MoveNext()
@@ -283,35 +281,35 @@ End If
           </div>
           <!--/brands_products-->
           <!-- InstanceBeginEditable name="left" -->
-						<!-- InstanceEndEditable -->
+		<!-- InstanceEndEditable -->
         </div>
       </div>
       <div class="col-sm-9 padding-right">
         <!-- InstanceBeginEditable name="Content" -->
-                    <h2 class="title text-center">Chi Tiết Tin Tức &amp; Sự Kiện</h2>
-                    <div class="col-sm-12">
-                    	<% While ((Repeat2__numRows <> 0) AND (NOT rsEventAndNews_Detail.EOF)) %>
-						<div class="single-blog-post">
-							<h3 align="justify" style="color:#429DF1;text-transform:uppercase""><%=(rsEventAndNews_Detail.Fields.Item("EventSummary").Value)%></h3>
-							<div class="post-meta" align="right" style="font-weight:bold;color:#B4B1AB">
-                              	<ul>
-									<li><%=(rsEventAndNews_Detail.Fields.Item("EventDate").Value)%></li><br/>
-                                	<li><%=(rsEventAndNews_Detail.Fields.Item("EventDuration").Value)%></li><br/>
-								</ul>
-							</div>
-							<p align="justify"><img src="images/event_news/<%=(rsEventAndNews_Detail.Fields.Item("EventImage").Value)%>"></p>
-							<p align="justify"><%=(rsEventAndNews_Detail.Fields.Item("EventContent").Value)%></p>
-                            <div align="right"><a href="javascript:history.back()" class="btn btn-primary">Trở Về</a></div>
-					  	</div>
-                    	<% 
-  							Repeat2__index=Repeat2__index+1
-  							Repeat2__numRows=Repeat2__numRows-1
-  							rsEventAndNews_Detail.MoveNext()
-							Wend
-						%>
-                        <br/>
+			<h2 class="title text-center">Chi Tiết Tin Tức &amp; Sự Kiện</h2>
+			<div class="col-sm-12">
+				<% While ((Repeat2__numRows <> 0) AND (NOT rsEventAndNews_Detail.EOF)) %>
+				<div class="single-blog-post">
+					<h3 align="justify" style="color:#429DF1;text-transform:uppercase""><%=(rsEventAndNews_Detail.Fields.Item("EventSummary").Value)%></h3>
+					<div class="post-meta" align="right" style="font-weight:bold;color:#B4B1AB">
+						<ul>
+							<li><%=(rsEventAndNews_Detail.Fields.Item("EventDate").Value)%></li><br/>
+							<li><%=(rsEventAndNews_Detail.Fields.Item("EventDuration").Value)%></li><br/>
+						</ul>
 					</div>
-                    <!-- InstanceEndEditable -->
+					<p align="justify"><img src="images/event_news/<%=(rsEventAndNews_Detail.Fields.Item("EventImage").Value)%>"></p>
+					<p align="justify"><%=(rsEventAndNews_Detail.Fields.Item("EventContent").Value)%></p>
+					<div align="right"><a href="javascript:history.back()" class="btn btn-primary">Trở Về</a></div>
+				</div>
+				<% 
+					Repeat2__index=Repeat2__index+1
+					Repeat2__numRows=Repeat2__numRows-1
+					rsEventAndNews_Detail.MoveNext()
+					Wend
+				%>
+				<br/>
+			</div>
+		<!-- InstanceEndEditable -->
       </div>
     </div>
   </div>
@@ -388,7 +386,7 @@ End If
     <div class="container">
       <div class="row">
         <p class="pull-left">Copyright 2016 - 2018 Paddy Studio. All rights reserved.</p>
-        <p class="pull-right">Designed by <span> Group 2 - Paddy Studio</span></p>
+        <p class="pull-right">Designed by <span>Group 2 - Paddy Studio</span></p>
       </div>
     </div>
   </div>

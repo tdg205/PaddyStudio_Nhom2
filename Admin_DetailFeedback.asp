@@ -3,7 +3,7 @@
 <%
 ' *** Restrict Access To Page: Grant or deny access to this page
 MM_authorizedUsers="True"
-MM_authFailedURL="Admin_Login.asp"
+MM_authFailedURL="Login.asp"
 MM_grantAccess=false
 If Session("MM_Username") <> "" Then
   If (false Or CStr(Session("MM_UserAuthorization"))="") Or _
@@ -41,6 +41,7 @@ If (CStr(Request("MM_delete")) = "form1" And CStr(Request("MM_recordId")) <> "")
     Set MM_editCmd = Server.CreateObject ("ADODB.Command")
     MM_editCmd.ActiveConnection = MM_cn_STRING
     MM_editCmd.CommandText = "DELETE FROM dbo.tbFeedback WHERE FeedbackID = ?"
+	'-1 trong tham số, giúp trả về giá trị id đầu tiên khi use id tư động, nếu khác -1 xác đinh số ký tự of paramter.
     MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param1", 5, 1, -1, Request.Form("MM_recordId")) ' adDouble
     MM_editCmd.Execute
     MM_editCmd.ActiveConnection.Close
@@ -280,9 +281,9 @@ End If
           <ul class="nav navbar-nav">
             <% 	If(Session("MM_Username") <> "") Then %>
             <% 	If(Session("MM_UserRole") = "1") Then %>
-            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,<%=Session("MM_Username")%></a></li>
+            <li><a href="Admin_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào, <%=Session("MM_Username")%></a></li>
             <% 	Else If(Session("MM_UserRole") = "0") Then %>
-            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào,<%=Session("MM_Username")%></a></li>
+            <li><a href="User_Account.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "UserID=" & Session("MM_Username") %>">Xin chào, <%=Session("MM_Username")%></a></li>
             <li><a href="User_Feedback.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "FeedbackMemberID=" & Session("MM_Username") %>">Phản Hồi</a></li>
             <%	End If %>
             <%	End If %>
@@ -316,11 +317,8 @@ End If
   <!--/header-bottom-->
 </header>
 <!--/header-->
-
-<!-- InstanceBeginEditable name="Slider" -->
-    
-    
-	<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="Slider" -->  
+<!-- InstanceEndEditable -->
 <section><!--section-->
   <div class="container">
     <div class="row">
@@ -334,8 +332,7 @@ End If
                 <li><a href="Admin_Home.asp">Trang Chủ Admin</a><a href="Admin_ManageBrand.asp">Quản Lý Thương Hiệu</a><a href="Admin_ManageProduct.asp">Quản Lý Sản Phẩm</a><a href="Admin_ManageFeedback.asp">Quản Lý Phản Hồi</a><a href="Admin_ManageEventAndNews.asp">Quản Lý Tin Tức &amp; Sự Kiện</a><a href="Admin_ManageUser.asp">Quản Lý Thành Viên</a></li>
               </ul>
             </div>
-          </div>
-          <!--/brands manage products-->
+          </div><!--/brands manage products-->
           <br/>
           <p></p>
           <%	End If %>
@@ -345,7 +342,7 @@ End If
               <ul class="nav nav-pills nav-stacked">
                 <% While ((Repeat1__numRows <> 0) AND (NOT rsBrands.EOF)) %>
                   <li><a HREF="Product_withBrands.asp?<%= Server.HTMLEncode(MM_keepNone) & MM_joinChar(MM_keepNone) & "BrandName=" & rsBrands.Fields.Item("BrandName").Value %>"><span class="pull-right">(<%=(rsBrands.Fields.Item("ProCount").Value)%>)</span><%=(rsBrands.Fields.Item("BrandName").Value)%></a></li>
-                  <% 
+				<% 
 					Repeat1__index=Repeat1__index+1
 					Repeat1__numRows=Repeat1__numRows-1
 					rsBrands.MoveNext()
@@ -356,58 +353,58 @@ End If
           </div>
           <!--/brands_products-->
           <!-- InstanceBeginEditable name="left" -->
-						<!-- InstanceEndEditable -->
+		<!-- InstanceEndEditable -->
         </div>
       </div>
       <div class="col-sm-9 padding-right">
         <!-- InstanceBeginEditable name="Content" -->
-                    <h2 class="title text-center">Xem Phản Hồi</h2>
-                    <div class="col-sm-12">
-                   		<form ACTION="<%=MM_editAction%>" id="form1" name="form1" method="POST">
-                   	  	<table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
-        					<tr>
-          						<td width="40%" align="right" valign="top"><strong>Người Gửi: &nbsp;</strong></td>
-       						  <td width="60%" align="left" valign="top"><%=(rsAdminFeedbackDetail.Fields.Item("FeedbackMemberID").Value)%></td>
-       						</tr>
-                          <tr>
-                            <td align="right" valign="top"><strong>Chủ Đề: &nbsp;</strong></td>
-                           	<td align="left" valign="top"><%=(rsAdminFeedbackDetail.Fields.Item("FeedbackSubject").Value)%></td>
-                          </tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Nội Dung: &nbsp;</strong></td>
-                              	<td align="left" valign="top"><%=(rsAdminFeedbackDetail.Fields.Item("FeedbackContent").Value)%></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Ngày Gửi: &nbsp;</strong></td>
-                              	<td align="left" valign="top"><%=(rsAdminFeedbackDetail.Fields.Item("FeedbackDate").Value)%></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Admin Trả Lời: &nbsp;</strong></td>
-                              	<td align="left" valign="top"><%=(rsAdminFeedbackDetail.Fields.Item("FeedbackAdminReplyID").Value)%></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Nội Dung Trả Lời: &nbsp;</strong></td>
-                              	<td align="left" valign="top"><%=(rsAdminFeedbackDetail.Fields.Item("FeedbackReply").Value)%></td>
-                            </tr>
-                             <tr>
-                                <td align="right" valign="top"><strong>Ngày Trả Lời: &nbsp;</strong></td>
-                           	   <td align="left" valign="top"><%=(rsAdminFeedbackDetail.Fields.Item("FeedbackReplyDate").Value)%></td>
-                            </tr>
-                       	  <tr>
-                                <td align="right" valign="top"><a href="javascript:history.back()" class="btn search">Trở Về</a></td>
-                                <td align="left" valign="top">
-                                    <input type="submit" id="btnXoa" name="btnXoa" value="Xóa" class="btn search" onClick="return confirm('Bạn muốn xóa thông tin Phản Hồi ?')"/></td>
-                       	  </tr>
-                            <tr>
-                                <td align="right" valign="top">&nbsp;</td>
-                                <td align="left" valign="top">&nbsp;</td>
-                            </tr>
-   					  </table>
-                        <input type="hidden" name="MM_delete" value="form1">
-                        <input type="hidden" name="MM_recordId" value="<%= rsXoa.Fields.Item("FeedbackID").Value %>">
-                        </form>
-                    </div>
-					<!-- InstanceEndEditable -->
+	<h2 class="title text-center">Xem Phản Hồi</h2>
+	<div class="col-sm-12">
+		<form ACTION="<%=MM_editAction%>" id="form1" name="form1" method="POST">
+			<table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
+				<tr>
+					<td width="40%" align="right" valign="top"><strong>Người Gửi: &nbsp;</strong></td>
+				  <td width="60%" align="left" valign="top"><%=(rsAdminFeedbackDetail.Fields.Item("FeedbackMemberID").Value)%></td>
+				</tr>
+			  <tr>
+				<td align="right" valign="top"><strong>Chủ Đề: &nbsp;</strong></td>
+				<td align="left" valign="top"><%=(rsAdminFeedbackDetail.Fields.Item("FeedbackSubject").Value)%></td>
+			  </tr>
+				<tr>
+					<td align="right" valign="top"><strong>Nội Dung: &nbsp;</strong></td>
+					<td align="left" valign="top"><%=(rsAdminFeedbackDetail.Fields.Item("FeedbackContent").Value)%></td>
+				</tr>
+				<tr>
+					<td align="right" valign="top"><strong>Ngày Gửi: &nbsp;</strong></td>
+					<td align="left" valign="top"><%=(rsAdminFeedbackDetail.Fields.Item("FeedbackDate").Value)%></td>
+				</tr>
+				<tr>
+					<td align="right" valign="top"><strong>Admin Trả Lời: &nbsp;</strong></td>
+					<td align="left" valign="top"><%=(rsAdminFeedbackDetail.Fields.Item("FeedbackAdminReplyID").Value)%></td>
+				</tr>
+				<tr>
+					<td align="right" valign="top"><strong>Nội Dung Trả Lời: &nbsp;</strong></td>
+					<td align="left" valign="top"><%=(rsAdminFeedbackDetail.Fields.Item("FeedbackReply").Value)%></td>
+				</tr>
+				 <tr>
+					<td align="right" valign="top"><strong>Ngày Trả Lời: &nbsp;</strong></td>
+				   <td align="left" valign="top"><%=(rsAdminFeedbackDetail.Fields.Item("FeedbackReplyDate").Value)%></td>
+				</tr>
+			  <tr>
+					<td align="right" valign="top"><a href="javascript:history.back()" class="btn search">Trở Về</a></td>
+					<td align="left" valign="top">
+						<input type="submit" id="btnXoa" name="btnXoa" value="Xóa" class="btn search" onClick="return confirm('Bạn muốn xóa thông tin Phản Hồi ?')"/></td>
+			  </tr>
+				<tr>
+					<td align="right" valign="top">&nbsp;</td>
+					<td align="left" valign="top">&nbsp;</td>
+				</tr>
+			</table>
+			<input type="hidden" name="MM_delete" value="form1">
+			<input type="hidden" name="MM_recordId" value="<%= rsXoa.Fields.Item("FeedbackID").Value %>">
+		</form>
+	</div>
+	<!-- InstanceEndEditable -->
       </div>
     </div>
   </div>
@@ -484,7 +481,7 @@ End If
     <div class="container">
       <div class="row">
         <p class="pull-left">Copyright 2016 - 2018 Paddy Studio. All rights reserved.</p>
-        <p class="pull-right">Designed by <span> Group 2 - Paddy Studio</span></p>
+        <p class="pull-right">Designed by <span>Group 2 - Paddy Studio</span></p>
       </div>
     </div>
   </div>
