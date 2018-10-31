@@ -53,7 +53,7 @@ If (CStr(Request("MM_update")) = "form1") Then
     MM_editCmd.Prepared = true
     MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param1", 201, 1, 50, Request.Form("ProductName")) ' adLongVarChar
     MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param2", 201, 1, 200, Request.Form("ProductImage")) ' adLongVarChar
-    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param3", 202, 1, 500, Request.Form("ProductDescription")) ' adVarWChar
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param3", 202, 1, 1000, Request.Form("ProductDescription")) ' adVarWChar
     MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param4", 201, 1, 20, Request.Form("Price")) ' adLongVarChar
     MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param5", 5, 1, -1, MM_IIF(Request.Form("WarrantyTime"), Request.Form("WarrantyTime"), null)) ' adDouble
     MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param6", 5, 1, -1, MM_IIF(Request.Form("ManufacturerYear"), Request.Form("ManufacturerYear"), null)) ' adDouble
@@ -427,7 +427,10 @@ function check()
 
 	/*Mô tả sản phẩm:
 	- Không rỗng
-	- Độ dài không lớn hơn 1000*/
+	- Độ dài không được ít hơn 5 ký tự hoặc vượt quá 1000 ký tự.
+	- Bắt đầu bằng 1 ký tự chữ cái tiếng anh hoa hoặc thường.
+	- Các ký tự tiếp theo chứa: ký tự chữ cái tiếng Anh hoa hoặc thường, ký tự số, dấu gạch dưới, khoảng trắng, dấu -, dấu /, 
+	dấu chấm, dấu (), dấu :, dấu +, dấu &, dấu @, dấu phẩy, dấu <>, các ký tự chữ cái tiếng Việt có dấu hoa hoặc thường.*/	
 	if(ProductDescription == "")
 	{
 		document.getElementById("errProductDescription1").style.display = "inline";
@@ -439,7 +442,7 @@ function check()
 		document.getElementById("ProductDescription").style.border = "1px solid #d6d6d6";		
 	}
 	
-	if(ProductDescription.length > 1000)
+	if(ProductDescription.length < 5 || ProductDescription.length > 1000)
 	{
 		document.getElementById("errProductDescription2").style.display = "inline";
 		document.getElementById("ProductDescription").style.border = "1px solid #e00";
@@ -447,6 +450,18 @@ function check()
 		return false;
 	} else {
 		document.getElementById("errProductDescription2").style.display = "none";
+		document.getElementById("ProductDescription").style.border = "1px solid #d6d6d6";		
+	}
+	
+	var re_ProductDescription = /^[a-zA-Z][\w\s\-\/\.\(\)\:\+\&\@\,\<\>\;àáãạảăắằẳẵặâấầẩẫậèéẹẻẽêềếểễệđìíĩỉịòóõọỏôốồổỗộơớờởỡợùúũụủưứừửữựỳỵỷỹýÀÁÃẠẢĂẮẰẲẴẶÂẤẦẨẪẬÈÉẸẺẼÊỀẾỂỄỆĐÌÍĨỈỊÒÓÕỌỎÔỐỒỔỖỘƠỚỜỞỠỢÙÚŨỤỦƯỨỪỬỮỰỲỴỶỸÝ]+$/;											
+	
+	if(re_ProductDescription.test(ProductDescription) == false){
+		document.getElementById("errProductDescription3").style.display = "inline";
+		document.getElementById("ProductDescription").style.border = "1px solid #e00";
+		document.getElementById("ProductDescription").focus();		
+		return false;
+	} else {
+		document.getElementById("errProductDescription3").style.display = "none";
 		document.getElementById("ProductDescription").style.border = "1px solid #d6d6d6";		
 	}
 	
@@ -596,6 +611,17 @@ function check()
 		document.getElementById("ManufacturerYear").style.border = "1px solid #d6d6d6";		
 	}
 	
+	if(((n-ManufacturerYear)*12) > WarrantyTime)
+	{
+		document.getElementById("errManufacturerYear4").style.display = "inline";
+		document.getElementById("ManufacturerYear").style.border = "1px solid #e00";
+		document.getElementById("ManufacturerYear").focus();
+		return false;
+	} else {
+		document.getElementById("errManufacturerYear4").style.display = "none";
+		document.getElementById("ManufacturerYear").style.border = "1px solid #d6d6d6";		
+	}
+	
 	return true;
 }
 </script>
@@ -726,12 +752,13 @@ function check()
                     </td>
                 </tr>
                 <tr>
-                  <td align="right" valign="top"><strong>Mô Tả:* &nbsp;</strong></td>
-                  <td align="left" valign="top"><textarea id="ProductDescription" name="ProductDescription" cols="32" rows="12" ><%=(rsUpdateProduct.Fields.Item("ProductDescription").Value)%></textarea>
-                   <br/>
-                  <div class="showMsg" id="errProductDescription1">Mô Tả không được để trống.</div>
-                  <div class="showMsg" id="errProductDescription2">Mô Tả không được quá 1000 ký tự.</div>
-                  </td>
+					<td align="right" valign="top"><strong>Mô Tả:* &nbsp;</strong></td>
+					<td align="left" valign="top"><textarea id="ProductDescription" name="ProductDescription" cols="32" rows="12" ><%=(rsUpdateProduct.Fields.Item("ProductDescription").Value)%></textarea>
+						<br/>
+						<div class="showMsg" id="errProductDescription1">Mô Tả không được để trống.</div>
+						<div class="showMsg" id="errProductDescription2">Mô Tả không được ít hơn 5 ký tự hoặc vượt quá 1000 ký tự.</div>
+						<div class="showMsg" id="errProductDescription3">Bắt đầu bằng 1 ký tự chữ cái tiếng anh hoa hoặc thường. Các ký tự tiếp theo chứa: ký tự chữ cái tiếng Anh hoa hoặc thường, ký tự số, dấu gạch dưới, khoảng trắng, dấu -, dấu /, dấu chấm, dấu (), dấu :, dấu +, dấu &, dấu @, dấu phẩy, dấu <>, dấu chấm phẩy, các ký tự chữ cái tiếng Việt có dấu hoa hoặc thường.</div>
+					</td>
                 </tr>
                 <tr>
                   <td align="right" valign="top"><strong>Giá (VNĐ):* &nbsp;</strong></td>
@@ -760,6 +787,7 @@ function check()
                   <div class="showMsg" id="errManufacturerYear1">Năm Sản Xuất không được để trống.</div>
                   <div class="showMsg" id="errManufacturerYear2">Năm Sản Xuất phải là kiểu số.</div>
                   <div class="showMsg" id="errManufacturerYear3">Năm Sản Xuất phải từ 2010 đến năm hiện hành.</div>
+				  <div class="showMsg" id="errManufacturerYear4">Năm Sản Xuất không cách năm hiện tại quá số thời gian bảo hành.</div>
                   </td>
                 </tr>
                 <tr>

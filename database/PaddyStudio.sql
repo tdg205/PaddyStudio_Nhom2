@@ -88,50 +88,50 @@ go
 
 insert tbProduct values
 ('Dell XPS 13 9365','Dell01.jpg',
-N'- Bộ xử lý: Intel Core i7 7Y75 (2x1.30 GHz), Max Turbo Frequency: 3.60 GHz-4MB<br/>
+N'Bộ xử lý: Intel Core i7 7Y75 (2x1.30 GHz), Max Turbo Frequency: 3.60 GHz-4MB<br/>
 - RAM: 16GB DDR4/1866MHz onboard<br/>
 - Đĩa cứng: SSD (M.2 2280) 512GB (M.2 2280)<br/>
 - Đồ họa: Intel HD Graphics 615<br/>
 - Âm thanh: 	High Definition (HD) Audio 2.0<br/>
-- Màn hình: 13.3" InfinityEdge touch display (3200x1800), không cảm ứng<br/>
+- Màn hình: 13.3 inches InfinityEdge touch display (3200x1800), không cảm ứng<br/>
 - Giao tiếp mạng: Không LAN, wifi: Intel (802.11 ac), Bluetooth 4.2<br/>
-- Tính năng mở rộng & cổng giao tiếp: 1xThunderbolt 3 (4 lanes of PCI Express Gen 3) with PowerShare & DC-In ; 1 x DisplayPort over USB-C with PowerShare, DC-In & DisplayPort ; 1 x Headphone/ Microphone combo ; 1 x USB-C to HDMI (2.0) A<br/>
+- Tính năng mở rộng & cổng giao tiếp: 1xThunderbolt 3 (4 lanes of PCI Express Gen 3) with PowerShare & DC-In; 1 x DisplayPort over USB-C with PowerShare, DC-In & DisplayPort ; 1 x Headphone/ Microphone combo ; 1 x USB-C to HDMI (2.0) A<br/>
 - Trọng lượng 1.24 kg, pin 4 Cell Int (46WHr)<br/>
 - Hệ điều hành: Windows 10 Home Single Language 64Bit + Office Personal 365<br/>','54.990.000','24','2017','Dell'
 ),
 
 ('Dell XPS15-Core i7 8750HQ','Dell02.jpg',
-N'- Bộ xử lý: Intel Core i7 8750HQ 2.20GHz-9MB cache<br/>
+N'Bộ xử lý: Intel Core i7 8750HQ 2.20GHz-9MB cache<br/>
 - RAM: 16GB DDR4 2666MHz, 2 khe RAM<br/>
 - Đĩa cứng: SSD PCLE 512GB<br/>
 - Đồ họa: NVIDIA GEFORCE GTX 1050 4GB GDDR5<br/>
 - Âm thanh: 	High Definition (HD) Audio - Power Cord<br/>
-- Màn hình: 15.6 inchs -InfinityEdge display( 1920x1080), không cảm ứng<br/>
+- Màn hình: 15.6 inches -InfinityEdge display( 1920x1080), không cảm ứng<br/>
 - Giao tiếp mạng: LAN 10/100/1000, Wifi 802.11ac Dual Band, Bluetooth v4.1<br/>
 - Tính năng mở rộng & cổng giao tiếp: USB 3.0, Headset, Finger Print Reader<br/>
 - Trọng lượng 1.80 kg, Pin 4 Cell Int (46WHr)<br/>
 - Hệ điều hành: Windows 10 Home Plus + Microsoft Office 365 Personal DFO<br/>','53.990.000','24','2017','Dell'
 ),
 
-('Dell XPS13 9370','Dell03.jpg',N'- Bộ xử lý: Intel Core i7-8550U 1.80 GHz, 8MB Cache<br/>
+('Dell XPS13 9370','Dell03.jpg',N'Bộ xử lý: Intel Core i7-8550U 1.80 GHz, 8MB Cache<br/>
 - RAM: 8GB LPDDR3/1866 MHz, 1 khe RAM<br/>
 - Đĩa cứng:	SSD PCIe (M2 2280) 256GB<br/>
 - Đồ họa: Intel UHD Graphics 620<br/>
 - Âm thanh: Realtek Audio (MaxxAudio Pro), Waves MaxxAudio Pro<br/>
-- Màn hình: 	13.3 inchs - FullHD InfinityEdge display(1920x1080), không cảm ứng<br/>
+- Màn hình: 	13.3 inches - FullHD InfinityEdge display(1920x1080), không cảm ứng<br/>
 - Giao tiếp mạng: Không LAN, Wifi 802.11ac Dual Band, Bluetooth v4.1<br/>
-- Tính năng mở rộng & cổng giao tiếp: 2 x Thunderbolt™ 3 (with PowerShare & DC-In & DisplayPort); 1 x USB-C 3.1 (with PowerShare, DC-In & DisplayPort); 1 x Headphone/ Microphone<br/>
+- Tính năng mở rộng & cổng giao tiếp: 2 x Thunderbolt 3 (with PowerShare & DC-In & DisplayPort); 1 x USB-C 3.1 (with PowerShare, DC-In & DisplayPort); 1 x Headphone/ Microphone<br/>
 - Trọng lượng 1.21kg, Pin 4 Cell Ext (52Wh) liền<br/>
 - Hệ điều hành: Windows 10 Home Single Language 64Bit + Office Personal 365<br/>','45.990.000','12','2018','Dell'
 ),
 
 ('Dell XPS 13 9360-Core i5 7200U','Dell04.jpg',
-N'- Bộ xử lý: Intel Core i5-7200U 2.50 GHz, 3MB Cache<br/>
+N'Bộ xử lý: Intel Core i5-7200U 2.50 GHz, 3MB Cache<br/>
 - RAM: DDRAM 8GB LPDDR3/	2133 MHz, onboard RAM<br/>
 - Đĩa cứng:	SSD 256GB<br/>
 - Đồ họa: Intel HD Graphics 620<br/>
 - Âm thanh: High Definition (HD) Audio 2.0<br/>
-- Màn hình: 	13.3 inch-FHD (1920 x 1080), Anti-Glare, không cảm ứng<br/>
+- Màn hình: 	13.3 inches FHD (1920 x 1080), Anti-Glare, không cảm ứng<br/>
 - Giao tiếp mạng: Không LAN, wifi 802.11ac<br/>
 - Tính năng mở rộng & cổng giao tiếp: USB 3.0, USB Type-C, Multi TouchPad<br/>
 - Trọng lượng vỏ nhôm 1.23kg - Pin 	4 cell 60WHr liền<br/>
@@ -139,11 +139,11 @@ N'- Bộ xử lý: Intel Core i5-7200U 2.50 GHz, 3MB Cache<br/>
 ),
 
 ('Dell Vostro V5468A','Dell05.jpg',
-N'- Bộ xử lý: Intel Core i5-7200U 2.50 GHz, 3MB Cache<br/>
+N'Bộ xử lý: Intel Core i5-7200U 2.50 GHz, 3MB Cache<br/>
 - RAM: 4GB DDR4/	2133MHz, 2 khe RAM<br/>
 - Đĩa cứng:	HDD 1TB, có khe ổ cắm SSD<br/>
 - Đồ họa: Nvidia GeForce 940M-2GB<br/>
-- Màn hình: 	14 inch-	HD LED(1366 x 768), không cảm ứng<br/>
+- Màn hình: 	14 inches HD LED(1366 x 768), không cảm ứng<br/>
 - Âm thanh: High Definition (HD) Audio 2.0<br/>
 - Giao tiếp mạng: LAN 10/100Mbps, wifi IEEE 802.11b/g/n<br/>
 - Tính năng mở rộng & cổng giao tiếp: 2 x USB 3.0, HDMI, LAN (RJ45), USB 2.0, VGA (D-Sub), Multi TouchPad<br/>
@@ -152,11 +152,11 @@ N'- Bộ xử lý: Intel Core i5-7200U 2.50 GHz, 3MB Cache<br/>
 ),
 
 ('Macbook Air 13 128GB MQD32SA/A','Macbook01.jpg',
-N'- Bộ xử lý: Intel Core i5 1.8Ghz-	Dual Core, 3MB (L3 Cache)<br/>
+N'Bộ xử lý: Intel Core i5 1.8Ghz Dual Core, 3MB (L3 Cache)<br/>
 - RAM: 8GB LPDDR3 1600Mhz<br/>
 - Đĩa cứng: SSD 128GB<br/>
 - Đồ họa: Intel HD Graphics 6000<br/>
-- Màn hình: 	13.3inchs 1440x900 pixels-LED-backlit, không cảm ứng<br/>
+- Màn hình: 	13.3 inches 1440x900 pixels-LED-backlit, không cảm ứng<br/>
 - Âm thanh: 	Stereo speakers<br/>
 - Tính năng mở rộng & cổng giao tiếp: 2xUSB 3.0, 2xThunderbolt 2, 1xSDXC Card, 1xMagSafe 2, 1xHeadphone<br/>
 - Giao tiếp mạng: LAN 802.11ac Wi-Fi wireless networking, Wi-Fi IEEE 802.11a/b/g/n compatible<br/>
@@ -165,11 +165,11 @@ N'- Bộ xử lý: Intel Core i5 1.8Ghz-	Dual Core, 3MB (L3 Cache)<br/>
 ),
 
 ('Macbook Air 13 256GB MQD42SA/A','Macbook02.jpg',
-N'- Bộ xử lý: Intel Core i5 1.8Ghz-	Dual Core, 3MB (L3 Cache)<br/>
+N'Bộ xử lý: Intel Core i5 1.8Ghz Dual Core, 3MB (L3 Cache)<br/>
 - RAM: 8GB LPDDR3 1600Mhz<br/>
 - Đĩa cứng: SSD 256GB<br/>
 - Đồ họa: Intel HD Graphics 6000<br/>
-- Màn hình: 	13.3inchs 1440x900 pixels-LED-backlit, không cảm ứng<br/>
+- Màn hình: 	13.3 inches 1440x900 pixels-LED-backlit, không cảm ứng<br/>
 - Âm thanh: 	Stereo speakers<br/>
 - Tính năng mở rộng & cổng giao tiếp: 2xUSB 3.0, 2xThunderbolt 2, 1xSDXC Card, 1xMagSafe 2, 1xHeadphone<br/>
 - Giao tiếp mạng: LAN 802.11ac Wi-Fi wireless networking, Wi-Fi IEEE 802.11a/b/g/n compatible<br/>
@@ -178,11 +178,11 @@ N'- Bộ xử lý: Intel Core i5 1.8Ghz-	Dual Core, 3MB (L3 Cache)<br/>
 ),
 
 ('Macbook 12 256GB','Macbook03.jpg',
-N'- Bộ xử lý: Intel Core M3 1.2Ghz-Dual Core, 4MB (L3 Cache)<br/>
+N'Bộ xử lý: Intel Core M3 1.2Ghz-Dual Core, 4MB (L3 Cache)<br/>
 - RAM: 8GB LPDDR3 1866 MHz<br/>
 - Đĩa cứng: SSD 256GB<br/>
 - Đồ họa: Intel HD Graphics 615<br/>
-- Màn hình: 	12 inch 2304x1440 Pixels-LED-backlit, không cảm ứng<br/>
+- Màn hình: 	12 inches 2304x1440 Pixels-LED-backlit, không cảm ứng<br/>
 - Âm thanh: 	Stereo speakers<br/>
 - Tính năng mở rộng & cổng giao tiếp: 1xUSB Type-C, 1x3.5mm headphone jack<br/>
 - Giao tiếp mạng: LAN 802.11ac Wi-Fi wireless networking, Wi-Fi IEEE 802.11a/b/g/n compatible<br/>
@@ -191,11 +191,11 @@ N'- Bộ xử lý: Intel Core M3 1.2Ghz-Dual Core, 4MB (L3 Cache)<br/>
 ),
 
 ('Macbook Pro 13 inch','Macbook04.jpg',
-N'- Bộ xử lý: Intel 	Core i5 	2.3 GHz-Dual Core<br/>
+N'Bộ xử lý: Intel Core i5 2.3 GHz-Dual Core<br/>
 - RAM: 8GB LPDDR3 2133MHz<br/>
 - Đĩa cứng: SSD 128GB<br/>
 - Đồ họa: Intel Iris Plus Graphics 640<br/>
-- Màn hình: 	13.3 inch 2560 x 1600 pixels-LED backlit, không cảm ứng<br/>
+- Màn hình: 	13.3 inches 2560 x 1600 pixels-LED backlit, không cảm ứng<br/>
 - Âm thanh: 	Stereo speakers<br/>
 - Tính năng mở rộng & cổng giao tiếp: 2xThunderbolt 3(USB-C), 1xHeadphone<br/>
 - Giao tiếp mạng: LAN 802.11ac Wifi wireless networking, Wi-Fi IEEE 802.11a/b/g/n compatible<br/>
@@ -204,11 +204,11 @@ N'- Bộ xử lý: Intel 	Core i5 	2.3 GHz-Dual Core<br/>
 ),
 
 ('Macbook Pro 13 Touch Bar','Macbook05.jpg',
-N'- Bộ xử lý: Intel 	Core i5 2.3GHz-Quad Core, 8MB<br/>
+N'Bộ xử lý: Intel Core i5 2.3GHz-Quad Core, 8MB<br/>
 - RAM: 8GB LPDDR3 2133MHz, 1 khe RAM<br/>
 - Đĩa cứng: SSD 512GB<br/>
 - Đồ họa: Intel Iris Plus Graphics 655<br/>
-- Màn hình: 13.3inch Retina (2560 x 1600 pixels), Công nghệ True Tone, Công nghệ IPS, LED Backlit, không cảm ứng<br/>
+- Màn hình: 13.3 inches Retina (2560 x 1600 pixels), Công nghệ True Tone, Công nghệ IPS, LED Backlit, không cảm ứng<br/>
 - Âm thanh: Stereo speakers with high dynamic range<br/>
 - Tính năng mở rộng & cổng giao tiếp: 4 cổng USB-C tích hợp Thunderbolt 3 và 1 cổng tai nghe 3.5<br/>
 - Giao tiếp mạng: không có LAN, Wi-Fi 802.11ac Wi-Fi wireless networking; IEEE 802.11a/b/g/n compatible, Bluetooth 5.0 wireless<br/>
@@ -217,12 +217,12 @@ N'- Bộ xử lý: Intel 	Core i5 2.3GHz-Quad Core, 8MB<br/>
 ),
 
 ('Asus TUF FX504GE-E4059T','Asus01.jpg',
-N'- Bộ xử lý: Intel 	Core i7 	8750H 2.20GHz-Quad Core, 9 MB Smart Cache<br/>
+N'Bộ xử lý: Intel Core i7 8750H 2.20GHz-Quad Core, 9 MB Smart Cache<br/>
 - RAM: 8GB DDR4 2666MHz, 2 khe RAM<br/>
 - Đĩa cứng: 	HDD 1TB 5400RPM SATA HDD (FireCuda), có khe cắm ổ SSD<br/>
 - Đồ họa: NVIDIA GeForce GTX 1050Ti-	4GB GDDR5 VRAM<br/>
-- Màn hình: 	15.6 inch 1920x1080 pixels, 	Anti-Glare IPS, không cảm ứng<br/>
-- Âm thanh: 	Công nghệ Bang & Olufsen ICEpower® 2.0<br/>
+- Màn hình: 	15.6 inches 1920x1080 pixels, 	Anti-Glare IPS, không cảm ứng<br/>
+- Âm thanh: 	Công nghệ Bang & Olufsen ICEpower 2.0<br/>
 - Tính năng mở rộng & cổng giao tiếp: 1 x SSD (M2 2280); 2 x USB 3.0 ; 1 x USB 2.0; 1 x HDMI ; 1 x RJ45 ; 1 x Microphone-in/Headphone-out Combo<br/>
 - Giao tiếp mạng: LAN 10/100/1000 Mbps, Wi-Fi 802.11 AC (2x2), Bluetooth V4.0<br/>
 - Hệ điều hành:	Windows 10 Home SL<br/>
@@ -230,12 +230,12 @@ N'- Bộ xử lý: Intel 	Core i7 	8750H 2.20GHz-Quad Core, 9 MB Smart Cache<br/
 ),
 
 ('ASUS ZenBook 13 UX331UN','Asus02.jpg',
-N'- Bộ xử lý: Intel 	Core i5 8250U 1.60 GHz, 6 MB Cache<br/>
+N'Bộ xử lý: Intel Core i5 8250U 1.60 GHz, 6 MB Cache<br/>
 - RAM: 8GB LPDDR3 1866MHz, 1 khe RAM<br/>
 - Đĩa cứng: 	SSD 256GB, có khe cắm ổ SSD<br/>
 - Đồ họa: NVIDIA GEFORCE MX150 2GB<br/>
-- Màn hình:	13.3inchs 1920x1080 pixels, FullHD Anti-Glare, không cảm ứng<br/>
-- Âm thanh: 	"Built-in speaker Built-in array microphone Audio by ICEpower® harmon/ kardon"<br/>
+- Màn hình:	13.3 inches 1920x1080 pixels, FullHD Anti-Glare, không cảm ứng<br/>
+- Âm thanh: Built-in speaker Built-in array microphone Audio by ICEpower harmon/ kardon<br/>
 - Tính năng mở rộng & cổng giao tiếp: 2 x USB 3.0; 1 x USB 3.1 Type C (Gen 1)<br/>
 - Giao tiếp mạng: LAN 10/100/1000 Mbps, Wi-Fi 802.11 AC, Bluetooth 4.2<br/>
 - Hệ điều hành:	Windows 10 64bit<br/>
@@ -243,11 +243,11 @@ N'- Bộ xử lý: Intel 	Core i5 8250U 1.60 GHz, 6 MB Cache<br/>
 ),
 
 ('Asus UX430UA-GV261T','Asus03.jpg',
-N'- Bộ xử lý: Intel 	Core i5 8250U 1.60 GHz, 6MB SmartCache<br/>
+N'Bộ xử lý: Intel Core i5 8250U 1.60 GHz, 6MB SmartCache<br/>
 - RAM: 8GB DDR4 	2133MHz, 1 khe RAM<br/>
 - Đĩa cứng: 	SSD 256GB<br/>
 - Đồ họa: Intel UHD Graphics 620<br/>
-- Màn hình: 14" FHD 1920x1080 pixels, Anti-Glare, không cảm ứng<br/>
+- Màn hình: 14 inches FHD 1920x1080 pixels, Anti-Glare, không cảm ứng<br/>
 - Âm thanh: 	SonicMaster, Loa 3W Stereo<br/>
 - Tính năng mở rộng & cổng giao tiếp: 1 x USB 2.0; 1 x USB 3.0; 1 x USB3.1 Type C (gen 1)<br/>
 - Giao tiếp mạng: không LAN, Wi-Fi 802.11 AC, Bluetooth <br/>
@@ -256,24 +256,24 @@ N'- Bộ xử lý: Intel 	Core i5 8250U 1.60 GHz, 6MB SmartCache<br/>
 ),
 
 ('Asus Vivobook S14 S410UA','Asus04.jpg',
-N'- Bộ xử lý: Intel 	Core i7 	8550U 1.80 GHz, 8M Cache<br/>
+N'Bộ xử lý: Intel Core i7 8550U 1.80 GHz, 8M Cache<br/>
 - RAM: 4GB DDR4, 1 khe RAM<br/>
 - Đĩa cứng: SSD 256GB, không có khe cắm ổ SSD<br/>
 - Đồ họa: Intel UHD Graphics 620<br/>
-- Màn hình: 14" FHD 1920x1080 pixels, Anti-Glare, không cảm ứng<br/>
+- Màn hình: 14 inches FHD 1920x1080 pixels, Anti-Glare, không cảm ứng<br/>
 - Âm thanh: Tích hợp Loa 2 W Stereo và microphone, Hỗ trợ Windows 10 Cortana, Công nghệ ASUS SonicMaster<br/>
 - Tính năng mở rộng & cổng giao tiếp: 2 x USB 2.0; 1 x USB 3.0; 1 x USB3.1 Type C (Gen 1); 1 x Headphone-out & Audio-in Combo Jack; 1 x HDMI<br/>
-- Giao tiếp mạng: không LAN, Wi-Fi 802.11 AC, Bluetooth 4.2 (Dual band) 2*2<br/>
-- Hệ điều hành:	Windows 10 64bit<br/>
+- Giao tiếp mạng: không LAN, Wi-Fi 802.11 AC, Bluetooth 4.2 (Dual band) 2x2<br/>
+- Hệ điều hành:	Windows 10 64 bit<br/>
 - Pin 3 cell Li-ion liền, trọng lượng 1.43 Kg nhôm nguyên khối<br/>','19.490.000','24','2018','Asus'
 ),
 
 ('Asus UX430UA GV344-Core i5 7200U','Asus05.jpg',
-N'- Bộ xử lý: Intel® Core™ i5 7200U 2.5GHz, 3M Cache <br/>
+N'Bộ xử lý: Intel Core i5 7200U 2.5GHz, 3M Cache <br/>
 - RAM: 8GB DDR4 	2133MHz<br/>
 - Đĩa cứng: SSD 256GB, có khe cắm ổ SSD<br/>
 - Đồ họa: Intel UHD Graphics 620<br/>
-- Màn hình: 14 inch 1920x1080 pixels, LED-Anti-glare, không cảm ứng<br/>
+- Màn hình: 14 inches 1920x1080 pixels, LED-Anti-glare, không cảm ứng<br/>
 - Âm thanh: 	Sonic Master 2.0<br/>
 - Tính năng mở rộng & cổng giao tiếp: 1x USB 2.0 1x USB 3.0 1x USB3.1 Type C (gen 1)<br/>
 - Giao tiếp mạng: không LAN, Wi-Fi 802.11 AC<br/>
@@ -282,109 +282,109 @@ N'- Bộ xử lý: Intel® Core™ i5 7200U 2.5GHz, 3M Cache <br/>
 ),
 
 ('HP Pavilion Power 15-cx0182TX','HP01.jpg',
-N'- Bộ xử lý: Intel® Core™ i7 8750H 2.20GHz, 9 MB Cache <br/>
+N'Bộ xử lý: Intel Core i7 8750H 2.20GHz, 9 MB Cache <br/>
 - Bo mạch: Chipset Intel HM370, Bus 2666MHz, hỗ trợ tối đa 16GB<br/>
 - RAM: 8GB DDR4 2666 MHz, 2 khe RAM<br/>
 - Đĩa cứng: SSD+HDD 128GB+1TB, không có khe cắm ổ SSD<br/>
-- Đồ họa: 	NVIDIA® GeForce® GTX 1050Ti 	4GB<br/>
-- Màn hình: 15.6inchs 1920x1080 pixels, 	IPS anti-glare micro-edge WLED-backlit, không cảm ứng<br/>
+- Đồ họa: 	NVIDIA GeForce GTX 1050Ti 4GB<br/>
+- Màn hình: 15.6 inches 1920x1080 pixels, IPS anti-glare micro-edge WLED-backlit, không cảm ứng<br/>
 - Âm thanh: 	B&O PLAY, dual speakers, HP Audio Boost<br/>
-- Tính năng mở rộng & cổng giao tiếp:1 HDMI 2.0; 1 headphone/microphone combo; 1 RJ-45; 1 USB 3.1 Type-C™ Gen 1 (Data Transfer up to 5 Gb/s); 3 USB 3.1 Gen 1 (Data transfer only)<br/>
-- Giao tiếp mạng: LAN Integrated 10/100/1000 GbE LAN, Wi-Fi 	Intel® Wireless-AC 9560 802.11a/b/g/n/ac(2x2) Wi-Fi® and Bluetooth® 5 Combo<br/>
+- Tính năng mở rộng & cổng giao tiếp:1 HDMI 2.0; 1 headphone/microphone combo; 1 RJ-45; 1 USB 3.1 Type-C Gen 1 (Data Transfer up to 5 Gb/s); 3 USB 3.1 Gen 1 (Data transfer only)<br/>
+- Giao tiếp mạng: LAN Integrated 10/100/1000 GbE LAN, Wi-Fi 	Intel Wireless-AC 9560 802.11a/b/g/n/ac(2x2) Wi-Fi and Bluetooth 5 Combo<br/>
 - Hệ điều hành: 	Windows 10 Home Single Language 64<br/>
 - Pin 3-cell 52.5 Wh Li-ion prismatic and polymer liền, trọng lượng 2.17Kg nhựa<br/>','29.990.000','12','2018','HP'
 ),
 
 ('HP Envy 13 ah0027TU-Core i7 8550U','HP02.jpg',
-N'- Bộ xử lý: Intel® Core™ i7 8550U 1.8GHz, 8MB Cache<br/>
-- Bo mạch: Chipset 8th Generation Intel® Core™ i7 processor, Bus 2400MHz, hỗ trợ tối đa 16GB<br/>
+N'Bộ xử lý: Intel Core i7 8550U 1.8GHz, 8MB Cache<br/>
+- Bo mạch: Chipset 8th Generation Intel Core i7 processor, Bus 2400MHz, hỗ trợ tối đa 16GB<br/>
 - RAM: 8GB LPDDR3 2400MHz, 2 khe RAM<br/>
 - Đĩa cứng: 	SSD 256GB, không có khe cắm ổ SSD<br/>
-- Đồ họa: Intel® UHD Graphics 620<br/>
-- Màn hình: 	13.3 inchs 1920x1080 pixels, FHD IPS BrightView micro-edge WLED-backlit, không cảm ứng<br/>
+- Đồ họa: Intel UHD Graphics 620<br/>
+- Màn hình: 	13.3 inches 1920x1080 pixels, FHD IPS BrightView micro-edge WLED-backlit, không cảm ứng<br/>
 - Âm thanh: 	Bang & Olufsen, quad speakers, HP Audio Boost<br/>
-- Tính năng mở rộng & cổng giao tiếp: 1 USB 3.1 Type-C™ Gen 1 (Data Transfer up to 5Gb/s, Power Delivery, DisplayPort™ 1.2, HP Sleep and Charge); 2 USB 3.1 Gen 1 (1 HP Sleep and Charge); 1 headphone/microphone combo<br/>
+- Tính năng mở rộng & cổng giao tiếp: 1 USB 3.1 Type-C Gen 1 (Data Transfer up to 5Gb/s, Power Delivery, DisplayPort 1.2, HP Sleep and Charge); 2 USB 3.1 Gen 1 (1 HP Sleep and Charge); 1 headphone/microphone combo<br/>
 - Giao tiếp mạng: LAN Integrated 10/100/1000 GbE LAN, Wi-Fi 802.11 ac<br/>
 - Hệ điều hành: Windows 10 Home<br/>
 - Pin HP Long Life 4-cell, 53.2Wh Li-ion polymer liền, trọng lượng 	1.22Kg nhôm nguyên khối<br/>','26.990.000','12','2018','HP'
 ),
 
 ('HP Envy 13-ah0026TU','HP03.jpg',
-N'- Bộ xử lý: Intel® Core™ i5 8250U 1.60GHz, 6MB Cache<br/>
+N'Bộ xử lý: Intel Core i5 8250U 1.60GHz, 6MB Cache<br/>
 - Bo mạch: Chipset intel, Bus 2133MHz, hỗ trợ tối đa 8GB<br/>
 - RAM: 8GB LPDDR3 2133MHz, 1 khe RAM<br/>
 - Đĩa cứng: 	SSD 256GB, không có khe cắm ổ SSD<br/>
-- Đồ họa: Intel® UHD Graphics 620<br/>
-- Màn hình: 	13.3 inchs 1920x1080 pixels, FHD IPS BrightView micro-edge WLED-backlit, không cảm ứng<br/>
+- Đồ họa: Intel UHD Graphics 620<br/>
+- Màn hình: 	13.3 inches 1920x1080 pixels, FHD IPS BrightView micro-edge WLED-backlit, không cảm ứng<br/>
 - Âm thanh: 	Bang & Olufsen, quad speakers, HP Audio Boost<br/>
-- Tính năng mở rộng & cổng giao tiếp: 1 USB 3.1 Type-C™ Gen 1 (Data Transfer up to 5 Gb/s, Power Delivery, DisplayPort™ 1.2, HP Sleep and Charge); 2 USB 3.1 Gen 1 (1 HP Sleep and Charge); 1 headphone/microphone combo<br/>
-- Giao tiếp mạng: không có LAN, Wi-Fi Intel® Wireless-AC 7265 802.11ac (2x2) Wi-Fi® and Bluetooth® 4.2 Combo<br/>
+- Tính năng mở rộng & cổng giao tiếp: 1 USB 3.1 Type-C Gen 1 (Data Transfer up to 5 Gb/s, Power Delivery, DisplayPort 1.2, HP Sleep and Charge); 2 USB 3.1 Gen 1 (1 HP Sleep and Charge); 1 headphone/microphone combo<br/>
+- Giao tiếp mạng: không có LAN, Wi-Fi Intel Wireless-AC 7265 802.11ac (2x2) Wi-Fi and Bluetooth 4.2 Combo<br/>
 - Hệ điều hành: Windows 10 Home<br/>
 - Pin HP Long Life 4-cell 53.2Wh Li-ion polymer liền, trọng lượng 1.21Kg nhôm nguyên khối<br/>','21.990.000','12','2018','HP'
 ),
 
 ('HP Pavilion 15 cs0104TX-Core i7 8550U','HP04.jpg',
-N'- Bộ xử lý: Intel® Core™ i7 8550U 	1.80GHz, 8MB cache<br/>
+N'Bộ xử lý: Intel Core i7 8550U 	1.80GHz, 8MB cache<br/>
 - Bo mạch: Chipset intel, Bus 4 GT/s OPI, hỗ trợ tối đa 16GB<br/>
 - RAM: 4GB DDR4 2400 MHz, 2 khe RAM<br/>
-- Đĩa cứng: HDD+SSD Optane™	1TB+16GB, có khe cắm ổ SSD<br/>
+- Đĩa cứng: HDD+SSD Optane	1TB+16GB, có khe cắm ổ SSD<br/>
 - Đồ họa: NVIDIA GeForce MX130 2GB<br/>
-- Màn hình: 15.6 inchs 1920x1080 pixels, FHD SVA Anti-glare WLED-backlit, không cảm ứng<br/>
+- Màn hình: 15.6 inches 1920x1080 pixels, FHD SVA Anti-glare WLED-backlit, không cảm ứng<br/>
 - Âm thanh: B&O PLAY, dual speakers, HP Audio Boost<br/>
-- Tính năng mở rộng & cổng giao tiếp: 1 x SSD (M2 2280); 2 x USB 3.1 Gen 1 (Data transfer only); 1 x USB 3.1 Type-C™ Gen 1 (Data Transfer Only); 1 x HDMI; 1 x RJ45; 1 x headphone/microphone combo<br/>
-- Giao tiếp mạng: LAN 	10/100/1000 Mbps, Wi-Fi 	Intel® 802.11a/b/g/n/ac (1x1) Wi-Fi®, Bluetooth® 4.2 Combo<br/>
+- Tính năng mở rộng & cổng giao tiếp: 1 x SSD (M2 2280); 2 x USB 3.1 Gen 1 (Data transfer only); 1 x USB 3.1 Type-C Gen 1 (Data Transfer Only); 1 x HDMI; 1 x RJ45; 1 x headphone/microphone combo<br/>
+- Giao tiếp mạng: LAN 	10/100/1000 Mbps, Wi-Fi 	Intel 802.11a/b/g/n/ac (1x1) Wi-Fi, Bluetooth 4.2 Combo<br/>
 - Hệ điều hành: Windows 10 Home Single Language 64-Bit<br/>
 - Pin 3 cell, 41 Wh Li-ion rời, trọng lượng 1.86 Kg vỏ hợp kim<br/>','19.990.000','12','2018','HP'
 ),
 
 ('HP Pavilion x360 14-ba066TU','HP05.jpg',
-N'- Bộ xử lý: Intel® Core™ i5 7200U 2.50 GHz, 3MB cache<br/>
+N'Bộ xử lý: Intel Core i5 7200U 2.50 GHz, 3MB cache<br/>
 - RAM: 4GB DDR4 2133 MHz, 1 khe RAM<br/>
 - Đĩa cứng: 	HDD 500GB<br/>
 - Đồ họa: Intel HD Graphics 620<br/>
-- Màn hình: 14 inch 1920x1080 pixels, FHD IPS WLED-backlit multitouch-enabled edge-to-edge glass, có cảm ứng<br/>
+- Màn hình: 14 inches 1920x1080 pixels, FHD IPS WLED-backlit multitouch-enabled edge-to-edge glass, có cảm ứng<br/>
 - Âm thanh: B&O PLAY; HP Audio Boost; Dual speakers<br/>
-- Tính năng mở rộng & cổng giao tiếp: 1 x HDMI; 1 x headphone/microphone combo; 1 x USB 3.1 Type-C™ Gen 1 (Data up to 5 Gb/s); 2 x USB 3.1 Gen 1 (Data transfer only)<br/>
+- Tính năng mở rộng & cổng giao tiếp: 1 x HDMI; 1 x headphone/microphone combo; 1 x USB 3.1 Type-C Gen 1 (Data up to 5 Gb/s); 2 x USB 3.1 Gen 1 (Data transfer only)<br/>
 - Giao tiếp mạng: Không có LAN, Wi-Fi IEEE 802.11a/b/g/n/ac, Bluetooth 4.2<br/>
 - Hệ điều hành: Windows 10 Home Single Language 64-Bit<br/>
 - Pin 3 cell li ion, trọng lượng 1.63kg nhựa<br/>','16.990.000','12','2018','HP'
 ),
 
 ('Lenovo Legion Y520 15IKBN','Lenovo01.jpg',
-N'- Bộ xử lý: Intel® Core™ i5 7300HQ 2.5Ghz, 6MB Cache<br/>
-- Bo mạch: Chipset Intel® Chipset Express<br/>
+N'Bộ xử lý: Intel Core i5 7300HQ 2.5Ghz, 6MB Cache<br/>
+- Bo mạch: Chipset Intel Chipset Express<br/>
 - RAM: 8GB DDR4 	2400MHz, 2 khe RAM<br/>
 - Đĩa cứng: HDD+SSD 1000Gb 5400rpm + 128GB PCIe, không có khe cắm ổ SSD<br/>
 - Đồ họa: NVIDIA GeForce GTX 1050 4GB GDDR5 + Intel HD Graphics 620 	4GB<br/>
-- Màn hình: 	15.6 inch 1920x1080 pixels, FHD IPS, không cảm ứng<br/>
+- Màn hình: 	15.6 inches 1920x1080 pixels, FHD IPS, không cảm ứng<br/>
 - Âm thanh: Dolby Atmos 2.0<br/>
-- Tính năng mở rộng & cổng giao tiếp:2 x USB 3.0 1 x USB 2.0 1 x HDMI™ 1 x USB Type C(USB 3.1) 1 x RJ45 LAN 1<br/>
+- Tính năng mở rộng & cổng giao tiếp:2 x USB 3.0 1 x USB 2.0 1 x HDMI 1 x USB Type C(USB 3.1) 1 x RJ45 LAN 1<br/>
 - Giao tiếp mạng: LAN 10/100/1000M Gigabit Ethernet, Wi-Fi 802.11AC<br/>
 - Hệ điều hành: 	Free Dos<br/>
 - Pin 3 Cell Pin Li-Polymer liền, trọng lượng 2.4 kg nhựa đen tráng nhôm<br/>','20.490.000','12','2018','Lenovo'
 ),
 
 ('Lenovo ThinkPad Edge E580','Lenovo02.jpg',
-N'- Bộ xử lý: Intel® Core™ i5 8250U 1.60 GHz, 6MB SmartCache<br/>
-- Bo mạch:	Intel®, bus 2400MHz, hỗ trợ tối đa 16GB<br/>
+N'Bộ xử lý: Intel Core i5 8250U 1.60 GHz, 6MB SmartCache<br/>
+- Bo mạch: Intel, bus 2400MHz, hỗ trợ tối đa 16GB<br/>
 - RAM: 4GB DDR4 2133MHz, 1 khe RAM<br/>
 - Đĩa cứng: HDD 1000Gb, không có khe cắm ổ SSD<br/>
-- Đồ họa: Intel® HD Graphics 620<br/>
-- Màn hình: 	15.6 inch 1366 x 768 pixels, Anti-Glare LED Backlit, không cảm ứng<br/>
-- Âm thanh: Stereo speakers with Dolby® Advanced Audio™<br/>
+- Đồ họa: Intel HD Graphics 620<br/>
+- Màn hình: 	15.6 inches 1366 x 768 pixels, Anti-Glare LED Backlit, không cảm ứng<br/>
+- Âm thanh: Stereo speakers with Dolby Advanced Audio<br/>
 - Tính năng mở rộng & cổng giao tiếp: 1 x USB 2.0, 2 x USB 3.1 Gen 1 (one Always On), 1 x USB 3.1 Gen 2 Type-C (Power Delivery, DisplayPort, Data transfer) 1 x Smart Card Reader, HDMI<br/>
-- Giao tiếp mạng: LAN 10/100/1000Mbps, Wi-Fi Intel® Dual Band Wireless AC<br/>
+- Giao tiếp mạng: LAN 10/100/1000Mbps, Wi-Fi Intel Dual Band Wireless AC<br/>
 - Hệ điều hành: Windows 10<br/>
 - Pin 3 Cells 42Whrs rời, trọng lượng 1.75 Kg nhựa<br/>','17.490.000','12','2018','Lenovo'
 ),
 
 ('Lenovo ThinkPad Edge E480','Lenovo03.jpg',
-N'- Bộ xử lý: Intel® Core™ i5 8250U 1.60GHz, 6MB SmartCache<br/>
-- Bo mạch:	Intel®, bus 2400MHz, hỗ trợ tối đa 8GB<br/>
+N'Bộ xử lý: Intel Core i5 8250U 1.60GHz, 6MB SmartCache<br/>
+- Bo mạch: Intel, bus 2400MHz, hỗ trợ tối đa 8GB<br/>
 - RAM: 4GB DDR4 	2400MHz, 2 khe RAM<br/>
 - Đĩa cứng: HDD 1000Gb, không có khe cắm ổ SSD<br/>
-- Đồ họa: Intel® UHD Graphics 620<br/>
-- Màn hình: 14.0 inchs 1366 x 768 pixels, HD LED, không cảm ứng<br/>
+- Đồ họa: Intel UHD Graphics 620<br/>
+- Màn hình: 14.0 inches 1366 x 768 pixels, HD LED, không cảm ứng<br/>
 - Âm thanh: 2.0<br/>
 - Tính năng mở rộng & cổng giao tiếp: 1 x USB 2.0 1 x USB 3.0 1 x HDMI Card Reader<br/>
 - Giao tiếp mạng: LAN 10/100/1000Mbps, Wi-Fi 11a/b/g/n/ac Wi-Fi wireless<br/>
@@ -393,12 +393,12 @@ N'- Bộ xử lý: Intel® Core™ i5 8250U 1.60GHz, 6MB SmartCache<br/>
 ),
 
 ('Lenovo ThinkPad E570','Lenovo04.jpg',
-N'- Bộ xử lý: Intel® Core™ i5 7200U 2.50 GHz, 3 MB Cache<br/>
+N'Bộ xử lý: Intel Core i5 7200U 2.50 GHz, 3 MB Cache<br/>
 - Bo mạch: Up to 16 GB (2 DIMM) DDR4<br/>
 - RAM: 4GB DDR4 2133MHz, 2 khe RAM<br/>
 - Đĩa cứng: HDD 500Gb, có khe cắm ổ SSD<br/>
 - Đồ họa: NVIDIA Geforce 940M (2GB)<br/>
-- Màn hình: 15.6 inchs 1366 x 768 pixels, Anti-Glare LED-Backlit Display, không cảm ứng<br/>
+- Màn hình: 15.6 inches 1366 x 768 pixels, Anti-Glare LED-Backlit Display, không cảm ứng<br/>
 - Âm thanh: 2.0<br/>
 - Tính năng mở rộng & cổng giao tiếp: LAN, USB 2.0, USB 3.0, HDMI<br/>
 - Giao tiếp mạng: LAN 10/100/1000Mbps, Wi-Fi 802.11ac<br/>
@@ -407,12 +407,12 @@ N'- Bộ xử lý: Intel® Core™ i5 7200U 2.50 GHz, 3 MB Cache<br/>
 ),
 
 ('Lenovo ThinkPad E470','Lenovo05.jpg',
-N'- Bộ xử lý: Intel® Core™ i5 7200U 2.50 GHz, 3MB Cache<br/>
+N'Bộ xử lý: Intel Core i5 7200U 2.50 GHz, 3MB Cache<br/>
 - Bo mạch: Up to 16GB (2 DIMM) DDR4<br/>
 - RAM: 4GB DDR4 2133MHz, 2 khe RAM<br/>
 - Đĩa cứng: HDD 500Gb, có khe cắm ổ SSD<br/>
-- Đồ họa: Intel® HD Graphics 620<br/>
-- Màn hình: 14.0 inchs 1366 x 768 pixels, Anti-Glare LED-Backlit Display, không cảm ứng<br/>
+- Đồ họa: Intel HD Graphics 620<br/>
+- Màn hình: 14.0 inches 1366 x 768 pixels, Anti-Glare LED-Backlit Display, không cảm ứng<br/>
 - Âm thanh: 2.0<br/>
 - Tính năng mở rộng & cổng giao tiếp: HDMI, LAN (RJ45), USB 2.0, USB 3.0<br/>
 - Giao tiếp mạng: LAN 10/100/1000Mbps, Wi-Fi 802.11ac<br/>
