@@ -260,7 +260,7 @@ End If
 				<table width="100%" border="0" align="center">
 					<tr>
 						<td align="center" valign="middle"><strong><a href="javascript:history.back()" class="btn search">Trở Về Trang Đăng Ký</a></strong></td>
-				  </tr>
+					</tr>
 				</table>
 			</div>
 		<!-- InstanceEndEditable -->

@@ -278,6 +278,14 @@ End If
 <script src="js/main.js"></script>
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>Cập Nhật Tin Tức &amp; Sự Kiện</title>
+<STYLE type="text/css">
+.showMsg {
+	font-family: verdana;
+	font-size: 10px;
+	color: red;
+	display: none;
+}
+</STYLE>
 <script>
 function cut_string()
 {
@@ -294,45 +302,62 @@ function check()
 	var EventContent = document.getElementById("EventContent").value;
 	var EventDuration = document.getElementById("EventDuration").value;
 	var EventImage = document.getElementById("EventImage").value;
-	
+		
 	if(EventSummary == "")
 	{
-		alert("Chủ Đề không được để trống!");
+		document.getElementById("errEventSummary1").style.display = "inline";
+		document.getElementById("EventSummary").style.border = "1px solid #e00";
 		document.getElementById("EventSummary").focus();
 		return false;
+	} else {
+		document.getElementById("errEventSummary1").style.display = "none";
+		document.getElementById("EventSummary").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(EventSummary.length > 100)
 	{
-		alert("Chủ Đề không được quá 100 ký tự!");
+		document.getElementById("errEventSummary2").style.display = "inline";
+		document.getElementById("EventSummary").style.border = "1px solid #e00";
 		document.getElementById("EventSummary").focus();
-		document.getElementById("EventSummary").value = "";
 		return false;
+	} else {
+		document.getElementById("errEventSummary2").style.display = "none";
+		document.getElementById("EventSummary").style.border = "1px solid #d6d6d6";		
 	}
-	
+		
 	if(EventContent == "")
 	{
-		alert("Nội Dung không được để trống!");
+		document.getElementById("errEventContent1").style.display = "inline";
+		document.getElementById("EventContent").style.border = "1px solid #e00";
 		document.getElementById("EventContent").focus();
 		return false;
+	} else {
+		document.getElementById("errEventContent1").style.display = "none";
+		document.getElementById("EventContent").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(EventDuration.length > 100)
 	{
-		alert("Thời Hạn không được quá 100 ký tự!");
+		document.getElementById("errEventDuration1").style.display = "inline";
+		document.getElementById("EventDuration").style.border = "1px solid #e00";
 		document.getElementById("EventDuration").focus();
-		document.getElementById("EventDuration").value = "";
 		return false;
+	} else {
+		document.getElementById("errEventDuration1").style.display = "none";
+		document.getElementById("EventDuration").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(EventImage.length > 200)
 	{
-		alert("Hình Ảnh không được quá 200 ký tự!");
+		document.getElementById("errFileImage1").style.display = "inline";
+		document.getElementById("fileImage").style.border = "1px solid #e00";
 		document.getElementById("fileImage").focus();
-		document.getElementById("fileImage").value = "";
 		return false;
+	} else {
+		document.getElementById("errFileImage1").style.display = "none";
+		document.getElementById("fileImage").style.border = "1px solid #d6d6d6";		
 	}
-
+	
 	return true;
 }
 </script>
@@ -444,15 +469,25 @@ function check()
 				<table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">					
 					<tr>
 						<td width="40%" align="right" valign="top"><strong>Chủ Đề:* &nbsp;</strong></td>
-						<td width="60%" align="left" valign="top"><input id="EventSummary" name="EventSummary" type="text" size="32" value="<%=(rsUpdateEventAndNews.Fields.Item("EventSummary").Value)%>"/></td>
+						<td width="60%" align="left" valign="top"><input id="EventSummary" name="EventSummary" type="text" size="32" value="<%=(rsUpdateEventAndNews.Fields.Item("EventSummary").Value)%>"/>
+							<br/>
+							<div class="showMsg" id="errEventSummary1">Chủ Đề không được để trống.</div>
+							<div class="showMsg" id="errEventSummary2">Chủ Đề không được quá 100 ký tự.</div>	
+						</td>
 					</tr>
 					<tr>
 						<td align="right" valign="top"><strong>Nội Dung:* &nbsp;</strong></td>
-						<td align="left" valign="top"><textarea id="EventContent" name="EventContent" cols="32" rows="15"><%=(rsUpdateEventAndNews.Fields.Item("EventContent").Value)%></textarea></td>
+						<td align="left" valign="top"><textarea id="EventContent" name="EventContent" cols="32" rows="15"><%=(rsUpdateEventAndNews.Fields.Item("EventContent").Value)%></textarea>
+							<br/>
+							<div class="showMsg" id="errEventContent1">Nội Dung không được để trống.</div>
+						</td>
 					</tr>
 					<tr>
 						<td align="right" valign="top"><strong>Thời Hạn: &nbsp;</strong></td>
-						<td align="left" valign="top"><input id="EventDuration" name="EventDuration" type="text" size="32" value="<%=(rsUpdateEventAndNews.Fields.Item("EventDuration").Value)%>" /></td>
+						<td align="left" valign="top"><input id="EventDuration" name="EventDuration" type="text" size="32" value="<%=(rsUpdateEventAndNews.Fields.Item("EventDuration").Value)%>" />
+							<br/>
+							<div class="showMsg" id="errEventDuration1">Thời Hạn không được quá 100 ký tự.</div>
+						</td>
 					</tr>
 					<tr>
 						<td align="right" valign="top"><strong>Hình Ảnh: &nbsp;</strong></td>
@@ -460,6 +495,8 @@ function check()
 							<input name="fieldImage" id="fieldImage" type="image" src="images/event_news/<%=(rsUpdateEventAndNews.Fields.Item("EventImage").Value)%>" width="200" height="200"/><br/>
 							<input name="EventImage" id="EventImage" type="text" value="<%=(rsUpdateEventAndNews.Fields.Item("EventImage").Value)%>" readonly/><br/><br/>
 							<input name="fileImage" id="fileImage" type="file" onChange="cut_string()">
+							<br/>
+							<div class="showMsg" id="errFileImage1">Hình Ảnh không được quá 200 ký tự.</div>
 					  </td>
 					</tr>
 					<tr>

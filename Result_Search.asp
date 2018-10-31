@@ -466,9 +466,7 @@ End If
 </header>
 <!--/header-->
 <!-- InstanceBeginEditable name="Slider" -->
-    
-    
-	<!-- InstanceEndEditable -->
+<!-- InstanceEndEditable -->
 <section><!--section-->
   <div class="container">
     <div class="row">
@@ -503,7 +501,7 @@ End If
           </div>
           <!--/brands_products-->
           <!-- InstanceBeginEditable name="left" -->
-						<!-- InstanceEndEditable -->
+		<!-- InstanceEndEditable -->
         </div>
       </div>
       <div class="col-sm-9 padding-right">

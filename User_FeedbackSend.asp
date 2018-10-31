@@ -216,43 +216,63 @@ End If
 <script src="js/main.js"></script>
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>Gửi Phản Hồi</title>
+<STYLE type="text/css">
+.showMsg {
+	font-family: verdana;
+	font-size: 10px;
+	color: red;
+	display: none;
+}
+</STYLE>
 <script>
 function check()
 {
 	var Summary = document.getElementById("Summary").value;
 	var Content = document.getElementById("Content").value;
-	
+		
 	if(Summary == "")
 	{
-		alert("Chủ Đề không được để trống!");
+		document.getElementById("errSummary1").style.display = "inline";
+		document.getElementById("Summary").style.border = "1px solid #e00";
 		document.getElementById("Summary").focus();
 		return false;
+	} else {
+		document.getElementById("errSummary1").style.display = "none";
+		document.getElementById("Summary").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(Summary.length > 20)
 	{
-		alert("Chủ Đề không được quá 20 ký tự!");
+		document.getElementById("errSummary2").style.display = "inline";
+		document.getElementById("Summary").style.border = "1px solid #e00";
 		document.getElementById("Summary").focus();
-		document.getElementById("Summary").value = "";
 		return false;
+	} else {
+		document.getElementById("errSummary2").style.display = "none";
+		document.getElementById("Summary").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(Content == "")
 	{
-		alert("Nội Dung không được để trống!");
+		document.getElementById("errContent1").style.display = "inline";
+		document.getElementById("Content").style.border = "1px solid #e00";
 		document.getElementById("Content").focus();
 		return false;
+	} else {
+		document.getElementById("errContent1").style.display = "none";
+		document.getElementById("Content").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(Content.length > 500)
 	{
-		alert("Nội Dung không được quá 500 ký tự!");
+		document.getElementById("errContent2").style.display = "inline";
+		document.getElementById("Content").style.border = "1px solid #e00";
 		document.getElementById("Content").focus();
-		document.getElementById("Content").value = "";
 		return false;
-	}
-
-	
+	} else {
+		document.getElementById("errContent2").style.display = "none";
+		document.getElementById("Content").style.border = "1px solid #d6d6d6";		
+	}	
 	return true;
 }
 </script>
@@ -315,10 +335,8 @@ function check()
   <!--/header-bottom-->
 </header>
 <!--/header-->
-<!-- InstanceBeginEditable name="Slider" -->
-    
-    
-	<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="Slider" -->    
+<!-- InstanceEndEditable -->
 <section><!--section-->
   <div class="container">
     <div class="row">
@@ -353,41 +371,49 @@ function check()
           </div>
           <!--/brands_products-->
           <!-- InstanceBeginEditable name="left" -->
-						<!-- InstanceEndEditable -->
+		<!-- InstanceEndEditable -->
         </div>
       </div>
       <div class="col-sm-9 padding-right">
         <!-- InstanceBeginEditable name="Content" -->
-                    <h2 class="title text-center">Gửi Phản Hồi</h2>
-                    <div class="col-sm-12">
-                   		<form ACTION="<%=MM_editAction%>" id="form1" name="form1" method="POST" onSubmit="return check()">
-                   	  	<table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
-        					<tr>
-          						<td width="40%" align="right" valign="top"><strong>Chủ Đề:* &nbsp;</strong></td>
-          						<td width="60%" align="left" valign="top"><input id="Summary"  name="Summary" type="text" value="" size="30%"/></td>
-       						</tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Nội Dung:* &nbsp;</strong></td>
-                              	<td align="left" valign="top"><textarea id="Content" name="Content" rows="10"></textarea></td>
-                            </tr>
-                          	<tr>
-                                <td align="right" valign="top"><input type="submit" value="Gửi" class="btn search"/></td>
-                                <td align="left" valign="top"><input type="reset" value="Hủy" class="btn search"/>&nbsp;&nbsp;<a href="javascript:history.back()" class="btn search">Trở Về</a>
-                             	</td>
-                          	</tr>
-                            <tr>
-                                <td align="right" valign="top"><input type="hidden" id="Member" name="Member" value="<%=Session("MM_Username")%>" /></td>
-                                <td align="left" valign="top"><strong>(*) - Không Được Để Trống</strong></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top">&nbsp;</td>
-                                <td align="left" valign="top">&nbsp;</td>
-                            </tr>
-   					  	</table>
-                        <input type="hidden" name="MM_insert" value="form1">
-                        </form>
-                    </div>
-					<!-- InstanceEndEditable -->
+			<h2 class="title text-center">Gửi Phản Hồi</h2>
+			<div class="col-sm-12">
+				<form ACTION="<%=MM_editAction%>" id="form1" name="form1" method="POST" onSubmit="return check()">
+				<table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
+					<tr>
+						<td width="40%" align="right" valign="top"><strong>Chủ Đề:* &nbsp;</strong></td>
+						<td width="60%" align="left" valign="top"><input id="Summary"  name="Summary" type="text" value="" size="30%"/>
+							<br/>
+							<div class="showMsg" id="errSummary1">Chủ Đề không được để trống.</div>
+							<div class="showMsg" id="errSummary2">Chủ Đề không được quá 20 ký tự.</div>									
+						</td>
+					</tr>
+					<tr>
+						<td align="right" valign="top"><strong>Nội Dung:* &nbsp;</strong></td>
+						<td align="left" valign="top"><textarea id="Content" name="Content" rows="10"></textarea>
+							<br/>
+							<div class="showMsg" id="errContent1">Nội Dung không được để trống.</div>
+							<div class="showMsg" id="errContent2">Nội Dung không được quá 500 ký tự.</div>	
+						</td>
+					</tr>
+					<tr>
+						<td align="right" valign="top"><input type="submit" value="Gửi" class="btn search"/></td>
+						<td align="left" valign="top"><input type="reset" value="Hủy" class="btn search"/>&nbsp;&nbsp;<a href="javascript:history.back()" class="btn search">Trở Về</a>
+						</td>
+					</tr>
+					<tr>
+						<td align="right" valign="top"><input type="hidden" id="Member" name="Member" value="<%=Session("MM_Username")%>" /></td>
+						<td align="left" valign="top"><strong>(*) - Không Được Để Trống</strong></td>
+					</tr>
+					<tr>
+						<td align="right" valign="top">&nbsp;</td>
+						<td align="left" valign="top">&nbsp;</td>
+					</tr>
+				</table>
+				<input type="hidden" name="MM_insert" value="form1">
+				</form>
+			</div>
+		<!-- InstanceEndEditable -->
       </div>
     </div>
   </div>

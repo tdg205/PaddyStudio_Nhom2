@@ -262,6 +262,14 @@ End If
 <script src="js/main.js"></script>
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>Đăng Ký</title>
+<STYLE type="text/css">
+.showMsg {
+	font-family: verdana;
+	font-size: 10px;
+	color: red;
+	display: none;
+}
+</STYLE>
 <script>
 function check()
 {
@@ -273,124 +281,179 @@ function check()
 	var Email = document.getElementById("Email").value;
 	var Address = document.getElementById("Address").value;
 	var Phone = document.getElementById("Phone").value;
-	var tenPattern=/^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]+$/
+	var tenPattern=/^[a-zA-Z_\sàáãạảăắằẳẵặâấầẩẫậèéẹẻẽêềếểễệđìíĩỉịòóõọỏôốồổỗộơớờởỡợùúũụủưứừửữựỳỵỷỹýÀÁÃẠẢĂẮẰẲẴẶÂẤẦẨẪẬÈÉẸẺẼÊỀẾỂỄỆĐÌÍĨỈỊÒÓÕỌỎÔỐỒỔỖỘƠỚỜỞỠỢÙÚŨỤỦƯỨỪỬỮỰỲỴỶỸÝ]+$/
+	
 	if(Username.trim() == "")
 	{
-		alert("Tên Tài Khoản không được để trống!");
+		document.getElementById("errUsername1").style.display = "inline";
+		document.getElementById("Username").style.border = "1px solid #e00";
 		document.getElementById("Username").focus();
 		return false;
+	} else {
+		document.getElementById("errUsername1").style.display = "none";
+		document.getElementById("Username").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(Username.trim().length > 20)
 	{
-		alert("Tên Tài Khoản không được quá 20 ký tự!");
+		document.getElementById("errUsername2").style.display = "inline";
+		document.getElementById("Username").style.border = "1px solid #e00";
 		document.getElementById("Username").focus();
-		document.getElementById("Username").value = "";
 		return false;
+	} else {
+		document.getElementById("errUsername2").style.display = "none";
+		document.getElementById("Username").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(FullName.trim() == "")
 	{
-		alert("Họ và Tên không được để trống!");
+		document.getElementById("errFullName1").style.display = "inline";
+		document.getElementById("FullName").style.border = "1px solid #e00";
 		document.getElementById("FullName").focus();
 		return false;
+	} else {
+		document.getElementById("errFullName1").style.display = "none";
+		document.getElementById("FullName").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(FullName.trim().length > 40)
 	{
-		alert("Họ và Tên không được quá 40 ký tự!");
+		document.getElementById("errFullName2").style.display = "inline";
+		document.getElementById("FullName").style.border = "1px solid #e00";
 		document.getElementById("FullName").focus();
-		document.getElementById("FullName").value = "";
 		return false;
+	} else {
+		document.getElementById("errFullName2").style.display = "none";
+		document.getElementById("FullName").style.border = "1px solid #d6d6d6";		
 	}
-	if(FullName.trim().match(tenPattern) == null){
-		alert("Họ và Tên không được có số hoặc kí tự đặc biệt");
+	
+	if(FullName.trim().match(tenPattern) == null)
+	{
+		document.getElementById("errFullName3").style.display = "inline";
+		document.getElementById("FullName").style.border = "1px solid #e00";
 		document.getElementById("FullName").focus();
-		document.getElementById("FullName").value = "";
 		return false;
+	} else {
+		document.getElementById("errFullName3").style.display = "none";
+		document.getElementById("FullName").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(Password.trim() == "")
 	{
-		alert("Mật Khẩu không được để trống!");
+		document.getElementById("errPassword1").style.display = "inline";
+		document.getElementById("Password").style.border = "1px solid #e00";
 		document.getElementById("Password").focus();
 		return false;
+	} else {
+		document.getElementById("errPassword1").style.display = "none";
+		document.getElementById("Password").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(Password.trim().length > 20)
 	{
-		alert("Mật Khẩu không được quá 20 ký tự!");
+		document.getElementById("errPassword2").style.display = "inline";
+		document.getElementById("Password").style.border = "1px solid #e00";
 		document.getElementById("Password").focus();
-		document.getElementById("Password").value = "";
 		return false;
+	} else {
+		document.getElementById("errPassword2").style.display = "none";
+		document.getElementById("Password").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(ConfirmPassword.trim() == "")
 	{
-		alert("Nhập Lại Mật Khẩu không được để trống!");
+		document.getElementById("errConfirmPassword1").style.display = "inline";
+		document.getElementById("ConfirmPassword").style.border = "1px solid #e00";
 		document.getElementById("ConfirmPassword").focus();
 		return false;
+	} else {
+		document.getElementById("errConfirmPassword1").style.display = "none";
+		document.getElementById("ConfirmPassword").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(ConfirmPassword.trim() != Password)
 	{
-		alert("Mật Khẩu nhập lại phải trùng khớp với Mật Khẩu đã nhập!");
+		document.getElementById("errConfirmPassword2").style.display = "inline";
+		document.getElementById("ConfirmPassword").style.border = "1px solid #e00";
 		document.getElementById("ConfirmPassword").focus();
-		document.getElementById("ConfirmPassword").value = "";
 		return false;
+	} else {
+		document.getElementById("errConfirmPassword2").style.display = "none";
+		document.getElementById("ConfirmPassword").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(Email.trim() == "")
 	{
-		alert("Email không được để trống!");
+		document.getElementById("errEmail1").style.display = "inline";
+		document.getElementById("Email").style.border = "1px solid #e00";
 		document.getElementById("Email").focus();
 		return false;
+	} else {
+		document.getElementById("errEmail1").style.display = "none";
+		document.getElementById("Email").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(Email.trim().length > 50)
 	{
-		alert("Email không được quá 50 ký tự!");
-		document.getElementById("Email").focus()
-		document.getElementById("Email").value = "";
+		document.getElementById("errEmail2").style.display = "inline";
+		document.getElementById("Email").style.border = "1px solid #e00";
+		document.getElementById("Email").focus();
 		return false;
+	} else {
+		document.getElementById("errEmail2").style.display = "none";
+		document.getElementById("Email").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(Email.match(EmailPattern) == null)
 	{
-		alert("Email phải được nhập đúng theo mẫu!");
+		document.getElementById("errEmail3").style.display = "inline";
+		document.getElementById("Email").style.border = "1px solid #e00";
 		document.getElementById("Email").focus();
-		document.getElementById("Email").value = "";
 		return false;
+	} else {
+		document.getElementById("errEmail3").style.display = "none";
+		document.getElementById("Email").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(Address.trim().length > 300)
 	{
-		alert("Địa Chỉ không được quá 300 ký tự!");
+		document.getElementById("errAddress1").style.display = "inline";
+		document.getElementById("Address").style.border = "1px solid #e00";
 		document.getElementById("Address").focus();
-		document.getElementById("Address").value = "";
 		return false;
+	} else {
+		document.getElementById("errAddress1").style.display = "none";
+		document.getElementById("Address").style.border = "1px solid #d6d6d6";		
 	}
 	
-	if(Phone != ""){//Test phone	
-		/* Phone: chỉ bắt lỗi só tại Việt Nam, hiện tại còn 10 số điên thoại di động, và 11 số cho cố định.
+	/* Phone: chỉ bắt lỗi só tại Việt Nam, hiện tại còn 10 số điên thoại di động, và 11 số cho cố định.
 		- Bao gồm các ký số
 		- Có thể dùng định dạng (84)xxxxxxxxx. */
-		var re_Phone =  /^(\([0-9]+\))?[0-9]+$/;			
+	if(Phone != "")
+	{
+		var re_Phone =  /^(\([0-9]+\))?[0-9]+$/;
 		if(re_Phone.test(Phone) == false){
-			alert("Số Điện Thoại chỉ chứa các ký tự số hoặc dấu (), có thể dùng định dạng (84)xxxxxxxxx.");
+			document.getElementById("errPhone1").style.display = "inline";
+			document.getElementById("Phone").style.border = "1px solid #e00";
 			document.getElementById("Phone").focus();
 			return false;
-		}	
+		} else {
+			document.getElementById("errPhone1").style.display = "none";
+			document.getElementById("Phone").style.border = "1px solid #d6d6d6";
+		}
 		
 		var subPhone = Phone.replace('(','');
 		subPhone = subPhone.replace(')','');
 		if((subPhone.length < 8) || (subPhone.length > 12)){
-			alert("Số Điện Thoại chỉ chứa từ 8 đến 12 số.");
-			document.getElementById("Phone").focus();			
+			document.getElementById("errPhone2").style.display = "inline";
+			document.getElementById("Phone").style.border = "1px solid #e00";
+			document.getElementById("Phone").focus();
 			return false;
+		} else {
+			document.getElementById("errPhone2").style.display = "none";
+			document.getElementById("Phone").style.border = "1px solid #d6d6d6";
 		}
-	} 
-	
+	}		
 	return true;
 }
 </script>
@@ -454,9 +517,7 @@ function check()
 </header>
 <!--/header-->
 <!-- InstanceBeginEditable name="Slider" -->
-    
-    
-	<!-- InstanceEndEditable -->
+<!-- InstanceEndEditable -->
 <section><!--section-->
   <div class="container">
     <div class="row">
@@ -502,31 +563,60 @@ function check()
 			  <table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
 					<tr>
 						<td width="50%" align="right" valign="top"><strong>Tên Tài Khoản:* &nbsp;</strong></td>
-						<td width="50%" align="left" valign="top"><input id="Username" name="Username" type="text" size="25"></td>
+						<td width="50%" align="left" valign="top"><input id="Username" name="Username" type="text" size="25">
+							<br/>
+							<div class="showMsg" id="errUsername1">Tên Tài Khoản không được để trống.</div>
+							<div class="showMsg" id="errUsername2">Tên Tài Khoản không được quá 20 ký tự.</div>	
+						</td>
 					</tr>
 					<tr>
 						<td align="right" valign="top"><strong>Họ Và Tên:* &nbsp;</strong></td>
-						<td align="left" valign="top"><input name="FullName" id="FullName" type="text" size="25"/></td>
+						<td align="left" valign="top"><input name="FullName" id="FullName" type="text" size="25"/>
+							<br/>
+							<div class="showMsg" id="errFullName1">Họ và Tên không được để trống.</div>
+							<div class="showMsg" id="errFullName2">Họ và Tên không được quá 40 ký tự.</div>		
+							<div class="showMsg" id="errFullName3">Họ và Tên không được có số hoặc kí tự đặc biệt.</div>		
+						</td>
 					</tr>
 					<tr>
 						<td align="right" valign="top"><strong>Mật Khẩu:* &nbsp;</strong></td>
-						<td align="left" valign="top"><input name="Password" id="Password" type="password" size="25"/></td>
+						<td align="left" valign="top"><input name="Password" id="Password" type="password" size="25"/>
+							<br/>
+							<div class="showMsg" id="errPassword1">Mật Khẩu không được để trống.</div>		
+							<div class="showMsg" id="errPassword2">Mật Khẩu không được quá 20 ký tự.</div>		
+						</td>
 					</tr>
 					<tr>
 						<td align="right" valign="top"><strong>Nhập Lại Mật Khẩu:* &nbsp;</strong></td>
-						<td align="left" valign="top"><input name="ConfirmPassword" id="ConfirmPassword" type="password" size="25" /></td>
+						<td align="left" valign="top"><input name="ConfirmPassword" id="ConfirmPassword" type="password" size="25" />
+							<br/>
+							<div class="showMsg" id="errConfirmPassword1">Nhập Lại Mật Khẩu không được để trống.</div>	
+							<div class="showMsg" id="errConfirmPassword2">Mật Khẩu Nhập Lại phải trùng khớp với Mật Khẩu đã nhập.</div>						
+						</td>
 					</tr>
 					<tr>
 						<td align="right" valign="top"><strong>Email:* &nbsp;</strong></td>
-						<td align="left" valign="top"><input id="Email" name="Email" type="text" size="25" /></td>
+						<td align="left" valign="top"><input id="Email" name="Email" type="text" size="25" />
+							<br/>
+							<div class="showMsg" id="errEmail1">Email không được để trống.</div>	
+							<div class="showMsg" id="errEmail2">Email không được quá 50 ký tự.</div>	
+							<div class="showMsg" id="errEmail3">Email phải được nhập đúng theo mẫu.</div>		
+						</td>
 					</tr>
 					<tr>
 						<td align="right" valign="top"><strong>Địa Chỉ: &nbsp;</strong></td>
-						<td align="left" valign="top"><input id="Address" name="Address" type="text" size="25" /></td>
+						<td align="left" valign="top"><input id="Address" name="Address" type="text" size="25" />
+							<br/>
+							<div class="showMsg" id="errAddress1">Địa Chỉ không được quá 300 ký tự.</div>		
+						</td>
 					</tr>
 					<tr>
 						<td align="right" valign="top"><strong>Số Điện Thoại: &nbsp;</strong></td>
-						<td align="left" valign="top"><input id="Phone" name="Phone" type="text"  size="25" /></td>
+						<td align="left" valign="top"><input id="Phone" name="Phone" type="text"  size="25" />
+							<br/>
+							<div class="showMsg" id="errPhone1">Số Điện Thoại chỉ chứa các ký tự số hoặc dấu (), có thể dùng định dạng (84)xxxxxxxxx.</div>		
+							<div class="showMsg" id="errPhone2">Số Điện Thoại chỉ chứa từ 8 đến 12 số.</div>		
+						</td>
 					</tr>
 					<tr>
 						<td align="right" valign="top"><input type="submit" id="btnAdd" name="btnAdd" value="Đăng Ký" class="btn search"/></td>

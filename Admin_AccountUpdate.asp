@@ -270,6 +270,14 @@ End If
 <script src="js/main.js"></script>
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>Cập Nhật Thông Tin Tài Khoản</title>
+<STYLE type="text/css">
+.showMsg {
+	font-family: verdana;
+	font-size: 10px;
+	color: red;
+	display: none;
+}
+</STYLE>
 <script>
 
 function check()
@@ -279,69 +287,94 @@ function check()
 	var Email = document.getElementById("Email").value;
 	var Address = document.getElementById("Address").value;
 	var Phone = document.getElementById("Phone").value;
-	
+		
 	if(FullName == "")
 	{
-		alert("Họ và Tên không được để trống!");
+		document.getElementById("errFullName1").style.display = "inline";
+		document.getElementById("FullName").style.border = "1px solid #e00";
 		document.getElementById("FullName").focus();
 		return false;
+	} else {
+		document.getElementById("errFullName1").style.display = "none";
+		document.getElementById("FullName").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(FullName.length > 40)
 	{
-		alert("Họ và Tên không được quá 40 ký tự!");
+		document.getElementById("errFullName2").style.display = "inline";
+		document.getElementById("FullName").style.border = "1px solid #e00";
 		document.getElementById("FullName").focus();
-		document.getElementById("FullName").value = "";
 		return false;
+	} else {
+		document.getElementById("errFullName2").style.display = "none";
+		document.getElementById("FullName").style.border = "1px solid #d6d6d6";		
 	}
-	
-	if(Email == "")
+		
+	if(Email=="")
 	{
-		alert("Email không được để trống!");
+		document.getElementById("errEmail1").style.display = "inline";
+		document.getElementById("Email").style.border = "1px solid #e00";
 		document.getElementById("Email").focus();
 		return false;
+	} else {
+		document.getElementById("errEmail1").style.display = "none";
+		document.getElementById("Email").style.border = "1px solid #d6d6d6";		
 	}
-	
+		
 	if(Email.length > 50)
 	{
-		alert("Email không được quá 50 ký tự!");
-		document.getElementById("Email").focus()
-		document.getElementById("Email").value = "";
+		document.getElementById("errEmail2").style.display = "inline";
+		document.getElementById("Email").style.border = "1px solid #e00";
+		document.getElementById("Email").focus();
 		return false;
+	} else {
+		document.getElementById("errEmail2").style.display = "none";
+		document.getElementById("Email").style.border = "1px solid #d6d6d6";		
 	}
-	
+		
 	if(Email.match(EmailPattern) == null)
 	{
-		alert("Email phải được nhập đúng theo mẫu!");
+		document.getElementById("errEmail3").style.display = "inline";
+		document.getElementById("Email").style.border = "1px solid #e00";
 		document.getElementById("Email").focus();
-		document.getElementById("Email").value = "";
 		return false;
+	} else {
+		document.getElementById("errEmail3").style.display = "none";
+		document.getElementById("Email").style.border = "1px solid #d6d6d6";		
 	}
-	
+		
 	if(Address.length > 300)
 	{
-		alert("Địa Chỉ không được quá 300 ký tự!");
+		document.getElementById("errAddress1").style.display = "inline";
+		document.getElementById("Address").style.border = "1px solid #e00";
 		document.getElementById("Address").focus();
-		document.getElementById("Address").value = "";
 		return false;
+	} else {
+		document.getElementById("errAddress1").style.display = "none";
+		document.getElementById("Address").style.border = "1px solid #d6d6d6";		
 	}
-	
+		
 	if(isNaN(Phone))
 	{
-		alert("Số Điện Thoại phải là kiểu số!");
+		document.getElementById("errPhone1").style.display = "inline";
+		document.getElementById("Phone").style.border = "1px solid #e00";
 		document.getElementById("Phone").focus();
-		document.getElementById("Phone").value = "";
 		return false;
+	} else {
+		document.getElementById("errPhone1").style.display = "none";
+		document.getElementById("Phone").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(Phone.length > 11)
 	{
-		alert("Số Điện Thoại không được quá 11 số!");
+		document.getElementById("errPhone2").style.display = "inline";
+		document.getElementById("Phone").style.border = "1px solid #e00";
 		document.getElementById("Phone").focus();
-		document.getElementById("Phone").value = "";
 		return false;
+	} else {
+		document.getElementById("errPhone2").style.display = "none";
+		document.getElementById("Phone").style.border = "1px solid #d6d6d6";		
 	}
-	
 	return true;
 }
 </script>
@@ -457,20 +490,36 @@ function check()
        						  <td width="50%" align="left" valign="top"><input id="Username" name="Username" type="text" size="25" value="<%=(rsAdminAccountUpdate.Fields.Item("UserID").Value)%>" readonly></td>
        						</tr>
         					<tr>
-          						<td align="right" valign="middle"><strong>Họ Và Tên:* &nbsp;</strong></td>
-                              <td align="left" valign="top"><input name="FullName" id="FullName" type="text" size="25" value="<%=(rsAdminAccountUpdate.Fields.Item("FullName").Value)%>"/></td>
+								<td align="right" valign="middle"><strong>Họ Và Tên:* &nbsp;</strong></td>
+								<td align="left" valign="top"><input name="FullName" id="FullName" type="text" size="25" value="<%=(rsAdminAccountUpdate.Fields.Item("FullName").Value)%>"/>
+									<br/>
+									<div class="showMsg" id="errFullName1">Họ Và Tên không được để trống.</div>
+									<div class="showMsg" id="errFullName2">Họ và Tên không được quá 40 ký tự.</div>
+									<div class="showMsg" id="errFullName2">Họ và Tên không được quá 40 ký tự.</div>
+									<div class="showMsg" id="errFullName2">Họ và Tên không được quá 40 ký tự.</div>
+								</td>
        						</tr>
                             <tr>
                                 <td align="right" valign="middle"><strong>Email:* &nbsp;</strong></td>
-                              <td align="left" valign="top"><input id="Email" name="Email" type="text" size="25" value="<%=(rsAdminAccountUpdate.Fields.Item("UserEmail").Value)%>"/></td>
+								<td align="left" valign="top"><input id="Email" name="Email" type="text" size="25" value="<%=(rsAdminAccountUpdate.Fields.Item("UserEmail").Value)%>"/>
+									<br/>
+									<div class="showMsg" id="errEmail1">Email không được để trống.</div>
+									<div class="showMsg" id="errEmail2">Email không được quá 50 ký tự.</div>
+									<div class="showMsg" id="errEmail3">Email phải được nhập đúng theo mẫu.</div>
+								</td>
                             </tr>
                             <tr>
                                 <td align="right" valign="middle"><strong>Địa Chỉ: &nbsp;</strong></td>
-                              <td align="left" valign="top"><input id="Address" name="Address" type="text" size="25" value="<%=(rsAdminAccountUpdate.Fields.Item("UserAddress").Value)%>" /></td>
+								<td align="left" valign="top"><input id="Address" name="Address" type="text" size="25" value="<%=(rsAdminAccountUpdate.Fields.Item("UserAddress").Value)%>" />
+									<div class="showMsg" id="errAddress1">Địa Chỉ không được quá 300 ký tự.</div>
+								</td>
                             </tr>
                             <tr>
                                 <td align="right" valign="middle"><strong>Số Điện Thoại: &nbsp;</strong></td>
-                              <td align="left" valign="top"><input id="Phone" name="Phone" type="text"  size="25" value="<%=(rsAdminAccountUpdate.Fields.Item("UserPhone").Value)%>" /></td>
+								<td align="left" valign="top"><input id="Phone" name="Phone" type="text"  size="25" value="<%=(rsAdminAccountUpdate.Fields.Item("UserPhone").Value)%>" />
+									<div class="showMsg" id="errPhone1">Số Điện Thoại phải là kiểu số.</div>
+									<div class="showMsg" id="errPhone2">Số Điện Thoại không được quá 11 số.</div>
+								</td>
                             </tr>
                             <tr>
                                 <td align="right" valign="top"><input type="submit" value="Cập Nhật" class="btn search"/></td>

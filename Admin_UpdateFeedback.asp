@@ -273,6 +273,14 @@ End If
 <script src="js/main.js"></script>
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>Trả Lời Phản Hồi</title>
+<STYLE type="text/css">
+.showMsg {
+	font-family: verdana;
+	font-size: 10px;
+	color: red;
+	display: none;
+}
+</STYLE>
 <script>
 function getCurrentDate()
 {
@@ -284,15 +292,16 @@ function getCurrentDate()
 function check()
 {
 	var Reply = document.getElementById("Reply").value;
-	
 	if(Reply.length > 500)
 	{
-		alert("Trả Lời không được quá 500 ký tự!");
+		document.getElementById("errReply1").style.display = "inline";
+		document.getElementById("Reply").style.border = "1px solid #e00";
 		document.getElementById("Reply").focus();
-		document.getElementById("Reply").value = "";
 		return false;
+	} else {
+		document.getElementById("errReply1").style.display = "none";
+		document.getElementById("Reply").style.border = "1px solid #d6d6d6";		
 	}
-
 	return true;
 }
 </script>
@@ -418,7 +427,10 @@ function check()
 					</tr>
 					<tr>
 						<td align="right" valign="top"><strong>Trả Lời: &nbsp;</strong></td>
-						<td align="left" valign="top"><textarea id="Reply" name="Reply" rows="10"><%=(rsUpdateFeedback.Fields.Item("FeedbackReply").Value)%></textarea></td>
+						<td align="left" valign="top"><textarea id="Reply" name="Reply" rows="10"><%=(rsUpdateFeedback.Fields.Item("FeedbackReply").Value)%></textarea>
+							<br/>
+							<div class="showMsg" id="errReply1">Trả Lời không được quá 500 ký tự.</div>
+						</td>
 					</tr>
 					<tr>
 						<td align="right" valign="top"><input type="submit" value="Trả Lời" class="btn search"/></td>

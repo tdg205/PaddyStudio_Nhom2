@@ -491,7 +491,6 @@ function check()
 		document.getElementById("errPrice2").style.display = "inline";
 		document.getElementById("Price").style.border = "1px solid #e00";
 		document.getElementById("Price").focus();
-		document.getElementById("Price").value = "";
 		return false;
 	} else {
 		document.getElementById("errPrice2").style.display = "none";
@@ -503,7 +502,6 @@ function check()
 		document.getElementById("errPrice3").style.display = "inline";
 		document.getElementById("Price").style.border = "1px solid #e00";
 		document.getElementById("Price").focus();
-		document.getElementById("Price").value = "";
 		return false;
 	} else {
 		document.getElementById("errPrice3").style.display = "none";
@@ -515,7 +513,6 @@ function check()
 		document.getElementById("errPrice4").style.display = "inline";
 		document.getElementById("Price").style.border = "1px solid #e00";
 		document.getElementById("Price").focus();
-		document.getElementById("Price").value = "";
 		return false;
 	} else {
 		document.getElementById("errPrice4").style.display = "none";

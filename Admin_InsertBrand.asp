@@ -47,7 +47,7 @@ If (CStr(Request("MM_insert")) = "form1") Then
     MM_editCmd.Prepared = true
     MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param1", 201, 1, 20, Request.Form("BrandName")) ' adLongVarChar
     MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param2", 201, 1, 200, Request.Form("BrandImage")) ' adLongVarChar
-    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param3", 202, 1, 200, Request.Form("BrandDescription")) ' adVarWChar
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param3", 202, 1, 1000, Request.Form("BrandDescription")) ' adVarWChar
     MM_editCmd.Execute
     MM_editCmd.ActiveConnection.Close
 
@@ -240,6 +240,14 @@ End If
 <script src="js/main.js"></script>
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>Thêm Thương Hiệu</title>
+<STYLE type="text/css">
+.showMsg {
+	font-family: verdana;
+	font-size: 10px;
+	color: red;
+	display: none;
+}
+</STYLE>
 <script>
 function cut_string()
 {
@@ -257,42 +265,59 @@ function check()
 	
 	if(BrandName == "")
 	{
-		alert("Tên Thương Hiệu không được để trống!");
+		document.getElementById("errBrandName1").style.display = "inline";
+		document.getElementById("BrandName").style.border = "1px solid #e00";
 		document.getElementById("BrandName").focus();
 		return false;
+	} else {
+		document.getElementById("errBrandName1").style.display = "none";
+		document.getElementById("BrandName").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(BrandName.length > 20)
 	{
-		alert("Tên Thương Hiệu không được quá 20 ký tự!");
+		document.getElementById("errBrandName2").style.display = "inline";
+		document.getElementById("BrandName").style.border = "1px solid #e00";
 		document.getElementById("BrandName").focus();
-		document.getElementById("BrandName").value = "";
 		return false;
+	} else {
+		document.getElementById("errBrandName2").style.display = "none";
+		document.getElementById("BrandName").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(BrandImage == "")
 	{
-		alert("Hình Ảnh không được để trống!");
+		document.getElementById("errFileImage1").style.display = "inline";
+		document.getElementById("fileImage").style.border = "1px solid #e00";
 		document.getElementById("fileImage").focus();
 		return false;
+	} else {
+		document.getElementById("errFileImage1").style.display = "none";
+		document.getElementById("fileImage").style.border = "1px solid #d6d6d6";		
 	}
 	
 	if(BrandImage.length > 200)
 	{
-		alert("Hình Ảnh không được quá 200 ký tự!");
+		document.getElementById("errFileImage2").style.display = "inline";
+		document.getElementById("fileImage").style.border = "1px solid #e00";
 		document.getElementById("fileImage").focus();
-		document.getElementById("fileImage").value = "";
 		return false;
+	} else {
+		document.getElementById("errFileImage2").style.display = "none";
+		document.getElementById("fileImage").style.border = "1px solid #d6d6d6";		
 	}
 	
-	if(BrandDescription.length > 200)
+	if(BrandDescription.length > 1000)
 	{
-		alert("Mô Tả không được quá 200 ký tự!");
+		document.getElementById("errBrandDescription1").style.display = "inline";
+		document.getElementById("BrandDescription").style.border = "1px solid #e00";
 		document.getElementById("BrandDescription").focus();
-		document.getElementById("BrandDescription").value = "";
 		return false;
+	} else {
+		document.getElementById("errBrandDescription1").style.display = "none";
+		document.getElementById("BrandDescription").style.border = "1px solid #d6d6d6";		
 	}
-	
+		
 	return true;
 }
 </script>
@@ -404,18 +429,28 @@ function check()
 			  <table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
 					<tr>
 						<td width="40%" align="right" valign="top"><strong>Tên Thương Hiệu:* &nbsp;</strong></td>
-						<td width="60%" align="left" valign="top"><input id="BrandName" name="BrandName" type="text" size="32" /></td>
+						<td width="60%" align="left" valign="top"><input id="BrandName" name="BrandName" type="text" size="32" />
+							<br/>
+							<div class="showMsg" id="errBrandName1">Tên Thương Hiệu không được để trống.</div>
+							<div class="showMsg" id="errBrandName2">Tên Thương Hiệu không được quá 20 ký tự.</div>			
+						</td>
 					</tr>
 					<tr>
 						<td align="right" valign="top"><strong>Hình Ảnh:* &nbsp;</strong></td>
 						<td align="left" valign="top">
 							<input name="BrandImage" id="BrandImage" type="text" readonly/><br/><br/>
 							<input name="fileImage" id="fileImage" type="file" onChange="cut_string()" />
-					  </td>
+							<br/>
+							<div class="showMsg" id="errFileImage1">Hình Ảnh không được để trống.</div>
+							<div class="showMsg" id="errFileImage2">Hình Ảnh không được quá 200 ký tự.</div>
+						</td>
 					</tr>
 					<tr>
 						<td align="right" valign="top"><strong>Mô Tả: &nbsp;</strong></td>
-						<td align="left" valign="top"><textarea id="BrandDescription" name="BrandDescription" cols="32" rows="5"></textarea></td>
+						<td align="left" valign="top"><textarea id="BrandDescription" name="BrandDescription" cols="32" rows="5"></textarea>
+							<br/>
+							<div class="showMsg" id="errBrandDescription1">Mô Tả không được quá 1000 ký tự.</div>
+						</td>
 					</tr>
 					<tr>
 						<td align="right" valign="top"><input type="submit" id="btnAdd" name="btnAdd" value="Thêm" class="btn search" /></td>
