@@ -271,7 +271,6 @@ End If
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>Cập Nhật Thông Tin Tài Khoản</title>
 <script>
-
 function check()
 {
 	var FullName = document.getElementById("FullName").value;
@@ -320,28 +319,32 @@ function check()
 	
 	if(Address.length > 300)
 	{
-		alert("Địa Chỉ không được quá 300 ký tự!");
+		alert("Địa Chỉ không được quá 300 ký tự.");
 		document.getElementById("Address").focus();
 		document.getElementById("Address").value = "";
 		return false;
 	}
-	
-	if(isNaN(Phone))
-	{
-		alert("Số Điện Thoại phải là kiểu số!");
-		document.getElementById("Phone").focus();
-		document.getElementById("Phone").value = "";
-		return false;
-	}
-	
-	if(Phone.length > 11)
-	{
-		alert("Số Điện Thoại không được quá 11 số!");
-		document.getElementById("Phone").focus();
-		document.getElementById("Phone").value = "";
-		return false;
-	}
-	
+		
+	if(Phone != ""){//Test phone	
+		/* Phone: chỉ bắt lỗi só tại Việt Nam, hiện tại còn 10 số điên thoại di động, và 11 số cho cố định.
+		- Bao gồm các ký số
+		- Có thể dùng định dạng (84)xxxxxxxxx. */
+		var re_Phone =  /^(\([0-9]+\))?[0-9]+$/;			
+		if(re_Phone.test(Phone) == false){
+			alert("Số Điện Thoại chỉ chứa các ký tự số hoặc dấu (), có thể dùng định dạng (84)xxxxxxxxx.");
+			document.getElementById("Phone").focus();
+			return false;
+		}	
+		
+		var subPhone = Phone.replace('(','');
+		subPhone = subPhone.replace(')','');
+		if((subPhone.length < 8) || (subPhone.length > 12)){
+			alert("Số Điện Thoại chỉ chứa từ 8 đến 12 số.");
+			document.getElementById("Phone").focus();			
+			return false;
+		}
+	} 
+		
 	return true;
 }
 </script>
@@ -473,7 +476,7 @@ function check()
                               <td align="left" valign="top"><input id="Phone" name="Phone" type="text"  size="25" value="<%=(rsAccountUpdate.Fields.Item("UserPhone").Value)%>" /></td>
                             </tr>
                             <tr>
-                                <td align="right" valign="top"><input type="submit" value="Cập Nhật" class="btn search"/></td>
+                                <td align="right" valign="top"><input type="submit" value="Cập Nhật" class="btn search" onClick="return confirm('Bạn muốn cập nhật lại thông tin Tài Khoản ?')"/></td>
                                 <td align="left" valign="top"><input type="reset" value="Hủy" class="btn search"/>&nbsp;&nbsp;<a href="javascript:history.back()" class="btn search">Trở Về</a></td>
                             </tr>
                             <tr>
@@ -482,7 +485,7 @@ function check()
                             </tr>
                             <tr>
                                 <td align="right" valign="top">&nbsp;</td>
-                                <td align="left" valign="top"><input id="Email1" name="Email1" type="hidden" value="<%=(rsAccountUpdate.Fields.Item("UserEmail").Value)%>"/></td>
+                                <td align="left" valign="top"><input type="hidden" id="Email1" name="Email1" value="<%=(rsAccountUpdate.Fields.Item("UserEmail").Value)%>"/></td>
                             </tr>
    					  </table>
                       <input type="hidden" name="MM_update" value="form1">

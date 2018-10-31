@@ -263,7 +263,6 @@ End If
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>Đăng Ký</title>
 <script>
-
 function check()
 {
 	var Username = document.getElementById("Username").value;
@@ -372,21 +371,25 @@ function check()
 		return false;
 	}
 	
-	if(isNaN(Phone.trim()))
-	{
-		alert("Số Điện Thoại phải là kiểu số!");
-		document.getElementById("Phone").focus();
-		document.getElementById("Phone").value = "";
-		return false;
-	}
-	
-	if(Phone.trim().length > 10)
-	{
-		alert("Số Điện Thoại không được quá 10 số!");
-		document.getElementById("Phone").focus();
-		document.getElementById("Phone").value = "";
-		return false;
-	}
+	if(Phone != ""){//Test phone	
+		/* Phone: chỉ bắt lỗi só tại Việt Nam, hiện tại còn 10 số điên thoại di động, và 11 số cho cố định.
+		- Bao gồm các ký số
+		- Có thể dùng định dạng (84)xxxxxxxxx. */
+		var re_Phone =  /^(\([0-9]+\))?[0-9]+$/;			
+		if(re_Phone.test(Phone) == false){
+			alert("Số Điện Thoại chỉ chứa các ký tự số hoặc dấu (), có thể dùng định dạng (84)xxxxxxxxx.");
+			document.getElementById("Phone").focus();
+			return false;
+		}	
+		
+		var subPhone = Phone.replace('(','');
+		subPhone = subPhone.replace(')','');
+		if((subPhone.length < 8) || (subPhone.length > 12)){
+			alert("Số Điện Thoại chỉ chứa từ 8 đến 12 số.");
+			document.getElementById("Phone").focus();			
+			return false;
+		}
+	} 
 	
 	return true;
 }
@@ -488,60 +491,60 @@ function check()
           </div>
           <!--/brands_products-->
           <!-- InstanceBeginEditable name="left" -->
-						<!-- InstanceEndEditable -->
+		<!-- InstanceEndEditable -->
         </div>
       </div>
       <div class="col-sm-9 padding-right">
         <!-- InstanceBeginEditable name="Content" -->
-                    <h2 class="title text-center">Đăng Ký</h2>
-                    <div class="col-sm-12">
-                    <form ACTION="<%=MM_editAction%>" id="form1" name="form1" method="POST" onSubmit="return check()">
-                   	  <table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
-                            <tr>
-          						<td width="50%" align="right" valign="top"><strong>Tên Tài Khoản:* &nbsp;</strong></td>
-          						<td width="50%" align="left" valign="top"><input id="Username" name="Username" type="text" size="25"></td>
-       						</tr>
-        					<tr>
-          						<td align="right" valign="top"><strong>Họ Và Tên:* &nbsp;</strong></td>
-                                <td align="left" valign="top"><input name="FullName" id="FullName" type="text" size="25"/></td>
-       						</tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Mật Khẩu:* &nbsp;</strong></td>
-                                <td align="left" valign="top"><input name="Password" id="Password" type="password" size="25"/></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Nhập Lại Mật Khẩu:* &nbsp;</strong></td>
-                                <td align="left" valign="top"><input name="ConfirmPassword" id="ConfirmPassword" type="password" size="25" /></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Email:* &nbsp;</strong></td>
-                                <td align="left" valign="top"><input id="Email" name="Email" type="text" size="25" /></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Địa Chỉ: &nbsp;</strong></td>
-                                <td align="left" valign="top"><input id="Address" name="Address" type="text" size="25" /></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><strong>Số Điện Thoại: &nbsp;</strong></td>
-                                <td align="left" valign="top"><input id="Phone" name="Phone" type="text"  size="25" /></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><input type="submit" id="btnAdd" name="btnAdd" value="Đăng Ký" class="btn search"/></td>
-                                <td align="left" valign="top"><input type="reset" value="Hủy" class="btn search"/></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top">&nbsp;</td>
-                                <td align="left" valign="top"><strong><b>(*) : Không Được Để Trống</strong></td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top">&nbsp;</td>
-                                <td align="left" valign="top">&nbsp;</td>
-                            </tr>
-   					  </table>
-                      <input type="hidden" name="MM_insert" value="form1">
-                    </form>
-                    </div>
-					<!-- InstanceEndEditable -->
+			<h2 class="title text-center">Đăng Ký</h2>
+			<div class="col-sm-12">
+			<form ACTION="<%=MM_editAction%>" id="form1" name="form1" method="POST" onSubmit="return check()">
+			  <table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
+					<tr>
+						<td width="50%" align="right" valign="top"><strong>Tên Tài Khoản:* &nbsp;</strong></td>
+						<td width="50%" align="left" valign="top"><input id="Username" name="Username" type="text" size="25"></td>
+					</tr>
+					<tr>
+						<td align="right" valign="top"><strong>Họ Và Tên:* &nbsp;</strong></td>
+						<td align="left" valign="top"><input name="FullName" id="FullName" type="text" size="25"/></td>
+					</tr>
+					<tr>
+						<td align="right" valign="top"><strong>Mật Khẩu:* &nbsp;</strong></td>
+						<td align="left" valign="top"><input name="Password" id="Password" type="password" size="25"/></td>
+					</tr>
+					<tr>
+						<td align="right" valign="top"><strong>Nhập Lại Mật Khẩu:* &nbsp;</strong></td>
+						<td align="left" valign="top"><input name="ConfirmPassword" id="ConfirmPassword" type="password" size="25" /></td>
+					</tr>
+					<tr>
+						<td align="right" valign="top"><strong>Email:* &nbsp;</strong></td>
+						<td align="left" valign="top"><input id="Email" name="Email" type="text" size="25" /></td>
+					</tr>
+					<tr>
+						<td align="right" valign="top"><strong>Địa Chỉ: &nbsp;</strong></td>
+						<td align="left" valign="top"><input id="Address" name="Address" type="text" size="25" /></td>
+					</tr>
+					<tr>
+						<td align="right" valign="top"><strong>Số Điện Thoại: &nbsp;</strong></td>
+						<td align="left" valign="top"><input id="Phone" name="Phone" type="text"  size="25" /></td>
+					</tr>
+					<tr>
+						<td align="right" valign="top"><input type="submit" id="btnAdd" name="btnAdd" value="Đăng Ký" class="btn search"/></td>
+						<td align="left" valign="top"><input type="reset" value="Hủy" class="btn search"/></td>
+					</tr>
+					<tr>
+						<td align="right" valign="top">&nbsp;</td>
+						<td align="left" valign="top"><strong><b>(*) : Không Được Để Trống</strong></td>
+					</tr>
+					<tr>
+						<td align="right" valign="top">&nbsp;</td>
+						<td align="left" valign="top">&nbsp;</td>
+					</tr>
+			  </table>
+			  <input type="hidden" name="MM_insert" value="form1">
+			</form>
+			</div>
+		<!-- InstanceEndEditable -->
       </div>
     </div>
   </div>

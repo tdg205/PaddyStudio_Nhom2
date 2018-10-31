@@ -214,10 +214,8 @@ End If
   <!--/header-bottom-->
 </header>
 <!--/header-->
-<!-- InstanceBeginEditable name="Slider" -->
-    
-    
-	<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="Slider" -->   
+<!-- InstanceEndEditable -->
 <section><!--section-->
   <div class="container">
     <div class="row">
@@ -252,21 +250,21 @@ End If
           </div>
           <!--/brands_products-->
           <!-- InstanceBeginEditable name="left" -->
-						<!-- InstanceEndEditable -->
+		<!-- InstanceEndEditable -->
         </div>
       </div>
       <div class="col-sm-9 padding-right">
         <!-- InstanceBeginEditable name="Content" -->
-                    <h2 class="title text-center">Đăng Ký Thành Công</h2>
-                    <div class="col-sm-12">
-                    	<table width="100%" border="0" align="center">
-                            <tr>
-    							<td width="50%" align="right" valign="middle"><strong><a href="Login.asp" class="btn search">Đến Trang Đăng Nhập</a></strong></td>
-                                <td width="50%" align="left" valign="middle"><strong><a href="Home.asp" class="btn search">Trở Về Trang Chủ</a></strong></td>
-						  </tr>
-						</table>
-                    </div>
-					<!-- InstanceEndEditable -->
+		<h2 class="title text-center">Đăng Ký Thành Công</h2>
+		<div class="col-sm-12">
+			<table width="100%" border="0" align="center">
+				<tr>
+					<td width="50%" align="right" valign="middle"><strong><a href="Login.asp" class="btn search">Đến Trang Đăng Nhập</a></strong></td>
+					<td width="50%" align="left" valign="middle"><strong><a href="Home.asp" class="btn search">Trở Về Trang Chủ</a></strong></td>
+			  </tr>
+			</table>
+		</div>
+		<!-- InstanceEndEditable -->
       </div>
     </div>
   </div>

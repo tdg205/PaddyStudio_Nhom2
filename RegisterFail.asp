@@ -215,9 +215,7 @@ End If
 </header>
 <!--/header-->
 <!-- InstanceBeginEditable name="Slider" -->
-    
-    
-	<!-- InstanceEndEditable -->
+<!-- InstanceEndEditable -->
 <section><!--section-->
   <div class="container">
     <div class="row">
@@ -252,21 +250,21 @@ End If
           </div>
           <!--/brands_products-->
           <!-- InstanceBeginEditable name="left" -->
-						<!-- InstanceEndEditable -->
+		<!-- InstanceEndEditable -->
         </div>
       </div>
-      <div class="col-sm-9 padding-right">
+		<div class="col-sm-9 padding-right">
         <!-- InstanceBeginEditable name="Content" -->
-                    <h2 class="title text-center">Tên Tài Khoản Hoặc Email Bị Trùng</h2>
-                    <div class="col-sm-12">
-                    	<table width="100%" border="0" align="center">
-                            <tr>
-    							<td align="center" valign="middle"><strong><a href="javascript:history.back()" class="btn search">Trở Về Trang Đăng Ký</a></strong></td>
-						  </tr>
-						</table>
-                    </div>
-					<!-- InstanceEndEditable -->
-      </div>
+			<h2 class="title text-center">Tên Tài Khoản Hoặc Email Bị Trùng</h2>
+			<div class="col-sm-12">
+				<table width="100%" border="0" align="center">
+					<tr>
+						<td align="center" valign="middle"><strong><a href="javascript:history.back()" class="btn search">Trở Về Trang Đăng Ký</a></strong></td>
+				  </tr>
+				</table>
+			</div>
+		<!-- InstanceEndEditable -->
+		</div>
     </div>
   </div>
 </section>
